@@ -1,0 +1,62 @@
+{
+  "question": "截至2026年9月1日，未来三个月内到期的租约有哪些？包含9月1日当天，请列出租户、项目和到期日。",
+  "route": {
+    "action": "execute",
+    "reason_code": "supported_entity_query",
+    "message": "问题对象和范围明确，可以进入 SQL 生成。",
+    "metric_ids": [],
+    "options": [],
+    "disclosures": [],
+    "matched_terms": [],
+    "policy_version": "2.0.0",
+    "catalog_version": "2.0.0"
+  },
+  "status": "succeeded",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "sql": "SELECT t.tenant_name, p.property_name, l.lease_end_date FROM leases l JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id JOIN tenants t ON l.tenant_id = t.tenant_id WHERE l.lease_status = 'active' AND l.lease_end_date >= '2026-09-01' AND l.lease_end_date < date('2026-09-01', '+3 months') ORDER BY l.lease_end_date ASC;",
+      "summary": "查询截至2026年9月1日，租约状态为活跃且到期日在2026年9月1日（含）至2026年12月1日（不含）之间的租户、项目及到期日。",
+      "status": "succeeded",
+      "error_type": null,
+      "error_message": null,
+      "execution_ms": 3,
+      "row_count": 3,
+      "columns": [
+        "tenant_name",
+        "property_name",
+        "lease_end_date"
+      ],
+      "model": "qwen3.7-plus",
+      "generation_ms": 5249,
+      "failure_stage": null,
+      "precheck_error": null,
+      "execution_error": null,
+      "recovered_later": false
+    }
+  ],
+  "columns": [
+    "tenant_name",
+    "property_name",
+    "lease_end_date"
+  ],
+  "rows": [
+    [
+      "澜庭餐饮08号店",
+      "云栖中心",
+      "2026-09-01"
+    ],
+    [
+      "远山餐饮02号店",
+      "澄明广场",
+      "2026-09-30"
+    ],
+    [
+      "星港科技14号店",
+      "湖滨里",
+      "2026-11-30"
+    ]
+  ],
+  "user_message": "查询成功。",
+  "recovered": false
+}

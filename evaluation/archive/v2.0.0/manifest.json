@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "frozen_on": "2026-09-22",
+  "cases_sha256": "b8eab77957d0baa9eadbb45620f2112cad0e1a1f3686f1a6f0a21225447f335f",
+  "case_count": 24,
+  "splits": {
+    "development": 16,
+    "holdout": 8
+  },
+  "expected_actions": {
+    "clarify": 8,
+    "execute": 8,
+    "execute_with_disclosure": 2,
+    "reject": 6
+  },
+  "supersedes": "1.0.0 (retired for routing evaluation after wording leakage review)",
+  "policy": "Any case-content change requires a new semantic version and a documented reason. Holdout cases must not be used for implementation tuning."
+}

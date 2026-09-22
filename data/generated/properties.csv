@@ -1,0 +1,7 @@
+﻿property_id,property_name,city,district,property_type,gross_leasable_area_sqm,opening_date
+P001,澄明广场,上海,浦东新区,shopping_mall,2972.0,2018-05-18
+P002,云栖中心,上海,徐汇区,office,3172.0,2020-09-10
+P003,湖滨里,杭州,上城区,community_retail,3372.0,2019-11-22
+P004,金陵汇,南京,建邺区,shopping_mall,3572.0,2017-03-15
+P005,平江坊,苏州,姑苏区,community_retail,3772.0,2021-06-30
+P006,望京新程,北京,朝阳区,office,3972.0,2016-12-08

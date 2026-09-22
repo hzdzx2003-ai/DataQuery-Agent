@@ -1,0 +1,69 @@
+{
+  "phase": "2B-smoke",
+  "created_at": "2026-09-21T18:51:26.586513+00:00",
+  "case_ids": [
+    "D2-001",
+    "D2-004"
+  ],
+  "request_count": 2,
+  "total_tokens": 2421,
+  "all_strict_row_match": false,
+  "results": [
+    {
+      "case_id": "D2-001",
+      "question": "2026年上海各月实收租金是多少？按月份升序。",
+      "route_action": "execute",
+      "generated_sql": "SELECT rp.billing_month, SUM(rp.amount_paid) AS total_rent_collected FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE p.city = '上海' AND rp.billing_month >= '2026-01' AND rp.billing_month <= '2026-12' GROUP BY rp.billing_month ORDER BY rp.billing_month ASC;",
+      "summary": "统计2026年上海各项目按账期归属的每月实收租金总额，并按月份升序排列。",
+      "columns": [
+        "billing_month",
+        "total_rent_collected"
+      ],
+      "row_count": 8,
+      "gold_columns": [
+        "billing_month",
+        "rent_collected"
+      ],
+      "gold_row_count": 8,
+      "strict_row_match": true,
+      "model": "qwen3.7-plus",
+      "latency_ms": 4734,
+      "usage": {
+        "input_tokens": 999,
+        "output_tokens": 147,
+        "total_tokens": 1146
+      },
+      "disclosures": [],
+      "numeric_comparison_decimals": 2
+    },
+    {
+      "case_id": "D2-004",
+      "question": "2026年8月每个项目的租金收缴率是多少？从高到低。",
+      "route_action": "execute_with_disclosure",
+      "generated_sql": "WITH billing_data AS (\n    SELECT\n        p.property_id,\n        p.property_name,\n        rp.billing_month,\n        SUM(rp.amount_paid) AS total_paid,\n        SUM(rp.amount_due) AS total_due\n    FROM rent_payments rp\n    JOIN leases l ON rp.lease_id = l.lease_id\n    JOIN units u ON l.unit_id = u.unit_id\n    JOIN properties p ON u.property_id = p.property_id\n    WHERE rp.billing_month = '2026-08'\n    GROUP BY p.property_id, p.property_name, rp.billing_month\n)\nSELECT\n    property_name,\n    CASE\n        WHEN total_due > 0 THEN ROUND(total_paid * 1.0 / total_due, 4)\n        ELSE NULL\n    END AS collection_rate\nFROM billing_data\nORDER BY collection_rate DESC;",
+      "summary": "统计2026年8月账期各项目的租金收缴率（实收/应收），按比率从高到低排序。",
+      "columns": [
+        "property_name",
+        "collection_rate"
+      ],
+      "row_count": 0,
+      "gold_columns": [
+        "property_name",
+        "collection_rate"
+      ],
+      "gold_row_count": 6,
+      "strict_row_match": false,
+      "model": "qwen3.7-plus",
+      "latency_ms": 4412,
+      "usage": {
+        "input_tokens": 1047,
+        "output_tokens": 228,
+        "total_tokens": 1275
+      },
+      "disclosures": [
+        "租金收缴率按账期统计，等于同一账期实收租金除以应收租金，不按到账日混入往期回款。"
+      ],
+      "numeric_comparison_decimals": 4
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "frozen_on": "2026-09-22",
+  "cases_sha256": "38ddadac9bce83d252b4dafe387f4930fc1e6c18876171ddd4e82e0ce8751a99",
+  "case_count": 20,
+  "splits": {
+    "development": 8,
+    "holdout": 12
+  },
+  "expected_actions": {
+    "clarify": 5,
+    "execute": 10,
+    "execute_with_disclosure": 2,
+    "reject": 3
+  },
+  "policy": "Any case-content change requires a new semantic version and a documented reason."
+}

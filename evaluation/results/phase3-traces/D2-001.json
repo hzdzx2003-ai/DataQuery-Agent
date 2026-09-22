@@ -1,0 +1,81 @@
+{
+  "question": "2026年上海各月实收租金是多少？按月份升序。",
+  "route": {
+    "action": "execute",
+    "reason_code": "supported_metric",
+    "message": "问题口径明确，可以进入 SQL 生成。",
+    "metric_ids": [
+      "rent_collected"
+    ],
+    "options": [],
+    "disclosures": [],
+    "matched_terms": [
+      "实收租金"
+    ],
+    "policy_version": "2.0.0",
+    "catalog_version": "2.0.0"
+  },
+  "status": "succeeded",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "sql": "SELECT rp.billing_month, SUM(rp.amount_paid) AS total_rent_collected FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE p.city = '上海' AND rp.billing_month >= '2026-01-01' AND rp.billing_month < '2027-01-01' GROUP BY rp.billing_month ORDER BY rp.billing_month ASC;",
+      "summary": "统计2026年上海各项目按账期归属的每月实收租金总额，并按月份升序排列。",
+      "status": "succeeded",
+      "error_type": null,
+      "error_message": null,
+      "execution_ms": 4,
+      "row_count": 8,
+      "columns": [
+        "billing_month",
+        "total_rent_collected"
+      ],
+      "model": "qwen3.7-plus",
+      "generation_ms": 5279,
+      "failure_stage": null,
+      "precheck_error": null,
+      "execution_error": null,
+      "recovered_later": false
+    }
+  ],
+  "columns": [
+    "billing_month",
+    "total_rent_collected"
+  ],
+  "rows": [
+    [
+      "2026-01-01",
+      510748.27999999997
+    ],
+    [
+      "2026-02-01",
+      506265.4
+    ],
+    [
+      "2026-03-01",
+      467594.82
+    ],
+    [
+      "2026-04-01",
+      423986.96
+    ],
+    [
+      "2026-05-01",
+      423338.07
+    ],
+    [
+      "2026-06-01",
+      467865.36
+    ],
+    [
+      "2026-07-01",
+      451229.44
+    ],
+    [
+      "2026-08-01",
+      455455.35
+    ]
+  ],
+  "user_message": "查询成功。",
+  "recovered": false
+}

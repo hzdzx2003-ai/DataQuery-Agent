@@ -1,0 +1,126 @@
+{
+  "version": "2.0.0",
+  "rejection_rules": [
+    {
+      "id": "dangerous_write",
+      "terms": [],
+      "message": "当前系统是只读的，不能删除或修改任何数据。这条请求没有执行。"
+    },
+    {
+      "id": "forecast_unsupported",
+      "terms": ["预测", "预估", "forecast"],
+      "message": "暂不支持预测，目前只能查询已有历史数据。可以改查历史趋势作为参考。"
+    },
+    {
+      "id": "employee_payroll_unavailable",
+      "terms": ["员工工资", "员工薪资", "人员工资", "薪酬支出", "人工成本"],
+      "message": "这个问题暂时无法查询：当前数据不包含员工工资或薪酬，只记录租金回款和运营费用。"
+    }
+  ],
+  "unsupported_metric_terms": [
+    "销售额", "营业额", "客流量", "客流", "坪效", "满意度", "复购率", "会员数", "会员复购", "员工满意度", "物业费收入", "税后收入"
+  ],
+  "unsupported_metric_message": "这个指标当前无法查询。可用指标包括应收租金、实收租金、租金收缴率、出租率、运营费用、预算差异、逾期欠款和现金净运营收益（简化口径）。",
+  "unsupported_basis_rules": [
+    {
+      "id": "collection_by_payment_date_unsupported",
+      "all_term_groups": [["收缴率", "回款率"], ["按到账日", "到账日算", "实际到账日"]],
+      "message": "当前租金收缴率只支持按账期匹配应收与实收，不能改为按到账日统计。"
+    },
+    {
+      "id": "occupancy_by_unit_count_unsupported",
+      "all_term_groups": [["出租率"], ["按铺位数", "铺位数量", "按户数"]],
+      "message": "当前出租率只支持面积口径，不能按铺位数量计算。"
+    },
+    {
+      "id": "tax_basis_unsupported",
+      "all_term_groups": [["租金", "收入"], ["含税", "税后", "不含税"]],
+      "message": "当前数据没有税额字段，无法按含税、税后或不含税口径查询。"
+    }
+  ],
+  "clarification_rules": {
+    "empty_question": {
+      "message": "请告诉我你想查询的业务问题。",
+      "options": []
+    },
+    "income_scope": {
+      "terms": ["租金收入", "收入", "营收", "进账"],
+      "message": "“收入”可以指不同的数。你想查应收租金，还是实收租金？",
+      "options": [
+        {"id": "rent_due", "label": "应收租金", "type": "choice"},
+        {"id": "rent_collected", "label": "实收租金", "type": "choice"}
+      ]
+    },
+    "profit_scope": {
+      "terms": ["赚了多少钱", "赚多少钱", "挣了多少", "利润", "盈利"],
+      "message": "当前数据无法计算正式利润，因为不包含税费、折旧和融资成本。可以改查“现金净运营收益（简化口径）”，即实收租金减运营费用。是否按这个口径查询？",
+      "options": [
+        {"id": "cash_noi_proxy", "label": "查询现金净运营收益（简化口径）", "type": "choice"},
+        {"id": "unsupported_formal_profit", "label": "我需要正式利润，暂不查询", "type": "choice"}
+      ]
+    },
+    "best_performance": {
+      "terms": ["最好", "最差", "最高", "最低", "业绩", "表现", "做得", "出色"],
+      "message": "请先确定评价指标。你想按出租率、实收租金、租金收缴率，还是现金净运营收益排序？",
+      "options": [
+        {"id": "occupancy_rate", "label": "出租率", "type": "choice"},
+        {"id": "rent_collected", "label": "实收租金", "type": "choice"},
+        {"id": "collection_rate", "label": "租金收缴率", "type": "choice"},
+        {"id": "cash_noi_proxy", "label": "现金净运营收益（简化口径）", "type": "choice"}
+      ]
+    },
+    "arrears_priority": {
+      "subject_terms": ["欠款", "欠租", "拖欠", "逾期"],
+      "severity_terms": ["优先", "严重", "最需要", "欠得多", "重点催收"],
+      "message": "请先确定时间范围和判断标准。可以按欠款金额、最长账龄或欠款占应收比例判断，也可以提供自己的门槛。",
+      "options": [
+        {"id": "time_window", "label": "补充时间范围", "type": "input"},
+        {"id": "severity_rule", "label": "选择欠款金额、账龄或欠款比例", "type": "choice"}
+      ]
+    },
+    "key_customer": {
+      "subject_terms": ["租户", "客户"],
+      "degree_terms": ["核心", "重点", "大客户", "大租户"],
+      "message": "“核心客户”可以按承租面积、月租金或租户等级判断。你想使用哪一种口径？",
+      "options": [
+        {"id": "leased_area", "label": "承租面积", "type": "choice"},
+        {"id": "monthly_rent", "label": "月租金", "type": "choice"},
+        {"id": "tenant_tier", "label": "租户等级", "type": "choice"}
+      ]
+    },
+    "tenant_city_dimension": {
+      "message": "这个城市是指租户承租项目的所在地，还是租户注册城市？",
+      "options": [
+        {"id": "property_city", "label": "项目所在城市", "type": "choice"},
+        {"id": "tenant_registered_city", "label": "租户注册城市", "type": "choice"}
+      ]
+    },
+    "recent_window": {
+      "message": "请提供明确的时间范围，例如最近 30 天、最近 3 个月或具体起止日期。",
+      "options": [
+        {"id": "time_window", "label": "选择常用时间范围", "type": "choice"},
+        {"id": "time_window_custom", "label": "输入具体起止日期", "type": "input"}
+      ]
+    },
+    "noi_scope": {
+      "message": "你想查询正式 NOI，还是“现金净运营收益（简化口径）”？当前数据只支持后者，并会说明其不等于正式 NOI 或会计利润。",
+      "options": [
+        {"id": "cash_noi_proxy", "label": "现金净运营收益（简化口径）", "type": "choice"},
+        {"id": "unsupported_formal_noi", "label": "正式 NOI，暂不查询", "type": "choice"}
+      ]
+    },
+    "unknown_request": {
+      "message": "我还不能确定你要查询的指标或业务对象。请补充想看的指标、时间范围和分组方式。",
+      "options": []
+    }
+  },
+  "disclosures": {
+    "collection_rate": "租金收缴率按账期统计，等于同一账期实收租金除以应收租金，不按到账日混入往期回款。",
+    "occupancy_rate": "出租率默认采用期末时点面积口径，即有效租约铺位面积除以项目可租面积。",
+    "cash_noi_proxy": "以下结果采用简化口径，即实收租金减运营费用，仅用于运营分析，不等于正式 NOI 或会计利润。"
+  },
+  "supported_entity_terms": ["租约", "到期", "租户", "铺位", "项目", "城市"],
+  "list_intent_terms": ["列出", "有哪些", "哪些", "名单", "明细", "到期"],
+  "metric_shape_terms": ["多少", "合计", "总额", "金额", "率", "数量", "占比", "排名", "最高", "最低", "最好", "最差", "平均"],
+  "city_terms": ["上海", "北京", "广州", "深圳", "杭州", "成都", "南京", "苏州", "武汉", "西安", "重庆", "天津"]
+}

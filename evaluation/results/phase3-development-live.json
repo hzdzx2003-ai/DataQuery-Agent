@@ -1,0 +1,60 @@
+{
+  "phase": "3-development-live",
+  "created_at": "2026-09-22T03:40:49.295537+00:00",
+  "scope": "executable development cases only",
+  "holdout_accessed": false,
+  "results": [
+    {
+      "case_id": "D2-001",
+      "question": "2026年上海各月实收租金是多少？按月份升序。",
+      "status": "succeeded",
+      "attempt_count": 1,
+      "recovered": false,
+      "row_count": 8,
+      "strict_row_match": true,
+      "trace_file": "evaluation/results/phase3-traces/D2-001.json"
+    },
+    {
+      "case_id": "D2-002",
+      "question": "截至2026年5月31日，各城市按面积计算的出租率是多少？",
+      "status": "succeeded",
+      "attempt_count": 1,
+      "recovered": false,
+      "row_count": 5,
+      "strict_row_match": true,
+      "trace_file": "evaluation/results/phase3-traces/D2-002.json"
+    },
+    {
+      "case_id": "D2-003",
+      "question": "截至2026年9月1日，未来三个月内到期的租约有哪些？包含9月1日当天，请列出租户、项目和到期日。",
+      "status": "succeeded",
+      "attempt_count": 1,
+      "recovered": false,
+      "row_count": 3,
+      "strict_row_match": true,
+      "trace_file": "evaluation/results/phase3-traces/D2-003.json"
+    },
+    {
+      "case_id": "D2-004",
+      "question": "2026年8月每个项目的租金收缴率是多少？从高到低。",
+      "status": "succeeded",
+      "attempt_count": 1,
+      "recovered": false,
+      "row_count": 6,
+      "strict_row_match": true,
+      "trace_file": "evaluation/results/phase3-traces/D2-004.json"
+    },
+    {
+      "case_id": "D2-005",
+      "question": "2026年8月各项目的现金净运营收益（简化口径）是多少？",
+      "status": "succeeded",
+      "attempt_count": 1,
+      "recovered": false,
+      "row_count": 6,
+      "strict_row_match": true,
+      "trace_file": "evaluation/results/phase3-traces/D2-005.json"
+    }
+  ],
+  "evaluation_version": "2.0.1",
+  "reassessed_at": "2026-09-22T03:45:25.227116+00:00"
+}

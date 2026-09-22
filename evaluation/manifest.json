@@ -1,0 +1,18 @@
+{
+  "version": "2.0.1",
+  "frozen_on": "2026-09-22",
+  "cases_sha256": "7c8ddd95e4a674bfa0a069412ae3ce8433f4ed8caafbf65b6569fb1f8d6a248c",
+  "case_count": 24,
+  "splits": {
+    "development": 16,
+    "holdout": 8
+  },
+  "expected_actions": {
+    "clarify": 8,
+    "execute": 8,
+    "execute_with_disclosure": 2,
+    "reject": 6
+  },
+  "supersedes": "2.0.0 (development Gold projection corrected; holdout unchanged)",
+  "policy": "Any case-content change requires a new semantic version and a documented reason. Holdout cases must not be used for implementation tuning."
+}

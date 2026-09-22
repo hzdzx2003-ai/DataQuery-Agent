@@ -1,0 +1,85 @@
+[
+  {
+    "id": "UI-CLARIFY",
+    "question": "上海上个月的收入是多少？",
+    "trace": {
+      "status": "clarify",
+      "route": {
+        "action": "clarify",
+        "message": "“收入”可以指不同的数。你想查应收租金，还是实收租金？",
+        "options": [
+          {"id": "rent_due", "label": "应收租金", "type": "choice"},
+          {"id": "rent_collected", "label": "实收租金", "type": "choice"}
+        ],
+        "disclosures": []
+      },
+      "attempts": [],
+      "columns": [],
+      "rows": [],
+      "user_message": ""
+    }
+  },
+  {
+    "id": "UI-REJECT",
+    "question": "把上海项目的月租金改成0",
+    "trace": {
+      "status": "reject",
+      "route": {
+        "action": "reject",
+        "message": "当前系统是只读的，不能删除或修改任何数据。你可以改为查询相关记录。",
+        "options": [],
+        "disclosures": []
+      },
+      "attempts": [],
+      "columns": [],
+      "rows": [],
+      "user_message": ""
+    }
+  },
+  {
+    "id": "UI-EMPTY",
+    "question": "广州项目有哪些？",
+    "trace": {
+      "status": "succeeded",
+      "route": {"action": "execute", "message": "", "options": [], "disclosures": []},
+      "attempts": [
+        {"attempt_number": 1, "sql": "SELECT property_name FROM properties WHERE city = '广州'", "status": "succeeded", "failure_stage": null, "error_type": null, "row_count": 0, "execution_ms": 1}
+      ],
+      "columns": ["property_name"],
+      "rows": [],
+      "user_message": ""
+    }
+  },
+  {
+    "id": "UI-RECOVERED",
+    "question": "列出所有项目名称",
+    "trace": {
+      "status": "succeeded",
+      "route": {"action": "execute", "message": "", "options": [], "disclosures": []},
+      "attempts": [
+        {"attempt_number": 1, "sql": "SELECT project_name FROM properties", "status": "failed", "failure_stage": "execution", "error_type": "unknown_column", "row_count": null, "execution_ms": 1},
+        {"attempt_number": 2, "sql": "SELECT property_name FROM properties ORDER BY property_name", "status": "succeeded", "failure_stage": null, "error_type": null, "row_count": 2, "execution_ms": 1}
+      ],
+      "columns": ["property_name"],
+      "rows": [["云栖中心"], ["澄明广场"]],
+      "recovered": true,
+      "user_message": "第一次生成的查询未成功，系统已自动修正后完成。"
+    }
+  },
+  {
+    "id": "UI-FAILED",
+    "question": "按不存在的内部字段汇总项目",
+    "trace": {
+      "status": "failed",
+      "route": {"action": "execute", "message": "", "options": [], "disclosures": []},
+      "attempts": [
+        {"attempt_number": 1, "sql": "SELECT internal_score FROM properties", "status": "failed", "failure_stage": "execution", "error_type": "unknown_column", "row_count": null, "execution_ms": 1},
+        {"attempt_number": 2, "sql": "SELECT hidden_score FROM properties", "status": "failed", "failure_stage": "execution", "error_type": "unknown_column", "row_count": null, "execution_ms": 1},
+        {"attempt_number": 3, "sql": "SELECT private_score FROM properties", "status": "failed", "failure_stage": "execution", "error_type": "unknown_column", "row_count": null, "execution_ms": 1}
+      ],
+      "columns": [],
+      "rows": [],
+      "user_message": "这个问题没有查出来：系统自动修正了 3 次仍未成功。你可以换个问法，例如明确指标和时间范围后再试。"
+    }
+  }
+]

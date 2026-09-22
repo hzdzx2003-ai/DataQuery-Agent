@@ -1,0 +1,41 @@
+{
+  "phase": "2B-smoke",
+  "created_at": "2026-09-21T18:52:37.163236+00:00",
+  "case_ids": [
+    "D2-004"
+  ],
+  "request_count": 1,
+  "total_tokens": 1330,
+  "all_strict_row_match": true,
+  "results": [
+    {
+      "case_id": "D2-004",
+      "question": "2026年8月每个项目的租金收缴率是多少？从高到低。",
+      "route_action": "execute_with_disclosure",
+      "generated_sql": "WITH project_receivables AS (\n    SELECT\n        p.property_id,\n        p.property_name,\n        SUM(rp.amount_due) AS total_amount_due,\n        SUM(rp.amount_paid) AS total_amount_paid\n    FROM properties p\n    JOIN units u ON p.property_id = u.property_id\n    JOIN leases l ON u.unit_id = l.unit_id\n    JOIN rent_payments rp ON l.lease_id = rp.lease_id\n    WHERE rp.billing_month = '2026-08-01'\n    GROUP BY p.property_id, p.property_name\n)\nSELECT\n    property_name,\n    CASE\n        WHEN total_amount_due = 0 THEN NULL\n        ELSE total_amount_paid / total_amount_due\n    END AS collection_rate\nFROM project_receivables\nORDER BY collection_rate DESC;",
+      "summary": "统计2026年8月账期各项目的租金收缴率（实收/应收），按比率从高到低排序。",
+      "columns": [
+        "property_name",
+        "collection_rate"
+      ],
+      "row_count": 6,
+      "gold_columns": [
+        "property_name",
+        "collection_rate"
+      ],
+      "gold_row_count": 6,
+      "strict_row_match": true,
+      "model": "qwen3.7-plus",
+      "latency_ms": 5739,
+      "usage": {
+        "input_tokens": 1110,
+        "output_tokens": 220,
+        "total_tokens": 1330
+      },
+      "disclosures": [
+        "租金收缴率按账期统计，等于同一账期实收租金除以应收租金，不按到账日混入往期回款。"
+      ],
+      "numeric_comparison_decimals": 4
+    }
+  ]
+}

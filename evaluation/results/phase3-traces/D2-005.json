@@ -1,0 +1,75 @@
+{
+  "question": "2026年8月各项目的现金净运营收益（简化口径）是多少？",
+  "route": {
+    "action": "execute_with_disclosure",
+    "reason_code": "metric_default_disclosed",
+    "message": "可以查询；执行时会明确说明采用的指标口径。",
+    "metric_ids": [
+      "cash_noi_proxy"
+    ],
+    "options": [],
+    "disclosures": [
+      "以下结果采用简化口径，即实收租金减运营费用，仅用于运营分析，不等于正式 NOI 或会计利润。"
+    ],
+    "matched_terms": [
+      "现金净运营收益(简化口径)"
+    ],
+    "policy_version": "2.0.0",
+    "catalog_version": "2.0.0"
+  },
+  "status": "succeeded",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "sql": "WITH rent_agg AS (\n    SELECT\n        u.property_id,\n        SUM(rp.amount_paid) AS total_rent_collected\n    FROM rent_payments rp\n    JOIN leases l ON rp.lease_id = l.lease_id\n    JOIN units u ON l.unit_id = u.unit_id\n    WHERE rp.billing_month = '2026-08-01'\n    GROUP BY u.property_id\n),\nexpense_agg AS (\n    SELECT\n        property_id,\n        SUM(amount) AS total_operating_expense\n    FROM operating_expenses\n    WHERE expense_month = '2026-08-01'\n    GROUP BY property_id\n)\nSELECT\n    p.property_name,\n    COALESCE(r.total_rent_collected, 0) - COALESCE(e.total_operating_expense, 0) AS cash_noi_proxy\nFROM properties p\nLEFT JOIN rent_agg r ON p.property_id = r.property_id\nLEFT JOIN expense_agg e ON p.property_id = e.property_id\nORDER BY cash_noi_proxy DESC;",
+      "summary": "计算2026年8月各项目的现金净运营收益（简化口径），即当月实收租金总额减去当月运营费用总额。",
+      "status": "succeeded",
+      "error_type": null,
+      "error_message": null,
+      "execution_ms": 5,
+      "row_count": 6,
+      "columns": [
+        "property_name",
+        "cash_noi_proxy"
+      ],
+      "model": "qwen3.7-plus",
+      "generation_ms": 5894,
+      "failure_stage": null,
+      "precheck_error": null,
+      "execution_error": null,
+      "recovered_later": false
+    }
+  ],
+  "columns": [
+    "property_name",
+    "cash_noi_proxy"
+  ],
+  "rows": [
+    [
+      "望京新程",
+      408980.05000000005
+    ],
+    [
+      "平江坊",
+      264428.71
+    ],
+    [
+      "湖滨里",
+      235064.85
+    ],
+    [
+      "金陵汇",
+      206634.85
+    ],
+    [
+      "云栖中心",
+      200353.28000000003
+    ],
+    [
+      "澄明广场",
+      200342.97999999998
+    ]
+  ],
+  "user_message": "查询成功。以下结果采用简化口径，即实收租金减运营费用，仅用于运营分析，不等于正式 NOI 或会计利润。",
+  "recovered": false
+}

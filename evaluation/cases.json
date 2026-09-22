@@ -1,0 +1,231 @@
+[
+  {
+    "id": "D2-001",
+    "split": "development",
+    "question": "2026年上海各月实收租金是多少？按月份升序。",
+    "expected_action": "execute",
+    "metric_ids": ["rent_collected"],
+    "gold_sql": "SELECT rp.billing_month, ROUND(SUM(rp.amount_paid), 2) AS rent_collected FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE p.city = '上海' AND rp.billing_month >= '2026-01-01' AND rp.billing_month < '2027-01-01' GROUP BY rp.billing_month ORDER BY rp.billing_month"
+  },
+  {
+    "id": "D2-002",
+    "split": "development",
+    "question": "截至2026年5月31日，各城市按面积计算的出租率是多少？",
+    "expected_action": "execute",
+    "metric_ids": ["occupancy_rate"],
+    "gold_sql": "SELECT p.city, ROUND(SUM(CASE WHEN EXISTS (SELECT 1 FROM leases l WHERE l.unit_id = u.unit_id AND l.lease_start_date <= '2026-05-31' AND l.lease_end_date >= '2026-05-31') THEN u.leasable_area_sqm ELSE 0 END) / NULLIF(SUM(u.leasable_area_sqm), 0), 4) AS occupancy_rate FROM properties p JOIN units u ON p.property_id = u.property_id GROUP BY p.city ORDER BY p.city"
+  },
+  {
+    "id": "D2-003",
+    "split": "development",
+    "question": "截至2026年9月1日，未来三个月内到期的租约有哪些？包含9月1日当天，请列出租户、项目和到期日。",
+    "expected_action": "execute",
+    "metric_ids": [],
+    "gold_sql": "SELECT t.tenant_name, p.property_name, l.lease_end_date FROM leases l JOIN tenants t ON l.tenant_id = t.tenant_id JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE l.lease_end_date >= '2026-09-01' AND l.lease_end_date <= '2026-11-30' ORDER BY l.lease_end_date, l.lease_id"
+  },
+  {
+    "id": "D2-004",
+    "split": "development",
+    "question": "2026年8月每个项目的租金收缴率是多少？从高到低。",
+    "expected_action": "execute_with_disclosure",
+    "metric_ids": ["collection_rate"],
+    "expected_disclosure_contains": ["按账期", "实收", "应收"],
+    "gold_sql": "SELECT p.property_name, ROUND(SUM(rp.amount_paid) / NULLIF(SUM(rp.amount_due), 0), 4) AS collection_rate FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE rp.billing_month = '2026-08-01' GROUP BY p.property_id, p.property_name ORDER BY collection_rate DESC, p.property_name"
+  },
+  {
+    "id": "D2-005",
+    "split": "development",
+    "question": "2026年8月各项目的现金净运营收益（简化口径）是多少？",
+    "expected_action": "execute_with_disclosure",
+    "metric_ids": ["cash_noi_proxy"],
+    "expected_disclosure_contains": ["实收租金", "运营费用", "不等于正式 NOI"],
+    "gold_sql": "WITH rent AS (SELECT u.property_id, SUM(rp.amount_paid) AS collected FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN units u ON l.unit_id = u.unit_id WHERE rp.billing_month = '2026-08-01' GROUP BY u.property_id), expense AS (SELECT property_id, SUM(amount) AS spent FROM operating_expenses WHERE expense_month = '2026-08-01' GROUP BY property_id) SELECT p.property_name, ROUND(COALESCE(r.collected, 0) - COALESCE(e.spent, 0), 2) AS cash_noi_proxy FROM properties p LEFT JOIN rent r ON p.property_id = r.property_id LEFT JOIN expense e ON p.property_id = e.property_id ORDER BY cash_noi_proxy DESC, p.property_name"
+  },
+  {
+    "id": "D2-006",
+    "split": "development",
+    "question": "上海上个月的租金收入是多少？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["应收租金", "实收租金"],
+    "expected_options": [
+      {"id": "rent_due", "acceptable_terms": ["应收租金"]},
+      {"id": "rent_collected", "acceptable_terms": ["实收租金"]}
+    ]
+  },
+  {
+    "id": "D2-007",
+    "split": "development",
+    "question": "上海这些项目到底盈利多少？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["正式利润", "现金净运营收益"],
+    "expected_options": [
+      {"id": "cash_noi_proxy", "acceptable_terms": ["现金净运营收益"]},
+      {"id": "unsupported_formal_profit", "acceptable_terms": ["正式利润"]}
+    ]
+  },
+  {
+    "id": "D2-008",
+    "split": "development",
+    "question": "哪座商场今年做得最出色？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["评价指标", "出租率", "实收租金"],
+    "expected_options": [
+      {"id": "occupancy_rate", "acceptable_terms": ["出租率"]},
+      {"id": "rent_collected", "acceptable_terms": ["实收租金"]}
+    ]
+  },
+  {
+    "id": "D2-009",
+    "split": "development",
+    "question": "哪些租户欠租最严重，需要重点催收？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["时间范围", "判断标准"],
+    "expected_options": [
+      {"id": "time_window", "acceptable_terms": ["时间范围"]},
+      {"id": "severity_rule", "acceptable_terms": ["欠款金额", "账龄"]}
+    ]
+  },
+  {
+    "id": "D2-010",
+    "split": "development",
+    "question": "给我找出重点客户。",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["承租面积", "月租金", "租户等级"],
+    "expected_options": [
+      {"id": "leased_area", "acceptable_terms": ["承租面积"]},
+      {"id": "monthly_rent", "acceptable_terms": ["月租金"]},
+      {"id": "tenant_tier", "acceptable_terms": ["租户等级"]}
+    ]
+  },
+  {
+    "id": "D2-011",
+    "split": "development",
+    "question": "杭州租户名单有哪些？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["项目", "注册城市"],
+    "expected_options": [
+      {"id": "property_city", "acceptable_terms": ["项目所在城市"]},
+      {"id": "tenant_registered_city", "acceptable_terms": ["租户注册城市"]}
+    ]
+  },
+  {
+    "id": "D2-012",
+    "split": "development",
+    "question": "最近的实收租金情况怎么样？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["时间范围"],
+    "expected_options": [
+      {"id": "time_window", "acceptable_terms": ["时间范围"]},
+      {"id": "time_window_custom", "acceptable_terms": ["起止日期"]}
+    ]
+  },
+  {
+    "id": "D2-013",
+    "split": "development",
+    "question": "8月份各项目的NOI是多少？",
+    "expected_action": "clarify",
+    "metric_ids": [],
+    "expected_message_contains": ["正式 NOI", "现金净运营收益"],
+    "expected_options": [
+      {"id": "cash_noi_proxy", "acceptable_terms": ["现金净运营收益"]},
+      {"id": "unsupported_formal_noi", "acceptable_terms": ["正式 NOI"]}
+    ]
+  },
+  {
+    "id": "D2-014",
+    "split": "development",
+    "question": "各物业项目的人工成本合计是多少？",
+    "expected_action": "reject",
+    "metric_ids": [],
+    "expected_message_contains": ["不包含", "员工工资"]
+  },
+  {
+    "id": "D2-015",
+    "split": "development",
+    "question": "把所有逾期账单清空。",
+    "expected_action": "reject",
+    "metric_ids": [],
+    "expected_message_contains": ["只读", "不能删除"]
+  },
+  {
+    "id": "D2-016",
+    "split": "development",
+    "question": "预估明年每个商业项目的租金回款。",
+    "expected_action": "reject",
+    "metric_ids": [],
+    "expected_message_contains": ["暂不支持预测", "历史数据"]
+  },
+  {
+    "id": "H2-001",
+    "split": "holdout",
+    "question": "截至9月1日，未付余额最高的十家租户分别是谁？",
+    "expected_action": "execute",
+    "metric_ids": ["overdue_balance"],
+    "gold_sql": "SELECT t.tenant_name, ROUND(SUM(rp.amount_due - rp.amount_paid), 2) AS overdue_balance FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN tenants t ON l.tenant_id = t.tenant_id WHERE rp.due_date < '2026-09-01' AND rp.amount_paid < rp.amount_due GROUP BY t.tenant_id, t.tenant_name ORDER BY overdue_balance DESC, t.tenant_name LIMIT 10"
+  },
+  {
+    "id": "H2-002",
+    "split": "holdout",
+    "question": "把八月份每座城市的经营费用汇总给我。",
+    "expected_action": "execute",
+    "metric_ids": ["operating_expense"],
+    "gold_sql": "SELECT p.city, ROUND(SUM(oe.amount), 2) AS operating_expense FROM operating_expenses oe JOIN properties p ON oe.property_id = p.property_id WHERE oe.expense_month = '2026-08-01' GROUP BY p.city ORDER BY p.city"
+  },
+  {
+    "id": "H2-003",
+    "split": "holdout",
+    "question": "八月哪些项目的运营开支超出预算最多？",
+    "expected_action": "execute",
+    "metric_ids": ["budget_variance"],
+    "gold_sql": "SELECT p.property_name, ROUND(SUM(oe.amount) - SUM(oe.budget_amount), 2) AS budget_variance FROM operating_expenses oe JOIN properties p ON oe.property_id = p.property_id WHERE oe.expense_month = '2026-08-01' GROUP BY p.property_id, p.property_name ORDER BY budget_variance DESC, p.property_name"
+  },
+  {
+    "id": "H2-004",
+    "split": "holdout",
+    "question": "9月1日仍在履约的租约，按城市算每平方米月租多少钱？",
+    "expected_action": "execute",
+    "metric_ids": ["avg_monthly_rent_per_sqm"],
+    "gold_sql": "SELECT p.city, ROUND(SUM(l.monthly_base_rent) / NULLIF(SUM(u.leasable_area_sqm), 0), 2) AS monthly_rent_per_sqm FROM leases l JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE l.lease_start_date <= '2026-09-01' AND l.lease_end_date >= '2026-09-01' GROUP BY p.city ORDER BY p.city"
+  },
+  {
+    "id": "H2-005",
+    "split": "holdout",
+    "question": "比较一下各商业项目今年的营业额。",
+    "expected_action": "reject",
+    "metric_ids": [],
+    "expected_message_contains": ["指标当前无法查询", "可用指标"]
+  },
+  {
+    "id": "H2-006",
+    "split": "holdout",
+    "question": "同时给出各城市出租率与日均客流。",
+    "expected_action": "reject",
+    "metric_ids": [],
+    "expected_message_contains": ["指标当前无法查询", "可用指标"]
+  },
+  {
+    "id": "H2-007",
+    "split": "holdout",
+    "question": "請移除已到期的租約記錄。",
+    "expected_action": "reject",
+    "metric_ids": [],
+    "expected_message_contains": ["只读", "不能删除"]
+  },
+  {
+    "id": "H2-008",
+    "split": "holdout",
+    "question": "八月份广州项目实际收到的租金有多少？",
+    "expected_action": "execute",
+    "metric_ids": ["rent_collected"],
+    "expected_empty": true,
+    "expected_message_contains": ["没有广州数据", "可用城市"],
+    "gold_sql": "SELECT p.property_name, ROUND(SUM(rp.amount_paid), 2) AS rent_collected FROM rent_payments rp JOIN leases l ON rp.lease_id = l.lease_id JOIN units u ON l.unit_id = u.unit_id JOIN properties p ON u.property_id = p.property_id WHERE p.city = '广州' AND rp.billing_month = '2026-08-01' GROUP BY p.property_id, p.property_name ORDER BY p.property_name"
+  }
+]

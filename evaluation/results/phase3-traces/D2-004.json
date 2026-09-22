@@ -1,0 +1,75 @@
+{
+  "question": "2026年8月每个项目的租金收缴率是多少？从高到低。",
+  "route": {
+    "action": "execute_with_disclosure",
+    "reason_code": "metric_default_disclosed",
+    "message": "可以查询；执行时会明确说明采用的指标口径。",
+    "metric_ids": [
+      "collection_rate"
+    ],
+    "options": [],
+    "disclosures": [
+      "租金收缴率按账期统计，等于同一账期实收租金除以应收租金，不按到账日混入往期回款。"
+    ],
+    "matched_terms": [
+      "租金收缴率"
+    ],
+    "policy_version": "2.0.0",
+    "catalog_version": "2.0.0"
+  },
+  "status": "succeeded",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "sql": "WITH monthly_collection AS (\n    SELECT\n        p.property_id,\n        p.property_name,\n        rp.billing_month,\n        SUM(rp.amount_paid) AS total_paid,\n        SUM(rp.amount_due) AS total_due\n    FROM rent_payments rp\n    JOIN leases l ON rp.lease_id = l.lease_id\n    JOIN units u ON l.unit_id = u.unit_id\n    JOIN properties p ON u.property_id = p.property_id\n    WHERE rp.billing_month = '2026-08-01'\n    GROUP BY p.property_id, p.property_name, rp.billing_month\n)\nSELECT\n    property_name,\n    CASE\n        WHEN total_due > 0 THEN ROUND(CAST(total_paid AS REAL) / total_due, 4)\n        ELSE NULL\n    END AS collection_rate\nFROM monthly_collection\nORDER BY collection_rate DESC;",
+      "summary": "统计2026年8月（账期）各项目的租金收缴率，即该账期实收租金除以应收租金，结果按收缴率从高到低排序。",
+      "status": "succeeded",
+      "error_type": null,
+      "error_message": null,
+      "execution_ms": 3,
+      "row_count": 6,
+      "columns": [
+        "property_name",
+        "collection_rate"
+      ],
+      "model": "qwen3.7-plus",
+      "generation_ms": 4991,
+      "failure_stage": null,
+      "precheck_error": null,
+      "execution_error": null,
+      "recovered_later": false
+    }
+  ],
+  "columns": [
+    "property_name",
+    "collection_rate"
+  ],
+  "rows": [
+    [
+      "湖滨里",
+      0.8509
+    ],
+    [
+      "云栖中心",
+      0.8501
+    ],
+    [
+      "金陵汇",
+      0.8363
+    ],
+    [
+      "望京新程",
+      0.7993
+    ],
+    [
+      "澄明广场",
+      0.7979
+    ],
+    [
+      "平江坊",
+      0.7412
+    ]
+  ],
+  "user_message": "查询成功。租金收缴率按账期统计，等于同一账期实收租金除以应收租金，不按到账日混入往期回款。",
+  "recovered": false
+}

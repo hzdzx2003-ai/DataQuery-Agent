@@ -1,0 +1,69 @@
+{
+  "question": "截至2026年5月31日，各城市按面积计算的出租率是多少？",
+  "route": {
+    "action": "execute",
+    "reason_code": "supported_metric",
+    "message": "问题口径明确，可以进入 SQL 生成。",
+    "metric_ids": [
+      "occupancy_rate"
+    ],
+    "options": [],
+    "disclosures": [],
+    "matched_terms": [
+      "出租率"
+    ],
+    "policy_version": "2.0.0",
+    "catalog_version": "2.0.0"
+  },
+  "status": "succeeded",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "sql": "WITH effective_leases AS (\n    SELECT DISTINCT l.unit_id\n    FROM leases l\n    WHERE l.lease_status = 'active'\n      AND l.lease_start_date <= '2026-05-31'\n      AND l.lease_end_date >= '2026-05-31'\n),\nleased_area_by_property AS (\n    SELECT u.property_id, SUM(u.leasable_area_sqm) AS total_leased_area\n    FROM units u\n    INNER JOIN effective_leases el ON u.unit_id = el.unit_id\n    GROUP BY u.property_id\n)\nSELECT \n    p.city,\n    ROUND(COALESCE(SUM(lap.total_leased_area), 0.0) / SUM(p.gross_leasable_area_sqm), 4) AS occupancy_rate\nFROM properties p\nLEFT JOIN leased_area_by_property lap ON p.property_id = lap.property_id\nGROUP BY p.city;",
+      "summary": "计算截至2026年5月31日各城市按面积计算的出租率，分子为当日有效租约对应的铺位面积之和，分母为项目可租总面积（GLA）。",
+      "status": "succeeded",
+      "error_type": null,
+      "error_message": null,
+      "execution_ms": 3,
+      "row_count": 5,
+      "columns": [
+        "city",
+        "occupancy_rate"
+      ],
+      "model": "qwen3.7-plus",
+      "generation_ms": 5498,
+      "failure_stage": null,
+      "precheck_error": null,
+      "execution_error": null,
+      "recovered_later": false
+    }
+  ],
+  "columns": [
+    "city",
+    "occupancy_rate"
+  ],
+  "rows": [
+    [
+      "上海",
+      0.7533
+    ],
+    [
+      "北京",
+      0.8424
+    ],
+    [
+      "南京",
+      0.5473
+    ],
+    [
+      "杭州",
+      0.6842
+    ],
+    [
+      "苏州",
+      0.6005
+    ]
+  ],
+  "user_message": "查询成功。",
+  "recovered": false
+}

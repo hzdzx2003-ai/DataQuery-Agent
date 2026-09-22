@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.pytest_cache/
+.coverage
+.streamlit-*.log
+data/generated/*.sqlite3
+coordination/
+docs/*_INPUT_INTEGRATION.md
