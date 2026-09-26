@@ -1,96 +1,137 @@
 # DataQuery Agent
 
-面向商业地产运营场景的可评测 Text-to-SQL 原型：先确认业务口径，再生成、校验和执行只读 SQL，并记录完整处理轨迹。
+> An auditable AI data-analysis agent exploring how business users can ask data questions without silently inheriting the model's assumptions.
 
-普通 Text-to-SQL 容易因指标口径歧义、字段幻觉和不友好的报错在业务场景中失效。本项目针对这三类问题，设计了可审计的行为路由、安全执行和错误修正链路。
+面向商业地产运营场景的 AI 数据分析 Agent 产品探索。项目重点不是“把自然语言翻译成 SQL”，而是解决真正阻碍业务用户使用 AI 问数的三个问题：**指标口径歧义、模型静默猜测，以及结果缺少可追溯证据**。
 
-![DataQuery Agent 已验证 Demo](assets/demo-overview.png)
+![DataQuery Agent product demo](assets/demo-overview.png)
 
-## 核心设计
+## Product Background
+
+传统数据分析工具要求用户理解表结构、指标口径或 SQL。LLM 降低了提问门槛，却引入了新的产品风险：模型可能把模糊问题解释成某个指标并直接执行，返回“看起来合理、实际口径错误”的结果。
+
+本项目围绕一个核心问题展开：
+
+> 当用户的问题不够明确时，AI 应该回答、披露默认口径、追问，还是拒绝执行？
+
+目标用户是需要快速获取经营数据、但不应承担数据库与 SQL 判断成本的业务人员。
+
+## Product Solution
+
+DataQuery Agent 将“理解问题”和“执行查询”拆成可审计的决策链：
 
 ```mermaid
 flowchart LR
-    Q[自然语言问题] --> R{业务口径判断}
-    R -->|明确| G[生成候选 SQL]
-    R -->|有默认口径| D[披露口径后生成]
-    R -->|存在歧义| C[结构化澄清]
-    R -->|越权或指标不存在| X[安全拒绝]
-    D --> G
-    G --> V[只读安全校验]
-    V --> E[SQLite 执行]
-    E -->|成功| A[结果与 Trace]
-    E -->|可修正错误| F[带执行反馈修正]
-    F --> V
+    Q[自然语言问题] --> S[语义解析]
+    S --> G{Semantic Gate}
+    G -->|明确且支持| E[Execute]
+    G -->|使用默认口径| D[Disclose + Execute]
+    G -->|存在歧义| C[Clarify]
+    G -->|越权或不支持| R[Reject]
+    E --> P[SQL 生成]
+    D --> P
+    P --> V[只读安全校验]
+    V --> X[查询执行]
+    X --> T[结果 + Trace]
 ```
 
-- **口径优先**：将问题路由为执行、披露后执行、澄清或拒绝，避免模型静默猜测。
-- **只读防护**：语句预检、只读数据库连接和 SQLite authorizer 三层限制写操作。
-- **可追踪纠错**：保存每次 SQL 尝试的阶段、错误类别、恢复状态、结果和耗时。
-- **可复现评测**：合成数据、评测版本、Gold SQL、真实运行记录和构造测试分开管理。
+- **Semantic Gate**：确定性代码拥有最终动作权，模型不能绕过澄清或拒绝规则。
+- **业务口径优先**：用指标目录、同义词、歧义规则和显式披露约束查询行为。
+- **Fail closed**：格式错误、覆盖不完整、未知指标和不安全请求不会进入 SQL。
+- **只读执行**：SQL 预检、只读连接和 SQLite authorizer 共同限制写操作。
+- **可审计 Trace**：记录解析尝试、动作、错误、token、耗时与恢复路径。
 
-## 已验证到什么程度
+## Agent Workflow
 
-| 验证层 | 范围 | 当前结果 |
+1. 用户用自然语言描述数据问题。
+2. Resolver 将原文拆分为查询目标、支持项、歧义项、不支持项与中性上下文。
+3. Semantic Gate 检查完整覆盖、指标白名单、歧义规则和安全边界。
+4. 系统选择 `execute`、`disclose`、`clarify` 或 `reject`。
+5. 只有可执行请求才进入 SQL 生成、只读验证与数据库查询。
+6. 结果与完整 Trace 一起返回，便于复盘 Bad Case。
+
+## Product Iteration
+
+| 阶段 | 发现 | 产品决策 |
+|---|---|---|
+| Phase 7 | 规则层可减少静默错误，但过度干预明显 | 不把开发集通过率当作产品可用性 |
+| Phase 8 | 扩充词表无法可靠覆盖开放表达 | 从“枚举措辞”转向“模型理解 + 机械审查” |
+| Phase 9A | 模型可能遗漏原文或错误声明请求类型 | 引入完整分段覆盖、写请求前置防护和 Gate 最终决策权 |
+| Phase 9B | 模型提供字符 offset 容易造成机械失败 | 改为有序原文分段，由代码重建位置 |
+| Phase 9B v2 | 真实冒烟仍出现静默执行歧义和过度干预 | 保留失败证据，不进入 SQL/用户测试，继续最小迭代 |
+| Phase 9C | 歧义规则没有同时进入提示与机械判断 | 将 catalog 歧义指导注入 Resolver，并由 Gate 独立执行 |
+
+完整产品案例见 [Product Case Study](docs/PRODUCT_CASE_STUDY.md)。
+
+## Verified Evidence
+
+| 证据层 | 当前结果 | 能说明什么 |
 |---|---:|---|
-| 数据与 Gold SQL | 6 张表、24 题、10 条 Gold SQL | 结构、业务约束和 Gold SQL 机械验证通过 |
-| development 行为路由 | 16 题 | 16/16 动作符合预期，覆盖 11/11 主要规则 |
-| Qwen 模型冒烟 | 2 条 development 查询 | 最终 2/2 匹配 Gold |
-| 端到端真实运行 | 5 条可执行 development 查询 | 5/5 首次执行成功并严格匹配 v2.0.1 Gold |
-| 自动化测试 | 路由、安全、纠错、Trace、UI 支撑层 | 43 项通过 |
+| 当前自动化回归 | **123/123** 通过 | 路由、安全、Trace、UI 支撑和 Phase 9 语义协议在本地测试中一致 |
+| Phase 9B v2 development 冒烟 | 28 题，40 次真实模型调用 | 验证真实模型能否遵守冻结协议；不是泛化准确率 |
+| 首次严格协议合规 | 14/27 个模型路由题 | 格式与协议适配仍有明显摩擦 |
+| 最终动作匹配 | 18/28 | 仍存在动作判断错误 |
+| 预期语义路径匹配 | 16/28 | 仍存在语义理解与产品决策偏差 |
+| 安全边界 | 危险写请求在调用模型前被拒绝 | 安全控制由确定性代码执行 |
 
-这里的 `5/5` 只描述这 5 条 development 查询，不代表通用准确率。8 条留出题（holdout）仍保持冻结，未运行、不报告成绩；真实多轮纠错样本数仍为 0，纠错分支目前只通过构造场景的自动化测试验证。
+Phase 9B v2 暴露了两个关键产品风险：两条真实歧义问题被静默执行，三条本可执行问题被过度干预。因此该版本被明确阻止进入 SQL 或用户测试。Phase 9C 已完成离线最小迭代并通过 123 项测试，但尚未形成新的真实模型结果或用户验证。
 
-完整证据、Bad Case 和未验证边界见[评测报告](docs/EVALUATION_REPORT.md)。
+这些数字只描述冻结的 development 实验，不代表通用准确率、生产效果、效率提升或商业落地。
 
-## 快速开始
+## Demo
 
-核心验证需要 Python 3.11+；运行 UI 还需安装 `requirements.txt`。
-
-```powershell
-python scripts/generate_synthetic_data.py
-python scripts/validate_phase1.py
-python -m unittest discover -s tests -v
-python scripts/evaluate_router.py
-python scripts/route_query.py "上海上个月的收入是多少？"
-```
-
-启动默认离线 UI：
+默认 Demo 使用保存并去敏的 development 记录，不调用外部模型。
 
 ```powershell
 python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-Demo 默认展示已保存、去敏的 development 运行记录，不调用模型。Live 模式需在启动前通过私有环境变量配置 Qwen API，并在页面中二次确认；不要把 Key 粘贴到页面或提交到仓库。详见[平台配置说明](docs/PLATFORM_SETUP.md)。
+完整本地验证：
 
-生成结果位于 `data/generated/`。SQLite 数据库不会提交到 Git，可随时由脚本重建；小型 CSV 数据保留用于人工查看。
-
-## 仓库结构
-
-```text
-app.py                    Streamlit Demo
-src/dataquery_agent/      路由、模型适配、SQL 防护、纠错与 Trace
-data/                     Schema、指标字典、行为策略与合成数据
-evaluation/               版本化题库、Gold SQL、真实运行记录
-scripts/                  数据生成、验证、评测与命令行入口
-tests/                    43 项自动化测试
-docs/                     产品范围、架构、评测与公开边界
+```powershell
+python scripts/generate_synthetic_data.py
+python scripts/validate_phase1.py
+python -m unittest discover -s tests -v
 ```
 
-## 设计与证据文档
+Live 模式需要通过私有环境变量配置 Qwen API，并在界面中二次确认。不要把 API Key 粘贴到页面或提交到仓库。详见 [Platform Setup](docs/PLATFORM_SETUP.md)。
 
-- [评测报告](docs/EVALUATION_REPORT.md)：结果证据、Bad Case 与尚未验证项
-- [查询路由](docs/ROUTING.md)：四路行为判断和指标口径规则
-- [执行及纠错链路](docs/PIPELINE.md)：SQL 生成、安全校验、执行与修正
-- [数据 Schema](docs/SCHEMA.md)：六张业务表及其关系
-- [产品范围](docs/PRODUCT_SCOPE.md)：目标用户、范围内能力和非目标
-- [独立性与公开边界](docs/PROVENANCE.md)：数据、实现和结果声明边界
+## Repository Structure
 
-## 项目边界
+```text
+app.py                    Streamlit 产品 Demo
+assets/                   产品截图
+src/dataquery_agent/      Resolver、Gate、路由、SQL 防护与 Trace
+data/                     Schema、指标目录、行为策略与合成数据
+evaluation/               冻结题集、协议与不可变运行结果
+scripts/                  数据生成、验证、评测与运行入口
+tests/                    123 项自动化测试
+docs/                     产品设计、架构、评测与阶段报告
+```
 
-本仓库是从空目录开始的独立实现。业务领域、表结构、字段、合成数据、指标字典、评测题和代码均为本项目重新设计，不包含任何第三方专有问数项目的代码、提示词、数据、截图或实验结果。
+## Key Documents
 
-当前项目是本地原型，不宣称生产可用、企业落地、效率提升、通用准确率或优于商业产品。
+- [Product Case Study](docs/PRODUCT_CASE_STUDY.md)：用户问题、方案、迭代与证据边界
+- [Verified Results](docs/VERIFIED_RESULTS.md)：可复核结果与声明口径
+- [Phase 9B v2 Live Smoke Report](docs/PHASE9B_V2_LIVE_SMOKE_REPORT.md)：真实 development 冒烟与 Bad Case
+- [Phase 9C Minimal Iteration](docs/PHASE9C_OFFLINE_MINIMAL_ITERATION_DESIGN.md)：Phase 9C 产品决策与实现范围
+- [Routing](docs/ROUTING.md)：四路行为判断与指标口径
+- [Pipeline](docs/PIPELINE.md)：SQL 生成、安全校验、执行与纠错
+- [Product Scope](docs/PRODUCT_SCOPE.md)：目标用户、能力范围与非目标
+- [Provenance](docs/PROVENANCE.md)：独立实现与公开边界
+
+## Product & Technical Understanding
+
+`LLM · Agent Workflow · Semantic Routing · Text-to-SQL · Prompt Engineering · Evaluation · Human-in-the-loop · SQL Safety · Product Prototyping`
+
+这些技术只在其服务产品问题时出现：降低业务用户的数据访问门槛，同时让系统在不确定时能够解释、追问或停止。
+
+## Project Boundary
+
+本仓库是从空目录开始的独立实现。业务领域、表结构、字段、合成数据、指标目录、评测题与代码均由本项目重新设计，不包含第三方专有问数项目的代码、提示词、数据、截图或实验结果。
+
+当前项目是本地原型，不宣称生产可用、企业落地、用户价值已验证、通用准确率或优于商业产品。
 
 ## License
 
