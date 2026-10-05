@@ -26,7 +26,7 @@ UI checks are separate from historical evaluation scores. See the validation sta
 
 ## Integration verification
 
-The local suite contains 24 tests, including rendering all 100 saved cases, public-directory portability, corrupt artifact refusal, clarification state isolation, and the injected parser boundary. `test_backend_integration.py` generates a fresh fictional database in a temporary directory and checks all 100 saved decisions against the original outputs. The fixture is opened read-only and removed after testing.
+The local suite contains 25 tests, including rendering all 100 saved cases, public-directory portability, corrupt artifact refusal, clarification state isolation, summary preservation, and the injected parser boundary. `test_backend_integration.py` generates a fresh fictional database in a temporary directory and checks all 100 saved decisions against the original outputs. The fixture is opened read-only and removed after testing.
 
 `query_service.py` accepts an explicitly supplied client and executor; it does not load credentials or provide an HTTP transport. Its fake-client integration test exercises the unchanged parser and fixed SQL backend. This is not evidence of new model accuracy or completed live UI integration.
 

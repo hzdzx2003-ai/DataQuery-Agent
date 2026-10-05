@@ -85,6 +85,15 @@ class AppTests(unittest.TestCase):
         self.assertEqual(display_rows(decision, source), [{'项目':'测试项目', '租金收缴率':'75.00%'}])
         self.assertEqual(source[0]['value'], .75)
 
+    def test_summary_keeps_disclosures(self):
+        from adapter import SavedCases
+        from presentation import summary_lines
+        store = SavedCases()
+        for case in store.catalog():
+            decision = store.open(case['id'])['decision']
+            original = decision.get('summary_message') or decision.get('message') or '暂无摘要'
+            self.assertEqual(summary_lines(decision), [s.strip() for s in original.splitlines() if s.strip()])
+
 
 if __name__ == '__main__':
     unittest.main()

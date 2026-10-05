@@ -18,6 +18,12 @@ def display_rows(decision, rows):
              for key, value in row.items()} for row in rows]
 
 
+def summary_lines(decision):
+    """Keep every original nonblank line; format only, do not reinterpret."""
+    text = decision.get('summary_message') or decision.get('message') or '暂无摘要'
+    return [line.strip() for line in text.splitlines() if line.strip()]
+
+
 def metric_display(decision, value):
     plans = [p for r in decision.get('requests', []) for p in r.get('plans', [])]
     target = plans[0].get('target', {}).get('id') if len(plans) == 1 else None

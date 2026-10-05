@@ -6,7 +6,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import streamlit as st
 from adapter import SavedCases, clarification_draft
-from presentation import metric_display, display_rows
+from presentation import metric_display, display_rows, summary_lines
 
 st.set_page_config(page_title='DataQuery · 商业地产问数', page_icon='◈', layout='wide')
 st.markdown('''<style>
@@ -77,7 +77,8 @@ st.subheader(record['question'])
 summary, output = st.columns([1, 1.6], gap='large')
 with summary:
     st.markdown('### 01 / 理解与口径')
-    st.text(decision.get('summary_message', decision.get('message', '暂无摘要')))
+    for line in summary_lines(decision):
+        st.text(line)
 with output:
     st.markdown('### 02 / 结果')
     if result['status'] == 'executed':
