@@ -1,5 +1,8 @@
 # DataQuery Agent｜Product Case Study
 
+> 历史演示版本文档。下文保留该阶段原始表述；最新版代码、结果与范围见[版本与数据索引](VERSION_INDEX.md)，演进关系见[迭代历史](ITERATION_HISTORY.md)。
+
+
 ## 1. Product Problem
 
 业务人员希望直接用自然语言查询经营数据，但传统 BI 与 SQL 工具要求专业知识。LLM 可以降低输入门槛，却可能在指标口径、时间范围或业务对象不明确时静默猜测，并返回表面合理的错误答案。

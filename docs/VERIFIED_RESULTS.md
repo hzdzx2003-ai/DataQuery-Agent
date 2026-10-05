@@ -1,5 +1,8 @@
 # Phase 1 Verified Results
 
+> 历史记录 · 2026-09-22 / evaluation v2.0.1。下文保留该阶段原始表述；最新版代码、结果与范围见[版本与数据索引](VERSION_INDEX.md)，演进关系见[迭代历史](ITERATION_HISTORY.md)。
+
+
 ## Phase 3 development live run — 2026-09-22
 
 - Scope: all five executable development cases; no holdout case was sent to the model.

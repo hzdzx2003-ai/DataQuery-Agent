@@ -1,5 +1,8 @@
 # DataQuery Agent 评测报告（公开草稿）
 
+> 历史记录 · 2026-09-22 / evaluation v2.0.1。下文保留该阶段原始表述；最新版代码、结果与范围见[版本与数据索引](VERSION_INDEX.md)，演进关系见[迭代历史](ITERATION_HISTORY.md)。
+
+
 ## 1. 评测对象
 
 DataQuery Agent 是面向商业地产运营的个人 Text-to-SQL 原型。评测分别观察业务行为路由、SQL 安全执行、结果正确性和纠错链路，不把“SQL 能运行”当作“业务答案正确”。

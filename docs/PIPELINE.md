@@ -1,5 +1,8 @@
 # Phase 3 离线链路骨架
 
+> 历史演示版本文档。下文保留该阶段原始表述；最新版代码、结果与范围见[版本与数据索引](VERSION_INDEX.md)，演进关系见[迭代历史](ITERATION_HISTORY.md)。
+
+
 Phase 3 把现有组件串成可追踪的执行链：
 
 1. `QueryRouter` 返回执行、披露、澄清或拒绝。
