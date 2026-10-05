@@ -9,7 +9,7 @@ class RegistrationCityTests(unittest.TestCase):
         self.cap = load_capabilities()
         self.plan = {'target': {'kind': 'metric', 'id': 'rent_due'},
                      'filters': [{'dimension': 'tenant_registration_city',
-                                  'operator': 'in', 'values': ['����']}],
+                                  'operator': 'in', 'values': ['北京']}],
                      'time': {'kind': 'relative', 'period': 'previous_month'},
                      'group_by': [], 'order_by': None}
 
@@ -17,11 +17,11 @@ class RegistrationCityTests(unittest.TestCase):
         result = validate_query_plan(self.cap, self.plan)
         self.assertEqual(result['status'], 'validated_structure_not_execution')
         self.assertEqual(result['filters'], self.plan['filters'])
-        self.assertIn('�⻧ע�����', render_plan(self.cap, result))
-        self.assertIn('���Զ���С��Ŀ��Χ', result['dimension_basis'][0])
+        self.assertIn('租户注册城市', render_plan(self.cap, result))
+        self.assertIn('不自动缩小项目范围', result['dimension_basis'][0])
 
     def test_distinct_city_filters_coexist(self):
-        self.plan['filters'].append({'dimension': 'project_city', 'operator': 'in', 'values': ['�Ϻ�']})
+        self.plan['filters'].append({'dimension': 'project_city', 'operator': 'in', 'values': ['上海']})
         result = validate_query_plan(self.cap, self.plan)
         self.assertEqual(result['status'], 'validated_structure_not_execution')
         self.assertEqual(len(result['filters']), 2)
@@ -34,7 +34,7 @@ class RegistrationCityTests(unittest.TestCase):
         self.assertEqual(validate_query_plan(self.cap, self.plan)['status'], 'validated_structure_not_execution')
 
     def test_unknown_city_refused(self):
-        self.plan['filters'][0]['values'] = ['�����ڵĳ���']
+        self.plan['filters'][0]['values'] = ['不存在的城市']
         with self.assertRaises(ValueError):
             validate_query_plan(self.cap, self.plan)
 

@@ -23,7 +23,7 @@ class Reference:
         d = {}
         if p:
             d.update(project=p['property_name'], project_city=p['city'], project_type=p['property_type'],
-                     project_district={'�����':'���', '�ֶ�����':'�ֶ�'}.get(p['district'], p['district']))
+                     project_district={'徐汇区':'徐汇', '浦东新区':'浦东'}.get(p['district'], p['district']))
         if u:
             d.update(unit_type=u['unit_type'], floor=str(u['floor']))
         if t:
@@ -34,7 +34,7 @@ class Reference:
         if point is not None:
             d['point_date'] = point
         if expense:
-            d['expense_category'] = dict(property_management='��ҵ����', utilities='ˮ��', maintenance='ά��ά��', marketing='Ӫ��', security='����')[expense]
+            d['expense_category'] = dict(property_management='物业管理', utilities='水电', maintenance='维修维护', marketing='营销', security='安保')[expense]
         return d
 
     @staticmethod

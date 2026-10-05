@@ -7,7 +7,7 @@ from json_resolver import JsonResolver,normalize_empty_grouping
 
 class FormatNormalizationTests(unittest.TestCase):
     def setUp(self):
-        self.value={'requests':[{'source_text':'����','kind':'query','plans':[{
+        self.value={'requests':[{'source_text':'测试','kind':'query','plans':[{
             'target':{'kind':'metric','id':'rent_collected'},'filters':[],
             'time':{'kind':'relative','period':'previous_month'},'group_by':None,'order_by':None}]}]}
 
@@ -21,7 +21,7 @@ class FormatNormalizationTests(unittest.TestCase):
         calls=[]
         def client(*_):calls.append(1);return json.dumps(self.value)
         resolver=JsonResolver(load_capabilities(),client)
-        resolver('prompt','����')
+        resolver('prompt','测试')
         self.assertEqual(len(calls),1)
         self.assertEqual(len(resolver.trace[0]['format_normalizations']),1)
 

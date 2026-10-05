@@ -24,13 +24,13 @@ class UnitScopeTests(unittest.TestCase):
     def test_scoped_ratio_denominator_is_visible(self):
         r=validate_query_plan(self.cap,self.plan)
         text=render_plan(self.cap,r)
-        self.assertIn('����������λ',text)
-        self.assertIn('����������ĿGLA',text)
+        self.assertIn('包含空置铺位',text)
+        self.assertIn('不是整个项目GLA',text)
 
     def test_project_only_ratio_keeps_gla(self):
         self.plan['filters']=[];self.plan['group_by']=['project']
         r=validate_query_plan(self.cap,self.plan)
-        self.assertFalse(any('����������ĿGLA' in b for b in r['dimension_basis']))
+        self.assertFalse(any('不是整个项目GLA' in b for b in r['dimension_basis']))
 
     def test_invalid_floor_and_unreviewed_join(self):
         self.plan['filters'][1]['values']=['99']

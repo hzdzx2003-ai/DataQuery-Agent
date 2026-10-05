@@ -38,12 +38,12 @@ def add_months(value: date, months: int) -> date:
 
 def build_properties():
     return [
-        ("P001", "�����㳡", "�Ϻ�", "�ֶ�����", "shopping_mall", 2972.0, "2018-05-18"),
-        ("P002", "��������", "�Ϻ�", "�����", "office", 3172.0, "2020-09-10"),
-        ("P003", "������", "����", "�ϳ���", "community_retail", 3372.0, "2019-11-22"),
-        ("P004", "�����", "�Ͼ�", "������", "shopping_mall", 3572.0, "2017-03-15"),
-        ("P005", "ƽ����", "����", "������", "community_retail", 3772.0, "2021-06-30"),
-        ("P006", "�����³�", "����", "������", "office", 3972.0, "2016-12-08"),
+        ("P001", "澄明广场", "上海", "浦东新区", "shopping_mall", 2972.0, "2018-05-18"),
+        ("P002", "云栖中心", "上海", "徐汇区", "office", 3172.0, "2020-09-10"),
+        ("P003", "湖滨里", "杭州", "上城区", "community_retail", 3372.0, "2019-11-22"),
+        ("P004", "金陵汇", "南京", "建邺区", "shopping_mall", 3572.0, "2017-03-15"),
+        ("P005", "平江坊", "苏州", "姑苏区", "community_retail", 3772.0, "2021-06-30"),
+        ("P006", "望京新程", "北京", "朝阳区", "office", 3972.0, "2016-12-08"),
     ]
 
 
@@ -70,10 +70,10 @@ def build_units(properties):
 
 
 def build_tenants_and_leases(units):
-    prefixes = ["���", "Զɽ", "��¶", "�Ǹ�", "ľ��", "֪ζ", "ʰ��", "��ͥ", "���", "��"]
-    suffixes = ["����", "�Ƽ�", "����", "����", "���", "����", "����", "����"]
-    industries = ["����", "�Ƽ�����", "��������", "�������", "רҵ����", "���Ȳ���", "��������", "������ѵ"]
-    cities = ["�Ϻ�", "����", "�Ͼ�", "����", "����"]
+    prefixes = ["青禾", "远山", "白露", "星港", "木棉", "知味", "拾光", "澜庭", "青岚", "简川"]
+    suffixes = ["餐饮", "科技", "零售", "生活", "设计", "咖啡", "健康", "教育"]
+    industries = ["餐饮", "科技服务", "服饰零售", "生活服务", "专业服务", "咖啡茶饮", "健康管理", "教育培训"]
+    cities = ["上海", "杭州", "南京", "苏州", "北京"]
     tenants = []
     leases = []
     tenant_counter = 0
@@ -87,7 +87,7 @@ def build_tenants_and_leases(units):
         name = (
             f"{prefixes[(tenant_counter - 1) % len(prefixes)]}"
             f"{suffixes[((tenant_counter - 1) // len(prefixes)) % len(suffixes)]}"
-            f"{tenant_counter:02d}�ŵ�"
+            f"{tenant_counter:02d}号店"
         )
         industry = industries[(tenant_counter - 1) % len(industries)]
         tier = "anchor" if area >= 500 else ("standard" if tenant_counter % 4 else "emerging")

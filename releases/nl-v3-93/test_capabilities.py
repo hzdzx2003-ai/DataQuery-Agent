@@ -28,9 +28,9 @@ class CapabilityTests(unittest.TestCase):
         before=deepcopy(self.cap)
         prompt=build_understanding_prompt(self.cap)
         self.assertNotIn('"ambiguous_expressions"',prompt)
-        self.assertNotIn('��Ҫ�û�������ȷʱ�䴰��',prompt)
+        self.assertNotIn('需要用户给出明确时间窗口',prompt)
         self.assertEqual(self.cap,before)
-        self.assertIn('���',self.cap['ambiguous_expressions'])
+        self.assertIn('最近',self.cap['ambiguous_expressions'])
 
     def test_definitions_defaults_and_coverage_survive_projection(self):
         prompt=build_understanding_prompt(self.cap)
@@ -45,13 +45,13 @@ class CapabilityTests(unittest.TestCase):
         from conversation import ENVELOPE_INSTRUCTIONS
         self.assertTrue(ENVELOPE_INSTRUCTIONS.endswith(CLARIFICATION_POLICY))
         self.assertEqual((build_understanding_prompt(self.cap)+ENVELOPE_INSTRUCTIONS).count(CLARIFICATION_POLICY),1)
-        self.assertIn('Ĭ�ϲ������û�����δ֪��λ',CLARIFICATION_POLICY)
-        self.assertIn('�Դ��ڻ�ı�𰸵�δ��ѡ��',CLARIFICATION_POLICY)
-        self.assertIn('��Ҫ���ظ�������Ŀ',CLARIFICATION_POLICY)
+        self.assertIn('默认不能替用户决定未知单位',CLARIFICATION_POLICY)
+        self.assertIn('仍存在会改变答案的未决选择',CLARIFICATION_POLICY)
+        self.assertIn('不要求重复点名项目',CLARIFICATION_POLICY)
 
     def test_target_is_separate_from_filter(self):
         out = validate_target_and_filters(self.cap, {'kind':'metric','id':'rent_due'},
-            [{'dimension':'project','operator':'in','values':['�����㳡']}])
+            [{'dimension':'project','operator':'in','values':['澄明广场']}])
         self.assertEqual(out['target'], {'kind':'metric','id':'rent_due'})
         self.assertNotIn('entity_ids', out)
 
@@ -64,7 +64,7 @@ class CapabilityTests(unittest.TestCase):
             validate_target_and_filters(self.cap, {'kind':'metric','id':'footfall'}, [])
         with self.assertRaises(ValueError):
             validate_target_and_filters(self.cap, {'kind':'metric','id':'rent_due'},
-                [{'dimension':'project','operator':'in','values':['�鹹��Ŀ']}])
+                [{'dimension':'project','operator':'in','values':['虚构项目']}])
 
     def test_unknown_filter_not_silently_dropped(self):
         with self.assertRaises(ValueError):
@@ -98,8 +98,8 @@ class CapabilityTests(unittest.TestCase):
 
     def test_implementation_limits_disclosed_without_dropping_conditions(self):
         prompt = build_understanding_prompt(self.cap)
-        self.assertIn('���������������ʵ��', prompt)
-        self.assertIn('�������������ڼƻ���', prompt)
+        self.assertIn('不代表所有组合已实现', prompt)
+        self.assertIn('仍须完整保留在计划中', prompt)
 
 
 if __name__ == '__main__':

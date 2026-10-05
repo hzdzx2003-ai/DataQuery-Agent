@@ -14,7 +14,7 @@ class ChronologyTests(unittest.TestCase):
 
     def test_time_sort_not_amount_sort(self):
         r=validate_query_plan(self.cap,self.p)
-        self.assertIn('���·����絽��',render_plan(self.cap,r))
+        self.assertIn('按月份由早到晚',render_plan(self.cap,r))
         self.assertIsNone(observed_slots(r)['order_by'])
 
     def test_value_rank_and_reverse_time_not_erased(self):
@@ -32,4 +32,4 @@ class ChronologyTests(unittest.TestCase):
     def test_point_date_sort(self):
         self.p.update(target={'kind':'metric','id':'leased_area'},time={'kind':'points','dates':['2026-03-31','2026-06-30']},
                       group_by=['point_date'],order_by={'by':'point_date','direction':'asc'})
-        self.assertIn('��ͳ��ʱ�����絽��',render_plan(self.cap,validate_query_plan(self.cap,self.p)))
+        self.assertIn('按统计时点由早到晚',render_plan(self.cap,validate_query_plan(self.cap,self.p)))

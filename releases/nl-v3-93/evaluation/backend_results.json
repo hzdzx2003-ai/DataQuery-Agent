@@ -33,7 +33,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "�����㳡",
+          "v0": "澄明广场",
           "v1": "2026-04",
           "v2": "2026-06"
         },
@@ -55,8 +55,8 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.city IN (:v0,:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
         "parameters": {
-          "v0": "����",
-          "v1": "����",
+          "v0": "杭州",
+          "v1": "苏州",
           "v2": "2026-01",
           "v3": "2026-08"
         },
@@ -76,11 +76,11 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v1,:v2) AND substr(e.expense_month,1,7) BETWEEN :v3 AND :v4))",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END IN (:v1,:v2) AND substr(e.expense_month,1,7) BETWEEN :v3 AND :v4))",
         "parameters": {
-          "v0": "��������",
-          "v1": "ˮ��",
-          "v2": "����",
+          "v0": "云栖中心",
+          "v1": "水电",
+          "v2": "安保",
           "v3": "2026-01",
           "v4": "2026-06"
         },
@@ -102,7 +102,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1)))",
         "parameters": {
-          "v0": "�����",
+          "v0": "金陵汇",
           "v1": "food_beverage",
           "v2": "2026-08-31"
         },
@@ -124,7 +124,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.registered_city IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
         "parameters": {
-          "v0": "����",
+          "v0": "北京",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -145,7 +145,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "������",
+          "v0": "湖滨里",
           "v1": "2025-07",
           "v2": "2025-12"
         },
@@ -167,11 +167,11 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)))",
         "parameters": {
-          "v0": "�����³�",
-          "v1": "�����³�",
+          "v0": "望京新程",
+          "v1": "望京新程",
           "v2": "2026-07",
           "v3": "2026-07",
-          "v4": "�����³�",
+          "v4": "望京新程",
           "v5": "2026-07",
           "v6": "2026-07"
         },
@@ -193,7 +193,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
         "parameters": {
-          "v0": "ƽ����",
+          "v0": "平江坊",
           "v1": "office",
           "v2": "2026-08",
           "v3": "2026-08"
@@ -214,15 +214,15 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "SELECT * FROM (SELECT DISTINCT p.property_id AS entity_id,p.property_name AS label FROM properties p WHERE p.city IN (:v0) AND CASE p.district WHEN '�ֶ�����' THEN '�ֶ�' WHEN '�����' THEN '���' ELSE p.district END IN (:v1)) ORDER BY entity_id",
+        "sql": "SELECT * FROM (SELECT DISTINCT p.property_id AS entity_id,p.property_name AS label FROM properties p WHERE p.city IN (:v0) AND CASE p.district WHEN '浦东新区' THEN '浦东' WHEN '徐汇区' THEN '徐汇' ELSE p.district END IN (:v1)) ORDER BY entity_id",
         "parameters": {
-          "v0": "�Ϻ�",
-          "v1": "���"
+          "v0": "上海",
+          "v1": "徐汇"
         },
         "rows": [
           {
             "entity_id": "P002",
-            "label": "��������"
+            "label": "云栖中心"
           }
         ]
       }
@@ -238,7 +238,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT u.unit_id AS entity_id,u.unit_number AS label FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1,:v2)) ORDER BY entity_id",
         "parameters": {
-          "v0": "�����",
+          "v0": "金陵汇",
           "v1": "retail",
           "v2": "service"
         },
@@ -273,17 +273,17 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT t.tenant_id AS entity_id,t.tenant_name AS label FROM tenants t WHERE t.registered_city IN (:v0) AND t.tenant_tier IN (:v1)) ORDER BY entity_id",
         "parameters": {
-          "v0": "����",
+          "v0": "杭州",
           "v1": "emerging"
         },
         "rows": [
           {
             "entity_id": "T012",
-            "label": "Զɽ�Ƽ�12�ŵ�"
+            "label": "远山科技12号店"
           },
           {
             "entity_id": "T032",
-            "label": "Զɽ����32�ŵ�"
+            "label": "远山生活32号店"
           }
         ]
       }
@@ -299,7 +299,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND l.lease_end_date BETWEEN :v1 AND :v2) ORDER BY entity_id",
         "parameters": {
-          "v0": "������",
+          "v0": "湖滨里",
           "v1": "2026-07-01",
           "v2": "2026-08-31"
         },
@@ -395,15 +395,15 @@
         },
         "rows": [
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "value": 5241429.6
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 3203350.8
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 3160800.0
           }
         ]
@@ -418,31 +418,31 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "SELECT * FROM (SELECT \"expense_category\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END AS \"expense_category\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.city IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"expense_category\") ORDER BY \"expense_category\"",
+        "sql": "SELECT * FROM (SELECT \"expense_category\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END AS \"expense_category\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.city IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"expense_category\") ORDER BY \"expense_category\"",
         "parameters": {
-          "v0": "�Ϻ�",
+          "v0": "上海",
           "v1": "2026-01",
           "v2": "2026-06"
         },
         "rows": [
           {
-            "expense_category": "����",
+            "expense_category": "安保",
             "value": 27228.29
           },
           {
-            "expense_category": "ˮ��",
+            "expense_category": "水电",
             "value": 81993.21
           },
           {
-            "expense_category": "��ҵ����",
+            "expense_category": "物业管理",
             "value": 101164.09
           },
           {
-            "expense_category": "ά��ά��",
+            "expense_category": "维修维护",
             "value": 52978.75
           },
           {
-            "expense_category": "Ӫ��",
+            "expense_category": "营销",
             "value": 35954.37
           }
         ]
@@ -463,27 +463,27 @@
         },
         "rows": [
           {
-            "project": "�����",
+            "project": "金陵汇",
             "value": 0.5473124300111982
           },
           {
-            "project": "��������",
+            "project": "云栖中心",
             "value": 0.6800126103404792
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "value": 0.6841637010676157
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 0.6911452810180275
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 0.8314266487213997
           },
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "value": 0.8423967774420946
           }
         ]
@@ -500,7 +500,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"floor\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CAST(u.floor AS TEXT) AS \"floor\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)) GROUP BY \"floor\") ORDER BY \"floor\"",
         "parameters": {
-          "v0": "�����㳡",
+          "v0": "澄明广场",
           "v1": "2026-08-31"
         },
         "rows": [
@@ -535,62 +535,62 @@
         },
         "rows": [
           {
-            "project": "��������",
+            "project": "云栖中心",
             "tenant": "T013",
             "value": 200959.2
           },
           {
-            "project": "��������",
+            "project": "云栖中心",
             "tenant": "T012",
             "value": 180462.75
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "tenant": "T029",
             "value": 307788.6
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "tenant": "T030",
             "value": 297386.08
           },
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "tenant": "T036",
             "value": 333518.4
           },
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "tenant": "T035",
             "value": 312352.65
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "tenant": "T019",
             "value": 231106.47999999998
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "tenant": "T016",
             "value": 177327.0
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "tenant": "T006",
             "value": 172806.88
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "tenant": "T005",
             "value": 165900.15
           },
           {
-            "project": "�����",
+            "project": "金陵汇",
             "tenant": "T023",
             "value": 238104.95999999996
           },
           {
-            "project": "�����",
+            "project": "金陵汇",
             "tenant": "T024",
             "value": 176355.9
           }
@@ -613,23 +613,23 @@
         },
         "rows": [
           {
-            "project_city": "�Ϻ�",
+            "project_city": "上海",
             "value": 10874.229999999998
           },
           {
-            "project_city": "�Ͼ�",
+            "project_city": "南京",
             "value": 7287.769999999985
           },
           {
-            "project_city": "����",
+            "project_city": "苏州",
             "value": 6655.2199999999975
           },
           {
-            "project_city": "����",
+            "project_city": "杭州",
             "value": 6366.890000000001
           },
           {
-            "project_city": "����",
+            "project_city": "北京",
             "value": 4946.689999999992
           }
         ]
@@ -646,11 +646,11 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(r.billing_month,1,7) AS \"month\",r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT \"month\",-numerator,denominator FROM (SELECT substr(e.expense_month,1,7) AS \"month\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)) GROUP BY \"month\") ORDER BY \"month\"",
         "parameters": {
-          "v0": "������",
-          "v1": "������",
+          "v0": "湖滨里",
+          "v1": "湖滨里",
           "v2": "2025-01",
           "v3": "2026-08",
-          "v4": "������",
+          "v4": "湖滨里",
           "v5": "2025-01",
           "v6": "2026-08"
         },
@@ -749,7 +749,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"unit_type\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT u.unit_type AS \"unit_type\",COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)) GROUP BY \"unit_type\") ORDER BY \"unit_type\"",
         "parameters": {
-          "v0": "�����³�",
+          "v0": "望京新程",
           "v1": "2026-08-31"
         },
         "rows": [
@@ -788,23 +788,23 @@
         },
         "rows": [
           {
-            "tenant_registration_city": "�Ϻ�",
+            "tenant_registration_city": "上海",
             "value": 812386.8
           },
           {
-            "tenant_registration_city": "����",
+            "tenant_registration_city": "北京",
             "value": 808647.6
           },
           {
-            "tenant_registration_city": "�Ͼ�",
+            "tenant_registration_city": "南京",
             "value": 774731.4
           },
           {
-            "tenant_registration_city": "����",
+            "tenant_registration_city": "杭州",
             "value": 1022341.2
           },
           {
-            "tenant_registration_city": "����",
+            "tenant_registration_city": "苏州",
             "value": 829462.8
           }
         ]
@@ -826,27 +826,27 @@
         },
         "rows": [
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 0.8539578354826172
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "value": 0.8384173373554955
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 0.7968199961194927
           },
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "value": 0.7943614535008834
           },
           {
-            "project": "��������",
+            "project": "云栖中心",
             "value": 0.7880225089322043
           },
           {
-            "project": "�����",
+            "project": "金陵汇",
             "value": 0.7423321435768332
           }
         ]
@@ -900,7 +900,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "��������",
+          "v0": "云栖中心",
           "v1": "2026-08",
           "v2": "2026-08"
         },
@@ -922,7 +922,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "������",
+          "v0": "湖滨里",
           "v1": "2026-06",
           "v2": "2026-06"
         },
@@ -944,7 +944,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.city IN (:v0) UNION ALL SELECT 0,p.gross_leasable_area_sqm FROM properties p WHERE p.city IN (:v0)))",
         "parameters": {
-          "v0": "�Ϻ�",
+          "v0": "上海",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -965,7 +965,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)))",
         "parameters": {
-          "v0": "ƽ����",
+          "v0": "平江坊",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -986,7 +986,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
         "parameters": {
-          "v0": "�����",
+          "v0": "金陵汇",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -1007,7 +1007,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "�����³�",
+          "v0": "望京新程",
           "v1": "2026-01",
           "v2": "2026-08"
         },
@@ -1052,40 +1052,40 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT t.tenant_id AS entity_id,t.tenant_name AS label FROM tenants t WHERE t.registered_city IN (:v0)) ORDER BY entity_id",
         "parameters": {
-          "v0": "����"
+          "v0": "苏州"
         },
         "rows": [
           {
             "entity_id": "T004",
-            "label": "�Ǹ۲���04�ŵ�"
+            "label": "星港餐饮04号店"
           },
           {
             "entity_id": "T009",
-            "label": "��ᰲ���09�ŵ�"
+            "label": "青岚餐饮09号店"
           },
           {
             "entity_id": "T014",
-            "label": "�ǸۿƼ�14�ŵ�"
+            "label": "星港科技14号店"
           },
           {
             "entity_id": "T019",
-            "label": "��᰿Ƽ�19�ŵ�"
+            "label": "青岚科技19号店"
           },
           {
             "entity_id": "T024",
-            "label": "�Ǹ�����24�ŵ�"
+            "label": "星港零售24号店"
           },
           {
             "entity_id": "T029",
-            "label": "�������29�ŵ�"
+            "label": "青岚零售29号店"
           },
           {
             "entity_id": "T034",
-            "label": "�Ǹ�����34�ŵ�"
+            "label": "星港生活34号店"
           },
           {
             "entity_id": "T039",
-            "label": "�������39�ŵ�"
+            "label": "青岚生活39号店"
           }
         ]
       }
@@ -1101,7 +1101,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1)))",
         "parameters": {
-          "v0": "�����㳡",
+          "v0": "澄明广场",
           "v1": "service",
           "v2": "2025-12-31"
         },
@@ -1123,7 +1123,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0)) ORDER BY entity_id",
         "parameters": {
-          "v0": "��������"
+          "v0": "云栖中心"
         },
         "rows": [
           {
@@ -1356,7 +1356,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.city IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "�Ϻ�",
+          "v0": "上海",
           "v1": "2026-04",
           "v2": "2026-06"
         },
@@ -1378,8 +1378,8 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND t.registered_city IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
         "parameters": {
-          "v0": "������",
-          "v1": "�Ϻ�",
+          "v0": "湖滨里",
+          "v1": "上海",
           "v2": "2026-01",
           "v3": "2026-08"
         },
@@ -1401,8 +1401,8 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0,:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
         "parameters": {
-          "v0": "�����",
-          "v1": "ƽ����",
+          "v0": "金陵汇",
+          "v1": "平江坊",
           "v2": "2026-08",
           "v3": "2026-08"
         },
@@ -1424,7 +1424,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v3 AND a.lease_end_date>=:v3) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND CAST(u.floor AS TEXT) IN (:v1) AND u.unit_type IN (:v2)))",
         "parameters": {
-          "v0": "�����³�",
+          "v0": "望京新程",
           "v1": "1",
           "v2": "retail",
           "v3": "2026-06-30"
@@ -1447,7 +1447,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,u.leasable_area_sqm AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1)))",
         "parameters": {
-          "v0": "��������",
+          "v0": "云栖中心",
           "v1": "office",
           "v2": "2025-12-31"
         },
@@ -1467,11 +1467,11 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0,:v1) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v2) AND substr(e.expense_month,1,7) BETWEEN :v3 AND :v4))",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0,:v1) AND CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END IN (:v2) AND substr(e.expense_month,1,7) BETWEEN :v3 AND :v4))",
         "parameters": {
-          "v0": "�����㳡",
-          "v1": "��������",
-          "v2": "ά��ά��",
+          "v0": "澄明广场",
+          "v1": "云栖中心",
+          "v2": "维修维护",
           "v3": "2026-05",
           "v4": "2026-07"
         },
@@ -1491,10 +1491,10 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v1) AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3))",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END IN (:v1) AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3))",
         "parameters": {
-          "v0": "������",
-          "v1": "Ӫ��",
+          "v0": "湖滨里",
+          "v1": "营销",
           "v2": "2026-01",
           "v3": "2026-06"
         },
@@ -1516,11 +1516,11 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)))",
         "parameters": {
-          "v0": "�����³�",
-          "v1": "�����³�",
+          "v0": "望京新程",
+          "v1": "望京新程",
           "v2": "2026-01",
           "v3": "2026-08",
-          "v4": "�����³�",
+          "v4": "望京新程",
           "v5": "2026-01",
           "v6": "2026-08"
         },
@@ -1542,7 +1542,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v3 AND a.lease_end_date>=:v3),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v3 AND a.lease_end_date>=:v3) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND CAST(u.floor AS TEXT) IN (:v1) AND u.unit_type IN (:v2)))",
         "parameters": {
-          "v0": "�����",
+          "v0": "金陵汇",
           "v1": "2",
           "v2": "food_beverage",
           "v3": "2026-08-31"
@@ -1565,7 +1565,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.registered_city IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
         "parameters": {
-          "v0": "����",
+          "v0": "北京",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -1586,7 +1586,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND l.lease_end_date BETWEEN :v1 AND :v2) ORDER BY entity_id",
         "parameters": {
-          "v0": "ƽ����",
+          "v0": "平江坊",
           "v1": "2025-07-01",
           "v2": "2025-12-31"
         },
@@ -1604,15 +1604,15 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT t.tenant_id AS entity_id,t.tenant_name AS label FROM tenants t JOIN leases l ON l.tenant_id=t.tenant_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0,:v1) AND t.registered_city IN (:v2) AND t.tenant_tier IN (:v3)) ORDER BY entity_id",
         "parameters": {
-          "v0": "�����㳡",
-          "v1": "��������",
-          "v2": "����",
+          "v0": "澄明广场",
+          "v1": "云栖中心",
+          "v2": "杭州",
           "v3": "emerging"
         },
         "rows": [
           {
             "entity_id": "T012",
-            "label": "Զɽ�Ƽ�12�ŵ�"
+            "label": "远山科技12号店"
           }
         ]
       }
@@ -1633,23 +1633,23 @@
         },
         "rows": [
           {
-            "project_city": "�Ϻ�",
+            "project_city": "上海",
             "value": 3442521.6
           },
           {
-            "project_city": "����",
+            "project_city": "北京",
             "value": 3356992.8
           },
           {
-            "project_city": "�Ͼ�",
+            "project_city": "南京",
             "value": 1738843.2
           },
           {
-            "project_city": "����",
+            "project_city": "杭州",
             "value": 1877398.2
           },
           {
-            "project_city": "����",
+            "project_city": "苏州",
             "value": 2182201.2
           }
         ]
@@ -1666,7 +1666,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(r.billing_month,1,7) AS \"month\",r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"month\") ORDER BY \"month\"",
         "parameters": {
-          "v0": "������",
+          "v0": "湖滨里",
           "v1": "2026-01",
           "v2": "2026-08"
         },
@@ -1723,15 +1723,15 @@
         },
         "rows": [
           {
-            "project": "������",
+            "project": "湖滨里",
             "value": 0.741372970316047
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 0.7595393381318638
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 0.7877584352495955
           }
         ]
@@ -1748,39 +1748,39 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"floor\",\"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CAST(u.floor AS TEXT) AS \"floor\",p.property_name AS \"project\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0,:v1)) GROUP BY \"floor\",\"project\") ORDER BY \"floor\",\"project\"",
         "parameters": {
-          "v0": "�����㳡",
-          "v1": "��������",
+          "v0": "澄明广场",
+          "v1": "云栖中心",
           "v2": "2026-03-31"
         },
         "rows": [
           {
             "floor": "1",
-            "project": "��������",
+            "project": "云栖中心",
             "value": 912.0
           },
           {
             "floor": "1",
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 837.0
           },
           {
             "floor": "2",
-            "project": "��������",
+            "project": "云栖中心",
             "value": 1245.0
           },
           {
             "floor": "2",
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 1634.0
           },
           {
             "floor": "3",
-            "project": "��������",
+            "project": "云栖中心",
             "value": 0
           },
           {
             "floor": "3",
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 0
           }
         ]
@@ -1797,16 +1797,16 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"point_date\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT :v2 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) UNION ALL SELECT :v2 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v0) UNION ALL SELECT :v5 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v4 AND a.lease_end_date>=:v4) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v3) UNION ALL SELECT :v5 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v3) UNION ALL SELECT :v8 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v7 AND a.lease_end_date>=:v7) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v6) UNION ALL SELECT :v8 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v6) UNION ALL SELECT :v11 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v10 AND a.lease_end_date>=:v10) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v9) UNION ALL SELECT :v11 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v9)) GROUP BY \"point_date\") ORDER BY \"point_date\"",
         "parameters": {
-          "v0": "ƽ����",
+          "v0": "平江坊",
           "v1": "2025-03-31",
           "v2": "2025-03-31",
-          "v3": "ƽ����",
+          "v3": "平江坊",
           "v4": "2025-06-30",
           "v5": "2025-06-30",
-          "v6": "ƽ����",
+          "v6": "平江坊",
           "v7": "2025-09-30",
           "v8": "2025-09-30",
-          "v9": "ƽ����",
+          "v9": "平江坊",
           "v10": "2025-12-31",
           "v11": "2025-12-31"
         },
@@ -1839,7 +1839,7 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "WITH base AS (SELECT \"expense_category\",\"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END AS \"expense_category\",p.property_name AS \"project\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"expense_category\",\"project\"), ranked AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY \"project\" ORDER BY (value IS NULL) ASC,value DESC,\"expense_category\",\"project\") AS _rank FROM base) SELECT * FROM ranked WHERE _rank <= :v2 ORDER BY \"project\",_rank",
+        "sql": "WITH base AS (SELECT \"expense_category\",\"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END AS \"expense_category\",p.property_name AS \"project\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"expense_category\",\"project\"), ranked AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY \"project\" ORDER BY (value IS NULL) ASC,value DESC,\"expense_category\",\"project\") AS _rank FROM base) SELECT * FROM ranked WHERE _rank <= :v2 ORDER BY \"project\",_rank",
         "parameters": {
           "v0": "2026-01",
           "v1": "2026-08",
@@ -1847,93 +1847,93 @@
         },
         "rows": [
           {
-            "expense_category": "��ҵ����",
-            "project": "��������",
+            "expense_category": "物业管理",
+            "project": "云栖中心",
             "value": 72468.06
           },
           {
-            "expense_category": "ˮ��",
-            "project": "��������",
+            "expense_category": "水电",
+            "project": "云栖中心",
             "value": 58775.15
           },
           {
-            "expense_category": "ά��ά��",
-            "project": "��������",
+            "expense_category": "维修维护",
+            "project": "云栖中心",
             "value": 38559.63
           },
           {
-            "expense_category": "��ҵ����",
-            "project": "ƽ����",
+            "expense_category": "物业管理",
+            "project": "平江坊",
             "value": 96025.41
           },
           {
-            "expense_category": "ˮ��",
-            "project": "ƽ����",
+            "expense_category": "水电",
+            "project": "平江坊",
             "value": 76799.62
           },
           {
-            "expense_category": "ά��ά��",
-            "project": "ƽ����",
+            "expense_category": "维修维护",
+            "project": "平江坊",
             "value": 50398.19
           },
           {
-            "expense_category": "��ҵ����",
-            "project": "�����³�",
+            "expense_category": "物业管理",
+            "project": "望京新程",
             "value": 103159.14
           },
           {
-            "expense_category": "ˮ��",
-            "project": "�����³�",
+            "expense_category": "水电",
+            "project": "望京新程",
             "value": 81078.86
           },
           {
-            "expense_category": "ά��ά��",
-            "project": "�����³�",
+            "expense_category": "维修维护",
+            "project": "望京新程",
             "value": 52900.78
           },
           {
-            "expense_category": "��ҵ����",
-            "project": "������",
+            "expense_category": "物业管理",
+            "project": "湖滨里",
             "value": 80243.81
           },
           {
-            "expense_category": "ˮ��",
-            "project": "������",
+            "expense_category": "水电",
+            "project": "湖滨里",
             "value": 63152.67
           },
           {
-            "expense_category": "ά��ά��",
-            "project": "������",
+            "expense_category": "维修维护",
+            "project": "湖滨里",
             "value": 43485.69
           },
           {
-            "expense_category": "��ҵ����",
-            "project": "�����㳡",
+            "expense_category": "物业管理",
+            "project": "澄明广场",
             "value": 64747.89
           },
           {
-            "expense_category": "ˮ��",
-            "project": "�����㳡",
+            "expense_category": "水电",
+            "project": "澄明广场",
             "value": 52855.06
           },
           {
-            "expense_category": "ά��ά��",
-            "project": "�����㳡",
+            "expense_category": "维修维护",
+            "project": "澄明广场",
             "value": 34078.68
           },
           {
-            "expense_category": "��ҵ����",
-            "project": "�����",
+            "expense_category": "物业管理",
+            "project": "金陵汇",
             "value": 86509.98
           },
           {
-            "expense_category": "ˮ��",
-            "project": "�����",
+            "expense_category": "水电",
+            "project": "金陵汇",
             "value": 72513.02
           },
           {
-            "expense_category": "ά��ά��",
-            "project": "�����",
+            "expense_category": "维修维护",
+            "project": "金陵汇",
             "value": 47008.01
           }
         ]
@@ -1948,10 +1948,10 @@
       "actual": {
         "status": "executed",
         "action": "query",
-        "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(e.expense_month,1,7) AS \"month\",e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v1) AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3) GROUP BY \"month\") ORDER BY \"month\"",
+        "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(e.expense_month,1,7) AS \"month\",e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END IN (:v1) AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3) GROUP BY \"month\") ORDER BY \"month\"",
         "parameters": {
-          "v0": "�����³�",
-          "v1": "����",
+          "v0": "望京新程",
+          "v1": "安保",
           "v2": "2026-01",
           "v3": "2026-08"
         },
@@ -2010,15 +2010,15 @@
         },
         "rows": [
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "value": 1224471.35
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 853227.95
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "value": 702224.57
           }
         ]
@@ -2040,27 +2040,27 @@
         },
         "rows": [
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "value": 175.8
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 165.3
           },
           {
-            "project": "�����",
+            "project": "金陵汇",
             "value": 154.8
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "value": 144.3
           },
           {
-            "project": "��������",
+            "project": "云栖中心",
             "value": 133.8
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 123.3
           }
         ]
@@ -2135,20 +2135,20 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT CAST(u.floor AS TEXT) AS \"floor\",p.property_name AS \"project\",u.unit_id AS entity_id,u.unit_number AS label FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0,:v1) AND u.unit_type IN (:v2)) ORDER BY \"floor\",\"project\",entity_id",
         "parameters": {
-          "v0": "������",
-          "v1": "ƽ����",
+          "v0": "湖滨里",
+          "v1": "平江坊",
           "v2": "service"
         },
         "rows": [
           {
             "floor": "2",
-            "project": "ƽ����",
+            "project": "平江坊",
             "entity_id": "U0504",
             "label": "2F-04"
           },
           {
             "floor": "2",
-            "project": "������",
+            "project": "湖滨里",
             "entity_id": "U0304",
             "label": "2F-04"
           }
@@ -2203,37 +2203,37 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT \"tenant_industry\",COALESCE(SUM(numerator),0) AS value FROM (SELECT t.industry AS \"tenant_industry\",r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"tenant_industry\") ORDER BY (value IS NULL) ASC,value DESC,\"tenant_industry\"",
         "parameters": {
-          "v0": "�����㳡",
+          "v0": "澄明广场",
           "v1": "2025-01",
           "v2": "2025-12"
         },
         "rows": [
           {
-            "tenant_industry": "���Ȳ���",
+            "tenant_industry": "咖啡茶饮",
             "value": 1105083.6
           },
           {
-            "tenant_industry": "�������",
+            "tenant_industry": "生活服务",
             "value": 486716.39999999997
           },
           {
-            "tenant_industry": "רҵ����",
+            "tenant_industry": "专业服务",
             "value": 480870.0
           },
           {
-            "tenant_industry": "����",
+            "tenant_industry": "餐饮",
             "value": 333669.6
           },
           {
-            "tenant_industry": "��������",
+            "tenant_industry": "健康管理",
             "value": 319881.6
           },
           {
-            "tenant_industry": "�Ƽ�����",
+            "tenant_industry": "科技服务",
             "value": 275205.6
           },
           {
-            "tenant_industry": "��������",
+            "tenant_industry": "服饰零售",
             "value": 201924.0
           }
         ]
@@ -2271,7 +2271,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "�����",
+          "v0": "金陵汇",
           "v1": "2026-02",
           "v2": "2026-02"
         },
@@ -2293,7 +2293,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) UNION ALL SELECT 0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v0)))",
         "parameters": {
-          "v0": "�����³�",
+          "v0": "望京新程",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -2314,7 +2314,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)))",
         "parameters": {
-          "v0": "��������",
+          "v0": "云栖中心",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -2335,7 +2335,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2))",
         "parameters": {
-          "v0": "ƽ����",
+          "v0": "平江坊",
           "v1": "2026-08",
           "v2": "2026-08"
         },
@@ -2357,11 +2357,11 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)))",
         "parameters": {
-          "v0": "������",
-          "v1": "������",
+          "v0": "湖滨里",
+          "v1": "湖滨里",
           "v2": "2025-01",
           "v3": "2025-12",
-          "v4": "������",
+          "v4": "湖滨里",
           "v5": "2025-01",
           "v6": "2025-12"
         },
@@ -2383,7 +2383,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
         "parameters": {
-          "v0": "�����㳡",
+          "v0": "澄明广场",
           "v1": "2026-09-01"
         },
         "rows": [
@@ -2404,7 +2404,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0)) ORDER BY entity_id",
         "parameters": {
-          "v0": "��������"
+          "v0": "云栖中心"
         },
         "rows": [
           {
@@ -2458,7 +2458,7 @@
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.tenant_tier IN (:v0) AND t.registered_city IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
         "parameters": {
           "v0": "anchor",
-          "v1": "�Ͼ�",
+          "v1": "南京",
           "v2": "2025-01",
           "v3": "2025-06"
         },
@@ -2480,7 +2480,7 @@
         "action": "query",
         "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)))",
         "parameters": {
-          "v0": "�����",
+          "v0": "金陵汇",
           "v1": "2025-12-31"
         },
         "rows": [
@@ -2614,27 +2614,27 @@
         },
         "rows": [
           {
-            "project": "�����",
+            "project": "金陵汇",
             "value": 7287.769999999985
           },
           {
-            "project": "ƽ����",
+            "project": "平江坊",
             "value": 6655.2199999999975
           },
           {
-            "project": "������",
+            "project": "湖滨里",
             "value": 6366.890000000001
           },
           {
-            "project": "��������",
+            "project": "云栖中心",
             "value": 5738.569999999994
           },
           {
-            "project": "�����㳡",
+            "project": "澄明广场",
             "value": 5135.6600000000035
           },
           {
-            "project": "�����³�",
+            "project": "望京新程",
             "value": 4946.689999999992
           }
         ]

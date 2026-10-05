@@ -39,12 +39,12 @@ def validate_query_plan(capabilities, plan):
     if checked.get('unimplemented_filter_dimensions'):
         labels=capabilities['context']['dimension_labels']
         pending=set(checked['unimplemented_filter_dimensions'])
-        retained='��'.join(labels[f['dimension']]+'Ϊ'+'��'.join(f['values'])
+        retained='；'.join(labels[f['dimension']]+'为'+'、'.join(f['values'])
                           for f in checked['filters'] if f['dimension'] in pending)
         return {'status':'not_implemented',**checked,'group_by':list(groups),
                 'input_plan':deepcopy(plan), 'retained_input_verified':False,
                 'filter_values_verified':False,
-                'message':'�ѱ���ɸѡ������'+retained+'����ά���ѵǼǣ���ɸѡֵĿ¼�͹�����δ���룬���β�������������ѯ��'}
+                'message':'已保留筛选条件：'+retained+'。该维度已登记，但筛选值目录和关联尚未接入，本次不会忽略条件后查询。'}
     if checked['target']['kind']=='list':
         return validate_list_plan(capabilities,checked,plan)
     if order is not None:
@@ -65,7 +65,7 @@ def validate_query_plan(capabilities, plan):
         raise ValueError('point_date grouping requires a point series')
     used_dimensions = set(groups) | {f['dimension'] for f in checked['filters']}
     if not used_dimensions <= supported_dimensions:
-        return {'status':'not_implemented', 'message':'��ָ����ά�ȵ������δ���ҵ��У�顣',
+        return {'status':'not_implemented', 'message':'该指标与维度的组合尚未完成业务校验。',
                 'input_plan':deepcopy(plan), 'retained_input_verified':False}
     period = (resolve_period(capabilities, plan['time']) if metric['time_type']=='period'
               else resolve_point(capabilities,metric['id'],plan['time']))
@@ -80,7 +80,7 @@ def validate_query_plan(capabilities, plan):
                                if d in capabilities['context']['dimension_basis']]
                               + ([capabilities['context']['dimension_basis']['occupancy_unit_scope']]
                                  if metric['id']=='occupancy_rate' and used_dimensions & {'floor','unit_type'} else [])
-                              + (['�·ݰ�ָ��ԭ���ڻ�����·ݲ�֣���ָ������ʱ���·��Ⱥ�չʾ���ս���������ʵ�ճ���Ӧ�գ���ƽ�����ʡ�'] if 'month' in groups else []),
+                              + (['月份按指标原账期或费用月份拆分；无指标排名时按月份先后展示。收缴率逐组总实收除总应收，不平均比率。'] if 'month' in groups else []),
             'basis':metric['default_assumption'], 'disclosure_required':metric['disclosure_required'],
             'coverage_verified':False,
             'limitation':'Requires intent completeness, ambiguity and safety routing before any execution.'}
@@ -93,14 +93,14 @@ def validate_list_plan(capabilities, checked, plan):
     date_order=(checked['target']['id']=='lease' and order is not None
                 and order['by'] in {'lease_start_date','lease_end_date'} and not plan['group_by'])
     if not set(plan['group_by']) <= supported_groups or (order is not None and not date_order):
-        return {'status':'not_implemented','input_plan':deepcopy(plan),'retained_input_verified':False,'message':'�嵥�ķ����������δ���룬�����ѱ������������Ժ��ԡ�'}
+        return {'status':'not_implemented','input_plan':deepcopy(plan),'retained_input_verified':False,'message':'清单的分组或排序尚未接入，条件已保留，不会擅自忽略。'}
     allowed=capabilities['context']['list_filter_dimensions'][checked['target']['id']]
     if any(f['dimension'] not in allowed for f in checked['filters']):
-        return {'status':'not_implemented','input_plan':deepcopy(plan),'retained_input_verified':False,'message':'���嵥ɸѡ�����δ���롣'}
+        return {'status':'not_implemented','input_plan':deepcopy(plan),'retained_input_verified':False,'message':'该清单筛选组合尚未接入。'}
     slot=plan['time']
     if not isinstance(slot,dict):
         raise ValueError('list time must be an object')
-    resolved_time={'status':'resolved','mode':'current_records','basis':'��ȡ���м�¼�嵥����Ĭ��ֻ������Ч���ѳ����¼'}
+    resolved_time={'status':'resolved','mode':'current_records','basis':'读取现有记录清单，不默认只保留有效或已出租记录'}
     if slot.get('kind')=='field_range':
         if (set(slot)!={'kind','field','start','end'} or slot['field'] not in {'lease_start_date','lease_end_date'}):
             raise ValueError('invalid lease date range fields')
@@ -113,9 +113,9 @@ def validate_list_plan(capabilities, checked, plan):
             raise ValueError('invalid lease date bounds')
         resolved_time={'status':'resolved','mode':'lease_date_field','field':slot['field'],
                        'start':slot['start'],'end':slot['end'],
-                       'basis':'��������Լ���ص�'+('��ʼ��' if slot['field']=='lease_start_date' else '������')+'ɸѡ����ֹ���ھ����������ƶ���ʷ��Ч״̬��δ�������ղ�����δ��ʵ�ʾ�Ӫ���ݡ�'}
+                       'basis':'按现有租约记载的'+('开始日' if slot['field']=='lease_start_date' else '结束日')+'筛选，起止日期均包含；不推断历史有效状态，未来到期日不等于未来实际经营数据。'}
     elif slot not in ({'kind':'missing'},{'kind':'not_applicable'}):
-        return {'status':'not_implemented','input_plan':deepcopy(plan),'retained_input_verified':False,'message':'�嵥�е�ʱ���������һ��ʵ�֣����Ὣ�����Բ��������м�¼��'}
+        return {'status':'not_implemented','input_plan':deepcopy(plan),'retained_input_verified':False,'message':'清单中的时间条件需进一步实现，不会将它忽略并返回所有记录。'}
     return {'status':'validated_structure_not_execution',**checked,
         'time':resolved_time,
         'group_by':list(plan['group_by']), 'order_by':deepcopy(order),
@@ -123,9 +123,9 @@ def validate_list_plan(capabilities, checked, plan):
                             'deduplicate_within':list(plan['group_by']),
                             'project_match':'any_selected_existing_lease' if checked['target']['id']=='tenant' else 'record_project',
                             'implicit_active_lease_filter':False},
-        'basis':'��Ӧ����ȷ�г���ɸѡ���������ƶ�״̬���ˡ�����ֻ������¼�����������ָ�ꡣ'
-                + ('��tenant_id��ÿ����ȥ�أ�û�з���ʱ��������ѡ��Ŀֻ��һ�Ρ���ĿɸѡΪ������һ��ѡ��Ŀ��������Լ����Ĭ��ֻ����Ч��Լ��ͬһ�⻧�ɳ����ڲ�ͬ��Ŀ�飬��ÿ���ڲ�������Լ�ظ���'
-                   if checked['target']['id']=='tenant' else '��Ŀ���¼������ÿ����ȥ�أ�������������ظ���¼��'),
+        'basis':'仅应用明确列出的筛选条件，不推断状态过滤。分组只整理记录，不计算汇总指标。'
+                + ('按tenant_id在每组内去重；没有分组时跨所有所选项目只列一次。项目筛选为存在任一所选项目的现有租约，不默认只看有效租约；同一租户可出现在不同项目组，但每组内不因多份租约重复。'
+                   if checked['target']['id']=='tenant' else '按目标记录身份在每组内去重，不因关联产生重复记录。'),
         'dimension_basis':[capabilities['context']['dimension_basis'][d]
                            for d in sorted(set(plan['group_by']) | {f['dimension'] for f in checked['filters']})
                            if d in capabilities['context']['dimension_basis']],

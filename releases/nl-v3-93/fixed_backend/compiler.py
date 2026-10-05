@@ -16,12 +16,12 @@ from single_task_evaluation import observed_slots
 
 DIM = {
     'project': 'p.property_name', 'project_city': 'p.city',
-    'project_district': "CASE p.district WHEN '�ֶ�����' THEN '�ֶ�' WHEN '�����' THEN '���' ELSE p.district END",
+    'project_district': "CASE p.district WHEN '浦东新区' THEN '浦东' WHEN '徐汇区' THEN '徐汇' ELSE p.district END",
     'project_type': 'p.property_type', 'floor': 'CAST(u.floor AS TEXT)',
     'unit_type': 'u.unit_type', 'tenant': 't.tenant_id',
     'tenant_registration_city': 't.registered_city', 'tenant_tier': 't.tenant_tier',
     'tenant_industry': 't.industry',
-    'expense_category': "CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END",
+    'expense_category': "CASE e.expense_category WHEN 'property_management' THEN '物业管理' WHEN 'utilities' THEN '水电' WHEN 'maintenance' THEN '维修维护' WHEN 'marketing' THEN '营销' WHEN 'security' THEN '安保' END",
 }
 PAY = 'rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id'
 EXP = 'operating_expenses e JOIN properties p ON p.property_id=e.property_id'

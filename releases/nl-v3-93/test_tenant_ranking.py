@@ -19,15 +19,15 @@ class TenantRankingTests(unittest.TestCase):
         self.assertEqual(r['order_by'],self.plan['order_by'])
         text=render_plan(self.cap,r)
         self.assertIn('tenant_id',text)
-        self.assertIn('ÿ����Ŀ�ڷֱ�����',text)
-        self.assertIn('ÿ��������Χ��������չʾǰ2��',text)
+        self.assertIn('每个项目内分别排名',text)
+        self.assertIn('每个排名范围内排序后仅展示前2组',text)
 
     def test_global_tenant_top_n_not_partitioned(self):
         self.plan['group_by']=['tenant'];del self.plan['order_by']['partition_by']
         r=validate_query_plan(self.cap,self.plan)
         self.assertEqual(r['status'],'validated_structure_not_execution')
         self.assertNotIn('partition_by',r['order_by'])
-        self.assertIn('����ѡ��Ŀ�ϲ�',render_plan(self.cap,r))
+        self.assertIn('跨所选项目合并',render_plan(self.cap,r))
 
     def test_invalid_partitions_and_missing_limit(self):
         for value in ([],['project','tenant'],['month'],['project','project']):
@@ -42,7 +42,7 @@ class TenantRankingTests(unittest.TestCase):
         self.assertEqual(validate_query_plan(self.cap,self.plan)['status'],'not_implemented')
 
     def test_no_fabricated_tenant_filter_domain(self):
-        self.plan['filters']=[{'dimension':'tenant','operator':'in','values':['�鹹���']}]
+        self.plan['filters']=[{'dimension':'tenant','operator':'in','values':['虚构编号']}]
         r=validate_query_plan(self.cap,self.plan)
         self.assertEqual(r['status'],'not_implemented')
         self.assertEqual(r['input_plan']['filters'],self.plan['filters'])

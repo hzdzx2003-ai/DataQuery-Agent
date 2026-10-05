@@ -21,7 +21,7 @@ def resolve_point(capabilities, metric_id, slot):
             raise ValueError('point series dates must be canonical ISO')
         points=[resolve_point(capabilities,metric_id,{'kind':'point','date':d}) for d in dates]
         failed=next((p for p in points if p['status']!='resolved'),None)
-        result={'mode':'point_series','dates':sorted(dates),'basis':'���ָ��ʱ��������㣬�������Ⱥ�չʾ�������ڼ�ƽ�����ۼ�ֵ��','defaulted':False}
+        result={'mode':'point_series','dates':sorted(dates),'basis':'逐个指定时点独立计算，按日期先后展示；不是期间平均或累计值。','defaulted':False}
         if failed:
             return dict(result,status=failed['status'],message=failed['message'])
         return dict(result,status='resolved')
@@ -29,11 +29,11 @@ def resolve_point(capabilities, metric_id, slot):
     reference=date.fromisoformat(context['reference_date'])
     if slot == {'kind':'missing'}:
         point=reference
-        basis=f'δָ��ʱ�㣬��ҵ���׼��{reference.isoformat()}ͳ��'
+        basis=f'未指定时点，按业务基准日{reference.isoformat()}统计'
         defaulted=True
     elif set(slot)=={'kind','date'} and slot['kind']=='point':
         point=date.fromisoformat(slot['date'])
-        basis='�û�ָ����ͳ��ʱ��'
+        basis='用户指定的统计时点'
         defaulted=False
     elif slot.get('kind') == 'range':
         if set(slot) != {'kind', 'start', 'end'}:
@@ -45,24 +45,24 @@ def resolve_point(capabilities, metric_id, slot):
             raise ValueError('time range is reversed')
         policy = context['point_time_capabilities'].get(metric_id)
         if policy is None:
-            return {'status':'not_implemented','message':'��ָ���ʱ��������δ���á�'}
-        coverage = ('��ǰ��֧�ֻ�׼��'+reference.isoformat() if policy['mode']=='reference_only'
-                    else 'ʱ�㸲��'+policy['start']+'��'+reference.isoformat())
+            return {'status':'not_implemented','message':'该指标的时点能力尚未配置。'}
+        coverage = ('当前仅支持基准日'+reference.isoformat() if policy['mode']=='reference_only'
+                    else '时点覆盖'+policy['start']+'至'+reference.isoformat())
         return {'status':'clarify', 'message':
-                f'�ѱ���ԭ�ڼ�{start.isoformat()}��{end.isoformat()}�����ָ�갴ʱ��ͳ�ƣ���ȷ��������һ�����Щ��ȷʱ�㡣'
-                +coverage+'��δ���ڼ��Ϊ��׼�ջ���ĩ��Ҳδ�����ڼ�ƽ����'}
+                f'已保留原期间{start.isoformat()}至{end.isoformat()}；这个指标按时点统计，请确认其中哪一天或哪些明确时点。'
+                +coverage+'；未把期间改为基准日或期末，也未计算期间平均。'}
     else:
-        return {'status':'clarify','message':'���ָ�갴ĳһ��ͳ�ƣ���ȷ��ͳ��ʱ�㣻�����Զ���һ��ʱ��ĳ���ĩ��'}
+        return {'status':'clarify','message':'这个指标按某一天统计，请确认统计时点；不会自动把一段时间改成期末。'}
     policy=context['point_time_capabilities'].get(metric_id)
     if policy is None:
-        return {'status':'not_implemented','message':'��ָ���ʱ��������δ���á�'}
+        return {'status':'not_implemented','message':'该指标的时点能力尚未配置。'}
     result={'date':point.isoformat(),'basis':basis,'defaulted':defaulted}
     if point>reference:
-        return dict(result,status='outside_coverage',message='��ʱ������ҵ���׼�գ����ܵ����������ݻ�Ԥ������')
+        return dict(result,status='outside_coverage',message='该时点晚于业务基准日，不能当作已有数据或预测结果。')
     if policy['mode']=='reference_only' and point!=reference:
-        return dict(result,status='not_implemented',message='��ǰֻȷ���˻�׼��Ƿ������ʷ����ؽ���δ���룬�����õ�ǰ��������')
+        return dict(result,status='not_implemented',message='当前只确认了基准日欠款余额，历史余额重建尚未接入，不能用当前余额替代。')
     if policy['mode']=='lease_dates' and point<date.fromisoformat(policy['start']):
-        return dict(result,status='outside_coverage',message='��ʱ�����ڵ�ǰ��Լʱ���ѯ���Ƿ�Χ��')
+        return dict(result,status='outside_coverage',message='该时点早于当前租约时点查询覆盖范围。')
     if policy['mode'] not in {'reference_only','lease_dates'}:
         raise ValueError('unknown point capability mode')
     return dict(result,status='resolved')
@@ -76,7 +76,7 @@ def resolve_period(capabilities, slot):
     if kind == 'missing':
         if set(slot) != {'kind'}:
             raise ValueError('unexpected missing-time fields')
-        return {'status': 'clarify', 'message': '���뿴�Ķ�ʱ������ݣ�'}
+        return {'status': 'clarify', 'message': '你想看哪段时间的数据？'}
     if kind == 'relative':
         expected={'kind','period','months'} if slot.get('period')=='last_complete_months' else {'kind','period'}
         if set(slot) != expected:
@@ -99,15 +99,15 @@ def resolve_period(capabilities, slot):
             start=date(month_index//12,month_index%12+1,1)
         else:
             # Unimplemented is not evidence that the user's question is invalid.
-            return {'status': 'not_implemented', 'message': '��ʱ��������δ���롣'}
-        basis = f'��ҵ���׼��{reference.isoformat()}�������ʱ��'
+            return {'status': 'not_implemented', 'message': '此时间类型尚未接入。'}
+        basis = f'按业务基准日{reference.isoformat()}解释相对时间'
         if slot['period']=='last_complete_months':
-            basis+='��ʹ�����'+str(slot['months'])+'��������Ȼ�£���������׼������δ���·�'
+            basis+='；使用最近'+str(slot['months'])+'个完整自然月，不包含基准日所在未完月份'
     elif kind == 'range':
         if set(slot) != {'kind', 'start', 'end'}:
             raise ValueError('range requires start and end only')
         start, end = date.fromisoformat(slot['start']), date.fromisoformat(slot['end'])
-        basis = '�û���ȷ����ֹ����'
+        basis = '用户明确的起止日期'
     else:
         raise ValueError('unknown time slot kind')
     if start > end:
@@ -117,5 +117,5 @@ def resolve_period(capabilities, slot):
     result = {'start': start.isoformat(), 'end': end.isoformat(), 'basis': basis}
     if start < first or end > last:
         return dict(result, status='outside_coverage',
-                    message=f'Ŀǰ���ݸ���{first.isoformat()}��{last.isoformat()}�����������ش����ʱ�䡣')
+                    message=f'目前数据覆盖{first.isoformat()}至{last.isoformat()}，不能完整回答这段时间。')
     return dict(result, status='resolved')

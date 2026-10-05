@@ -24,12 +24,12 @@ REQUIRED={
     'collection_rate':{'aggregation_basis'},
 }
 QUESTIONS={
-    'measurement_unit':'���ļ���������ÿƽ���ס�ÿ����Լ����ÿ����λ��',
-    'aggregation_basis':'ϣ���ϲ��ܶ�����������������ǶԸ����������ƽ����',
-    'threshold_value':'ɸѡ�ż��ľ�����ֵ�Ƕ��٣�',
-    'threshold_unit':'�ż�ʹ��ʲô������λ��',
-    'threshold_operator':'�ż��Ǹ��ڻ��ǵ���ָ��ֵ���Ƿ�������ڸ�ֵ��',
-    'duration_basis':'ʱ����ԭԼ�������ڣ����ǽ�����׼�յ�ʣ�������жϣ�',
+    'measurement_unit':'金额的计量对象是每平方米、每份租约还是每个铺位？',
+    'aggregation_basis':'希望合并总额后计算整体比例，还是对各组比例做简单平均？',
+    'threshold_value':'筛选门槛的具体数值是多少？',
+    'threshold_unit':'门槛使用什么计量单位？',
+    'threshold_operator':'门槛是高于还是低于指定值，是否包含等于该值？',
+    'duration_basis':'时长按原约定总租期，还是截至基准日的剩余租期判断？',
 }
 
 
@@ -105,46 +105,46 @@ def unresolved_questions(checked):
     questions=[]
     for name in checked['unresolved']:
         if name=='aggregation_basis' and checked.get('metric_id')=='avg_monthly_rent_per_sqm':
-            questions.append('ƽ������ϣ���������Ȩ���㣬��������ƽ����ʽ����ǰĿ¼ֻ֧�������Ȩ��')
+            questions.append('平均月租希望按面积加权计算，还是另有平均方式？当前目录只支持面积加权。')
         else:questions.append(QUESTIONS[name])
     return questions
 
 
 def render_known_basis(checked):
     """Show reported known facts, not a claim that their semantics were proved."""
-    names={'measurement_unit':'��������','aggregation_basis':'���㷽ʽ',
-           'threshold_value':'�ż���ֵ','threshold_unit':'�ż���λ',
-           'threshold_operator':'�Ƚϱ߽�','duration_basis':'���ڻ�׼'}
-    values={'per_sqm':'ÿƽ����','per_lease':'ÿ����Լ','per_unit':'ÿ����λ',
-            'area_weighted':'�����Ȩ','ratio_of_totals':'�ϲ��ܶ��������',
-            'mean_of_ratios':'���������ƽ��','CNY':'Ԫ','year':'��','month':'��','day':'��',
-            'gt':'�ϸ���ڣ��������ڣ�','gte':'���ڻ����','lt':'�ϸ�С�ڣ��������ڣ�',
-            'lte':'С�ڻ����','original_term':'ԭԼ��������','remaining_term':'��׼��ʣ������'}
+    names={'measurement_unit':'计量对象','aggregation_basis':'计算方式',
+           'threshold_value':'门槛数值','threshold_unit':'门槛单位',
+           'threshold_operator':'比较边界','duration_basis':'租期基准'}
+    values={'per_sqm':'每平方米','per_lease':'每份租约','per_unit':'每个铺位',
+            'area_weighted':'面积加权','ratio_of_totals':'合并总额后计算比例',
+            'mean_of_ratios':'各组比例简单平均','CNY':'元','year':'年','month':'月','day':'天',
+            'gt':'严格大于（不含等于）','gte':'大于或等于','lt':'严格小于（不含等于）',
+            'lte':'小于或等于','original_term':'原约定总租期','remaining_term':'基准日剩余租期'}
     result=[]
     for name,slot in checked.get('slots',{}).items():
         if slot['state']=='unresolved':continue
         label=values.get(slot['value'],str(slot['value']))
-        origin='Ŀ¼Ĭ�ϣ���ȷ��' if slot['state']=='permitted_default' else '��ԭ����ȡ����˶�'
-        result.append(f'{names[name]}��{label}��{origin}����')
+        origin='目录默认，可确认' if slot['state']=='permitted_default' else '从原文提取，请核对'
+        result.append(f'{names[name]}：{label}（{origin}）。')
     return result
 
 
 BASIS_INSTRUCTIONS='''
-����ѡ�ھ����ģʽ�����ж�ҵ���壬��ѡĿ¼ָ�꡿
-ÿ����unsupported/write��������ṩbasis_slots�������������ʱΪ{}��
-ÿ����λΪ{state:explicit��permitted_default��unresolved,value:ֵ��null,source_quote:ԭ��Ƭ�λ���ַ���}��
-explicit��Ҫԭ��Ƭ�Σ��������á�ƽ�����⡱����֤��ƽ���׵�λ�����á�ƽ����������֤���ϲ��ܶ���ʡ�
-unresolved��value����null������Ŀ¼Ψһָ�굹���û���ͼ����ȷδ֪��ʹ���мƻ�Ҳ����ֱ�Ӳ�ѯ��
-measurement_unitֵper_sqm/per_lease/per_unit��ÿƽ��������ָ������ṩ�˲ۺ�aggregation_basis��
-aggregation_basisֵarea_weighted/ratio_of_totals/mean_of_ratios���ս��ʱ����ṩ�˲ۡ�
-��Ŀ¼�����������Ȩ�ͺϲ��ܶ���ʿ���permitted_default�����û����ƽ����ʽ����ʱ��unresolved��
-��λ����default����ͨδ���ƽ����ʽ������ս��ʿ���Ĭ��������������������û���
-���/����ɸѡ��threshold_value(�Ǹ���)��threshold_unit(CNY/year/month/day)��threshold_operator(gt/gte/lt/lte)��
-ֻҪ�漰�ż�����������������棻�û�����ȷ����¼��δ֪�ı�unresolved���������������ǰN��
-����ɸѡ�����ṩduration_basis(original_term/remaining_term)������ֱ�ΪԭԼ��������/��׼��ʣ�����ڡ�
-�漰���ڶ���ʱ���ܽ�������������©ʱ����׼����ͨ��Լ�嵥��������Щ�޹ز�λ��
-�����Ѿ�ȷ������Ŀ�����ڡ�Ŀ�ꡢ���������򡣴˼�鲻����Ŀ¼���㷨����ֵɸѡִ��������
-��basis_slots���г�δ֪�clarification.questionֻ��������δ���������Ҫ�ظ��г���δ֪�Ҳ��������Ŀû��Ҫ��������ǰN��
+【可选口径检查模式：先判断业务含义，再选目录指标】
+每个非unsupported/write请求额外提供basis_slots对象；无相关事项时为{}。
+每个槽位为{state:explicit或permitted_default或unresolved,value:值或null,source_quote:原文片段或空字符串}。
+explicit需要原文片段，但仅引用“平均月租”不能证明平方米单位；引用“平均数”不能证明合并总额比率。
+unresolved的value必须null，不用目录唯一指标倒推用户意图；明确未知后即使已有计划也不能直接查询。
+measurement_unit值per_sqm/per_lease/per_unit；每平方米月租指标必须提供此槽和aggregation_basis。
+aggregation_basis值area_weighted/ratio_of_totals/mean_of_ratios；收缴率必须提供此槽。
+仅目录允许的面积加权和合并总额比率可用permitted_default，但用户提出平均方式分歧时标unresolved。
+单位不可default。普通未提出平均方式分歧的收缴率可以默认整体比例，不额外问用户。
+金额/期限筛选用threshold_value(非负数)、threshold_unit(CNY/year/month/day)、threshold_operator(gt/gte/lt/lte)。
+只要涉及门槛，三项必须完整报告；用户已明确的照录，未知的标unresolved，不能造数或改问前N。
+期限筛选另外提供duration_basis(original_term/remaining_term)，含义分别为原约定总租期/基准日剩余租期。
+涉及长期定义时不能仅报告年数而遗漏时长基准；普通租约清单不增加这些无关槽位。
+保留已经确定的项目、日期、目标、分组与排序。此检查不增加目录外算法或数值筛选执行能力。
+若basis_slots已列出未知项，clarification.question只补充其他未覆盖事项；不要重复列出的未知项，也不引导题目没有要求的排序或前N。
 '''
 
 
@@ -187,6 +187,6 @@ def compile_basis_envelope(value):
             questions=unresolved_questions(checked)
             if prior and prior['question'].strip() and prior['question'] not in questions:
                 questions.append(prior['question'])
-            request['clarification']={'question':'��'.join(questions),
+            request['clarification']={'question':'；'.join(questions),
                                       'choices':deepcopy(prior['choices']) if prior else []}
     return result,checks

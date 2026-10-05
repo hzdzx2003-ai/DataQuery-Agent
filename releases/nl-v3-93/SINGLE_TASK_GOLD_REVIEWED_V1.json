@@ -17,7 +17,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA001",
-        "question": "�����㳡2026��4����6������������һ�����ն������",
+        "question": "澄明广场2026年4月至6月这三个账期一共该收多少租金？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -25,12 +25,12 @@
             "target_kind": "metric",
             "target_id": "rent_due",
             "filters": {
-              "��Ŀ": "�����㳡"
+              "项目": "澄明广场"
             },
             "time": {
-              "��": "2026-04",
-              "ֹ": "2026-06",
-              "����": "����"
+              "起": "2026-04",
+              "止": "2026-06",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
@@ -39,9 +39,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "������ѡ����Ӧ�ա�"
+          "汇总所选账期应收。"
         ],
-        "rationale": "����Ŀ����Ӧ�ջ��ܣ�Ŀ��Ψһ��",
+        "rationale": "单项目跨月应收汇总，目标唯一。",
         "multi_request": false
       },
       "slots": {
@@ -54,7 +54,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡"
+              "澄明广场"
             ]
           }
         ],
@@ -68,12 +68,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "������ѡ����Ӧ�ա�"
+        "汇总所选账期应收。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -82,7 +82,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA002",
-        "question": "���ݺ����ݵ���Ŀ��2026��1����8����Щ���ںϼ��Ѿ����˶������",
+        "question": "杭州和苏州的项目，2026年1月至8月这些账期合计已经收了多少租金？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -90,15 +90,15 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ����": [
-                "����",
-                "����"
+              "项目城市": [
+                "杭州",
+                "苏州"
               ]
             },
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-08",
-              "����": "����"
+              "起": "2026-01",
+              "止": "2026-08",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
@@ -107,9 +107,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����ָ��Ŀ���ڳ��У�ʵ�չ������ڣ������������ڡ�"
+          "城市指项目所在城市；实收归属账期，不按到账日期。"
         ],
-        "rationale": "����кϲ���ѯͬһ�տ�ָ�ꡣ",
+        "rationale": "跨城市合并查询同一收款指标。",
         "multi_request": false
       },
       "slots": {
@@ -122,8 +122,8 @@
             "dimension": "project_city",
             "operator": "in",
             "values": [
-              "����",
-              "����"
+              "杭州",
+              "苏州"
             ]
           }
         ],
@@ -137,12 +137,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "����ָ��Ŀ���ڳ��У�ʵ�չ������ڣ������������ڡ�"
+        "城市指项目所在城市；实收归属账期，不按到账日期。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -151,7 +151,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA003",
-        "question": "��������2026���ϰ��껨��ˮ��Ͱ����ϵ�Ǯ�������Ƕ��٣�",
+        "question": "云栖中心2026年上半年花在水电和安保上的钱加起来是多少？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -159,16 +159,16 @@
             "target_kind": "metric",
             "target_id": "operating_expense",
             "filters": {
-              "��Ŀ": "��������",
-              "���÷���": [
-                "ˮ��",
-                "����"
+              "项目": "云栖中心",
+              "费用分类": [
+                "水电",
+                "安保"
               ]
             },
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-06",
-              "����": "�����·�"
+              "起": "2026-01",
+              "止": "2026-06",
+              "类型": "费用月份"
             },
             "group_by": [],
             "sort": null
@@ -177,9 +177,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ͳ��ʵ����Ӫ���ã�������úϲ�Ϊһ����"
+          "统计实际运营费用；两类费用合并为一个金额。"
         ],
-        "rationale": "���ಢ��ɸѡ����ܷ��ã�û����Ҫ������ϸ��",
+        "rationale": "分类并集筛选后汇总费用，没有索要分类明细。",
         "multi_request": false
       },
       "slots": {
@@ -192,15 +192,15 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "��������"
+              "云栖中心"
             ]
           },
           {
             "dimension": "expense_category",
             "operator": "in",
             "values": [
-              "ˮ��",
-              "����"
+              "水电",
+              "安保"
             ]
           }
         ],
@@ -214,12 +214,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "�����·�"
+          "label": "类型",
+          "requirement": "费用月份"
         }
       ],
       "important_basis": [
-        "ͳ��ʵ����Ӫ���ã�������úϲ�Ϊһ����"
+        "统计实际运营费用；两类费用合并为一个金额。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -228,7 +228,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA004",
-        "question": "2026��8��31�գ������Ĳ�����λһ�����ȥ�˶���ƽ���ף�",
+        "question": "2026年8月31日，金陵汇的餐饮铺位一共租出去了多少平方米？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -236,11 +236,11 @@
             "target_kind": "metric",
             "target_id": "leased_area",
             "filters": {
-              "��Ŀ": "�����",
-              "��λ����": "����"
+              "项目": "金陵汇",
+              "铺位类型": "餐饮"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [],
             "sort": null
@@ -249,9 +249,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����ָ��ʱ��������ͳ���������������λ��ǰ�������͡�"
+          "依据指定时点出租情况统计面积；餐饮是铺位当前档案类型。"
         ],
-        "rationale": "��λ���ͺ���Ŀ����ɸѡ��ʱ�������",
+        "rationale": "铺位类型和项目联合筛选的时点面积。",
         "multi_request": false
       },
       "slots": {
@@ -264,7 +264,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����"
+              "金陵汇"
             ]
           },
           {
@@ -284,7 +284,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����ָ��ʱ��������ͳ���������������λ��ǰ�������͡�"
+        "依据指定时点出租情况统计面积；餐饮是铺位当前档案类型。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -293,7 +293,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA005",
-        "question": "������׼�գ�ע���ڱ������⻧��������Ŀ���Ѿ����ڵ���û����Ǯһ�����ж��٣�",
+        "question": "截至基准日，注册在北京的租户在所有项目里已经到期但还没付的钱一共还有多少？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -301,10 +301,10 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "�⻧ע�����": "����"
+              "租户注册城市": "北京"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -313,9 +313,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����׼���ѵ���δ�����⻧ע����в�����Ŀ���У�������Щ�⻧��ȫ����Ŀ�ļ�¼��"
+          "仅基准日已到期未付余额；租户注册城市不是项目城市；覆盖这些租户在全部项目的记录。"
         ],
-        "rationale": "���⻧����ɸѡ��ǰ����������Ŀ��Χ��ȷ��",
+        "rationale": "按租户档案筛选当前逾期余额，跨项目范围明确。",
         "multi_request": false
       },
       "slots": {
@@ -328,7 +328,7 @@
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "����"
+              "北京"
             ]
           }
         ],
@@ -341,7 +341,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����׼���ѵ���δ�����⻧ע����в�����Ŀ���У�������Щ�⻧��ȫ����Ŀ�ļ�¼��"
+        "仅基准日已到期未付余额；租户注册城市不是项目城市；覆盖这些租户在全部项目的记录。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -350,7 +350,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA006",
-        "question": "������2025���°����ʵ����Ӫ���������ǰ����Ԥ����˶���Ǯ��",
+        "question": "湖滨里2025年下半年的实际运营开销，比那半年的预算多了多少钱？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -358,12 +358,12 @@
             "target_kind": "metric",
             "target_id": "budget_variance",
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "��": "2025-07",
-              "ֹ": "2025-12",
-              "����": "�����·�"
+              "起": "2025-07",
+              "止": "2025-12",
+              "类型": "费用月份"
             },
             "group_by": [],
             "sort": null
@@ -372,9 +372,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���Ϊʵ�ʷ��ü�Ԥ�㣬������֧��������ʾ����Ԥ�㡣"
+          "差额为实际费用减预算，正数超支，负数表示低于预算。"
         ],
-        "rationale": "ʵ����Ԥ���һ�����ָ�꣬��������Ҫ�����",
+        "rationale": "实际与预算的一个差额指标，不单独索要两项金额。",
         "multi_request": false
       },
       "slots": {
@@ -387,7 +387,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           }
         ],
@@ -401,12 +401,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "�����·�"
+          "label": "类型",
+          "requirement": "费用月份"
         }
       ],
       "important_basis": [
-        "���Ϊʵ�ʷ��ü�Ԥ�㣬������֧��������ʾ����Ԥ�㡣"
+        "差额为实际费用减预算，正数超支，负数表示低于预算。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -415,7 +415,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA007",
-        "question": "�����³�2026��7�������յ�����𣬼�ȥ7��ʵ����Ӫ��������ʣ����Ǯ��",
+        "question": "望京新程2026年7月账期收到的租金，减去7月实际运营开销，还剩多少钱？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -423,12 +423,12 @@
             "target_kind": "metric",
             "target_id": "cash_noi_proxy",
             "filters": {
-              "��Ŀ": "�����³�"
+              "项目": "望京新程"
             },
             "time": {
-              "��": "2026-07",
-              "ֹ": "2026-07",
-              "����": "����������·ݶ�Ӧ"
+              "起": "2026-07",
+              "止": "2026-07",
+              "类型": "账期与费用月份对应"
             },
             "group_by": [],
             "sort": null
@@ -437,9 +437,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ʹ��ͬ����ʵ�ռ�����ʵ�ʷ��õļ򻯴�����������ʽNOI��������"
+          "使用同账期实收减当月实际费用的简化代理；不是正式NOI或会计利润。"
         ],
-        "rationale": "�û���ȷҪ���֧�ֵĵ�һ��",
+        "rationale": "用户明确要求可支持的单一差额。",
         "multi_request": false
       },
       "slots": {
@@ -452,7 +452,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           }
         ],
@@ -466,12 +466,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����������·ݶ�Ӧ"
+          "label": "类型",
+          "requirement": "账期与费用月份对应"
         }
       ],
       "important_basis": [
-        "ʹ��ͬ����ʵ�ռ�����ʵ�ʷ��õļ򻯴�����������ʽNOI��������"
+        "使用同账期实收减当月实际费用的简化代理；不是正式NOI或会计利润。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -480,7 +480,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA008",
-        "question": "2026��8�£�ƽ�����İ칫��λ���յ����ϼƶ��٣�",
+        "question": "2026年8月，平江坊的办公铺位该收的租金合计多少？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -488,13 +488,13 @@
             "target_kind": "metric",
             "target_id": "rent_due",
             "filters": {
-              "��Ŀ": "ƽ����",
-              "��λ����": "�칫"
+              "项目": "平江坊",
+              "铺位类型": "办公"
             },
             "time": {
-              "��": "2026-08",
-              "ֹ": "2026-08",
-              "����": "����"
+              "起": "2026-08",
+              "止": "2026-08",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
@@ -503,9 +503,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����λ��ǰ��������ɸѡ����Ӧ�ա�"
+          "按铺位当前档案类型筛选账期应收。"
         ],
-        "rationale": "����;ɸѡ���Ӧ�գ����ٶ���Ŀ�������͡�",
+        "rationale": "按用途筛选租金应收，不假定项目整体类型。",
         "multi_request": false
       },
       "slots": {
@@ -518,7 +518,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "ƽ����"
+              "平江坊"
             ]
           },
           {
@@ -539,12 +539,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "����λ��ǰ��������ɸѡ����Ӧ�ա�"
+        "按铺位当前档案类型筛选账期应收。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -553,16 +553,16 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA009",
-        "question": "�г��Ϻ����������Ŀ��",
+        "question": "列出上海徐汇区的项目。",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Ŀ�嵥",
+            "target_id": "项目清单",
             "filters": {
-              "��Ŀ����": "�Ϻ�",
-              "��Ŀ��": "���"
+              "项目城市": "上海",
+              "项目区": "徐汇"
             },
             "time": null,
             "group_by": [],
@@ -572,9 +572,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ݵ�ǰ��Ŀ����ɸѡ��"
+          "依据当前项目档案筛选。"
         ],
-        "rationale": "����������ͬ�޶��ĵ�һ��Ŀ�嵥��",
+        "rationale": "城市与区共同限定的单一项目清单。",
         "multi_request": false
       },
       "slots": {
@@ -587,14 +587,14 @@
             "dimension": "project_city",
             "operator": "in",
             "values": [
-              "�Ϻ�"
+              "上海"
             ]
           },
           {
             "dimension": "project_district",
             "operator": "in",
             "values": [
-              "���"
+              "徐汇"
             ]
           }
         ],
@@ -606,7 +606,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���ݵ�ǰ��Ŀ����ɸѡ��"
+        "依据当前项目档案筛选。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -615,20 +615,20 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA010",
-        "question": "�ѽ����������Ϊ���ۻ�������λ���г���������û���ⶼҪ��",
+        "question": "把金陵汇里类型为零售或服务的铺位都列出来，出租没出租都要。",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��λ�嵥",
+            "target_id": "铺位清单",
             "filters": {
-              "��Ŀ": "�����",
-              "��λ����": [
-                "����",
-                "����"
+              "项目": "金陵汇",
+              "铺位类型": [
+                "零售",
+                "服务"
               ],
-              "�������": "����"
+              "出租情况": "不限"
             },
             "time": null,
             "group_by": [],
@@ -638,9 +638,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ʹ��������λ��¼����Ĭ��ֻ���ѳ�����λ��"
+          "使用现有铺位记录，不默认只列已出租铺位。"
         ],
-        "rationale": "��ȷ������ͬ�����������λ�嵥��",
+        "rationale": "明确包含不同出租情况的铺位清单。",
         "multi_request": false
       },
       "slots": {
@@ -653,7 +653,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����"
+              "金陵汇"
             ]
           },
           {
@@ -673,12 +673,12 @@
       },
       "additional_requirements": [
         {
-          "label": "�������",
-          "requirement": "����"
+          "label": "出租情况",
+          "requirement": "不限"
         }
       ],
       "important_basis": [
-        "ʹ��������λ��¼����Ĭ��ֻ���ѳ�����λ��"
+        "使用现有铺位记录，不默认只列已出租铺位。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -687,16 +687,16 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA011",
-        "question": "�г�ע�����Ϊ���ݡ��ȼ�Ϊ������⻧��",
+        "question": "列出注册城市为杭州、等级为新锐的租户。",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "�⻧�嵥",
+            "target_id": "租户清单",
             "filters": {
-              "�⻧ע�����": "����",
-              "�⻧�ȼ�": "����"
+              "租户注册城市": "杭州",
+              "租户等级": "新锐"
             },
             "time": null,
             "group_by": [],
@@ -706,9 +706,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�������Ծ�Ϊ��ǰ�⻧������������Ŀ���д���ע����У�ͬһ�⻧�������Ŀ�ظ��г���"
+          "两项属性均为当前租户档案；不以项目城市代替注册城市；同一租户不因跨项目重复列出。"
         ],
-        "rationale": "�����ɸѡ���⻧������",
+        "rationale": "两项档案筛选的租户名单。",
         "multi_request": false
       },
       "slots": {
@@ -721,7 +721,7 @@
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "����"
+              "杭州"
             ]
           },
           {
@@ -740,7 +740,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "�������Ծ�Ϊ��ǰ�⻧������������Ŀ���д���ע����У�ͬһ�⻧�������Ŀ�ظ��г���"
+        "两项属性均为当前租户档案；不以项目城市代替注册城市；同一租户不因跨项目重复列出。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -749,21 +749,21 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA012",
-        "question": "�г�����������Լ����2026��7����8�µ��ڵ���Լ������Ŀǰ��ʲô״̬��",
+        "question": "列出湖滨里所有约定在2026年7月至8月到期的租约，不论目前是什么状态。",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "������",
-              "��Լ״̬": "����"
+              "项目": "湖滨里",
+              "租约状态": "不限"
             },
             "time": {
-              "��": "2026-07-01",
-              "ֹ": "2026-08-31",
-              "����": "��ԼԼ�������գ�����β"
+              "起": "2026-07-01",
+              "止": "2026-08-31",
+              "类型": "租约约定结束日，含首尾"
             },
             "group_by": [],
             "sort": null
@@ -772,9 +772,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Լ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+          "按租约结束日筛选现有记录，不默认仅有效租约。"
         ],
-        "rationale": "ʱ���޶����Ǻ�ͬ�����ն��������ڡ�",
+        "rationale": "时间限定的是合同结束日而不是账期。",
         "multi_request": false
       },
       "slots": {
@@ -787,7 +787,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           }
         ],
@@ -802,16 +802,16 @@
       },
       "additional_requirements": [
         {
-          "label": "��Լ״̬",
-          "requirement": "����"
+          "label": "租约状态",
+          "requirement": "不限"
         },
         {
-          "label": "����",
-          "requirement": "��ԼԼ�������գ�����β"
+          "label": "类型",
+          "requirement": "租约约定结束日，含首尾"
         }
       ],
       "important_basis": [
-        "����Լ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+        "按租约结束日筛选现有记录，不默认仅有效租约。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -820,7 +820,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA013",
-        "question": "2026��ڶ����ȣ�������ĿĿǰ�������Ϊ�����⻧����������ջ���Ӧ�յİٷ�֮���٣�",
+        "question": "2026年第二季度，所有项目目前档案里标为主力租户的租金，整体收回了应收的百分之多少？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -828,12 +828,12 @@
             "target_kind": "metric",
             "target_id": "collection_rate",
             "filters": {
-              "�⻧�ȼ�": "��������ǰ������"
+              "租户等级": "主力（当前档案）"
             },
             "time": {
-              "��": "2026-04",
-              "ֹ": "2026-06",
-              "����": "����"
+              "起": "2026-04",
+              "止": "2026-06",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
@@ -842,9 +842,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ѡ��Χ��ʵ�ճ�����Ӧ�գ���ƽ�����⻧�������⻧�ȼ�����ǰ����������Ŀ��¼�����롣"
+          "所选范围总实收除以总应收，不平均各租户比例；租户等级按当前档案，跨项目记录均纳入。"
         ],
-        "rationale": "ȫ��Ŀ�ض��ȼ���������ձ�����",
+        "rationale": "全项目特定等级的总体回收比例。",
         "multi_request": false
       },
       "slots": {
@@ -871,12 +871,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "��ѡ��Χ��ʵ�ճ�����Ӧ�գ���ƽ�����⻧�������⻧�ȼ�����ǰ����������Ŀ��¼�����롣"
+        "所选范围总实收除以总应收，不平均各租户比例；租户等级按当前档案，跨项目记录均纳入。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -885,7 +885,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA014",
-        "question": "2026��1����8�£�������Ŀ������ÿ�������յ��˶�����𣿰��·�˳���С�",
+        "question": "2026年1月至8月，六个项目合起来每个账期收到了多少租金？按月份顺着列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -893,30 +893,30 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ": "ȫ��������Ŀ"
+              "项目": "全部六个项目"
             },
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-08",
-              "����": "����"
+              "起": "2026-01",
+              "止": "2026-08",
+              "类型": "账期"
             },
             "group_by": [
-              "�����·�"
+              "账期月份"
             ],
             "sort": {
-              "����": "�����·�",
-              "����": "����",
-              "����": null,
-              "��Χ": "ȫ��"
+              "依据": "账期月份",
+              "方向": "升序",
+              "数量": null,
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�����ڷ��£�ÿ�ºϲ�ȫ����Ŀ�����������շ��顣"
+          "以账期分月；每月合并全部项目，不按到账日分组。"
         ],
-        "rationale": "��һʵ��ָ����¶����ơ�",
+        "rationale": "单一实收指标的月度趋势。",
         "multi_request": false
       },
       "slots": {
@@ -937,25 +937,25 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ",
-          "requirement": "ȫ��������Ŀ"
+          "label": "项目",
+          "requirement": "全部六个项目"
         },
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         },
         {
-          "label": "ʱ��չʾ˳��",
+          "label": "时间展示顺序",
           "requirement": {
-            "����": "�����·�",
-            "����": "����",
-            "����": null,
-            "��Χ": "ȫ��"
+            "依据": "账期月份",
+            "方向": "升序",
+            "数量": null,
+            "范围": "全局"
           }
         }
       ],
       "important_basis": [
-        "�����ڷ��£�ÿ�ºϲ�ȫ����Ŀ�����������շ��顣"
+        "以账期分月；每月合并全部项目，不按到账日分组。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -964,7 +964,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA015",
-        "question": "��2025�����Ŀ���յ����Ӷൽ����һ�£�ֻ��ǰ������",
+        "question": "把2025年各项目该收的租金从多到少排一下，只看前三个。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -973,27 +973,27 @@
             "target_id": "rent_due",
             "filters": {},
             "time": {
-              "��": "2025-01",
-              "ֹ": "2025-12",
-              "����": "����"
+              "起": "2025-01",
+              "止": "2025-12",
+              "类型": "账期"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "Ӧ�����ϼ�",
-              "����": "����",
-              "����": 3,
-              "��Χ": "ȫ����Ŀȫ��"
+              "依据": "应收租金合计",
+              "方向": "降序",
+              "数量": 3,
+              "范围": "全部项目全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ȫ������Ӧ���ܶ�������"
+          "按全年账期应收总额排名。"
         ],
-        "rationale": "ȫ����ĿӦ��ǰ������",
+        "rationale": "全局项目应收前三名。",
         "multi_request": false
       },
       "slots": {
@@ -1018,21 +1018,21 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         },
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "Ӧ�����ϼ�",
-            "����": "����",
-            "����": 3,
-            "��Χ": "ȫ����Ŀȫ��"
+            "依据": "应收租金合计",
+            "方向": "降序",
+            "数量": 3,
+            "范围": "全部项目全局"
           }
         }
       ],
       "important_basis": [
-        "��ȫ������Ӧ���ܶ�������"
+        "按全年账期应收总额排名。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1041,7 +1041,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA016",
-        "question": "�Ϻ�������Ŀ��2026���ϰ��꣬ÿһ����Ӫ���÷ֱ��˶���Ǯ��������Ŀ����������",
+        "question": "上海两个项目在2026年上半年，每一类运营费用分别花了多少钱？两个项目合起来看。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1049,15 +1049,15 @@
             "target_kind": "metric",
             "target_id": "operating_expense",
             "filters": {
-              "��Ŀ����": "�Ϻ�"
+              "项目城市": "上海"
             },
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-06",
-              "����": "�����·�"
+              "起": "2026-01",
+              "止": "2026-06",
+              "类型": "费用月份"
             },
             "group_by": [
-              "���÷���"
+              "费用分类"
             ],
             "sort": null
           }
@@ -1065,9 +1065,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�����÷������ʵ�ʷ��ã����ٰ���Ŀ��֡�"
+          "各费用分类汇总实际费用；不再按项目拆分。"
         ],
-        "rationale": "��Ŀ����ɸѡ�󰴷��������顣",
+        "rationale": "项目城市筛选后按费用类别分组。",
         "multi_request": false
       },
       "slots": {
@@ -1080,7 +1080,7 @@
             "dimension": "project_city",
             "operator": "in",
             "values": [
-              "�Ϻ�"
+              "上海"
             ]
           }
         ],
@@ -1096,12 +1096,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "�����·�"
+          "label": "类型",
+          "requirement": "费用月份"
         }
       ],
       "important_basis": [
-        "�����÷������ʵ�ʷ��ã����ٰ���Ŀ��֡�"
+        "各费用分类汇总实际费用；不再按项目拆分。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1110,7 +1110,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA017",
-        "question": "2026��8��31�գ�����Ŀ�ղ��գ����ѳ������ռ��������İٷֱ����ţ��ӵ͵�����ȫ��",
+        "question": "2026年8月31日，各项目空不空？用已出租面积占可租面积的百分比来排，从低到高列全。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1119,25 +1119,25 @@
             "target_id": "occupancy_rate",
             "filters": {},
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "�ѳ������ռ�����������",
-              "����": "����",
-              "����": null,
-              "��Χ": "ȫ����Ŀȫ��"
+              "依据": "已出租面积占可租面积比例",
+              "方向": "升序",
+              "数量": null,
+              "范围": "全部项目全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�������������ʣ�������λ������"
+          "以面积计算出租率，不按铺位数量。"
         ],
-        "rationale": "���ﻯҵ����ͼ����ȷΪһ���������������",
+        "rationale": "口语化业务意图已明确为一个面积比例排名。",
         "multi_request": false
       },
       "slots": {
@@ -1160,17 +1160,17 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "�ѳ������ռ�����������",
-            "����": "����",
-            "����": null,
-            "��Χ": "ȫ����Ŀȫ��"
+            "依据": "已出租面积占可租面积比例",
+            "方向": "升序",
+            "数量": null,
+            "范围": "全部项目全局"
           }
         }
       ],
       "important_basis": [
-        "�������������ʣ�������λ������"
+        "以面积计算出租率，不按铺位数量。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1179,7 +1179,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA018",
-        "question": "�����㳡2026��8��31��ÿ��¥��ֱ�����˶���ƽ���ף�",
+        "question": "澄明广场2026年8月31日每个楼层分别租出了多少平方米？",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1187,13 +1187,13 @@
             "target_kind": "metric",
             "target_id": "leased_area",
             "filters": {
-              "��Ŀ": "�����㳡"
+              "项目": "澄明广场"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [
-              "��λ¥��"
+              "铺位楼层"
             ],
             "sort": null
           }
@@ -1201,9 +1201,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ָ��ʱ���ѳ������ͳ�ƣ�¥��ȡ��ǰ��λ������"
+          "按指定时点已出租面积统计，楼层取当前铺位档案。"
         ],
-        "rationale": "����Ŀ��¥����ʱ�������",
+        "rationale": "单项目按楼层拆分时点面积。",
         "multi_request": false
       },
       "slots": {
@@ -1216,7 +1216,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡"
+              "澄明广场"
             ]
           }
         ],
@@ -1231,7 +1231,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "��ָ��ʱ���ѳ������ͳ�ƣ�¥��ȡ��ǰ��λ������"
+        "按指定时点已出租面积统计，楼层取当前铺位档案。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1240,7 +1240,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA019",
-        "question": "������׼�գ�ÿ����Ŀ�ﵽ��û����������������⻧��˭�����������Ӹߵ����С�",
+        "question": "截至基准日，每个项目里到期没付的余额最多的两家租户是谁？按各自余额从高到低列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1249,26 +1249,26 @@
             "target_id": "overdue_balance",
             "filters": {},
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [
-              "��Ŀ",
-              "�⻧"
+              "项目",
+              "租户"
             ],
             "sort": {
-              "����": "��Ŀ��ÿ���⻧���ѵ���δ�����",
-              "����": "����",
-              "����": 2,
-              "��Χ": "ÿ����Ŀ����"
+              "依据": "项目内每家租户的已到期未付余额",
+              "方向": "降序",
+              "数量": 2,
+              "范围": "每个项目组内"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����׼����ͬһ�⻧�ڲ�ͬ��Ŀ�ֱ������Ӧ��Ŀ�����ܰ���ȫ��˾���������Ŀ��������"
+          "仅基准日余额；同一租户在不同项目分别归入相应项目，不能把其全公司余额用于项目内排名。"
         ],
-        "rationale": "��Ŀ���⻧���ǰ��������Χ��ȷ��",
+        "rationale": "项目内租户余额前二，排序范围明确。",
         "multi_request": false
       },
       "slots": {
@@ -1296,17 +1296,17 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "��Ŀ��ÿ���⻧���ѵ���δ�����",
-            "����": "����",
-            "����": 2,
-            "��Χ": "ÿ����Ŀ����"
+            "依据": "项目内每家租户的已到期未付余额",
+            "方向": "降序",
+            "数量": 2,
+            "范围": "每个项目组内"
           }
         }
       ],
       "important_basis": [
-        "����׼����ͬһ�⻧�ڲ�ͬ��Ŀ�ֱ������Ӧ��Ŀ�����ܰ���ȫ��˾���������Ŀ��������"
+        "仅基准日余额；同一租户在不同项目分别归入相应项目，不能把其全公司余额用于项目内排名。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1315,7 +1315,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA020",
-        "question": "2026���ϰ��꣬�����е���Ӫ������Ԥ����˶��٣�����Ԥ����Ӵ�С�С�",
+        "question": "2026年上半年，各城市的运营开销比预算多了多少？按超预算差额从大到小列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1324,27 +1324,27 @@
             "target_id": "budget_variance",
             "filters": {},
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-06",
-              "����": "�����·�"
+              "起": "2026-01",
+              "止": "2026-06",
+              "类型": "费用月份"
             },
             "group_by": [
-              "��Ŀ����"
+              "项目城市"
             ],
             "sort": {
-              "����": "ʵ�ʷ��ü�Ԥ��",
-              "����": "����",
-              "����": null,
-              "��Χ": "ȫ����Ŀ����ȫ��"
+              "依据": "实际费用减预算",
+              "方向": "降序",
+              "数量": null,
+              "范围": "全部项目城市全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Ŀ���кϲ�ʵ�ʷ�����Ԥ��������������ֵ��������ʾ��֧��"
+          "按项目城市合并实际费用与预算后相减；保留负值，正数表示超支。"
         ],
-        "rationale": "��һԤ������з�������",
+        "rationale": "单一预算差额按城市分组排序。",
         "multi_request": false
       },
       "slots": {
@@ -1368,21 +1368,21 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "�����·�"
+          "label": "类型",
+          "requirement": "费用月份"
         },
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "ʵ�ʷ��ü�Ԥ��",
-            "����": "����",
-            "����": null,
-            "��Χ": "ȫ����Ŀ����ȫ��"
+            "依据": "实际费用减预算",
+            "方向": "降序",
+            "数量": null,
+            "范围": "全部项目城市全局"
           }
         }
       ],
       "important_basis": [
-        "����Ŀ���кϲ�ʵ�ʷ�����Ԥ��������������ֵ��������ʾ��֧��"
+        "按项目城市合并实际费用与预算后相减；保留负值，正数表示超支。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1391,7 +1391,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA021",
-        "question": "�������2025��1�µ�2026��8�£�ÿ���������������۵�������Ӫ�����Ժ�ʣ���٣�����˳�򿴡�",
+        "question": "湖滨里从2025年1月到2026年8月，每月账期收来的租金扣掉当月运营开销以后还剩多少？按月顺序看。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1399,30 +1399,30 @@
             "target_kind": "metric",
             "target_id": "cash_noi_proxy",
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "��": "2025-01",
-              "ֹ": "2026-08",
-              "����": "����������·ݶ�Ӧ"
+              "起": "2025-01",
+              "止": "2026-08",
+              "类型": "账期与费用月份对应"
             },
             "group_by": [
-              "�·�"
+              "月份"
             ],
             "sort": {
-              "����": "�·�",
-              "����": "����",
-              "����": null,
-              "��Χ": "ȫ��"
+              "依据": "月份",
+              "方向": "升序",
+              "数量": null,
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ÿ��ͬ����ʵ�ռ�ʵ����Ӫ���ã��򻯴���������ʽNOI��������"
+          "每月同账期实收减实际运营费用；简化代理并非正式NOI或会计利润。"
         ],
-        "rationale": "����������¶Ȳ�����ơ�",
+        "rationale": "跨年度完整月度差额趋势。",
         "multi_request": false
       },
       "slots": {
@@ -1435,7 +1435,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           }
         ],
@@ -1451,21 +1451,21 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����������·ݶ�Ӧ"
+          "label": "类型",
+          "requirement": "账期与费用月份对应"
         },
         {
-          "label": "ʱ��չʾ˳��",
+          "label": "时间展示顺序",
           "requirement": {
-            "����": "�·�",
-            "����": "����",
-            "����": null,
-            "��Χ": "ȫ��"
+            "依据": "月份",
+            "方向": "升序",
+            "数量": null,
+            "范围": "全局"
           }
         }
       ],
       "important_basis": [
-        "ÿ��ͬ����ʵ�ռ�ʵ����Ӫ���ã��򻯴���������ʽNOI��������"
+        "每月同账期实收减实际运营费用；简化代理并非正式NOI或会计利润。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1474,7 +1474,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA022",
-        "question": "2026��8��31�գ������³̲�ͬ��λ����ÿƽ����һ����ƽ�������Ǯ��",
+        "question": "2026年8月31日，望京新程不同铺位类型每平方米一个月平均租多少钱？",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1482,13 +1482,13 @@
             "target_kind": "metric",
             "target_id": "avg_monthly_rent_per_sqm",
             "filters": {
-              "��Ŀ": "�����³�"
+              "项目": "望京新程"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [
-              "��λ����"
+              "铺位类型"
             ],
             "sort": null
           }
@@ -1496,9 +1496,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�������Ȩ����ָ��ʱ��ƽ�������⣬���Ը���λ��������ƽ��������ȡ��ǰ������"
+          "按面积加权计算指定时点平方米月租，不对各铺位单价做简单平均；类型取当前档案。"
         ],
-        "rationale": "ʱ�������;���飬����Ŀ¼Ĭ�ϼ�Ȩ�ھ���",
+        "rationale": "时点租金按用途分组，采用目录默认加权口径。",
         "multi_request": false
       },
       "slots": {
@@ -1511,7 +1511,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           }
         ],
@@ -1526,7 +1526,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "�������Ȩ����ָ��ʱ��ƽ�������⣬���Ը���λ��������ƽ��������ȡ��ǰ������"
+        "按面积加权计算指定时点平方米月租，不对各铺位单价做简单平均；类型取当前档案。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1535,7 +1535,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA023",
-        "question": "2026��7����8�µ����ڣ�ע���ڲ�ͬ���е��⻧�ֱ�ý��������������Ŀ����һ���㡣",
+        "question": "2026年7月至8月的账期，注册在不同城市的租户分别该交多少租金？所有项目放在一起算。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1543,15 +1543,15 @@
             "target_kind": "metric",
             "target_id": "rent_due",
             "filters": {
-              "��Ŀ": "ȫ����Ŀ"
+              "项目": "全部项目"
             },
             "time": {
-              "��": "2026-07",
-              "ֹ": "2026-08",
-              "����": "����"
+              "起": "2026-07",
+              "止": "2026-08",
+              "类型": "账期"
             },
             "group_by": [
-              "�⻧ע�����"
+              "租户注册城市"
             ],
             "sort": null
           }
@@ -1559,9 +1559,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���⻧��ǰע����з��飬������Ŀ���У�����Ŀ��Ӧ�ռ�¼�����롣"
+          "按租户当前注册城市分组，不按项目城市；跨项目的应收记录均计入。"
         ],
-        "rationale": "���⻧����Ϊ����ά�ȵ�Ӧ�ջ��ܡ�",
+        "rationale": "以租户城市为分组维度的应收汇总。",
         "multi_request": false
       },
       "slots": {
@@ -1582,16 +1582,16 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ",
-          "requirement": "ȫ����Ŀ"
+          "label": "项目",
+          "requirement": "全部项目"
         },
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "���⻧��ǰע����з��飬������Ŀ���У�����Ŀ��Ӧ�ռ�¼�����롣"
+        "按租户当前注册城市分组，不按项目城市；跨项目的应收记录均计入。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1600,7 +1600,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA024",
-        "question": "2026��ڶ����ȣ�����Ŀ���԰�Ӧ������ջ��˶��ٱ���������������Ӹߵ����г�������Ŀ��",
+        "question": "2026年第二季度，各项目各自把应收租金收回了多少比例？按这个比例从高到低列出所有项目。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -1609,27 +1609,27 @@
             "target_id": "collection_rate",
             "filters": {},
             "time": {
-              "��": "2026-04",
-              "ֹ": "2026-06",
-              "����": "����"
+              "起": "2026-04",
+              "止": "2026-06",
+              "类型": "账期"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "��ʵ�ճ�����Ӧ��",
-              "����": "����",
-              "����": null,
-              "��Χ": "ȫ����Ŀȫ��"
+              "依据": "总实收除以总应收",
+              "方向": "降序",
+              "数量": null,
+              "范围": "全部项目全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Ŀ�Ⱥϲ�����ʵ�պ�Ӧ�����������ƽ�������»���⻧���սɱ�����"
+          "各项目先合并季度实收和应收再相除，不平均三个月或各租户的收缴比例。"
         ],
-        "rationale": "������Ŀ�սɱ���ȫ������",
+        "rationale": "季度项目收缴比例全量排序。",
         "multi_request": false
       },
       "slots": {
@@ -1653,21 +1653,21 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         },
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "��ʵ�ճ�����Ӧ��",
-            "����": "����",
-            "����": null,
-            "��Χ": "ȫ����Ŀȫ��"
+            "依据": "总实收除以总应收",
+            "方向": "降序",
+            "数量": null,
+            "范围": "全部项目全局"
           }
         }
       ],
       "important_basis": [
-        "����Ŀ�Ⱥϲ�����ʵ�պ�Ӧ�����������ƽ�������»���⻧���սɱ�����"
+        "各项目先合并季度实收和应收再相除，不平均三个月或各租户的收缴比例。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1676,37 +1676,37 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA025",
-        "question": "�г�������ĿԼ����2026��9����12�½�������Լ�����������ڴ��絽���ţ�������10�ݣ����޵�ǰ״̬��",
+        "question": "列出所有项目约定在2026年9月至12月结束的租约，按结束日期从早到晚排，最多给我10份，不限当前状态。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "ȫ����Ŀ",
-              "��Լ״̬": "����"
+              "项目": "全部项目",
+              "租约状态": "不限"
             },
             "time": {
-              "��": "2026-09-01",
-              "ֹ": "2026-12-31",
-              "����": "������ԼԼ�������գ�����β"
+              "起": "2026-09-01",
+              "止": "2026-12-31",
+              "类型": "现有租约约定结束日，含首尾"
             },
             "group_by": [],
             "sort": {
-              "����": "��ԼԼ��������",
-              "����": "����",
-              "����": 10,
-              "��Χ": "���з���������Լȫ��"
+              "依据": "租约约定结束日",
+              "方向": "升序",
+              "数量": 10,
+              "范围": "所有符合条件租约全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ʹ��������Լ���ص�δ�������գ���Ԥ��δ����¼�����޵�ǰ״̬��"
+          "使用已有租约记载的未来结束日，不预测未来记录；不限当前状态。"
         ],
-        "rationale": "���к�ͬ���԰�δ���������������������ݽ�ֹ��ͬ��",
+        "rationale": "现有合同可以按未来到期日排序，与账期数据截止不同。",
         "multi_request": false
       },
       "slots": {
@@ -1730,29 +1730,29 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ",
-          "requirement": "ȫ����Ŀ"
+          "label": "项目",
+          "requirement": "全部项目"
         },
         {
-          "label": "��Լ״̬",
-          "requirement": "����"
+          "label": "租约状态",
+          "requirement": "不限"
         },
         {
-          "label": "����",
-          "requirement": "������ԼԼ�������գ�����β"
+          "label": "类型",
+          "requirement": "现有租约约定结束日，含首尾"
         },
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "��ԼԼ��������",
-            "����": "����",
-            "����": 10,
-            "��Χ": "���з���������Լȫ��"
+            "依据": "租约约定结束日",
+            "方向": "升序",
+            "数量": 10,
+            "范围": "所有符合条件租约全局"
           }
         }
       ],
       "important_basis": [
-        "ʹ��������Լ���ص�δ�������գ���Ԥ��δ����¼�����޵�ǰ״̬��"
+        "使用已有租约记载的未来结束日，不预测未来记录；不限当前状态。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1761,7 +1761,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA026",
-        "question": "�ϸ����������ĸ��յ���𣬺������ջ��˰ٷ�֮���٣�",
+        "question": "上个月云栖中心该收的租金，合起来收回了百分之多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -1769,12 +1769,12 @@
             "target_kind": "metric",
             "target_id": "collection_rate",
             "filters": {
-              "��Ŀ": "��������"
+              "项目": "云栖中心"
             },
             "time": {
-              "��": "2026-08",
-              "ֹ": "2026-08",
-              "����": "����"
+              "起": "2026-08",
+              "止": "2026-08",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
@@ -1783,9 +1783,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��׼��Ϊ2026-09-01���ϸ�����2026��8�£���ʵ�ճ�����Ӧ�գ���ƽ���𵥱�����"
+          "基准日为2026-09-01，上个月是2026年8月；总实收除以总应收，不平均逐单比例。"
         ],
-        "rationale": "����·ݿ��ɻ�׼��Ψһ�����������ھ�����¶��",
+        "rationale": "相对月份可由基准日唯一解析，比例口径需披露。",
         "multi_request": false
       },
       "slots": {
@@ -1798,7 +1798,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "��������"
+              "云栖中心"
             ]
           }
         ],
@@ -1812,12 +1812,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "��׼��Ϊ2026-09-01���ϸ�����2026��8�£���ʵ�ճ�����Ӧ�գ���ƽ���𵥱�����"
+        "基准日为2026-09-01，上个月是2026年8月；总实收除以总应收，不平均逐单比例。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1826,7 +1826,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA027",
-        "question": "������2026��6�����ڵ�����Ѿ��յ��˶���Ǯ����Щʱ��ŵ��˵ģ�ֻҪ���������Ҳ�㡣",
+        "question": "湖滨里2026年6月账期的租金已经收到了多少钱？晚些时候才到账的，只要归这个账期也算。",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -1834,12 +1834,12 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "��": "2026-06",
-              "ֹ": "2026-06",
-              "����": "����"
+              "起": "2026-06",
+              "止": "2026-06",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
@@ -1848,9 +1848,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�����ڹ���ȡ����ʵ�ռ�¼���������������½�ȡ�����Ʋ�δ���տ"
+          "按账期归属取现有实收记录，不按到账日重新截取；不推测未来收款。"
         ],
-        "rationale": "��ȷ����ʵ�գ��ٵ����԰����ڹ�����",
+        "rationale": "明确账期实收，迟到账仍按账期归属。",
         "multi_request": false
       },
       "slots": {
@@ -1863,7 +1863,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           }
         ],
@@ -1877,12 +1877,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "����"
+          "label": "类型",
+          "requirement": "账期"
         }
       ],
       "important_basis": [
-        "�����ڹ���ȡ����ʵ�ռ�¼���������������½�ȡ�����Ʋ�δ���տ"
+        "按账期归属取现有实收记录，不按到账日重新截取；不推测未来收款。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1891,7 +1891,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA028",
-        "question": "�Ϻ�������Ŀ����һ�����ڿ����������Ѿ����ȥ��ռ���٣�",
+        "question": "上海两个项目放在一起，现在可租的面积里已经租出去的占多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -1899,10 +1899,10 @@
             "target_kind": "metric",
             "target_id": "occupancy_rate",
             "filters": {
-              "��Ŀ����": "�Ϻ�"
+              "项目城市": "上海"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -1911,9 +1911,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ڰ���׼�գ��ϲ��ѳ���������Ժϲ������������ƽ����Ŀ�����ʣ�Ҳ������λ������"
+          "现在按基准日；合并已出租面积除以合并可租面积，不平均项目出租率，也不按铺位个数。"
         ],
-        "rationale": "����Ŀ���������������ĸ�ͺϲ��㷨�ؼ���",
+        "rationale": "多项目整体面积比例，分母和合并算法关键。",
         "multi_request": false
       },
       "slots": {
@@ -1926,7 +1926,7 @@
             "dimension": "project_city",
             "operator": "in",
             "values": [
-              "�Ϻ�"
+              "上海"
             ]
           }
         ],
@@ -1939,7 +1939,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���ڰ���׼�գ��ϲ��ѳ���������Ժϲ������������ƽ����Ŀ�����ʣ�Ҳ������λ������"
+        "现在按基准日；合并已出租面积除以合并可租面积，不平均项目出租率，也不按铺位个数。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -1948,7 +1948,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA029",
-        "question": "ƽ��������ÿƽ����һ����ƽ�������Ǯ��",
+        "question": "平江坊现在每平方米一个月平均租多少钱？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -1956,10 +1956,10 @@
             "target_kind": "metric",
             "target_id": "avg_monthly_rent_per_sqm",
             "filters": {
-              "��Ŀ": "ƽ����"
+              "项目": "平江坊"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -1968,9 +1968,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ڲ��û�׼��ʱ�㣻�������Ȩ����ƽ�������⣬����ƽ����λ���ۡ�"
+          "现在采用基准日时点；按面积加权计算平方米月租，不简单平均铺位单价。"
         ],
-        "rationale": "Ŀ¼�ѹ涨ƽ���ھ���������������ʵ�㷨��׷�ʡ�",
+        "rationale": "目录已规定平均口径，无需因其他现实算法而追问。",
         "multi_request": false
       },
       "slots": {
@@ -1983,7 +1983,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "ƽ����"
+              "平江坊"
             ]
           }
         ],
@@ -1996,7 +1996,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���ڲ��û�׼��ʱ�㣻�������Ȩ����ƽ�������⣬����ƽ����λ���ۡ�"
+        "现在采用基准日时点；按面积加权计算平方米月租，不简单平均铺位单价。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2005,7 +2005,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA030",
-        "question": "����������Ѿ����ڵ���û�������ʣ���٣�",
+        "question": "金陵汇现在已经到期但仍没付的租金还剩多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -2013,10 +2013,10 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "��Ŀ": "�����"
+              "项目": "金陵汇"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -2025,9 +2025,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ṩ��׼���ѵ���δ����δ���ڿ�����ڡ�"
+          "仅提供基准日已到期未付余额，未到期款不算逾期。"
         ],
-        "rationale": "��ǰ�������֧�ַ�Χ����˵���ص㡣",
+        "rationale": "当前余额属于支持范围，须说明截点。",
         "multi_request": false
       },
       "slots": {
@@ -2040,7 +2040,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����"
+              "金陵汇"
             ]
           }
         ],
@@ -2053,7 +2053,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���ṩ��׼���ѵ���δ����δ���ڿ�����ڡ�"
+        "仅提供基准日已到期未付余额，未到期款不算逾期。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2062,7 +2062,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA031",
-        "question": "�����³̽��굽�ϸ���Ϊֹ��ʵ����Ӫ������Ԥ�����٣�",
+        "question": "望京新程今年到上个月为止，实际运营开销比预算差多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -2070,12 +2070,12 @@
             "target_kind": "metric",
             "target_id": "budget_variance",
             "filters": {
-              "��Ŀ": "�����³�"
+              "项目": "望京新程"
             },
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-08",
-              "����": "�����·�"
+              "起": "2026-01",
+              "止": "2026-08",
+              "类型": "费用月份"
             },
             "group_by": [],
             "sort": null
@@ -2084,9 +2084,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ʱ�䰴2026-09-01��׼�գ���ΧΪ2026��1����8�£�ʵ�ʼ�Ԥ�㣬��Ϊ��֧����Ϊ��Լ��"
+          "相对时间按2026-09-01基准日，范围为2026年1月至8月；实际减预算，正为超支，负为节约。"
         ],
-        "rationale": "��ֹ�·ݺͲ����ž�����¶��",
+        "rationale": "截止月份和差额符号均须披露。",
         "multi_request": false
       },
       "slots": {
@@ -2099,7 +2099,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           }
         ],
@@ -2113,12 +2113,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����",
-          "requirement": "�����·�"
+          "label": "类型",
+          "requirement": "费用月份"
         }
       ],
       "important_basis": [
-        "���ʱ�䰴2026-09-01��׼�գ���ΧΪ2026��1����8�£�ʵ�ʼ�Ԥ�㣬��Ϊ��֧����Ϊ��Լ��"
+        "相对时间按2026-09-01基准日，范围为2026年1月至8月；实际减预算，正为超支，负为节约。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2127,7 +2127,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA032",
-        "question": "2025��ȫ��������Ŀ�ս���������������ͬ����Ӫ���ã�һ��ʣ�¶��٣�",
+        "question": "2025年全年六个项目收进来的账期租金减掉同年运营费用，一共剩下多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -2135,12 +2135,12 @@
             "target_kind": "metric",
             "target_id": "cash_noi_proxy",
             "filters": {
-              "��Ŀ": "ȫ��������Ŀ"
+              "项目": "全部六个项目"
             },
             "time": {
-              "��": "2025-01",
-              "ֹ": "2025-12",
-              "����": "����������·ݶ�Ӧ"
+              "起": "2025-01",
+              "止": "2025-12",
+              "类型": "账期与费用月份对应"
             },
             "group_by": [],
             "sort": null
@@ -2149,9 +2149,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ȫ��ͬ����ʵ���ܶ��ȫ��ʵ����Ӫ���ã����Ǽ��ֽ������������ʽNOI��������"
+          "全年同账期实收总额减全年实际运营费用；这是简化现金代理，不是正式NOI或会计利润。"
         ],
-        "rationale": "�û�ָ���ɼ���ĵ�һ����������Ϊ��ʽ����",
+        "rationale": "用户指定可计算的单一差额，不能升级为正式利润。",
         "multi_request": false
       },
       "slots": {
@@ -2170,16 +2170,16 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ",
-          "requirement": "ȫ��������Ŀ"
+          "label": "项目",
+          "requirement": "全部六个项目"
         },
         {
-          "label": "����",
-          "requirement": "����������·ݶ�Ӧ"
+          "label": "类型",
+          "requirement": "账期与费用月份对应"
         }
       ],
       "important_basis": [
-        "ȫ��ͬ����ʵ���ܶ��ȫ��ʵ����Ӫ���ã����Ǽ��ֽ������������ʽNOI��������"
+        "全年同账期实收总额减全年实际运营费用；这是简化现金代理，不是正式NOI或会计利润。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2188,16 +2188,16 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA033",
-        "question": "�г����ڵ�����Ǽ������ݵ��⻧�������������ĸ���Ŀ������λ��ÿ��ֻ��һ�Ρ�",
+        "question": "列出现在档案里登记在苏州的租户，不管他们在哪个项目租了铺位，每家只列一次。",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "�⻧�嵥",
+            "target_id": "租户清单",
             "filters": {
-              "�⻧ע�����": "����",
-              "��Ŀ": "����"
+              "租户注册城市": "苏州",
+              "项目": "不限"
             },
             "time": null,
             "group_by": [],
@@ -2207,9 +2207,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ʹ�õ�ǰ�⻧ע����У�������Ŀ���У�ͬһ�⻧����Ŀȥ�أ���Ĭ��ֻ������Ч��Լ�����⻧��"
+          "使用当前租户注册城市，不是项目城市；同一租户跨项目去重，不默认只保留有效租约关联租户。"
         ],
-        "rationale": "ע��غ���Ŀ���ڵر������֣��嵥���⻧ȥ�ء�",
+        "rationale": "注册地和项目所在地必须区分，清单按租户去重。",
         "multi_request": false
       },
       "slots": {
@@ -2222,7 +2222,7 @@
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "����"
+              "苏州"
             ]
           }
         ],
@@ -2234,12 +2234,12 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ",
-          "requirement": "����"
+          "label": "项目",
+          "requirement": "不限"
         }
       ],
       "important_basis": [
-        "ʹ�õ�ǰ�⻧ע����У�������Ŀ���У�ͬһ�⻧����Ŀȥ�أ���Ĭ��ֻ������Ч��Լ�����⻧��"
+        "使用当前租户注册城市，不是项目城市；同一租户跨项目去重，不默认只保留有效租约关联租户。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2248,7 +2248,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA034",
-        "question": "�����㳡��2025��12��31������˶���ƽ���ף�������λ���Ͱ����쵵�����Ϊ�������ɸ��",
+        "question": "澄明广场在2025年12月31日租出了多少平方米？其中铺位类型按今天档案里标为服务的来筛。",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -2256,11 +2256,11 @@
             "target_kind": "metric",
             "target_id": "leased_area",
             "filters": {
-              "��Ŀ": "�����㳡",
-              "��λ����": "���񣨵�ǰ������"
+              "项目": "澄明广场",
+              "铺位类型": "服务（当前档案）"
             },
             "time": {
-              "ʱ��": "2025-12-31"
+              "时点": "2025-12-31"
             },
             "group_by": [],
             "sort": null
@@ -2269,9 +2269,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�����������2025-12-31ʱ�㣬�������Ͳ��õ�ǰ�����������ƻָ�������������ԡ�"
+          "出租情况采用2025-12-31时点，服务类型采用当前档案；不声称恢复当年的类型属性。"
         ],
-        "rationale": "��ʷʱ��ָ������ȷָ���ĵ�ǰ����ɸѡ������ϡ�",
+        "rationale": "历史时点指标与明确指定的当前档案筛选可以组合。",
         "multi_request": false
       },
       "slots": {
@@ -2284,7 +2284,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡"
+              "澄明广场"
             ]
           },
           {
@@ -2304,7 +2304,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "�����������2025-12-31ʱ�㣬�������Ͳ��õ�ǰ�����������ƻָ�������������ԡ�"
+        "出租情况采用2025-12-31时点，服务类型采用当前档案；不声称恢复当年的类型属性。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2313,16 +2313,16 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STA035",
-        "question": "�������������м�¼�����Լ���г������Ѿ�������ҲҪ��",
+        "question": "把云栖中心现有记录里的租约都列出来，已经结束的也要。",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "��������",
-              "��Լ״̬": "���ޣ������ѽ���"
+              "项目": "云栖中心",
+              "租约状态": "不限，包含已结束"
             },
             "time": null,
             "group_by": [],
@@ -2332,9 +2332,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�嵥����ȫ��������Լ��¼����Ĭ�Ͻ���Ч��Լ��û��������ֹ�����ơ�"
+          "清单基于全部现有租约记录，不默认仅有效租约；没有另加起止日限制。"
         ],
-        "rationale": "��¼��Χ��ȫ�����к�ͬ����Ӧ�Զ�������ʷ������ͬ��",
+        "rationale": "记录范围是全部现有合同，不应自动隐藏历史结束合同。",
         "multi_request": false
       },
       "slots": {
@@ -2347,7 +2347,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "��������"
+              "云栖中心"
             ]
           }
         ],
@@ -2359,12 +2359,12 @@
       },
       "additional_requirements": [
         {
-          "label": "��Լ״̬",
-          "requirement": "���ޣ������ѽ���"
+          "label": "租约状态",
+          "requirement": "不限，包含已结束"
         }
       ],
       "important_basis": [
-        "�嵥����ȫ��������Լ��¼����Ĭ�Ͻ���Ч��Լ��û��������ֹ�����ơ�"
+        "清单基于全部现有租约记录，不默认仅有效租约；没有另加起止日限制。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2373,7 +2373,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA036",
-        "question": "��������2026��ĳ�������������ռ���Ƕ��٣�",
+        "question": "云栖中心2026年的出租情况按面积算占比是多少？",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -2381,23 +2381,23 @@
             "target_kind": "metric",
             "target_id": "occupancy_rate",
             "filters": {
-              "��Ŀ": "��������"
+              "项目": "云栖中心"
             },
             "time": {
-              "��ȷ��": "2026��ľ���ͳ��ʱ�㣬���Ƿ�ϣ�����ָ��ʱ��չʾ"
+              "待确认": "2026年的具体统计时点，或是否希望多个指定时点展示"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "��ȷ���뿴2026�����һ�죬����ϣ��������ʱ��չʾ�����뿴ȫ��ƽ����������ȷ��һ����ƽ���ھ�������ֱ�ӵ���ĳһ��ĳ����ʡ�"
+          "请确认想看2026年的哪一天，还是希望按若干时点展示；若想看全年平均，请先明确这一需求及平均口径，不能直接当作某一天的出租率。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "������Ϊʱ���������������ڼ䲻�������ƽ��ʱ�㣻֧��ʱ�����2026-09-01��"
+          "出租率为时点面积比例；年度期间不等于年度平均时点；支持时点截至2026-09-01。"
         ],
-        "rationale": "�������ȴδȷ��ʱ����ڼ京�壬����ֱ�����û�׼�ա�",
+        "rationale": "给出年份却未确定时点或期间含义，不能直接套用基准日。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2407,7 +2407,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA037",
-        "question": "2026��8���Ϻ�������Ŀ������ջر���������һ��ƽ������",
+        "question": "2026年8月上海两个项目的租金收回比例，给我一个平均数。",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -2415,25 +2415,25 @@
             "target_kind": "metric",
             "target_id": "collection_rate",
             "filters": {
-              "��Ŀ����": "�Ϻ�"
+              "项目城市": "上海"
             },
             "time": {
-              "��": "2026-08",
-              "ֹ": "2026-08",
-              "����": "����"
+              "起": "2026-08",
+              "止": "2026-08",
+              "类型": "账期"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "���ƽ�����ǰ�������ĿӦ����ʵ�պϲ�����������������ǰ�������Ŀ���Եı���������ƽ����"
+          "这个平均数是把两个项目应收与实收合并后算整体比例，还是把两个项目各自的比例再做简单平均？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "Ŀ¼ָ��֧�ֺϲ���ʵ�ճ�����Ӧ�գ��û���˵ƽ�����γ���ʵ�ھ����磬�������Ի�����Ŀ������ƽ����"
+          "目录指标支持合并总实收除以总应收；用户另说平均数形成真实口径分歧，不能擅自换成项目比例简单平均。"
         ],
-        "rationale": "��ȷ��ƽ����������������ս��ʲ�ͬ��������Ҫ���塣",
+        "rationale": "明确的平均措辞引入与整体收缴率不同的请求，需要澄清。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2443,7 +2443,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA038",
-        "question": "2026��7�º��������������Ƕ��٣�",
+        "question": "2026年7月湖滨里的租金收入是多少？",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -2451,25 +2451,25 @@
             "target_kind": "metric",
             "target_id": null,
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "��": "2026-07",
-              "ֹ": "2026-07",
-              "��ȷ��": "���ڻ����·ݿھ�"
+              "起": "2026-07",
+              "止": "2026-07",
+              "待确认": "账期或到账月份口径"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "���������ָ7������Ӧ�գ�����7������ʵ�գ���ָ7��ʵ�ʵ��˵Ŀ������֧��ǰ�������ڿھ������ṩ��������ͳ�ƵĿھ���"
+          "租金收入是指7月账期应收，还是7月账期实收，或指7月实际到账的款项？这里支持前两种账期口径，不提供按到账日统计的口径。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "����δ��ȷ��ӦӦ�ջ�ʵ�գ���������ѡ������֪�·ݱ�����ʱ��ھ���ȷ�ϡ�"
+          "收入未明确对应应收或实收，不能擅自选定；已知月份保留，时间口径待确认。"
         ],
-        "rationale": "�ճ�����˵����ʵ��ҵ��ھ����磬��һ���Ŀ����δȷ����",
+        "rationale": "日常收入说法有实质业务口径分歧，单一金额目标尚未确定。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2479,7 +2479,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA039",
-        "question": "ƽ����2026��8��31�յ�ƽ�������Ƕ���Ǯ��",
+        "question": "平江坊2026年8月31日的平均月租是多少钱？",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -2487,23 +2487,23 @@
             "target_kind": "metric",
             "target_id": null,
             "filters": {
-              "��Ŀ": "ƽ����"
+              "项目": "平江坊"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�����뿴ÿƽ�������⣬����ÿ����λ��ÿ����Լ��ƽ�������Ŀ¼�ṩ�������Ȩ��ÿƽ�������⣬��ȷ�ϵ�λ��ͳ�ƶ���"
+          "你是想看每平方米月租，还是每个铺位或每份租约的平均月租金额？目录提供按面积加权的每平方米月租，请确认单位与统计对象。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "ƽ������δ������λ����󣻲��ð�ÿ��λ��ÿ��Լƽ�����ֱ���滻��ƽ�������⡣"
+          "平均月租未给出单位与对象；不得把每铺位或每租约平均金额直接替换成平方米月租。"
         ],
-        "rationale": "�����ǵ�λ��ͳ�ƶ��󣬶��Ƕ�����ȷ��ƽ���׿ھ��޶�׷�ʡ�",
+        "rationale": "歧义是单位和统计对象，而非对已明确的平方米口径无端追问。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2513,7 +2513,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA040",
-        "question": "������׼�գ������⻧��Ƿ�ŵĵ��ڿ�һ�����٣�",
+        "question": "截至基准日，杭州租户还欠着的到期款一共多少？",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -2521,23 +2521,23 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "�����⻧": "��ȷ�ϣ�ע�����Ϊ���ݣ������޺�����Ŀ���⻧�ڸ���Ŀ�ļ�¼"
+              "杭州租户": "待确认：注册城市为杭州，或租赁杭州项目的租户在该项目的记录"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�����⻧ָע���ں��ݵ��⻧��������Ŀ��Ƿ����Ǻ�����Ŀ����⻧�ڸ���Ŀ��Ƿ�"
+          "杭州租户指注册在杭州的租户在所有项目的欠款，还是杭州项目里的租户在该项目的欠款？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "ע���������Ŀ���в�ͬ���⻧�ɿ���Ŀ����ǰ�ѵ���δ���ھ�����ȷ��"
+          "注册城市与项目城市不同，租户可跨项目；当前已到期未付口径已明确。"
         ],
-        "rationale": "�������ζ���Ϳ���Ŀͳ�Ʒ�Χ����ʵ���塣",
+        "rationale": "地理修饰对象和跨项目统计范围有真实歧义。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2547,7 +2547,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA041",
-        "question": "�����㳡����յ��˶����������",
+        "question": "澄明广场最近收到了多少账期租金？",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
@@ -2555,23 +2555,23 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ": "�����㳡"
+              "项目": "澄明广场"
             },
             "time": {
-              "��ȷ��": "���������Щ����"
+              "待确认": "最近覆盖哪些账期"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�������ָ�ļ������ڣ�����ĸ����ڵ��ĸ����ڣ�"
+          "最近具体指哪几个账期，或从哪个账期到哪个账期？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Ϊ������촰�ڣ�ʵ���԰����ڣ����������ա�"
+          "不得为最近编造窗口；实收仍按账期，不按到账日。"
         ],
-        "rationale": "ָ����֪��ʱ�䴰��ȱʧ��",
+        "rationale": "指标已知但时间窗口缺失。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2581,32 +2581,32 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA042",
-        "question": "�г�������׼�յ���û����Ǯ�ܶ���⻧��",
+        "question": "列出截至基准日到期没付的钱很多的租户。",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "�⻧�嵥",
+            "target_id": "租户清单",
             "filters": {
-              "�ѵ���δ�����": "�ܶ�Ľ���ż����߽��ȷ��",
-              "ͳ�Ʒ�Χ": "ÿ���⻧��ȫ����Ŀ�ϼ�"
+              "已到期未付余额": "很多的金额门槛及边界待确认",
+              "统计范围": "每家租户跨全部项目合计"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�ܶ����ָÿ���⻧�ϼ�Ƿ�������Ԫ�����Ǵﵽ����Ԫ�����ϣ�"
+          "很多具体指每家租户合计欠款超过多少元，还是达到多少元及以上？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "�Ի�׼�����ɸѡ��ͬһ�⻧����Ŀ�ϼƺ�ֻ��һ�Σ������������ż���"
+          "以基准日余额筛选；同一租户跨项目合计后只列一次；不得自设金额门槛。"
         ],
-        "rationale": "���Խ��ɸѡ��Ҫ��ȷ��ֵ�������߽硣",
+        "rationale": "定性金额筛选需要明确阈值及包含边界。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2616,31 +2616,31 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA043",
-        "question": "2026��8��31�գ�������ֲ�������Ŀ����Щ�����ѳ������ռ��������ı����жϡ�",
+        "question": "2026年8月31日，出租表现不达标的项目有哪些？按已出租面积占可租面积的比例判断。",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Ŀ�嵥",
+            "target_id": "项目清单",
             "filters": {
-              "�����ʲ����": "��ֵ���Ƿ�������ڴ�ȷ��"
+              "出租率不达标": "阈值及是否包含等于待确认"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "������ǳ����ʵ��ڶ��٣��������ֵ�Ƿ�Ҳ�㲻��ꣿ"
+          "不达标是出租率低于多少，等于这个值是否也算不达标？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "���������������ȷ������δ���ṩ�Ĵ���ߡ�"
+          "面积比例定义已明确；不设未经提供的达标线。"
         ],
-        "rationale": "ֻȱҵ������ֵ��Ŀ������Ŀ������",
+        "rationale": "只缺业务达标阈值，目标是项目名单。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2650,7 +2650,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA044",
-        "question": "�����ǹ�˾���ص���Ŀ��������һ����Щ��Ŀ2026���ϰ�����Ӫ�����ϼƶ��١�",
+        "question": "按我们公司的重点项目名单，算一下这些项目2026年上半年运营开销合计多少。",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
@@ -2658,25 +2658,25 @@
             "target_kind": "metric",
             "target_id": "operating_expense",
             "filters": {
-              "��Ŀ": "��˾�ص���Ŀ�������ṩ"
+              "项目": "公司重点项目名单待提供"
             },
             "time": {
-              "��": "2026-01",
-              "ֹ": "2026-06",
-              "����": "�����·�"
+              "起": "2026-01",
+              "止": "2026-06",
+              "类型": "费用月份"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "������ص���Ŀ���ƻ���������е���ִ�е���ȷɸѡ����"
+          "请给出重点项目名称或可依据现有档案执行的明确筛选规则。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "�ص���Ŀ��δ�ṩ���ڲ����򣬲��ܰ����С�������Ŀ���������ƶϡ�"
+          "重点项目是未提供的内部规则，不能按城市、金额或项目名称自行推断。"
         ],
-        "rationale": "���ÿھ����ڼ������ȱ�ڲ���Ŀ��Χ��",
+        "rationale": "费用口径和期间清楚，缺内部项目范围。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2686,32 +2686,32 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STA045",
-        "question": "���������ĳ�����Լ���г�����",
+        "question": "把云栖中心长期租约都列出来。",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "��������",
-              "����": "������ֵ��������ֹ��ȷ��"
+              "项目": "云栖中心",
+              "长期": "租期阈值及计算起止待确认"
             },
             "time": {
-              "��ȷ��": "��ԭԼ���������жϣ��򰴻�׼��ʣ�������ж�"
+              "待确认": "按原约定总租期判断，或按基准日剩余租期判断"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "���ڰ�ԭԼ�������ڻ��ǽ�����׼�յ�ʣ�������жϣ����ٶ೤���㣿"
+          "长期按原约定总租期还是截至基准日的剩余租期判断，至少多长才算？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ñ��쳤����ֵ��û������˵��ʱ���Զ���ȡ��Ч��Լ��"
+          "不得编造长期阈值；没有另行说明时不自动仅取有效租约。"
         ],
-        "rationale": "������δ������ڲ����࣬����ȷ���Ⱥͺ�����ʽ��",
+        "rationale": "长期是未定义的内部分类，须明确长度和衡量方式。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2721,16 +2721,16 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STA046",
-        "question": "�����㳡2026��8��һ�����˶���λ�˿ͣ�",
+        "question": "澄明广场2026年8月一共来了多少位顾客？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "�˿͵�������������"
+          "顾客到访人数／客流"
         ],
         "important_basis": [],
-        "rationale": "�����������ݷ�Χ���������⻧������λ�����档",
+        "rationale": "客流不在数据范围，不能用租户数或铺位数代替。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2740,16 +2740,16 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STA047",
-        "question": "������2026�����7����8�£��̻��ϼ����˶���Ǯ��",
+        "question": "湖滨里2026年暑假7月至8月，商户合计卖了多少钱？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "�̻����۶�"
+          "商户销售额"
         ],
         "important_basis": [],
-        "rationale": "���۶�����ݷ�Χ�����Ӧ�ջ�ʵ�ղ��������",
+        "rationale": "销售额不在数据范围，租金应收或实收不能替代。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2759,16 +2759,16 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STA048",
-        "question": "�����2026���ϰ���ͣ���շ��ܹ�������٣�",
+        "question": "金陵汇2026年上半年停车收费总共收入多少？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "ͣ������"
+          "停车收入"
         ],
         "important_basis": [],
-        "rationale": "δ�ṩͣ���շ��������ݣ����������������ơ�",
+        "rationale": "未提供停车收费收入数据，不能以租金收入近似。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2778,16 +2778,16 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STA049",
-        "question": "�����³̽���2026��9��1�յ��г���ֵ�Ƕ��٣�",
+        "question": "望京新程截至2026年9月1日的市场估值是多少？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "�г���ֵ"
+          "市场估值"
         ],
         "important_basis": [],
-        "rationale": "�г���ֵ�������ݷ�Χ�����ܴ���������ƶϴ��档",
+        "rationale": "市场估值不在数据范围，不能从租金或面积推断代替。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2797,16 +2797,16 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STA050",
-        "question": "ƽ����2025��ȫ����ʽ���񱨱��ϵĻ�������Ƕ��٣�",
+        "question": "平江坊2025年全年正式财务报表上的会计利润是多少？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "��ʽ�������"
+          "正式会计利润"
         ],
         "important_basis": [],
-        "rationale": "��ʽ��������ڷ�Χ��ʵ�ռ����õļ򻯴������������",
+        "rationale": "正式会计利润不在范围，实收减费用的简化代理不能替代。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -2816,7 +2816,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB001",
-        "question": "�Ϻ���������Ŀ��2026��ڶ�����һ�����ն������",
+        "question": "上海这两个项目在2026年第二季度一共该收多少租金？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -2824,15 +2824,15 @@
             "target_kind": "metric",
             "target_id": "rent_due",
             "filters": {
-              "��Ŀ����": "�Ϻ�",
-              "��Ŀ": [
-                "�����㳡",
-                "��������"
+              "项目城市": "上海",
+              "项目": [
+                "澄明广场",
+                "云栖中心"
               ]
             },
             "time": {
-              "������": "2026-04",
-              "����ֹ": "2026-06"
+              "账期起": "2026-04",
+              "账期止": "2026-06"
             },
             "group_by": [],
             "sort": null
@@ -2841,9 +2841,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���������ڻ���Ӧ�����"
+          "按所列账期汇总应收租金。"
         ],
-        "rationale": "����ɸѡ�뼾������ϳ�һ��Ӧ���ܶ�Ŀ�ꡣ",
+        "rationale": "城市筛选与季度区间合成一个应收总额目标。",
         "multi_request": false
       },
       "slots": {
@@ -2856,15 +2856,15 @@
             "dimension": "project_city",
             "operator": "in",
             "values": [
-              "�Ϻ�"
+              "上海"
             ]
           },
           {
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡",
-              "��������"
+              "澄明广场",
+              "云栖中心"
             ]
           }
         ],
@@ -2878,7 +2878,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���������ڻ���Ӧ�����"
+        "按所列账期汇总应收租金。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2887,7 +2887,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB002",
-        "question": "���������1��8�µ����ע�����Ϻ����⻧�ϼ��Ѿ����˶���Ǯ��",
+        "question": "湖滨里今年1到8月的租金，注册在上海的租户合计已经交了多少钱？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -2895,12 +2895,12 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ": "������",
-              "�⻧ע�����": "�Ϻ�"
+              "项目": "湖滨里",
+              "租户注册城市": "上海"
             },
             "time": {
-              "������": "2026-01",
-              "����ֹ": "2026-08"
+              "账期起": "2026-01",
+              "账期止": "2026-08"
             },
             "group_by": [],
             "sort": null
@@ -2909,11 +2909,11 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���갴��׼�ս���Ϊ2026�ꡣ",
-          "ʵ�չ���ָ�����ڣ�����ʵ�ʵ�����ɸѡ��",
-          "�Ϻ����⻧ע����У�������Ŀ���С�"
+          "今年按基准日解释为2026年。",
+          "实收归属指定账期，不按实际到账日筛选。",
+          "上海是租户注册城市，不是项目城市。"
         ],
-        "rationale": "���������ɸѡ��ֻ��һ��ʵ�պϼơ�",
+        "rationale": "跨城市属性筛选后只求一项实收合计。",
         "multi_request": false
       },
       "slots": {
@@ -2926,14 +2926,14 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           },
           {
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "�Ϻ�"
+              "上海"
             ]
           }
         ],
@@ -2947,9 +2947,9 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���갴��׼�ս���Ϊ2026�ꡣ",
-        "ʵ�չ���ָ�����ڣ�����ʵ�ʵ�����ɸѡ��",
-        "�Ϻ����⻧ע����У�������Ŀ���С�"
+        "今年按基准日解释为2026年。",
+        "实收归属指定账期，不按实际到账日筛选。",
+        "上海是租户注册城市，不是项目城市。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -2958,7 +2958,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB003",
-        "question": "������ƽ����2026��8�¸��յ���𣬺���һ���Ѿ��ջ��˰ٷ�֮���٣�",
+        "question": "金陵汇和平江坊2026年8月该收的租金，合在一起已经收回了百分之多少？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -2966,14 +2966,14 @@
             "target_kind": "metric",
             "target_id": "collection_rate",
             "filters": {
-              "��Ŀ": [
-                "�����",
-                "ƽ����"
+              "项目": [
+                "金陵汇",
+                "平江坊"
               ]
             },
             "time": {
-              "������": "2026-08",
-              "����ֹ": "2026-08"
+              "账期起": "2026-08",
+              "账期止": "2026-08"
             },
             "group_by": [],
             "sort": null
@@ -2982,9 +2982,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "������Ŀͬ������ʵ�ճ�����Ӧ�գ���ƽ��������Ŀ�ı��ʡ�"
+          "两个项目同账期总实收除以总应收，不平均两个项目的比率。"
         ],
-        "rationale": "����Ŀ�ϲ���Ŀ���Ϊһ���ջر�����",
+        "rationale": "多项目合并但目标仅为一个收回比例。",
         "multi_request": false
       },
       "slots": {
@@ -2997,8 +2997,8 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����",
-              "ƽ����"
+              "金陵汇",
+              "平江坊"
             ]
           }
         ],
@@ -3012,7 +3012,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "������Ŀͬ������ʵ�ճ�����Ӧ�գ���ƽ��������Ŀ�ı��ʡ�"
+        "两个项目同账期总实收除以总应收，不平均两个项目的比率。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3021,7 +3021,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB004",
-        "question": "��2026��6��30�գ������³�һ¥��������λһ�����ȥ�˶���ƽ���ף�",
+        "question": "到2026年6月30日，望京新程一楼的零售铺位一共租出去了多少平方米？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3029,12 +3029,12 @@
             "target_kind": "metric",
             "target_id": "leased_area",
             "filters": {
-              "��Ŀ": "�����³�",
-              "��λ¥��": "һ¥",
-              "��λ����": "����"
+              "项目": "望京新程",
+              "铺位楼层": "一楼",
+              "铺位类型": "零售"
             },
             "time": {
-              "ʱ��": "2026-06-30"
+              "时点": "2026-06-30"
             },
             "group_by": [],
             "sort": null
@@ -3043,9 +3043,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ָ��ʱ������ѳ��������¥�����λ����ʹ�õ�ǰ������"
+          "按指定时点计算已出租面积；楼层和铺位类型使用当前档案。"
         ],
-        "rationale": "����Ŀ��¥�㡢���ͺ�ʱ�����Ϊ���������ѯ��",
+        "rationale": "将项目、楼层、类型和时点组合为单项面积查询。",
         "multi_request": false
       },
       "slots": {
@@ -3058,7 +3058,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           },
           {
@@ -3085,7 +3085,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "��ָ��ʱ������ѳ��������¥�����λ����ʹ�õ�ǰ������"
+        "按指定时点计算已出租面积；楼层和铺位类型使用当前档案。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3094,7 +3094,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB005",
-        "question": "2025��12��31�գ��������İ칫��λ�ɳ���������ж��ٱ����Ѿ����ȥ�ˣ�",
+        "question": "2025年12月31日，云栖中心办公铺位可出租的面积里，有多少比例已经租出去了？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3102,11 +3102,11 @@
             "target_kind": "metric",
             "target_id": "occupancy_rate",
             "filters": {
-              "��Ŀ": "��������",
-              "��λ����": "�칫"
+              "项目": "云栖中心",
+              "铺位类型": "办公"
             },
             "time": {
-              "ʱ��": "2025-12-31"
+              "时点": "2025-12-31"
             },
             "group_by": [],
             "sort": null
@@ -3115,10 +3115,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Ϊ�÷�Χ�ѳ����������ĸΪͬ��Χ���������������λ�������㡣",
-          "�칫ָ��λ���ͣ����ƶ���Ŀ���͡�"
+          "分子为该范围已出租面积，分母为同范围可租面积，不按铺位个数计算。",
+          "办公指铺位类型，不推断项目类型。"
         ],
-        "rationale": "��ȷ�����ĸ��ɸѡ�칫��λ�����鹹��Ŀ���͡�",
+        "rationale": "明确面积分母，筛选办公铺位而非虚构项目类型。",
         "multi_request": false
       },
       "slots": {
@@ -3131,7 +3131,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "��������"
+              "云栖中心"
             ]
           },
           {
@@ -3151,8 +3151,8 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����Ϊ�÷�Χ�ѳ����������ĸΪͬ��Χ���������������λ�������㡣",
-        "�칫ָ��λ���ͣ����ƶ���Ŀ���͡�"
+        "分子为该范围已出租面积，分母为同范围可租面积，不按铺位个数计算。",
+        "办公指铺位类型，不推断项目类型。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3161,7 +3161,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB006",
-        "question": "�����㳡����������2026��5��7����ά��ά����ʵ�ʻ��˶���Ǯ��",
+        "question": "澄明广场和云栖中心2026年5到7月在维修维护上实际花了多少钱？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3169,15 +3169,15 @@
             "target_kind": "metric",
             "target_id": "operating_expense",
             "filters": {
-              "��Ŀ": [
-                "�����㳡",
-                "��������"
+              "项目": [
+                "澄明广场",
+                "云栖中心"
               ],
-              "���÷���": "ά��ά��"
+              "费用分类": "维修维护"
             },
             "time": {
-              "�·���": "2026-05",
-              "�·�ֹ": "2026-07"
+              "月份起": "2026-05",
+              "月份止": "2026-07"
             },
             "group_by": [],
             "sort": null
@@ -3186,9 +3186,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����ʵ�ʷ��ã�����Ϊ����ҡ�"
+          "汇总实际费用，币种为人民币。"
         ],
-        "rationale": "����Ŀ���·ݵĵ������û��ܡ�",
+        "rationale": "跨项目和月份的单类别费用汇总。",
         "multi_request": false
       },
       "slots": {
@@ -3201,15 +3201,15 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡",
-              "��������"
+              "澄明广场",
+              "云栖中心"
             ]
           },
           {
             "dimension": "expense_category",
             "operator": "in",
             "values": [
-              "ά��ά��"
+              "维修维护"
             ]
           }
         ],
@@ -3223,7 +3223,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����ʵ�ʷ��ã�����Ϊ����ҡ�"
+        "汇总实际费用，币种为人民币。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3232,7 +3232,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB007",
-        "question": "����������ϰ����Ӫ��֧���������ʱ�䰲�ŵ�Ԥ��໨���ٻ��˶���Ԫ��",
+        "question": "湖滨里今年上半年的营销支出，比这段时间安排的预算多花或少花了多少元？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3240,12 +3240,12 @@
             "target_kind": "metric",
             "target_id": "budget_variance",
             "filters": {
-              "��Ŀ": "������",
-              "���÷���": "Ӫ��"
+              "项目": "湖滨里",
+              "费用分类": "营销"
             },
             "time": {
-              "�·���": "2026-01",
-              "�·�ֹ": "2026-06"
+              "月份起": "2026-01",
+              "月份止": "2026-06"
             },
             "group_by": [],
             "sort": null
@@ -3254,9 +3254,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ʵ�ʷ��ü�Ԥ�㣬����Ϊ�໨������Ϊ�ٻ���"
+          "实际费用减预算，正数为多花、负数为少花。"
         ],
-        "rationale": "�໨���ٻ�����ͬһ�з��Ų���������ָ�ꡣ",
+        "rationale": "多花或少花描述同一有符号差额，不是两个指标。",
         "multi_request": false
       },
       "slots": {
@@ -3269,14 +3269,14 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           },
           {
             "dimension": "expense_category",
             "operator": "in",
             "values": [
-              "Ӫ��"
+              "营销"
             ]
           }
         ],
@@ -3290,7 +3290,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "ʵ�ʷ��ü�Ԥ�㣬����Ϊ�໨������Ϊ�ٻ���"
+        "实际费用减预算，正数为多花、负数为少花。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3299,7 +3299,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB008",
-        "question": "�����³�2026��1��8�µ����ʵ�գ��۵�ͬһ�ڼ�ʵ����Ӫ�����Ժ󣬻�ʣ����Ԫ��",
+        "question": "望京新程2026年1到8月的租金实收，扣掉同一期间实际运营费用以后，还剩多少元？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3307,11 +3307,11 @@
             "target_kind": "metric",
             "target_id": "cash_noi_proxy",
             "filters": {
-              "��Ŀ": "�����³�"
+              "项目": "望京新程"
             },
             "time": {
-              "���ڼ������·���": "2026-01",
-              "���ڼ������·�ֹ": "2026-08"
+              "账期及费用月份起": "2026-01",
+              "账期及费用月份止": "2026-08"
             },
             "group_by": [],
             "sort": null
@@ -3320,9 +3320,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�����ͬ����ʵ�ռ�ͬ��ʵ����Ӫ���õļ򻯴�����������ʽNOI��������"
+          "结果是同账期实收减同期实际运营费用的简化代理，不是正式NOI或会计利润。"
         ],
-        "rationale": "�������һ��Ŀ¼ָ�꣬������Ҫ����������",
+        "rationale": "相减定义一个目录指标，不另行要求两个组成项。",
         "multi_request": false
       },
       "slots": {
@@ -3335,7 +3335,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           }
         ],
@@ -3349,7 +3349,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "�����ͬ����ʵ�ռ�ͬ��ʵ����Ӫ���õļ򻯴�����������ʽNOI��������"
+        "结果是同账期实收减同期实际运营费用的简化代理，不是正式NOI或会计利润。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3358,7 +3358,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB009",
-        "question": "2026��8��31�գ�������¥������λ�������Ȩ��ÿƽ����һ���µ�����Ƕ���Ԫ��",
+        "question": "2026年8月31日，金陵汇二楼餐饮铺位按面积加权后，每平方米一个月的租金是多少元？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3366,12 +3366,12 @@
             "target_kind": "metric",
             "target_id": "avg_monthly_rent_per_sqm",
             "filters": {
-              "��Ŀ": "�����",
-              "��λ¥��": "��¥",
-              "��λ����": "����"
+              "项目": "金陵汇",
+              "铺位楼层": "二楼",
+              "铺位类型": "餐饮"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [],
             "sort": null
@@ -3380,9 +3380,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�������Ȩ�����ʱ��ƽ�������⣬��������λ���ۼ�ƽ����"
+          "按面积加权计算该时点平方米月租，不将各铺位单价简单平均。"
         ],
-        "rationale": "ָ��ϸ����λ��Χ����ȷ��Ȩ�ھ���",
+        "rationale": "指定细分铺位范围和明确加权口径。",
         "multi_request": false
       },
       "slots": {
@@ -3395,7 +3395,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����"
+              "金陵汇"
             ]
           },
           {
@@ -3422,7 +3422,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "�������Ȩ�����ʱ��ƽ�������⣬��������λ���ۼ�ƽ����"
+        "按面积加权计算该时点平方米月租，不将各铺位单价简单平均。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3431,7 +3431,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB010",
-        "question": "����2026��9��1�գ�ע���ڱ������⻧��������Ŀ�ﵽ�ڻ�û�������һ��Ƿ����Ԫ��",
+        "question": "截至2026年9月1日，注册在北京的租户在所有项目里到期还没付的租金，一共欠多少元？",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
@@ -3439,11 +3439,11 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "�⻧ע�����": "����",
-              "��Ŀ��Χ": "ȫ����Ŀ"
+              "租户注册城市": "北京",
+              "项目范围": "全部项目"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -3452,10 +3452,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ͳ�ƻ�׼���ѵ���δ����δ���ڲ��ֲ����롣",
-          "���⻧ע�����ɸѡ������Ŀ���ϲ���"
+          "仅统计基准日已到期未付余额，未到期部分不计入。",
+          "按租户注册城市筛选，跨项目余额合并。"
         ],
-        "rationale": "����Ŀ�⻧����ɸѡ��ĵ�ǰ�����ܶ",
+        "rationale": "跨项目租户属性筛选后的当前逾期总额。",
         "multi_request": false
       },
       "slots": {
@@ -3468,7 +3468,7 @@
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "����"
+              "北京"
             ]
           }
         ],
@@ -3481,13 +3481,13 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ��Χ",
-          "requirement": "ȫ����Ŀ"
+          "label": "项目范围",
+          "requirement": "全部项目"
         }
       ],
       "important_basis": [
-        "��ͳ�ƻ�׼���ѵ���δ����δ���ڲ��ֲ����롣",
-        "���⻧ע�����ɸѡ������Ŀ���ϲ���"
+        "仅统计基准日已到期未付余额，未到期部分不计入。",
+        "按租户注册城市筛选，跨项目余额合并。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3496,20 +3496,20 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB011",
-        "question": "��ƽ������ͬ��������2025��7��1�յ�12��31��֮�����Լ���г���������������ʲô״̬��",
+        "question": "把平江坊合同结束日在2025年7月1日到12月31日之间的租约都列出来，不论现在是什么状态。",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "ƽ����",
-              "��Լ״̬": "����"
+              "项目": "平江坊",
+              "租约状态": "不限"
             },
             "time": {
-              "��Լ��������": "2025-07-01",
-              "��Լ������ֹ": "2025-12-31"
+              "租约结束日起": "2025-07-01",
+              "租约结束日止": "2025-12-31"
             },
             "group_by": [],
             "sort": null
@@ -3518,9 +3518,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ֹ�߽������������ͬ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+          "起止边界均包含，按合同结束日筛选现有记录，不默认仅有效租约。"
         ],
-        "rationale": "�����շ�Χ��״̬��Χ��ȷ��һ���¼�嵥��",
+        "rationale": "结束日范围和状态范围明确的一项记录清单。",
         "multi_request": false
       },
       "slots": {
@@ -3533,7 +3533,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "ƽ����"
+              "平江坊"
             ]
           }
         ],
@@ -3548,12 +3548,12 @@
       },
       "additional_requirements": [
         {
-          "label": "��Լ״̬",
-          "requirement": "����"
+          "label": "租约状态",
+          "requirement": "不限"
         }
       ],
       "important_basis": [
-        "��ֹ�߽������������ͬ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+        "起止边界均包含，按合同结束日筛选现有记录，不默认仅有效租约。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3562,22 +3562,22 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB012",
-        "question": "��Щע���ں��ݵ������⻧���ڳ����㳡�����������й���Լ��¼��ÿ���⻧ֻ��һ�Σ���Լ״̬���ޡ�",
+        "question": "哪些注册在杭州的新锐租户，在澄明广场或云栖中心有过租约记录？每个租户只列一次，租约状态不限。",
         "category": "query_summary",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "�⻧�嵥",
+            "target_id": "租户清单",
             "filters": {
-              "�⻧ע�����": "����",
-              "�⻧�ȼ�": "����",
-              "������Լ��Ŀ��һ": [
-                "�����㳡",
-                "��������"
+              "租户注册城市": "杭州",
+              "租户等级": "新锐",
+              "关联租约项目任一": [
+                "澄明广场",
+                "云栖中心"
               ],
-              "������Լ״̬": "����",
-              "��¼ȥ��": "���⻧����ȥ��"
+              "关联租约状态": "不限",
+              "记录去重": "按租户身份去重"
             },
             "time": null,
             "group_by": [],
@@ -3587,11 +3587,11 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�й���Լָ������Լ��¼�д��ڹ������������ƶ�ȱʧ��ʷ��",
-          "ע�������ȼ��õ�ǰ������ͬһ�⻧���ܿ���Ŀ�����ȥ�ء�",
-          "δҪ���ڼ䣬��������ȫ����Լ��¼��"
+          "有过租约指现有租约记录中存在关联，不延伸推断缺失历史。",
+          "注册城市与等级用当前档案；同一租户可能跨项目，结果去重。",
+          "未要求期间，检索现有全部租约记录。"
         ],
-        "rationale": "�⻧��������һ��Ŀ����������ͬȷ��һ��ȥ���嵥��",
+        "rationale": "租户属性与任一项目关联条件共同确定一个去重清单。",
         "multi_request": false
       },
       "slots": {
@@ -3604,7 +3604,7 @@
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "����"
+              "杭州"
             ]
           },
           {
@@ -3618,8 +3618,8 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡",
-              "��������"
+              "澄明广场",
+              "云栖中心"
             ]
           }
         ],
@@ -3631,18 +3631,18 @@
       },
       "additional_requirements": [
         {
-          "label": "������Լ״̬",
-          "requirement": "����"
+          "label": "关联租约状态",
+          "requirement": "不限"
         },
         {
-          "label": "��¼ȥ��",
-          "requirement": "���⻧����ȥ��"
+          "label": "记录去重",
+          "requirement": "按租户身份去重"
         }
       ],
       "important_basis": [
-        "�й���Լָ������Լ��¼�д��ڹ������������ƶ�ȱʧ��ʷ��",
-        "ע�������ȼ��õ�ǰ������ͬһ�⻧���ܿ���Ŀ�����ȥ�ء�",
-        "δҪ���ڼ䣬��������ȫ����Լ��¼��"
+        "有过租约指现有租约记录中存在关联，不延伸推断缺失历史。",
+        "注册城市与等级用当前档案；同一租户可能跨项目，结果去重。",
+        "未要求期间，检索现有全部租约记录。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3651,7 +3651,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB013",
-        "question": "2026���ϰ��꣬ÿ����Ŀ���ڳ��зֱ���ն������",
+        "question": "2026年上半年，每个项目所在城市分别该收多少租金？",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -3660,11 +3660,11 @@
             "target_id": "rent_due",
             "filters": {},
             "time": {
-              "������": "2026-01",
-              "����ֹ": "2026-06"
+              "账期起": "2026-01",
+              "账期止": "2026-06"
             },
             "group_by": [
-              "��Ŀ����"
+              "项目城市"
             ],
             "sort": null
           }
@@ -3672,9 +3672,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Ŀ���й鼯�������⻧ע����������"
+          "按项目城市归集，不用租户注册城市替代。"
         ],
-        "rationale": "��һӦ��ָ�갴���з��顣",
+        "rationale": "单一应收指标按城市分组。",
         "multi_request": false
       },
       "slots": {
@@ -3695,7 +3695,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����Ŀ���й鼯�������⻧ע����������"
+        "按项目城市归集，不用租户注册城市替代。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3704,7 +3704,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB014",
-        "question": "���������1��8�£�ÿ���¶�Ӧ������Ѿ��յ��˶��٣����·ݴ��絽���š�",
+        "question": "湖滨里今年1到8月，每个月对应的租金已经收到了多少？按月份从早到晚排。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -3712,29 +3712,29 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "������": "2026-01",
-              "����ֹ": "2026-08"
+              "账期起": "2026-01",
+              "账期止": "2026-08"
             },
             "group_by": [
-              "�����·�"
+              "账期月份"
             ],
             "sort": {
-              "����": "�����·�",
-              "����": "����",
-              "����": "ȫ��",
-              "��Χ": "ȫ��"
+              "依据": "账期月份",
+              "方向": "升序",
+              "数量": "全部",
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�¶�ʵ�հ����ڹ��������������·ݡ�"
+          "月度实收按账期归属，不按到账月份。"
         ],
-        "rationale": "һ��ָ��İ˸������Ƽ�ʱ������",
+        "rationale": "一个指标的八个月趋势及时间排序。",
         "multi_request": false
       },
       "slots": {
@@ -3747,7 +3747,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           }
         ],
@@ -3763,17 +3763,17 @@
       },
       "additional_requirements": [
         {
-          "label": "ʱ��չʾ˳��",
+          "label": "时间展示顺序",
           "requirement": {
-            "����": "�����·�",
-            "����": "����",
-            "����": "ȫ��",
-            "��Χ": "ȫ��"
+            "依据": "账期月份",
+            "方向": "升序",
+            "数量": "全部",
+            "范围": "全局"
           }
         }
       ],
       "important_basis": [
-        "�¶�ʵ�հ����ڹ��������������·ݡ�"
+        "月度实收按账期归属，不按到账月份。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3782,7 +3782,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB015",
-        "question": "2026��7�£���������Ŀ���յ�����ջر�����ͣ��ӵ͵����г�����",
+        "question": "2026年7月，哪三个项目该收的租金收回比例最低？从低到高列出来。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -3791,28 +3791,28 @@
             "target_id": "collection_rate",
             "filters": {},
             "time": {
-              "������": "2026-07",
-              "����ֹ": "2026-07"
+              "账期起": "2026-07",
+              "账期止": "2026-07"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "ͬ�����ջر���",
-              "����": "����",
-              "����": 3,
-              "��Χ": "ȫ����Ŀ֮���ȫ������"
+              "依据": "同账期收回比例",
+              "方向": "升序",
+              "数量": 3,
+              "范围": "全部项目之间的全局排名"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ÿ����Ŀ�ֱ�����ʵ�ճ�����Ӧ�գ�ѡ���������",
-          "����ָֻ���ջر�������û��ָ��������Ŀ�Ĵ������ƻ����ݴ�����ǿ���¶��Ĭ��ѡ�����Ψһ����Լ����",
-          "����ȫ��ǰ�����������������򣻱߽粢��ʱ���κΰ��������ϸ���ͱ�����Ŀ���ٴӱ߽粢����Ŀ�в�������Ľ�����ȼۡ��������ڲ������ޣ�����¶��ѡ������ע���У���Ҫ��Ψһ������"
+          "每个项目分别以总实收除以总应收，选最低三个。",
+          "题面只指定收回比例升序，没有指定并列项目的次序。名称或身份次序仅是可披露的默认选项，不是唯一评分约束。",
+          "保持全局前三个的数量和主排序；边界并列时，任何包含所有严格更低比例项目、再从边界并列项目中补足三项的结果均等价。并列项内部次序不限，可披露所选规则或标注并列，不要求唯一名单。"
         ],
-        "rationale": "������ʵ�ȫ�ֵ���������",
+        "rationale": "单项比率的全局倒数三名。",
         "multi_request": false
       },
       "slots": {
@@ -3837,19 +3837,19 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "ͬ�����ջر���",
-            "����": "����",
-            "����": 3,
-            "��Χ": "ȫ����Ŀ֮���ȫ������"
+            "依据": "同账期收回比例",
+            "方向": "升序",
+            "数量": 3,
+            "范围": "全部项目之间的全局排名"
           }
         }
       ],
       "important_basis": [
-        "ÿ����Ŀ�ֱ�����ʵ�ճ�����Ӧ�գ�ѡ���������",
-        "����ָֻ���ջر�������û��ָ��������Ŀ�Ĵ������ƻ����ݴ�����ǿ���¶��Ĭ��ѡ�����Ψһ����Լ����",
-        "����ȫ��ǰ�����������������򣻱߽粢��ʱ���κΰ��������ϸ���ͱ�����Ŀ���ٴӱ߽粢����Ŀ�в�������Ľ�����ȼۡ��������ڲ������ޣ�����¶��ѡ������ע���У���Ҫ��Ψһ������"
+        "每个项目分别以总实收除以总应收，选最低三个。",
+        "题面只指定收回比例升序，没有指定并列项目的次序。名称或身份次序仅是可披露的默认选项，不是唯一评分约束。",
+        "保持全局前三个的数量和主排序；边界并列时，任何包含所有严格更低比例项目、再从边界并列项目中补足三项的结果均等价。并列项内部次序不限，可披露所选规则或标注并列，不要求唯一名单。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3858,7 +3858,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB016",
-        "question": "��2026��3��31�գ������㳡���������ĸ�¥��ֱ�����˶���ƽ���ף�������Ŀ�ֿ�����",
+        "question": "在2026年3月31日，澄明广场和云栖中心各楼层分别租出了多少平方米？两个项目分开看。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -3866,17 +3866,17 @@
             "target_kind": "metric",
             "target_id": "leased_area",
             "filters": {
-              "��Ŀ": [
-                "�����㳡",
-                "��������"
+              "项目": [
+                "澄明广场",
+                "云栖中心"
               ]
             },
             "time": {
-              "ʱ��": "2026-03-31"
+              "时点": "2026-03-31"
             },
             "group_by": [
-              "��Ŀ",
-              "��λ¥��"
+              "项目",
+              "铺位楼层"
             ],
             "sort": null
           }
@@ -3884,9 +3884,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����Ŀ��¥��������飬ͬ��¥�㲻����Ŀ�ϲ���¥��ʹ�õ�ǰ������"
+          "按项目及楼层两层分组，同名楼层不跨项目合并；楼层使用当前档案。"
         ],
-        "rationale": "��ʱ�������˫ά�ȷ��顣",
+        "rationale": "单时点面积的双维度分组。",
         "multi_request": false
       },
       "slots": {
@@ -3899,8 +3899,8 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡",
-              "��������"
+              "澄明广场",
+              "云栖中心"
             ]
           }
         ],
@@ -3916,7 +3916,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����Ŀ��¥��������飬ͬ��¥�㲻����Ŀ�ϲ���¥��ʹ�õ�ǰ������"
+        "按项目及楼层两层分组，同名楼层不跨项目合并；楼层使用当前档案。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -3925,7 +3925,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB017",
-        "question": "ƽ������2025��3��31�ա�6��30�ա�9��30�պ�12��31�գ����������������ı����ֱ��Ƕ��٣��������š�",
+        "question": "平江坊在2025年3月31日、6月30日、9月30日和12月31日，可租面积中已租出的比例分别是多少？按日期排。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -3933,10 +3933,10 @@
             "target_kind": "metric",
             "target_id": "occupancy_rate",
             "filters": {
-              "��Ŀ": "ƽ����"
+              "项目": "平江坊"
             },
             "time": {
-              "ʱ���б�": [
+              "时点列表": [
                 "2025-03-31",
                 "2025-06-30",
                 "2025-09-30",
@@ -3944,22 +3944,22 @@
               ]
             },
             "group_by": [
-              "ָ��ʱ��"
+              "指定时点"
             ],
             "sort": {
-              "����": "ʱ������",
-              "����": "����",
-              "����": "ȫ���ĸ�ʱ��",
-              "��Χ": "ȫ��"
+              "依据": "时点日期",
+              "方向": "升序",
+              "数量": "全部四个时点",
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�ֱ�����ĸ�ʱ����ѳ���������Կ�������������ͳɼ���ƽ����ȫ��ƽ����"
+          "分别计算四个时点的已出租面积除以可租面积，不解释成季度平均或全年平均。"
         ],
-        "rationale": "�ĸ���ɢʱ���γ�ͬһ�������ơ�",
+        "rationale": "四个离散时点形成同一比率趋势。",
         "multi_request": false
       },
       "slots": {
@@ -3972,7 +3972,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "ƽ����"
+              "平江坊"
             ]
           }
         ],
@@ -3992,17 +3992,17 @@
       },
       "additional_requirements": [
         {
-          "label": "ʱ��չʾ˳��",
+          "label": "时间展示顺序",
           "requirement": {
-            "����": "ʱ������",
-            "����": "����",
-            "����": "ȫ���ĸ�ʱ��",
-            "��Χ": "ȫ��"
+            "依据": "时点日期",
+            "方向": "升序",
+            "数量": "全部四个时点",
+            "范围": "全局"
           }
         }
       ],
       "important_basis": [
-        "�ֱ�����ĸ�ʱ����ѳ���������Կ�������������ͳɼ���ƽ����ȫ��ƽ����"
+        "分别计算四个时点的已出租面积除以可租面积，不解释成季度平均或全年平均。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4011,7 +4011,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB018",
-        "question": "2026��1��8�£�ÿ����Ŀ��Ǯ����������Ӫ���÷ֱ���ʲô��������Ŀ���ʵ�ʻ��ѴӸߵ����С�",
+        "question": "2026年1到8月，每个项目花钱最多的三类运营费用分别是什么？按各项目里的实际花费从高到低列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -4020,29 +4020,29 @@
             "target_id": "operating_expense",
             "filters": {},
             "time": {
-              "�·���": "2026-01",
-              "�·�ֹ": "2026-08"
+              "月份起": "2026-01",
+              "月份止": "2026-08"
             },
             "group_by": [
-              "��Ŀ",
-              "���÷���"
+              "项目",
+              "费用分类"
             ],
             "sort": {
-              "����": "ʵ����Ӫ���úϼ�",
-              "����": "����",
-              "����": 3,
-              "��Χ": "����Ŀ���ڷֱ�ȡǰ����"
+              "依据": "实际运营费用合计",
+              "方向": "降序",
+              "数量": 3,
+              "范围": "各项目组内分别取前三类"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ÿ����Ŀ�ֱ���������ȡȫ����Ŀ����һ���ǰ���ࡣ",
-          "����Ŀ���ڰ�ʵ�ʷ��ý���ȡ���࣬�����������г�����������ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
-          "��������ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ���߷�������ٴӸ���Ŀ�߽粢������в������࣬��Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶����������"
+          "每个项目分别排名，不取全体项目合在一起的前三类。",
+          "各项目组内按实际费用降序取三类，不足三类则列出现有类别。名称或身份次序仅是可披露的并列默认选项，不是唯一评分约束。",
+          "并列类别内部次序不限；边界并列时，先包含所有严格更高费用类别，再从该项目边界并列类别中补足三类，均为等价结果。可披露规则或标注并列，不强制匹配固定类别名单。"
         ],
-        "rationale": "һ�����ָ�꣬����ǰ����ȫ��ǰ����ȷ���֡�",
+        "rationale": "一项费用指标，组内前三与全局前三明确区分。",
         "multi_request": false
       },
       "slots": {
@@ -4071,19 +4071,19 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "ʵ����Ӫ���úϼ�",
-            "����": "����",
-            "����": 3,
-            "��Χ": "����Ŀ���ڷֱ�ȡǰ����"
+            "依据": "实际运营费用合计",
+            "方向": "降序",
+            "数量": 3,
+            "范围": "各项目组内分别取前三类"
           }
         }
       ],
       "important_basis": [
-        "ÿ����Ŀ�ֱ���������ȡȫ����Ŀ����һ���ǰ���ࡣ",
-        "����Ŀ���ڰ�ʵ�ʷ��ý���ȡ���࣬�����������г�����������ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
-        "��������ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ���߷�������ٴӸ���Ŀ�߽粢������в������࣬��Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶����������"
+        "每个项目分别排名，不取全体项目合在一起的前三类。",
+        "各项目组内按实际费用降序取三类，不足三类则列出现有类别。名称或身份次序仅是可披露的并列默认选项，不是唯一评分约束。",
+        "并列类别内部次序不限；边界并列时，先包含所有严格更高费用类别，再从该项目边界并列类别中补足三类，均为等价结果。可披露规则或标注并列，不强制匹配固定类别名单。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4092,7 +4092,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB019",
-        "question": "�����³�2026��1��8�£�ÿ�°������ñ�Ԥ��໨���ٻ��˶��٣����·����С�",
+        "question": "望京新程2026年1到8月，每月安保费用比预算多花或少花了多少？按月份排列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -4100,30 +4100,30 @@
             "target_kind": "metric",
             "target_id": "budget_variance",
             "filters": {
-              "��Ŀ": "�����³�",
-              "���÷���": "����"
+              "项目": "望京新程",
+              "费用分类": "安保"
             },
             "time": {
-              "�·���": "2026-01",
-              "�·�ֹ": "2026-08"
+              "月份起": "2026-01",
+              "月份止": "2026-08"
             },
             "group_by": [
-              "�����·�"
+              "费用月份"
             ],
             "sort": {
-              "����": "�����·�",
-              "����": "����",
-              "����": "ȫ��",
-              "��Χ": "ȫ��"
+              "依据": "费用月份",
+              "方向": "升序",
+              "数量": "全部",
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ÿ��ʵ�ʷ��ü�����Ԥ�㣬����Ϊ��֧������Ϊ��Լ��"
+          "每月实际费用减当月预算，正数为超支，负数为节约。"
         ],
-        "rationale": "�̶���������һ�������ơ�",
+        "rationale": "固定费用类别的一项差额趋势。",
         "multi_request": false
       },
       "slots": {
@@ -4136,14 +4136,14 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           },
           {
             "dimension": "expense_category",
             "operator": "in",
             "values": [
-              "����"
+              "安保"
             ]
           }
         ],
@@ -4159,17 +4159,17 @@
       },
       "additional_requirements": [
         {
-          "label": "ʱ��չʾ˳��",
+          "label": "时间展示顺序",
           "requirement": {
-            "����": "�����·�",
-            "����": "����",
-            "����": "ȫ��",
-            "��Χ": "ȫ��"
+            "依据": "费用月份",
+            "方向": "升序",
+            "数量": "全部",
+            "范围": "全局"
           }
         }
       ],
       "important_basis": [
-        "ÿ��ʵ�ʷ��ü�����Ԥ�㣬����Ϊ��֧������Ϊ��Լ��"
+        "每月实际费用减当月预算，正数为超支，负数为节约。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4178,7 +4178,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB020",
-        "question": "2026��ڶ����ȣ��Ѹ���Ŀ��Ӧ�����յ�������ȥͬ����Ӫ���ѣ���������Ӹߵ��͸���ǰ������Ŀ��",
+        "question": "2026年第二季度，把各项目对应账期收到的租金减去同期运营花费，按这个差额从高到低给我前三个项目。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -4187,29 +4187,29 @@
             "target_id": "cash_noi_proxy",
             "filters": {},
             "time": {
-              "���ڼ������·���": "2026-04",
-              "���ڼ������·�ֹ": "2026-06"
+              "账期及费用月份起": "2026-04",
+              "账期及费用月份止": "2026-06"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "ʵ�ռ�ʵ����Ӫ���õĲ��",
-              "����": "����",
-              "����": 3,
-              "��Χ": "ȫ����Ŀ֮���ȫ������"
+              "依据": "实收减实际运营费用的差额",
+              "方向": "降序",
+              "数量": 3,
+              "范围": "全部项目之间的全局排名"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���Ǽ򻯴�����������ʽNOI��������",
-          "����Ŀ�ֱ���������ܶ��������������¼�����ظ��ۼơ�",
-          "������ȡȫ��ǰ������Ŀ�����ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����������Ŀ�ڲ������ޡ�",
-          "�߽粢��ʱ���Ȱ��������ϸ���߲����Ŀ���ٴӱ߽粢����Ŀ�в�����������Ϊ�ȼ۽��������¶������ע���У���Ҫ��Ψһ������"
+          "这是简化代理，不是正式NOI或会计利润。",
+          "按项目分别计算两侧总额后相减，不能因记录关联重复累计。",
+          "按差额降序取全局前三个项目。名称或身份次序仅是可披露的并列默认选项，不是唯一评分约束；并列项目内部次序不限。",
+          "边界并列时，先包含所有严格更高差额项目，再从边界并列项目中补足三个，均为等价结果；可披露规则或标注并列，不要求唯一名单。"
         ],
-        "rationale": "���Ѷ���������ָ��������",
+        "rationale": "用已定义差额做单指标排名。",
         "multi_request": false
       },
       "slots": {
@@ -4234,20 +4234,20 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "ʵ�ռ�ʵ����Ӫ���õĲ��",
-            "����": "����",
-            "����": 3,
-            "��Χ": "ȫ����Ŀ֮���ȫ������"
+            "依据": "实收减实际运营费用的差额",
+            "方向": "降序",
+            "数量": 3,
+            "范围": "全部项目之间的全局排名"
           }
         }
       ],
       "important_basis": [
-        "���Ǽ򻯴�����������ʽNOI��������",
-        "����Ŀ�ֱ���������ܶ��������������¼�����ظ��ۼơ�",
-        "������ȡȫ��ǰ������Ŀ�����ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����������Ŀ�ڲ������ޡ�",
-        "�߽粢��ʱ���Ȱ��������ϸ���߲����Ŀ���ٴӱ߽粢����Ŀ�в�����������Ϊ�ȼ۽��������¶������ע���У���Ҫ��Ψһ������"
+        "这是简化代理，不是正式NOI或会计利润。",
+        "按项目分别计算两侧总额后相减，不能因记录关联重复累计。",
+        "按差额降序取全局前三个项目。名称或身份次序仅是可披露的并列默认选项，不是唯一评分约束；并列项目内部次序不限。",
+        "边界并列时，先包含所有严格更高差额项目，再从边界并列项目中补足三个，均为等价结果；可披露规则或标注并列，不要求唯一名单。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4256,7 +4256,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB021",
-        "question": "����2026��9��1�գ�����Ŀ�칫��λÿƽ���׵�����ֱ��Ƕ��٣��������Ȩ���ӹ󵽱����š�",
+        "question": "截至2026年9月1日，各项目办公铺位每平方米的月租分别是多少？按面积加权，从贵到便宜排。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -4264,29 +4264,29 @@
             "target_kind": "metric",
             "target_id": "avg_monthly_rent_per_sqm",
             "filters": {
-              "��λ����": "�칫"
+              "铺位类型": "办公"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "�������Ȩ��ƽ��������",
-              "����": "����",
-              "����": "ȫ��",
-              "��Χ": "����Ŀ֮���ȫ������"
+              "依据": "按面积加权的平方米月租",
+              "方向": "降序",
+              "数量": "全部",
+              "范围": "各项目之间的全局排序"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ÿ����Ŀ�İ칫��λ��Χ�ڰ������Ȩ���칫������Ŀ���ͼ��衣",
-          "���������ݵ���Ŀ���������ֵ��"
+          "在每个项目的办公铺位范围内按面积加权；办公不是项目类型假设。",
+          "无适用数据的项目不编造租金值。"
         ],
-        "rationale": "ͬһʱ�����ָ�갴��Ŀ�Ƚϡ�",
+        "rationale": "同一时点租金指标按项目比较。",
         "multi_request": false
       },
       "slots": {
@@ -4317,18 +4317,18 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "�������Ȩ��ƽ��������",
-            "����": "����",
-            "����": "ȫ��",
-            "��Χ": "����Ŀ֮���ȫ������"
+            "依据": "按面积加权的平方米月租",
+            "方向": "降序",
+            "数量": "全部",
+            "范围": "各项目之间的全局排序"
           }
         }
       ],
       "important_basis": [
-        "��ÿ����Ŀ�İ칫��λ��Χ�ڰ������Ȩ���칫������Ŀ���ͼ��衣",
-        "���������ݵ���Ŀ���������ֵ��"
+        "在每个项目的办公铺位范围内按面积加权；办公不是项目类型假设。",
+        "无适用数据的项目不编造租金值。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4337,7 +4337,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB022",
-        "question": "��2026��9��1�գ���������Ŀ����������ʮ���⻧����δ����Ǯ��ࣿ��Ƿ��Ӷൽ���С�",
+        "question": "到2026年9月1日，跨所有项目合起来，哪十个租户到期未交的钱最多？按欠款从多到少列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -4345,32 +4345,32 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "��Ŀ��Χ": "ȫ����Ŀ",
-              "��׼���������": "����0"
+              "项目范围": "全部项目",
+              "基准日逾期余额": "大于0"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [
-              "�⻧���ݣ�����Ŀ�ϲ�"
+              "租户身份，跨项目合并"
             ],
             "sort": {
-              "����": "�⻧����Ŀ�������ϼ�",
-              "����": "����",
-              "����": 10,
-              "��Χ": "�����⻧��ȫ��ǰʮ��"
+              "依据": "租户跨项目逾期余额合计",
+              "方向": "降序",
+              "数量": 10,
+              "范围": "所有租户的全局前十名"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ͬһ�⻧����Ŀ�ϲ������ܰ���Ŀ�⻧��ϲ�ɶ�����",
-          "ֻ����׼���ѵ���δ����",
-          "������ȡȫ��ʮ��������ʮ�������з����ߡ��⻧���ݻ����ƴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
-          "�����⻧�ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ��������⻧���ٴӱ߽粢���⻧�в���ʮ������Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶��⻧������"
+          "同一租户跨项目合并余额，不能按项目租户组合拆成多名。",
+          "只含基准日已到期未付金额。",
+          "按余额降序取全局十名，不足十名列现有符合者。租户身份或名称次序仅是可披露的并列默认选项，不是唯一评分约束。",
+          "并列租户内部次序不限；边界并列时，先包含所有严格更高余额租户，再从边界并列租户中补足十名，均为等价结果。可披露规则或标注并列，不强制匹配固定租户名单。"
         ],
-        "rationale": "����Ŀ�ϲ���һ����ȫ��������",
+        "rationale": "跨项目合并后单一余额的全局排名。",
         "multi_request": false
       },
       "slots": {
@@ -4394,28 +4394,28 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ��Χ",
-          "requirement": "ȫ����Ŀ"
+          "label": "项目范围",
+          "requirement": "全部项目"
         },
         {
-          "label": "��׼���������",
-          "requirement": "����0"
+          "label": "基准日逾期余额",
+          "requirement": "大于0"
         },
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "�⻧����Ŀ�������ϼ�",
-            "����": "����",
-            "����": 10,
-            "��Χ": "�����⻧��ȫ��ǰʮ��"
+            "依据": "租户跨项目逾期余额合计",
+            "方向": "降序",
+            "数量": 10,
+            "范围": "所有租户的全局前十名"
           }
         }
       ],
       "important_basis": [
-        "ͬһ�⻧����Ŀ�ϲ������ܰ���Ŀ�⻧��ϲ�ɶ�����",
-        "ֻ����׼���ѵ���δ����",
-        "������ȡȫ��ʮ��������ʮ�������з����ߡ��⻧���ݻ����ƴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
-        "�����⻧�ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ��������⻧���ٴӱ߽粢���⻧�в���ʮ������Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶��⻧������"
+        "同一租户跨项目合并余额，不能按项目租户组合拆成多名。",
+        "只含基准日已到期未付金额。",
+        "按余额降序取全局十名，不足十名列现有符合者。租户身份或名称次序仅是可披露的并列默认选项，不是唯一评分约束。",
+        "并列租户内部次序不限；边界并列时，先包含所有严格更高余额租户，再从边界并列租户中补足十名，均为等价结果。可披露规则或标注并列，不强制匹配固定租户名单。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4424,25 +4424,25 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB023",
-        "question": "�������ƽ�����ķ�������λ����Щ������Ŀ��¥������г������ŵ�Ҳ������",
+        "question": "湖滨里和平江坊的服务类铺位有哪些？按项目、楼层分组列出，空着的也包括。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��λ�嵥",
+            "target_id": "铺位清单",
             "filters": {
-              "��Ŀ": [
-                "������",
-                "ƽ����"
+              "项目": [
+                "湖滨里",
+                "平江坊"
               ],
-              "��λ����": "����",
-              "����״̬": "����"
+              "铺位类型": "服务",
+              "出租状态": "不限"
             },
             "time": null,
             "group_by": [
-              "��Ŀ",
-              "��λ¥��"
+              "项目",
+              "铺位楼层"
             ],
             "sort": null
           }
@@ -4450,9 +4450,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "������ǰ��λ������δҪ����ʷʱ�㣻��Ĭ��ֻ���ѳ�����λ��"
+          "检索当前铺位档案，未要求历史时点；不默认只列已出租铺位。"
         ],
-        "rationale": "������λ�嵥����Ŀ��¥����֯��û�ж�������ָ�ꡣ",
+        "rationale": "现有铺位清单按项目和楼层组织，没有额外数量指标。",
         "multi_request": false
       },
       "slots": {
@@ -4465,8 +4465,8 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������",
-              "ƽ����"
+              "湖滨里",
+              "平江坊"
             ]
           },
           {
@@ -4488,12 +4488,12 @@
       },
       "additional_requirements": [
         {
-          "label": "����״̬",
-          "requirement": "����"
+          "label": "出租状态",
+          "requirement": "不限"
         }
       ],
       "important_basis": [
-        "������ǰ��λ������δҪ����ʷʱ�㣻��Ĭ��ֻ���ѳ�����λ��"
+        "检索当前铺位档案，未要求历史时点；不默认只列已出租铺位。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4502,38 +4502,38 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB024",
-        "question": "������Ŀ���ͬ��������2026��9��1����12��31�յ���Լ���������մ��絽������ǰ20����״̬���ޡ�",
+        "question": "所有项目里，合同结束日在2026年9月1日至12月31日的租约，按结束日从早到晚给我前20条，状态不限。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ��Χ": "ȫ����Ŀ",
-              "��Լ״̬": "����"
+              "项目范围": "全部项目",
+              "租约状态": "不限"
             },
             "time": {
-              "��Լ��������": "2026-09-01",
-              "��Լ������ֹ": "2026-12-31"
+              "租约结束日起": "2026-09-01",
+              "租约结束日止": "2026-12-31"
             },
             "group_by": [],
             "sort": {
-              "����": "��Լ������",
-              "����": "����",
-              "����": 20,
-              "��Χ": "ȫ������������Լ��ȫ��ǰ20��"
+              "依据": "租约结束日",
+              "方向": "升序",
+              "数量": 20,
+              "范围": "全部符合条件租约的全局前20条"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ѯ������Լ��¼�еĺ�ͬ�����գ�δ�������ղ�������ѯδ���˵���",
-          "�������߽����ڣ�������������ȡȫ��ǰ20���������������м�¼����Լ���ݴ�����ǿ���¶��ͬ������Ĭ��ѡ�����Ψһ����Լ����",
-          "ͬ�ս�������Լ�ڲ������ޣ��߽�ͬ��ʱ���Ȱ������н������ϸ����ķ�����Լ���ٴӱ߽�ͬ����Լ�в���20������Ϊ�ȼ۽��������¶������עͬ�ղ��У���Ҫ��Ψһ��Լ������"
+          "查询现有租约记录中的合同结束日，未来结束日不代表查询未来账单。",
+          "含两个边界日期，按结束日升序取全局前20条，不足则列现有记录。租约身份次序仅是可披露的同日排序默认选项，不是唯一评分约束。",
+          "同日结束的租约内部次序不限；边界同日时，先包含所有结束日严格更早的符合租约，再从边界同日租约中补足20条，均为等价结果。可披露规则或标注同日并列，不要求唯一租约名单。"
         ],
-        "rationale": "��ȷʱ�䷶Χ��״̬������ȫ�������ĵ��嵥Ŀ�ꡣ",
+        "rationale": "明确时间范围、状态、排序及全局数量的单清单目标。",
         "multi_request": false
       },
       "slots": {
@@ -4557,27 +4557,27 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ��Χ",
-          "requirement": "ȫ����Ŀ"
+          "label": "项目范围",
+          "requirement": "全部项目"
         },
         {
-          "label": "��Լ״̬",
-          "requirement": "����"
+          "label": "租约状态",
+          "requirement": "不限"
         },
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "��Լ������",
-            "����": "����",
-            "����": 20,
-            "��Χ": "ȫ������������Լ��ȫ��ǰ20��"
+            "依据": "租约结束日",
+            "方向": "升序",
+            "数量": 20,
+            "范围": "全部符合条件租约的全局前20条"
           }
         }
       ],
       "important_basis": [
-        "��ѯ������Լ��¼�еĺ�ͬ�����գ�δ�������ղ�������ѯδ���˵���",
-        "�������߽����ڣ�������������ȡȫ��ǰ20���������������м�¼����Լ���ݴ�����ǿ���¶��ͬ������Ĭ��ѡ�����Ψһ����Լ����",
-        "ͬ�ս�������Լ�ڲ������ޣ��߽�ͬ��ʱ���Ȱ������н������ϸ����ķ�����Լ���ٴӱ߽�ͬ����Լ�в���20������Ϊ�ȼ۽��������¶������עͬ�ղ��У���Ҫ��Ψһ��Լ������"
+        "查询现有租约记录中的合同结束日，未来结束日不代表查询未来账单。",
+        "含两个边界日期，按结束日升序取全局前20条，不足则列现有记录。租约身份次序仅是可披露的同日排序默认选项，不是唯一评分约束。",
+        "同日结束的租约内部次序不限；边界同日时，先包含所有结束日严格更早的符合租约，再从边界同日租约中补足20条，均为等价结果。可披露规则或标注同日并列，不要求唯一租约名单。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4586,7 +4586,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB025",
-        "question": "�����㳡2025��ȫ����յ���𣬰��⻧���ڵǼǵ���ҵ�ֱ���ܣ����ӽ���С���С�",
+        "question": "澄明广场2025年全年该收的租金，按租户现在登记的行业分别汇总，并从金额大到小排列。",
         "category": "query_grouped",
         "expected_action": "query",
         "known_requests": [
@@ -4594,29 +4594,29 @@
             "target_kind": "metric",
             "target_id": "rent_due",
             "filters": {
-              "��Ŀ": "�����㳡"
+              "项目": "澄明广场"
             },
             "time": {
-              "������": "2025-01",
-              "����ֹ": "2025-12"
+              "账期起": "2025-01",
+              "账期止": "2025-12"
             },
             "group_by": [
-              "�⻧��ǰ��ҵ"
+              "租户当前行业"
             ],
             "sort": {
-              "����": "Ӧ�����ϼ�",
-              "����": "����",
-              "����": "ȫ����ҵ",
-              "��Χ": "ȫ��"
+              "依据": "应收租金合计",
+              "方向": "降序",
+              "数量": "全部行业",
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ʷ���ڰ��⻧��ǰ�Ǽ���ҵ���飬����ԭ��ʷ��ҵ���ԡ�"
+          "历史账期按租户当前登记行业分组，不还原历史行业属性。"
         ],
-        "rationale": "��ʷ�ڼ��뵱ǰ��������ھ���������ָ����",
+        "rationale": "历史期间与当前档案分组口径已由题面指定。",
         "multi_request": false
       },
       "slots": {
@@ -4629,7 +4629,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡"
+              "澄明广场"
             ]
           }
         ],
@@ -4648,17 +4648,17 @@
       },
       "additional_requirements": [
         {
-          "label": "����ԭʼԼ��",
+          "label": "排序原始约束",
           "requirement": {
-            "����": "Ӧ�����ϼ�",
-            "����": "����",
-            "����": "ȫ����ҵ",
-            "��Χ": "ȫ��"
+            "依据": "应收租金合计",
+            "方向": "降序",
+            "数量": "全部行业",
+            "范围": "全局"
           }
         }
       ],
       "important_basis": [
-        "��ʷ���ڰ��⻧��ǰ�Ǽ���ҵ���飬����ԭ��ʷ��ҵ���ԡ�"
+        "历史账期按租户当前登记行业分组，不还原历史行业属性。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4667,7 +4667,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB026",
-        "question": "2025��ȫ��������Ŀ�����������ؿ����Ƕ��٣�",
+        "question": "2025年全年六个项目合起来的租金回款率是多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -4675,11 +4675,11 @@
             "target_kind": "metric",
             "target_id": "collection_rate",
             "filters": {
-              "��Ŀ��Χ": "ȫ��������Ŀ"
+              "项目范围": "全部六个项目"
             },
             "time": {
-              "������": "2025-01",
-              "����ֹ": "2025-12"
+              "账期起": "2025-01",
+              "账期止": "2025-12"
             },
             "group_by": [],
             "sort": null
@@ -4688,10 +4688,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ȫ��������Ŀͬ������ʵ�ճ�����Ӧ�գ��Ȳ�ƽ�����±��ʣ�Ҳ��ƽ����Ŀ���ʡ�",
-          "Ŀ¼�Իؿ�������Ĭ�ϣ���������ʵ���ܴ��������㷨��׷�ʡ�"
+          "全年所有项目同账期总实收除以总应收；既不平均各月比率，也不平均项目比率。",
+          "目录对回款率已有默认，不仅因现实可能存在其他算法而追问。"
         ],
-        "rationale": "�����·ݿ���Ŀ���ܱ��ʵķ��ӷ�ĸ�ھ���",
+        "rationale": "检查跨月份跨项目汇总比率的分子分母口径。",
         "multi_request": false
       },
       "slots": {
@@ -4710,13 +4710,13 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ��Χ",
-          "requirement": "ȫ��������Ŀ"
+          "label": "项目范围",
+          "requirement": "全部六个项目"
         }
       ],
       "important_basis": [
-        "ȫ��������Ŀͬ������ʵ�ճ�����Ӧ�գ��Ȳ�ƽ�����±��ʣ�Ҳ��ƽ����Ŀ���ʡ�",
-        "Ŀ¼�Իؿ�������Ĭ�ϣ���������ʵ���ܴ��������㷨��׷�ʡ�"
+        "全年所有项目同账期总实收除以总应收；既不平均各月比率，也不平均项目比率。",
+        "目录对回款率已有默认，不仅因现实可能存在其他算法而追问。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4725,7 +4725,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB027",
-        "question": "�����2026��2���������Ŀǰһ���յ��˶��٣�",
+        "question": "金陵汇2026年2月那期租金，目前一共收到了多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -4733,12 +4733,12 @@
             "target_kind": "metric",
             "target_id": "rent_collected",
             "filters": {
-              "��Ŀ": "�����"
+              "项目": "金陵汇"
             },
             "time": {
-              "������": "2026-02",
-              "����ֹ": "2026-02",
-              "���ݻ�׼��": "2026-09-01"
+              "账期起": "2026-02",
+              "账期止": "2026-02",
+              "数据基准日": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -4747,10 +4747,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ͳ��2026��2�����ڵ�ʵ�գ����޶�������2�µ��ˡ�",
-          "Ŀǰ�����ݻ�׼�����⣬��������������չ���ݡ�"
+          "统计2026年2月账期的实收，不限定款项在2月到账。",
+          "目前按数据基准日理解，不按创作当天延展数据。"
         ],
-        "rationale": "��������ʵ���뵽����ͳ�ƵĹؼ�����",
+        "rationale": "检验账期实收与到账日统计的关键区别。",
         "multi_request": false
       },
       "slots": {
@@ -4763,7 +4763,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����"
+              "金陵汇"
             ]
           }
         ],
@@ -4777,13 +4777,13 @@
       },
       "additional_requirements": [
         {
-          "label": "���ݻ�׼��",
+          "label": "数据基准日",
           "requirement": "2026-09-01"
         }
       ],
       "important_basis": [
-        "ͳ��2026��2�����ڵ�ʵ�գ����޶�������2�µ��ˡ�",
-        "Ŀǰ�����ݻ�׼�����⣬��������������չ���ݡ�"
+        "统计2026年2月账期的实收，不限定款项在2月到账。",
+        "目前按数据基准日理解，不按创作当天延展数据。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4792,7 +4792,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB028",
-        "question": "�����³������ж������Ŀ�������Ѿ����ȥ�ˣ�",
+        "question": "望京新程现在有多大比例的可租面积已经租出去了？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -4800,10 +4800,10 @@
             "target_kind": "metric",
             "target_id": "occupancy_rate",
             "filters": {
-              "��Ŀ": "�����³�"
+              "项目": "望京新程"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -4812,10 +4812,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "������¶Ϊ��׼��2026-09-01��",
-          "���ѳ���������Կ������������������λ����������λ����"
+          "现在披露为基准日2026-09-01。",
+          "用已出租面积除以可租面积，不用已租铺位数除以总铺位数。"
         ],
-        "rationale": "δ��ȷ���ڵ�ʱ��ָ�����¶��׼�պ��ѯ��",
+        "rationale": "未明确日期的时点指标可披露基准日后查询。",
         "multi_request": false
       },
       "slots": {
@@ -4828,7 +4828,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����³�"
+              "望京新程"
             ]
           }
         ],
@@ -4841,8 +4841,8 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "������¶Ϊ��׼��2026-09-01��",
-        "���ѳ���������Կ������������������λ����������λ����"
+        "现在披露为基准日2026-09-01。",
+        "用已出租面积除以可租面积，不用已租铺位数除以总铺位数。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4851,7 +4851,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB029",
-        "question": "�������ĵ���λ��ƽ��ÿƽ����һ����������Ǯ��",
+        "question": "云栖中心的铺位，平均每平方米一个月租金多少钱？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -4859,10 +4859,10 @@
             "target_kind": "metric",
             "target_id": "avg_monthly_rent_per_sqm",
             "filters": {
-              "��Ŀ": "��������"
+              "项目": "云栖中心"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -4871,10 +4871,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "ʹ�û�׼��2026-09-01�İ������Ȩƽ�������⡣",
-          "����ƽ����λ���ۣ�Ŀ¼����ȷĬ�ϣ�����ͼ�Ȩ����׷�ʡ�"
+          "使用基准日2026-09-01的按面积加权平方米月租。",
+          "不简单平均铺位单价；目录已明确默认，无须就加权方法追问。"
         ],
-        "rationale": "��Ȼ����ƽ������Ӧ��Ŀ¼���岢��¶ʱ���Ȩ�ء�",
+        "rationale": "自然语言平均单价应用目录定义并披露时间和权重。",
         "multi_request": false
       },
       "slots": {
@@ -4887,7 +4887,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "��������"
+              "云栖中心"
             ]
           }
         ],
@@ -4900,8 +4900,8 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "ʹ�û�׼��2026-09-01�İ������Ȩƽ�������⡣",
-        "����ƽ����λ���ۣ�Ŀ¼����ȷĬ�ϣ�����ͼ�Ȩ����׷�ʡ�"
+        "使用基准日2026-09-01的按面积加权平方米月租。",
+        "不简单平均铺位单价；目录已明确默认，无须就加权方法追问。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4910,7 +4910,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB030",
-        "question": "ƽ����2026��8�µ���Ӫ����Ԥ��ƫ���Ƕ���Ԫ��",
+        "question": "平江坊2026年8月的运营费用预算偏差是多少元？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -4918,12 +4918,12 @@
             "target_kind": "metric",
             "target_id": "budget_variance",
             "filters": {
-              "��Ŀ": "ƽ����",
-              "���÷���": "ȫ��"
+              "项目": "平江坊",
+              "费用分类": "全部"
             },
             "time": {
-              "�·���": "2026-08",
-              "�·�ֹ": "2026-08"
+              "月份起": "2026-08",
+              "月份止": "2026-08"
             },
             "group_by": [],
             "sort": null
@@ -4932,9 +4932,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "Ԥ��ƫ���Ϊʵ����Ӫ���ü�Ԥ�㣻��ֵ��ʾ��֧����ֵ��ʾ����Ԥ�㡣"
+          "预算偏差定义为实际运营费用减预算；正值表示超支，负值表示低于预算。"
         ],
-        "rationale": "��������Ŀ¼��ȷ��ֱ�Ӳ�ѯ��˵�����ź��塣",
+        "rationale": "方向已由目录明确，直接查询并说明符号含义。",
         "multi_request": false
       },
       "slots": {
@@ -4947,7 +4947,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "ƽ����"
+              "平江坊"
             ]
           }
         ],
@@ -4961,12 +4961,12 @@
       },
       "additional_requirements": [
         {
-          "label": "���÷���",
-          "requirement": "ȫ��"
+          "label": "费用分类",
+          "requirement": "全部"
         }
       ],
       "important_basis": [
-        "Ԥ��ƫ���Ϊʵ����Ӫ���ü�Ԥ�㣻��ֵ��ʾ��֧����ֵ��ʾ����Ԥ�㡣"
+        "预算偏差定义为实际运营费用减预算；正值表示超支，负值表示低于预算。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -4975,7 +4975,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB031",
-        "question": "������2025��ȫ�꣬�������۳���Ӫ�������������Ƕ��٣�",
+        "question": "湖滨里2025年全年，已收租金扣除运营费用这个简化余额是多少？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -4983,11 +4983,11 @@
             "target_kind": "metric",
             "target_id": "cash_noi_proxy",
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "���ڼ������·���": "2025-01",
-              "���ڼ������·�ֹ": "2025-12"
+              "账期及费用月份起": "2025-01",
+              "账期及费用月份止": "2025-12"
             },
             "group_by": [],
             "sort": null
@@ -4996,10 +4996,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "��2025��������ʵ�ռ�2025��ʵ����Ӫ���á�",
-          "��Ϊ�򻯴����������������˻�����ʽNOI��������"
+          "按2025年账期总实收减2025年实际运营费用。",
+          "仅为简化代理，不代表银行账户余额、正式NOI或会计利润。"
         ],
-        "rationale": "�û���ȷҪ��֧�ֵļ򻯲���˵����߽硣",
+        "rationale": "用户明确要求支持的简化差额，须说明其边界。",
         "multi_request": false
       },
       "slots": {
@@ -5012,7 +5012,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "������"
+              "湖滨里"
             ]
           }
         ],
@@ -5026,8 +5026,8 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "��2025��������ʵ�ռ�2025��ʵ����Ӫ���á�",
-        "��Ϊ�򻯴����������������˻�����ʽNOI��������"
+        "按2025年账期总实收减2025年实际运营费用。",
+        "仅为简化代理，不代表银行账户余额、正式NOI或会计利润。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -5036,7 +5036,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB032",
-        "question": "�����㳡�����Ѿ����ڵ���û��������ж���Ǯ��",
+        "question": "澄明广场现在已经到期但还没交的租金有多少钱？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -5044,10 +5044,10 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "��Ŀ": "�����㳡"
+              "项目": "澄明广场"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
@@ -5056,10 +5056,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����ָ��׼��2026-09-01��ֻ���ѵ���δ����",
-          "����ȫ��Ӧ�ռ�ʵ��ֱ�ӵ������ڣ�Ҳ���ṩ��ʷ��"
+          "现在指基准日2026-09-01；只含已到期未付余额。",
+          "不将全部应收减实收直接当作逾期，也不提供历史余额。"
         ],
-        "rationale": "��ǰ����Ϊ֧�ֿھ�����¶���ձ߽硣",
+        "rationale": "当前逾期为支持口径，披露快照边界。",
         "multi_request": false
       },
       "slots": {
@@ -5072,7 +5072,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����㳡"
+              "澄明广场"
             ]
           }
         ],
@@ -5085,8 +5085,8 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "����ָ��׼��2026-09-01��ֻ���ѵ���δ����",
-        "����ȫ��Ӧ�ռ�ʵ��ֱ�ӵ������ڣ�Ҳ���ṩ��ʷ��"
+        "现在指基准日2026-09-01；只含已到期未付余额。",
+        "不将全部应收减实收直接当作逾期，也不提供历史余额。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -5095,16 +5095,16 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB033",
-        "question": "���������������е���Լ��¼�嵥��",
+        "question": "给我云栖中心现有的租约记录清单。",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "��������",
-              "��Լ״̬": "����"
+              "项目": "云栖中心",
+              "租约状态": "不限"
             },
             "time": null,
             "group_by": [],
@@ -5114,10 +5114,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "����ָ���������м�¼����������ǰ��Ч������ʽ�ų����ڻ�����״̬��Լ��",
-          "δҪ������ɸѡ���������ƣ�����ƥ������м�¼��"
+          "现有指数据中已有记录，不代表当前有效；不隐式排除过期或其他状态租约。",
+          "未要求日期筛选或条数限制，返回匹配的现有记录。"
         ],
-        "rationale": "�����¼�嵥���ü���Ч״̬������",
+        "rationale": "检验记录清单不擅加有效状态条件。",
         "multi_request": false
       },
       "slots": {
@@ -5130,7 +5130,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "��������"
+              "云栖中心"
             ]
           }
         ],
@@ -5142,13 +5142,13 @@
       },
       "additional_requirements": [
         {
-          "label": "��Լ״̬",
-          "requirement": "����"
+          "label": "租约状态",
+          "requirement": "不限"
         }
       ],
       "important_basis": [
-        "����ָ���������м�¼����������ǰ��Ч������ʽ�ų����ڻ�����״̬��Լ��",
-        "δҪ������ɸѡ���������ƣ�����ƥ������м�¼��"
+        "现有指数据中已有记录，不代表当前有效；不隐式排除过期或其他状态租约。",
+        "未要求日期筛选或条数限制，返回匹配的现有记录。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -5157,7 +5157,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB034",
-        "question": "���ڵǼ�Ϊ������ע�����Ͼ����⻧����2025��1��6��������Ŀ�ϼƸý��������",
+        "question": "现在登记为主力、注册在南京的租户，在2025年1到6月所有项目合计该交多少租金？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -5165,13 +5165,13 @@
             "target_kind": "metric",
             "target_id": "rent_due",
             "filters": {
-              "�⻧��ǰ�ȼ�": "����",
-              "�⻧��ǰע�����": "�Ͼ�",
-              "��Ŀ��Χ": "ȫ����Ŀ"
+              "租户当前等级": "主力",
+              "租户当前注册城市": "南京",
+              "项目范围": "全部项目"
             },
             "time": {
-              "������": "2025-01",
-              "����ֹ": "2025-06"
+              "账期起": "2025-01",
+              "账期止": "2025-06"
             },
             "group_by": [],
             "sort": null
@@ -5180,10 +5180,10 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "�õ�ǰ�⻧����ɸѡ��ʷ���ڣ���������Щ�⻧��ʱҲ������ͬ���ԡ�",
-          "�Ͼ���ע����У�������СΪ����㣻ͬһ�⻧�ڶ����Ŀ��Ӧ��ȫ�������Ҳ��ظ���"
+          "用当前租户档案筛选历史账期，不声称这些租户当时也具有相同属性。",
+          "南京是注册城市，不能缩小为金陵汇；同一租户在多个项目的应收全部纳入且不重复。"
         ],
-        "rationale": "��ʷ����뵱ǰ������ϣ�ͬʱ�����⻧����Ŀ�鼯��",
+        "rationale": "历史金额与当前属性组合，同时考查租户跨项目归集。",
         "multi_request": false
       },
       "slots": {
@@ -5203,7 +5203,7 @@
             "dimension": "tenant_registration_city",
             "operator": "in",
             "values": [
-              "�Ͼ�"
+              "南京"
             ]
           }
         ],
@@ -5217,13 +5217,13 @@
       },
       "additional_requirements": [
         {
-          "label": "��Ŀ��Χ",
-          "requirement": "ȫ����Ŀ"
+          "label": "项目范围",
+          "requirement": "全部项目"
         }
       ],
       "important_basis": [
-        "�õ�ǰ�⻧����ɸѡ��ʷ���ڣ���������Щ�⻧��ʱҲ������ͬ���ԡ�",
-        "�Ͼ���ע����У�������СΪ����㣻ͬһ�⻧�ڶ����Ŀ��Ӧ��ȫ�������Ҳ��ظ���"
+        "用当前租户档案筛选历史账期，不声称这些租户当时也具有相同属性。",
+        "南京是注册城市，不能缩小为金陵汇；同一租户在多个项目的应收全部纳入且不重复。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -5232,7 +5232,7 @@
       "expected_action": "query",
       "raw_gold": {
         "id": "STB035",
-        "question": "2025�����һ�죬������Ѿ����ȥ������Ƕ���ƽ���ף�",
+        "question": "2025年最后一天，金陵汇已经租出去的面积是多少平方米？",
         "category": "query_disclosure",
         "expected_action": "query",
         "known_requests": [
@@ -5240,10 +5240,10 @@
             "target_kind": "metric",
             "target_id": "leased_area",
             "filters": {
-              "��Ŀ": "�����"
+              "项目": "金陵汇"
             },
             "time": {
-              "ʱ��": "2025-12-31"
+              "时点": "2025-12-31"
             },
             "group_by": [],
             "sort": null
@@ -5252,9 +5252,9 @@
         "required_clarification": [],
         "unsupported_concepts": [],
         "important_basis": [
-          "���һ�����Ϊ2025-12-31��ʱ��ֵ������2025ȫ��ƽ���ѳ��������Ҳ�����¶�����ۼơ�"
+          "最后一天解析为2025-12-31的时点值，不是2025全年平均已出租面积，也不是月度面积累计。"
         ],
-        "rationale": "��ȷ��ĩʱ��������ѯ��Ӧ��������ڼ������",
+        "rationale": "明确年末时点的面积查询，应避免年度期间替代。",
         "multi_request": false
       },
       "slots": {
@@ -5267,7 +5267,7 @@
             "dimension": "project",
             "operator": "in",
             "values": [
-              "�����"
+              "金陵汇"
             ]
           }
         ],
@@ -5280,7 +5280,7 @@
       },
       "additional_requirements": [],
       "important_basis": [
-        "���һ�����Ϊ2025-12-31��ʱ��ֵ������2025ȫ��ƽ���ѳ��������Ҳ�����¶�����ۼơ�"
+        "最后一天解析为2025-12-31的时点值，不是2025全年平均已出租面积，也不是月度面积累计。"
       ],
       "normalization_status": "projected_pending_review"
     },
@@ -5289,7 +5289,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB036",
-        "question": "�����㳡2026���ϰ������������ж��٣��һ�û����������ú�ͬӦ�ջ����Ѿ��ս�����Ǯ��",
+        "question": "澄明广场2026年上半年的租金收入有多少？我还没定报表里该用合同应收还是已经收进来的钱。",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -5297,25 +5297,25 @@
             "target_kind": "metric",
             "target_id": null,
             "filters": {
-              "��Ŀ": "�����㳡"
+              "项目": "澄明广场"
             },
             "time": {
-              "������": "2026-01",
-              "����ֹ": "2026-06"
+              "账期起": "2026-01",
+              "账期止": "2026-06"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "���ű���ѡ���ͬӦ����𣬻�����ͬ�����Ѿ���ȡ�����ȷ�Ϻ�ֻ��ѯ��ѡһ�"
+          "这张报表选择合同应收租金，还是相同账期已经收取的租金？确认后只查询所选一项。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "target_id��ȷ�ϣ���ѡΪrent_due��rent_collected���û���ȷ��δѡ�����������������",
-          "ʵ�հ����ڹ�����"
+          "target_id待确认，候选为rent_due或rent_collected；用户明确尚未选定，不能替其决定。",
+          "实收按账期归属。"
         ],
-        "rationale": "��ʽ�������ֽ��ھ��е�ѡ�񣬲���Ҫ��ͬʱ�������",
+        "rationale": "显式表达两种金额口径中的选择，不是要求同时返回两项。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5325,7 +5325,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB037",
-        "question": "���뿴������2026��8�µ׵ĳ��������ֻҪһ����������֪���ÿ�����˶���ƽ���׻������ȥ�ı�����",
+        "question": "我想看湖滨里2026年8月底的出租情况，只要一个数，但不知道该看租出了多少平方米还是租出去的比例。",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -5333,24 +5333,24 @@
             "target_kind": "metric",
             "target_id": null,
             "filters": {
-              "��Ŀ": "������"
+              "项目": "湖滨里"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "Ҫ���ѳ����ƽ�������������ѳ������ռ��������ı�����"
+          "要用已出租的平方米数，还是已出租面积占可租面积的比例？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "target_id��ȷ�ϣ���ѡΪleased_area��occupancy_rate��ֻ��Ҫ�û�ѡ����һ������",
-          "�����ھ���������㡣"
+          "target_id待确认，候选为leased_area或occupancy_rate；只需要用户选定的一个数。",
+          "比例口径按面积计算。"
         ],
-        "rationale": "��Ȼ���Գ�������ɶ�Ӧ��ģ����������û���ȷδ����",
+        "rationale": "自然语言出租情况可对应规模或比例，且用户明确未定。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5360,7 +5360,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB038",
-        "question": "��Ƚϸ���Ŀ2026��8�µ����ߵͣ�ֻ��һ����������û����Ǳ������¸��յ��ܶ���Ǳ�8��31��ÿƽ���׵����⡣",
+        "question": "想比较各项目2026年8月的租金高低，只做一个排名；我没想好是比整个月该收的总额，还是比8月31日每平方米的月租。",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -5368,31 +5368,31 @@
             "target_kind": "metric",
             "target_id": null,
             "filters": {
-              "��Ŀ��Χ": "ȫ����Ŀ"
+              "项目范围": "全部项目"
             },
             "time": {
-              "��ȷ��": "��2026-08�����ܶ��2026-08-31ʱ�㵥��"
+              "待确认": "按2026-08账期总额，或2026-08-31时点单价"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "��ѡ���ָ��",
-              "����": "����",
-              "����": "ȫ����Ŀ",
-              "��Χ": "ȫ��"
+              "依据": "待选租金指标",
+              "方向": "降序",
+              "数量": "全部项目",
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [
-          "�������Ҫ�Ƚ�2026��8��Ӧ���ܶ����8��31�հ������Ȩ��ƽ�������⣿"
+          "这个排名要比较2026年8月应收总额，还是8月31日按面积加权的平方米月租？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "target_id��ʱ��ھ���ѡ��ȷ������ѡΪrent_due��avg_monthly_rent_per_sqm��",
-          "����Ӧ��Ϊ�ڼ�ָ�꣬ƽ��������Ϊʱ��ָ�ꡣ"
+          "target_id与时间口径随选择确定，候选为rent_due或avg_monthly_rent_per_sqm。",
+          "整月应收为期间指标，平方米月租为时点指标。"
         ],
-        "rationale": "��Ҫ��һ����������ģ�뵥��������ʵ�ھ�����ѡ��",
+        "rationale": "仅要求一个排名，规模与单价两种真实口径须先选择。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5402,7 +5402,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB039",
-        "question": "2026��1��8�¸��յ���𣬰��⻧���ڳ��зֱ���ܸ��ҡ�",
+        "question": "2026年1到8月该收的租金，按租户所在城市分别汇总给我。",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
@@ -5411,23 +5411,23 @@
             "target_id": "rent_due",
             "filters": {},
             "time": {
-              "������": "2026-01",
-              "����ֹ": "2026-08"
+              "账期起": "2026-01",
+              "账期止": "2026-08"
             },
             "group_by": [
-              "��ȷ�ϣ��⻧ע����л�����Լ��Ӧ����Ŀ����"
+              "待确认：租户注册城市或其租约对应的项目城市"
             ],
             "sort": null
           }
         ],
         "required_clarification": [
-          "���ڳ�����ָ�⻧��ע����У������������Ӧ��Ŀ�ĳ��У�"
+          "所在城市是指租户的注册城市，还是这笔租金对应项目的城市？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ֳ��ж�������ҵ��ά�ȣ����岻ͬ���⻧�ɿ���Ŀ������Ĭ����ֻ��һ����Ӫ���С�"
+          "两种城市都是已有业务维度，含义不同；租户可跨项目，不能默认其只有一个经营城市。"
         ],
-        "rationale": "���Ŀ����ȷ������������������ж���ͬ�Ŀھ���",
+        "rationale": "金额目标明确，分组城市有两个可行而不同的口径。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5437,33 +5437,33 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB040",
-        "question": "�������³�2026��8�µ���Լ�и��ң�����״̬��Ҫ��",
+        "question": "把望京新程2026年8月的租约列给我，所有状态都要。",
         "category": "clarify_basis",
         "expected_action": "clarify",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "�����³�",
-              "��Լ״̬": "����"
+              "项目": "望京新程",
+              "租约状态": "不限"
             },
             "time": {
-              "��ȷ��": "2026-08������Լ��ʼ�ա������գ�������������ص�"
+              "待确认": "2026-08修饰租约开始日、结束日，或租期与该月重叠"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "8�µ���Լ��ָ8�¿�ʼ��8�½��������Ǻ�ͬ��ֹ���ڸ���8����һ�����Լ��"
+          "8月的租约是指8月开始、8月结束，还是合同起止日期覆盖8月任一天的租约？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "��ƾ�·ݴ��Ĭ��ֻȡ��ǰ��Ч��Լ��״̬��Χ�Ѿ���ȷΪ���ޡ�",
-          "��ʼ�ջ�����տھ���Ӧ2026-08-01��2026-08-31���ص��ھ��밴��ͬ�����ཻɸѡ��"
+          "不凭月份措辞默认只取当前有效租约；状态范围已经明确为不限。",
+          "开始日或结束日口径对应2026-08-01至2026-08-31，重叠口径须按合同日期相交筛选。"
         ],
-        "rationale": "�嵥ֻ��һ��Ŀ�꣬���·����ͬ���ڵĹ�ϵ��δȷ����",
+        "rationale": "清单只有一个目标，但月份与合同日期的关系尚未确定。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5473,7 +5473,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB041",
-        "question": "ƽ���������ˮ���ϻ��˶���Ǯ��",
+        "question": "平江坊最近在水电上花了多少钱？",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
@@ -5481,24 +5481,24 @@
             "target_kind": "metric",
             "target_id": "operating_expense",
             "filters": {
-              "��Ŀ": "ƽ����",
-              "���÷���": "ˮ��"
+              "项目": "平江坊",
+              "费用分类": "水电"
             },
             "time": {
-              "��ȷ��": "�������ֹ�·�"
+              "待确认": "最近的起止月份"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�������ָ�ļ����£���ָ��2025��1����2026��8�·�Χ�ڵ���ֹ�·ݡ�"
+          "最近具体指哪几个月？可指定2025年1月至2026年8月范围内的起止月份。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "���û���Ѷ��崰�ڣ�����Ĭ�Ͻ�һ�»�����¡�"
+          "最近没有已定义窗口，不能默认近一月或近三月。"
         ],
-        "rationale": "����Ŀ���������ȷ��Ψһȱ����δ����ʱ�䴰�ڡ�",
+        "rationale": "费用目标与分类明确，唯一缺口是未定义时间窗口。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5508,34 +5508,34 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB042",
-        "question": "2026��8��31�գ���������ÿƽ��������Ƚϸߵİ칫��λ����Щ��",
+        "question": "2026年8月31日，云栖中心每平方米月租比较高的办公铺位有哪些？",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��λ�嵥",
+            "target_id": "铺位清单",
             "filters": {
-              "��Ŀ": "��������",
-              "��λ����": "�칫",
-              "ƽ������������": "��ȷ�ϣ��Ƚϸߵ��жϹ���"
+              "项目": "云栖中心",
+              "铺位类型": "办公",
+              "平方米月租条件": "待确认：比较高的判断规则"
             },
             "time": {
-              "ʱ��": "2026-08-31"
+              "时点": "2026-08-31"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�Ƚϸ߰�ʲô��׼ɸѡ������ÿƽ�������ⳬ������Ԫ���������ߵ�ǰ���ٸ���λ��"
+          "比较高按什么标准筛选，例如每平方米月租超过多少元，或租金最高的前多少个铺位？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "�������Խ��Ƚϸ߽���Ϊ����ƽ��ֵ���ض�����̶�ǰN��",
-          "���û�ѡ����������������ȷ�����ͱ�Ҫ��Χ��"
+          "不能擅自将比较高解释为高于平均值、特定金额或固定前N。",
+          "如用户选择排名，需由其明确数量和必要范围。"
         ],
-        "rationale": "������λ�嵥ȱɸѡ��ֵ���������塣",
+        "rationale": "单个铺位清单缺筛选阈值或排名定义。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5545,7 +5545,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB043",
-        "question": "����2026��9��1�գ������ص�������⻧�ϼƻ��ж��ٵ���û�������",
+        "question": "截至2026年9月1日，我们重点跟进的租户合计还有多少到期没交的租金？",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
@@ -5553,25 +5553,25 @@
             "target_kind": "metric",
             "target_id": "overdue_balance",
             "filters": {
-              "�⻧����": "��ȷ�ϣ��ص����������ɸѡ����",
-              "��Ŀ��Χ": "ȫ����Ŀ"
+              "租户集合": "待确认：重点跟进名单或筛选规则",
+              "项目范围": "全部项目"
             },
             "time": {
-              "ʱ��": "2026-09-01"
+              "时点": "2026-09-01"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�ص������������Щ�⻧����ʲô��ִ�й���ѡ����"
+          "重点跟进具体是哪些租户，或按什么可执行规则选出？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "�ص���������������ȼ���Ҳ�������������ڽ����ֵ��",
-          "ȷ�Ϸ�Χ��ϲ���ѡ�⻧����Ŀ�Ļ�׼��������"
+          "重点跟进不等于主力等级，也不能自行设逾期金额阈值。",
+          "确认范围后合并所选租户跨项目的基准日逾期余额。"
         ],
-        "rationale": "�ڲ���νȱ���������壬�ɳ�����ѯ����ֱ�Ӿܾ���",
+        "rationale": "内部称谓缺少名单定义，可澄清后查询而非直接拒绝。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5581,34 +5581,34 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB044",
-        "question": "��2026��9��1�������㣬�����쵽�ڵ���Լ����Щ��״̬���ޡ�",
+        "question": "从2026年9月1日往后算，金陵汇快到期的租约有哪些？状态不限。",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
           {
             "target_kind": "list",
-            "target_id": "��Լ�嵥",
+            "target_id": "租约清单",
             "filters": {
-              "��Ŀ": "�����",
-              "��Լ״̬": "����"
+              "项目": "金陵汇",
+              "租约状态": "不限"
             },
             "time": {
-              "��Լ��������": "2026-09-01",
-              "��Լ������ֹ": "��ȷ��"
+              "租约结束日起": "2026-09-01",
+              "租约结束日止": "待确认"
             },
             "group_by": [],
             "sort": null
           }
         ],
         "required_clarification": [
-          "�쵽��Ҫ������һ�죬���9��1������������죿"
+          "快到期要看到哪一天，或从9月1日起往后多少天？"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "��Ĭ��30�졢90�����ף���������״̬��Χ�Ѿ�ȷ����",
-          "ȷ�Ϻ�������Լ�ĺ�ͬ������ɸѡ��"
+          "不默认30天、90天或年底；日期起点和状态范围已经确定。",
+          "确认后按现有租约的合同结束日筛选。"
         ],
-        "rationale": "�б�Ŀ����ȷ����ȱ���ڴ����յ㡣",
+        "rationale": "列表目标明确，仅缺到期窗口终点。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5618,7 +5618,7 @@
       "expected_action": "clarify",
       "raw_gold": {
         "id": "STB045",
-        "question": "2026���ϰ��꣬��Щ��Ŀ��Ӫ���ó�Ԥ��Ƚ����أ��������Ľ��Ӵ�С�С�",
+        "question": "2026年上半年，哪些项目运营费用超预算比较严重？按超出的金额从大到小列。",
         "category": "clarify_definition",
         "expected_action": "clarify",
         "known_requests": [
@@ -5626,33 +5626,33 @@
             "target_kind": "metric",
             "target_id": "budget_variance",
             "filters": {
-              "��֧����": "��ȷ�ϣ����س̶ȵ��жϹ��򣬿�Ϊ��������������ȷҵ����"
+              "超支条件": "待确认：严重程度的判断规则，可为金额、比例或其他明确业务定义"
             },
             "time": {
-              "�·���": "2026-01",
-              "�·�ֹ": "2026-06"
+              "月份起": "2026-01",
+              "月份止": "2026-06"
             },
             "group_by": [
-              "��Ŀ"
+              "项目"
             ],
             "sort": {
-              "����": "ʵ�ʷ��ü�Ԥ��Ľ��",
-              "����": "����",
-              "����": "ȫ��������ȷ�����س̶ȹ������Ŀ",
-              "��Χ": "ȫ��"
+              "依据": "实际费用减预算的金额",
+              "方向": "降序",
+              "数量": "全部符合已确认严重程度规则的项目",
+              "范围": "全局"
             }
           }
         ],
         "required_clarification": [
-          "��Ԥ��Ƚ����ذ�ʲô�����жϣ���֧����֧��������������ҵ���壿�������Ӧ��ֵ����ȷ����ɸѡ���԰������Ľ��Ӵ�С���С�"
+          "超预算比较严重按什么规则判断：超支金额、超支比例，还是其他业务定义？请给出相应阈值或明确规则；筛选后仍按超出的金额从大到小排列。"
         ],
         "unsupported_concepts": [],
         "important_basis": [
-          "���ؼ�����Ŀ����Ϊʵ�ʷ��ü�Ԥ��Ľ��������ǳ�֧�������ȫ�ֽ��򣬷���Ŀ�г�ȫ�����������ߡ�",
-          "�������ݲ����ƶ�ɸѡ���ݡ����س̶ȹ�������ֵ��δȷ�������������޶�Ϊ��Ҳ�����Զ���������������",
-          "��ѡ��������������壬Ӧ��ȷ�����㷨����ֵ������ʵ�ܷ���ҵ��Χ������֧�֣������Գ�ŵ��Χ�ⶨ��ɼ��㡣���������ɸѡ���������ڶ�����������ָ�ꡣ"
+          "返回及排序目标仍为实际费用减预算的金额，正数才是超支；按金额全局降序，分项目列出全部符合条件者。",
+          "排序依据不能推断筛选依据。严重程度规则与阈值均未确定，不能擅自限定为金额，也不能自定比例或其他规则。",
+          "若选择比例或其他定义，应明确所需算法和阈值，并核实能否由业务范围内数据支持；不擅自承诺范围外定义可计算。规则仅用于筛选，不新增第二个独立返回指标。"
         ],
-        "rationale": "Ψһ����Ŀ�����������ȷ�������س̶ȵ�ɸѡ���ݼ���ֵδ�������ȳ������",
+        "rationale": "唯一返回目标与金额降序已明确，但严重程度的筛选依据及阈值未定，须先澄清规则。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5662,18 +5662,18 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STB046",
-        "question": "������2026�����7��8��һ�����˶����˴Σ�",
+        "question": "湖滨里2026年暑假7到8月一共来了多少人次？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "��Ŀ�����˴�"
+          "项目客流人次"
         ],
         "important_basis": [
-          "���ݲ��ṩ�������������⻧������λ���������������"
+          "数据不提供客流，不能以租户数、铺位数或出租面积替代。"
         ],
-        "rationale": "ֻ��һ����Χ��Ŀ���ָ�꣬�·���ȷ������塣",
+        "rationale": "只问一个范围外的客流指标，月份明确无需澄清。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5683,18 +5683,18 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STB047",
-        "question": "�����㳡2026��8�����е��̵����۶�������Ƕ���Ԫ��",
+        "question": "澄明广场2026年8月所有店铺的销售额合起来是多少元？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "�������۶�"
+          "店铺销售额"
         ],
         "important_basis": [
-          "û�е����������ݣ����Ӧ�ջ�ʵ�վ����ܵ����۶"
+          "没有店铺销售数据，租金应收或实收均不能当销售额。"
         ],
-        "rationale": "�����������۽��Ŀ�ꡣ",
+        "rationale": "单独库外销售金额目标。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5704,18 +5704,18 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STB048",
-        "question": "�����³�2026���ϰ������˶���ͣ���ѣ�",
+        "question": "望京新程2026年上半年收了多少停车费？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "ͣ������"
+          "停车收入"
         ],
         "important_basis": [
-          "ͣ�����벻�ڷ�Χ�����������ʵ�մ��档"
+          "停车收入不在范围，不能用租金实收代替。"
         ],
-        "rationale": "��ȷ��Ŀ���ڼ�ĵ�����������ָ�ꡣ",
+        "rationale": "明确项目和期间的单个库外收入指标。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5725,18 +5725,18 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STB049",
-        "question": "��2026��9��1�յ��г����飬�����������Ŀ��ֵ����Ԫ��",
+        "question": "按2026年9月1日的市场行情，金陵汇整个项目估值多少元？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "��Ŀ�г���ֵ"
+          "项目市场估值"
         ],
         "important_basis": [
-          "û���г���ֵ���ݻ��ֵģ�ͣ����ܽ�����ʱ�������Ϊ��ֵ��"
+          "没有市场估值数据或估值模型，不能将租金资本化臆算为估值。"
         ],
-        "rationale": "���������ֵĿ�꣬�������ָ����ơ�",
+        "rationale": "单独库外估值目标，不借库内指标近似。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"
@@ -5746,18 +5746,18 @@
       "expected_action": "reject",
       "raw_gold": {
         "id": "STB050",
-        "question": "��������2025��ȫ�갴��ʽ��Ʊ����ھ��ľ������Ƕ��٣�",
+        "question": "云栖中心2025年全年按正式会计报表口径的净利润是多少？",
         "category": "reject_unsupported",
         "expected_action": "reject",
         "known_requests": [],
         "required_clarification": [],
         "unsupported_concepts": [
-          "��ʽ��ƾ�����"
+          "正式会计净利润"
         ],
         "important_basis": [
-          "��ʽ������������ݷ�Χ��cash_noi_proxy��Ϊʵ�ռ����ã��������������"
+          "正式会计利润不在数据范围，cash_noi_proxy仅为实收减费用，不能替代净利润。"
         ],
-        "rationale": "��ȷҪ����ʽ���󣬱���ܾ������ǸĴ�򻯴�����",
+        "rationale": "明确要求正式利润，必须拒绝而不是改答简化代理。",
         "multi_request": false
       },
       "normalization_status": "manual_clarification_or_rejection_review"

@@ -8,7 +8,7 @@ from json_resolver import JsonResolver, parse_response, ResolverFailure, correct
 class JsonResolverTests(unittest.TestCase):
     def setUp(self):
         self.cap=load_capabilities()
-        self.question='��Щ��¼ɾ����'
+        self.question='这些记录删掉。'
         self.payload={'requests':[{'source_text':self.question,'kind':'write','plans':[]}]}
         self.raw=json.dumps(self.payload,ensure_ascii=False)
 
@@ -67,7 +67,7 @@ class JsonResolverTests(unittest.TestCase):
 
     def test_never_extracts_json_from_prose_or_multiple_documents(self):
         fenced='```json\n'+self.raw+'\n```'
-        for raw in ['���ͣ�'+fenced,fenced+'˵��',fenced+'\n'+fenced,
+        for raw in ['解释：'+fenced,fenced+'说明',fenced+'\n'+fenced,
                     '```python\n'+self.raw+'\n```',self.raw+self.raw]:
             with self.subTest(raw=raw),self.assertRaises(ValueError): parse_response(raw)
 
@@ -84,16 +84,16 @@ class JsonResolverTests(unittest.TestCase):
         self.assertEqual(resolver.trace[0]['status'],'invalid_contract')
 
     def test_missing_question_text_retries(self):
-        client,calls=self.client([self.raw.replace(self.question,'ɾ��'),self.raw])
+        client,calls=self.client([self.raw.replace(self.question,'删掉'),self.raw])
         resolver=JsonResolver(self.cap,client)
         resolver('p',self.question)
         self.assertEqual(len(calls),2)
-        self.assertIn('ԭ����˳��ƴ��',calls[1])
+        self.assertIn('原样按顺序拼接',calls[1])
 
     def test_correction_never_echoes_untrusted_exception_text(self):
         hint=correction_hint(ValueError('SECRET_PROVIDER_TEXT'))
         self.assertNotIn('SECRET_PROVIDER_TEXT',hint)
-        self.assertIn('����',correction_hint(ValueError('ranking limit must be an integer from1to1000')))
+        self.assertIn('整数',correction_hint(ValueError('ranking limit must be an integer from1to1000')))
 
     def test_invalid_budget(self):
         for n in [True,0,3]:

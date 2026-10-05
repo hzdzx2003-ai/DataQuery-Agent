@@ -4,96 +4,96 @@
   "metrics": [
     {
       "id": "rent_due",
-      "name_zh": "Ӧ�����",
-      "definition": "ָ�������� rent_payments.amount_due �ĺϼ�",
+      "name_zh": "应收租金",
+      "definition": "指定账期内 rent_payments.amount_due 的合计",
       "time_type": "period",
-      "default_assumption": "������ͳ�ƣ�������Ʊ�ջ������ط���",
+      "default_assumption": "按账期统计，不按开票日或到账日重分配",
       "disclosure_required": false
     },
     {
       "id": "rent_collected",
-      "name_zh": "ʵ�����",
-      "definition": "ָ�������� rent_payments.amount_paid �ĺϼƣ�����ʵ�ʸ��������ط����·�",
+      "name_zh": "实收租金",
+      "definition": "指定账期内 rent_payments.amount_paid 的合计，不按实际付款日期重分配月份",
       "time_type": "period",
-      "default_assumption": "�����ڹ���ͳ�ƣ�����ʵ�ʵ��������ط���",
+      "default_assumption": "按账期归属统计，不按实际到账日期重分配",
       "disclosure_required": false
     },
     {
       "id": "collection_rate",
-      "name_zh": "����ս���",
-      "definition": "ָ���������ս�����ͬһ����Ӧ�ս�Ӧ��Ϊ��ʱ���ؿ�ֵ",
+      "name_zh": "租金收缴率",
+      "definition": "指定账期已收金额除以同一账期应收金额；应收为零时返回空值",
       "time_type": "period",
-      "default_assumption": "������ƥ��Ӧ�������գ����������ջ������ڻؿ�",
+      "default_assumption": "按账期匹配应收与已收，不按到账日混入往期回款",
       "disclosure_required": true
     },
     {
       "id": "leased_area",
-      "name_zh": "�ѳ������",
-      "definition": "ָ��������Ч��Լ����Ӧ��λ�Ŀɳ�������ϼ�",
+      "name_zh": "已出租面积",
+      "definition": "指定日期有效租约所对应铺位的可出租面积合计",
       "time_type": "point_in_time",
-      "default_assumption": "�����պ͵����վ���������Ч���ڣ�ͬһ��λֻ��һ��",
+      "default_assumption": "起租日和到期日均包含在有效期内；同一铺位只计一次",
       "disclosure_required": false
     },
     {
       "id": "occupancy_rate",
-      "name_zh": "������",
-      "definition": "ָ��������Ч��Լ��λ���������Ŀ������� GLA",
+      "name_zh": "出租率",
+      "definition": "指定日期有效租约铺位面积除以项目可租面积 GLA",
       "time_type": "point_in_time",
-      "default_assumption": "��ĩʱ�㡢�������ֻ������Ч��Լ������ͬ�ڿ�ҵ��",
+      "default_assumption": "期末时点、按面积、只计已生效租约，不等同于开业率",
       "disclosure_required": true
     },
     {
       "id": "operating_expense",
-      "name_zh": "��Ӫ����",
-      "definition": "ָ���·� operating_expenses.amount �ĺϼ�",
+      "name_zh": "运营费用",
+      "definition": "指定月份 operating_expenses.amount 的合计",
       "time_type": "period",
-      "default_assumption": "��������ǰ���ñ���������Ӫ����",
+      "default_assumption": "仅包含当前费用表的五类运营费用",
       "disclosure_required": false
     },
     {
       "id": "budget_variance",
-      "name_zh": "��Ӫ����Ԥ�����",
-      "definition": "ָ���·���Ӫ����ʵ�ʽ���Ԥ���������ʾ��Ԥ��",
+      "name_zh": "运营费用预算差异",
+      "definition": "指定月份运营费用实际金额减预算金额；正数表示超预算",
       "time_type": "period",
-      "default_assumption": "ʵ�ʼ�Ԥ�㣬����Ϊ��Ԥ�㣬����Ϊ����Ԥ��",
+      "default_assumption": "实际减预算，正数为超预算，负数为低于预算",
       "disclosure_required": false
     },
     {
       "id": "cash_noi_proxy",
-      "name_zh": "�ֽ���Ӫ���棨�򻯿ھ���",
-      "definition": "ָ������ʵ��������Ӫ���ã�������Ӫ����������ͬ�ڻ���������ʽ NOI",
+      "name_zh": "现金净运营收益（简化口径）",
+      "definition": "指定账期实收租金减运营费用，仅作运营分析，不等同于会计利润或正式 NOI",
       "time_type": "period",
-      "default_assumption": "ʵ������������Ӫ����",
+      "default_assumption": "实收租金减当期运营费用",
       "disclosure_required": true
     },
     {
       "id": "avg_monthly_rent_per_sqm",
-      "name_zh": "ÿƽ���������",
-      "definition": "ָ��������Ч��Լ�����ϼƳ��Զ�ӦΨһ��λ����ϼ�",
+      "name_zh": "每平方米月租金",
+      "definition": "指定日期有效租约月租金合计除以对应唯一铺位面积合计",
       "time_type": "point_in_time",
-      "default_assumption": "�������Ȩ����ֹ�Ը���λ����ֱ��ȡƽ��",
+      "default_assumption": "按面积加权，禁止对各铺位单价直接取平均",
       "disclosure_required": false
     },
     {
       "id": "overdue_balance",
-      "name_zh": "����Ƿ��",
-      "definition": "���������ڻ�׼����δȫ��֧���� amount_due - amount_paid",
+      "name_zh": "逾期欠款",
+      "definition": "到期日早于基准日且未全额支付的 amount_due - amount_paid",
       "time_type": "as_of",
-      "default_assumption": "���ָ����δ������׼�յ��쵽�ڲ�������",
+      "default_assumption": "部分付款保留未付余额；基准日当天到期不计逾期",
       "disclosure_required": false
     }
   ],
   "ambiguous_terms": {
-    "����": "��Ҫȷ����Ӧ�����ʵ����𡢲���ȷ�����룬�����⻧���۶��ǰ��ֻ֧��ǰ����",
-    "Ӫ��": "��Ҫȷ������Ӫ�����ھ������⻧���۶��ǰ�ⲻ���⻧���۶�",
-    "�������": "��Ҫȷ�ϰ�Ӧ�ջ���ʵ�գ����þ�Ĭӳ��Ϊʵ�����",
-    "û�ջ���": "��Ҫȷ���ǵ�������Ƿ�ջ��ǽ�����ǰ����ʷ�ۼ����ڣ����þ�Ĭӳ��Ϊ����Ƿ��",
-    "NOI": "��Ҫȷ������ʽ NOI �����ֽ���Ӫ����򻯿ھ�����ǰ��ֻ֧�ֺ����ұ�����¶�߽�",
-    "����": "��ǰ���ݲ�����˰�ѡ��۾ɡ����ʳɱ���������ƿھ�����ѯ���Ƿ�Ĳ��ֽ���Ӫ���棨�򻯿ھ���",
-    "���": "��Ҫȷ�ϰ������ʡ�ʵ������ս��ʻ����ֽ���Ӫ���棨�򻯿ھ�������",
-    "���": "��Ҫ�û�������ȷʱ�䴰��",
-    "���⻧": "��Ҫ�û���������������⻧�ȼ��ھ�",
-    "�Ϻ����⻧": "��Ҫȷ�ϰ���Ŀ���ڳ��л����⻧ע�����ɸѡ"
+    "收入": "需要确认是应收租金、实收租金、财务确认收入，还是租户销售额；当前库只支持前两者",
+    "营收": "需要确认是运营方租金口径还是租户销售额；当前库不含租户销售额",
+    "租金收入": "需要确认按应收还是实收；不得静默映射为实收租金",
+    "没收回来": "需要确认是当期账期欠收还是截至当前的历史累计逾期；不得静默映射为逾期欠款",
+    "NOI": "需要确认是正式 NOI 还是现金净运营收益简化口径；当前库只支持后者且必须披露边界",
+    "利润": "当前数据不包含税费、折旧、融资成本等完整会计口径；可询问是否改查现金净运营收益（简化口径）",
+    "最好": "需要确认按出租率、实收租金、收缴率还是现金净运营收益（简化口径）排序",
+    "最近": "需要用户给出明确时间窗口",
+    "大租户": "需要用户给出面积、租金或租户等级口径",
+    "上海的租户": "需要确认按项目所在城市还是租户注册城市筛选"
   },
   "source_catalog_sha256": "b9dc4656b5770cf46a6dd6104217c1350b74a496a6d08849051bf022cabddf59",
   "projection_note": "Business definitions only, no regex/formulas/Gold/private assets. Not evaluation-frozen."
