@@ -44,16 +44,16 @@ python -B -m unittest discover -p "test_*.py"
 
 ## 产品演示
 
-![DataQuery Agent historical Streamlit demo](assets/demo-overview.png)
-
-根目录Streamlit展示历史交互原型；新版解析与评测代码位于 `releases/nl-v3-93`。
+新版界面展示冻结版本的理解摘要、指标口径、结果表格及必要澄清，默认无需 API Key。
 
 ```shell
-python -m pip install -r requirements.txt
-python -m streamlit run app.py
+python -m pip install -r ui-v1/requirements.txt
+python -m streamlit run ui-v1/app.py --server.address 127.0.0.1 --browser.gatherUsageStats false
 ```
 
-默认演示读取保存记录，不调用外部模型。[演示配置](docs/PLATFORM_SETUP.md)
+[新版 UI 使用说明](ui-v1/README.md)。当前提供保存案例回放；实时解析及澄清后的自动续查尚未启用。界面测试与模型评测独立计量。
+
+历史交互原型仍保留：`python -m streamlit run app.py`。[历史演示配置](docs/PLATFORM_SETUP.md)
 
 ## 阅读导航
 
