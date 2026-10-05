@@ -1,0 +1,20 @@
+{
+  "release": "portfolio-evidence-20261006-v1",
+  "scope": "Evaluation evidence freeze; public demo code unchanged",
+  "parser_version": "nl-v3-diagnostic100-20261005-1",
+  "backend_version": "nl-v3-fixed-backend-1",
+  "verified_parser_files": 83,
+  "verified_backend_files": 4,
+  "files": {
+    "DIAGNOSTIC100_FREEZE_V1.json": "ade1301bc1c4f691cd9bec1a7b802ac97448ffa0127463da18862e411226b607",
+    "diagnostic100_1/result.json": "4a946a9926ac1b6cc411dd8374fd0702acc29ab3222b12564774428f2dffa06a",
+    "diagnostic100_1/manual_audit.json": "99c911b9684bee3d4b7b05595067b549326753d1f497211d02ff9a35600e2232",
+    "SINGLE_TASK_GOLD_REVIEWED_V1.json": "a14f7f1e2f4339e01e8328bbd883dfed5775efcb2eae97bed2b5e32656e44b07",
+    "fixed_backend_validation_1/manifest.json": "27d5e25d2facbe7e176ef6575f207f28b45c561e0b2237a19c5be0966b706357",
+    "fixed_backend_validation_1/result.json": "461fb073c37d9d3ae3e890a3fa4847be6bc810d03fb72acf261dc771a78ab005",
+    "HISTORICAL57_EQUAL_RUBRIC_AUDIT_20261006.json": "7e7220246b0078564bb818196e03cea39443556709cfcfe4d37df81667ae17d3",
+    "HISTORICAL57_COMPARISON_20261006.md": "46be35c29fb52584246adbb52d5b2e7c876d0a4199abbba43027a13e97f4a702",
+    "THINKING_TOGGLE_PAIR_RESULT_V1.md": "de8f6bdf4be6e35a897c2e8ef759c989dfba6289e635c58f1c9fe4a0761fe3d0",
+    "nothinking100_1/manual_audit.json": "cd8f78b8982101627521d33df396a1739af50dc69d5313c699e6acd72949d7f7"
+  }
+}
