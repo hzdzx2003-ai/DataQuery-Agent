@@ -22,4 +22,12 @@ Run commands inside the UI directory. No key or private environment file is requ
 .venv/Scripts/python -B -X utf8 -m unittest discover -s . -p "test_*.py" -v
 ```
 
-UI checks are separate from historical evaluation scores. Browser visual validation and deployment status are recorded in PROGRESS.md.
+UI checks are separate from historical evaluation scores. See the validation status below.
+
+## Integration verification
+
+The local suite contains 24 tests, including rendering all 100 saved cases, public-directory portability, corrupt artifact refusal, clarification state isolation, and the injected parser boundary. `test_backend_integration.py` generates a fresh fictional database in a temporary directory and checks all 100 saved decisions against the original outputs. The fixture is opened read-only and removed after testing.
+
+`query_service.py` accepts an explicitly supplied client and executor; it does not load credentials or provide an HTTP transport. Its fake-client integration test exercises the unchanged parser and fixed SQL backend. This is not evidence of new model accuracy or completed live UI integration.
+
+Current validation: automated interaction and synthetic integration tests passed. Browser screenshot inspection could not be completed because the local browser automation runtime failed to initialize. No public hosted application has been deployed. The root legacy app remains available independently.
