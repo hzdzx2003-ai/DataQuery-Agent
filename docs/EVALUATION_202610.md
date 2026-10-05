@@ -33,4 +33,4 @@
 - Gold SHA-256：`a14f7f1e2f4339e01e8328bbd883dfed5775efcb2eae97bed2b5e32656e44b07`。
 - 100题结果 SHA-256：`4a946a9926ac1b6cc411dd8374fd0702acc29ab3222b12564774428f2dffa06a`。
 - [证据文件指纹](../evaluation/portfolio-evidence-20261006-v1.json)：已核对83份解析版本快照文件与4份后端快照文件。
-- 本次发布更新评测文档；仓库 Streamlit Demo 保持原有演示版本。
+- 已发布[对应源码与100题评测包](../releases/nl-v3-93/README.md)，包括完整Gold、保存输出、逐题判定、后端结果及离线验证入口。仓库根目录Streamlit Demo保留历史版本。

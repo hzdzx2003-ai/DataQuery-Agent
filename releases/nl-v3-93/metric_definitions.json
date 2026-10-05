@@ -1,0 +1,100 @@
+{
+  "version": "v3-business-catalog-1",
+  "as_of_date": "2026-09-01",
+  "metrics": [
+    {
+      "id": "rent_due",
+      "name_zh": "Ӧ�����",
+      "definition": "ָ�������� rent_payments.amount_due �ĺϼ�",
+      "time_type": "period",
+      "default_assumption": "������ͳ�ƣ�������Ʊ�ջ������ط���",
+      "disclosure_required": false
+    },
+    {
+      "id": "rent_collected",
+      "name_zh": "ʵ�����",
+      "definition": "ָ�������� rent_payments.amount_paid �ĺϼƣ�����ʵ�ʸ��������ط����·�",
+      "time_type": "period",
+      "default_assumption": "�����ڹ���ͳ�ƣ�����ʵ�ʵ��������ط���",
+      "disclosure_required": false
+    },
+    {
+      "id": "collection_rate",
+      "name_zh": "����ս���",
+      "definition": "ָ���������ս�����ͬһ����Ӧ�ս�Ӧ��Ϊ��ʱ���ؿ�ֵ",
+      "time_type": "period",
+      "default_assumption": "������ƥ��Ӧ�������գ����������ջ������ڻؿ�",
+      "disclosure_required": true
+    },
+    {
+      "id": "leased_area",
+      "name_zh": "�ѳ������",
+      "definition": "ָ��������Ч��Լ����Ӧ��λ�Ŀɳ�������ϼ�",
+      "time_type": "point_in_time",
+      "default_assumption": "�����պ͵����վ���������Ч���ڣ�ͬһ��λֻ��һ��",
+      "disclosure_required": false
+    },
+    {
+      "id": "occupancy_rate",
+      "name_zh": "������",
+      "definition": "ָ��������Ч��Լ��λ���������Ŀ������� GLA",
+      "time_type": "point_in_time",
+      "default_assumption": "��ĩʱ�㡢�������ֻ������Ч��Լ������ͬ�ڿ�ҵ��",
+      "disclosure_required": true
+    },
+    {
+      "id": "operating_expense",
+      "name_zh": "��Ӫ����",
+      "definition": "ָ���·� operating_expenses.amount �ĺϼ�",
+      "time_type": "period",
+      "default_assumption": "��������ǰ���ñ���������Ӫ����",
+      "disclosure_required": false
+    },
+    {
+      "id": "budget_variance",
+      "name_zh": "��Ӫ����Ԥ�����",
+      "definition": "ָ���·���Ӫ����ʵ�ʽ���Ԥ���������ʾ��Ԥ��",
+      "time_type": "period",
+      "default_assumption": "ʵ�ʼ�Ԥ�㣬����Ϊ��Ԥ�㣬����Ϊ����Ԥ��",
+      "disclosure_required": false
+    },
+    {
+      "id": "cash_noi_proxy",
+      "name_zh": "�ֽ���Ӫ���棨�򻯿ھ���",
+      "definition": "ָ������ʵ��������Ӫ���ã�������Ӫ����������ͬ�ڻ���������ʽ NOI",
+      "time_type": "period",
+      "default_assumption": "ʵ������������Ӫ����",
+      "disclosure_required": true
+    },
+    {
+      "id": "avg_monthly_rent_per_sqm",
+      "name_zh": "ÿƽ���������",
+      "definition": "ָ��������Ч��Լ�����ϼƳ��Զ�ӦΨһ��λ����ϼ�",
+      "time_type": "point_in_time",
+      "default_assumption": "�������Ȩ����ֹ�Ը���λ����ֱ��ȡƽ��",
+      "disclosure_required": false
+    },
+    {
+      "id": "overdue_balance",
+      "name_zh": "����Ƿ��",
+      "definition": "���������ڻ�׼����δȫ��֧���� amount_due - amount_paid",
+      "time_type": "as_of",
+      "default_assumption": "���ָ����δ������׼�յ��쵽�ڲ�������",
+      "disclosure_required": false
+    }
+  ],
+  "ambiguous_terms": {
+    "����": "��Ҫȷ����Ӧ�����ʵ����𡢲���ȷ�����룬�����⻧���۶��ǰ��ֻ֧��ǰ����",
+    "Ӫ��": "��Ҫȷ������Ӫ�����ھ������⻧���۶��ǰ�ⲻ���⻧���۶�",
+    "�������": "��Ҫȷ�ϰ�Ӧ�ջ���ʵ�գ����þ�Ĭӳ��Ϊʵ�����",
+    "û�ջ���": "��Ҫȷ���ǵ�������Ƿ�ջ��ǽ�����ǰ����ʷ�ۼ����ڣ����þ�Ĭӳ��Ϊ����Ƿ��",
+    "NOI": "��Ҫȷ������ʽ NOI �����ֽ���Ӫ����򻯿ھ�����ǰ��ֻ֧�ֺ����ұ�����¶�߽�",
+    "����": "��ǰ���ݲ�����˰�ѡ��۾ɡ����ʳɱ���������ƿھ�����ѯ���Ƿ�Ĳ��ֽ���Ӫ���棨�򻯿ھ���",
+    "���": "��Ҫȷ�ϰ������ʡ�ʵ������ս��ʻ����ֽ���Ӫ���棨�򻯿ھ�������",
+    "���": "��Ҫ�û�������ȷʱ�䴰��",
+    "���⻧": "��Ҫ�û���������������⻧�ȼ��ھ�",
+    "�Ϻ����⻧": "��Ҫȷ�ϰ���Ŀ���ڳ��л����⻧ע�����ɸѡ"
+  },
+  "source_catalog_sha256": "b9dc4656b5770cf46a6dd6104217c1350b74a496a6d08849051bf022cabddf59",
+  "projection_note": "Business definitions only, no regex/formulas/Gold/private assets. Not evaluation-frozen."
+}

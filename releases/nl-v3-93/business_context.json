@@ -1,0 +1,82 @@
+{
+  "version": "natural-language-v3-context-draft-9",
+  "source": "authoring-brief-v1.1 business facts; synthetic, not Gold labels",
+  "reference_date": "2026-09-01",
+  "data_period": {"start": "2025-01-01", "end": "2026-08-31"},
+  "currency": "CNY",
+  "point_time_capabilities": {
+    "leased_area": {"mode": "lease_dates", "start": "2025-01-01"},
+    "occupancy_rate": {"mode": "lease_dates", "start": "2025-01-01"},
+    "avg_monthly_rent_per_sqm": {"mode": "lease_dates", "start": "2025-01-01"},
+    "overdue_balance": {"mode": "reference_only"}
+  },
+  "projects": [
+    {"name": "�����㳡", "city": "�Ϻ�", "district": "�ֶ�"},
+    {"name": "��������", "city": "�Ϻ�", "district": "���"},
+    {"name": "������", "city": "����"},
+    {"name": "�����", "city": "�Ͼ�"},
+    {"name": "ƽ����", "city": "����"},
+    {"name": "�����³�", "city": "����"}
+  ],
+  "list_targets": ["property", "unit", "tenant", "lease"],
+  "list_identity_keys": {"property": "property_id", "unit": "unit_id", "tenant": "tenant_id", "lease": "lease_id"},
+  "list_labels": {"property": "��ҵ��Ŀ�嵥", "unit": "��λ�嵥", "tenant": "�⻧�嵥", "lease": "��Լ�嵥"},
+  "dimensions": ["project", "project_city", "project_district", "project_type", "unit_type", "floor", "tenant", "tenant_industry", "tenant_tier", "tenant_registration_city", "expense_category", "lease_status", "payment_status"],
+  "dimension_labels": {"project": "��Ŀ", "project_city": "��Ŀ���ڳ���", "project_district": "��Ŀ������", "project_type": "��Ŀ����", "unit_type": "��λ����", "floor": "¥��", "tenant": "�⻧����", "tenant_industry": "�⻧��ҵ", "tenant_tier": "�⻧�ȼ�", "tenant_registration_city": "�⻧ע�����", "expense_category": "�������", "lease_status": "��Լ״̬", "payment_status": "����״̬"},
+  "metric_explanations": {
+    "rent_due": "������ڰ��˵�Ӧ�ն���Ǯ",
+    "rent_collected": "������ڵ�����Ѿ��ջض���Ǯ������ʵ�ʵ��������¹���",
+    "collection_rate": "�������Ӧ�յ�Ǯ���Ѿ��ջ��˶�����",
+    "leased_area": "ָ��ʱ���Ѿ����ȥ�����",
+    "occupancy_rate": "ָ��ʱ���ѳ������ռ��Ŀ��������ı�����������λ������",
+    "operating_expense": "���ʱ��ʵ�ʷ�������Ӫ����",
+    "budget_variance": "ʵ����Ӫ���ü�Ԥ�㣬������ʾ��Ԥ��",
+    "cash_noi_proxy": "ʵ��������Ӫ���õļ򻯽�������ǻ���������ʽNOI",
+    "avg_monthly_rent_per_sqm": "�������Ȩ��ÿƽ���������",
+    "overdue_balance": "����ָ��ʱ���ѵ��ڵ���δ�����������"
+  },
+  "dimension_ambiguities": {"tenant_city": ["project_city", "tenant_registration_city"]},
+  "filter_domains": {"floor": ["1", "2", "3"], "tenant_registration_city": ["�Ϻ�", "����", "�Ͼ�", "����", "����"], "tenant_tier": ["anchor", "standard", "emerging"], "unit_type": ["retail", "office", "food_beverage", "service"]},
+  "filter_value_labels": {"tenant_tier": {"anchor": "����", "standard": "��׼", "emerging": "����"}, "unit_type": {"retail": "����", "office": "�칫", "food_beverage": "����", "service": "����"}},
+  "list_filter_dimensions": {
+    "property": ["project", "project_city", "project_district"],
+    "unit": ["project", "project_city", "unit_type", "floor"],
+    "tenant": ["project", "project_city", "tenant_tier", "tenant_registration_city"],
+    "lease": ["project", "project_city", "tenant_tier", "tenant_registration_city"]
+  },
+  "list_grouping_dimensions": {
+    "property": ["project", "project_city"],
+    "unit": ["project", "project_city", "floor", "unit_type"],
+    "tenant": ["project", "project_city", "tenant_registration_city"],
+    "lease": ["project", "project_city", "tenant_registration_city"]
+  },
+  "metric_grouping_dimensions": {
+    "rent_due": ["project", "project_city", "project_type", "unit_type", "floor", "tenant", "tenant_tier", "tenant_industry", "tenant_registration_city"],
+    "rent_collected": ["project", "project_city", "project_type", "unit_type", "floor", "tenant", "tenant_tier", "tenant_industry", "tenant_registration_city"],
+    "collection_rate": ["project", "project_city", "project_type", "unit_type", "floor", "tenant", "tenant_tier", "tenant_industry", "tenant_registration_city"],
+    "overdue_balance": ["project", "project_city", "project_type", "unit_type", "floor", "tenant", "tenant_tier", "tenant_industry", "tenant_registration_city"],
+    "leased_area": ["project", "project_city", "unit_type", "floor"],
+    "occupancy_rate": ["project", "project_city", "unit_type", "floor"],
+    "avg_monthly_rent_per_sqm": ["project", "project_city", "unit_type", "floor"],
+    "operating_expense": ["project", "project_city", "expense_category"],
+    "budget_variance": ["project", "project_city", "expense_category"],
+    "cash_noi_proxy": ["project", "project_city"]
+  },
+  "dimension_basis": {
+    "tenant": "��tenant_id�⻧���ݹ��飬��������Լ��Ӧ��ԭʼ����¼���ܣ����������²����ݡ������⻧����ʱ����ѡ��Ŀ�ϲ�������Ŀ���⻧����ʱ�ֱ�����Ŀ�������ս���ʹ��������ʵ�ճ���Ӧ�գ���ƽ����Լ���ʡ�",
+    "floor": "¥�㰴������λ�������ͣ�¥������ַ���ö�٣����ṩ��ʷ¥������",
+    "unit_type": "��λ���Ͱ�������λ�������ͣ����õ�ǰoccupied/vacant״̬����ָ��ʱ�����Լ��Ч�ԡ�",
+    "occupancy_unit_scope": "ָ��¥�����λ���͵ĳ����ʣ�����Ϊ�÷�Χ��ָ��ʱ����Ч��Լ���ǵ�Ψһ��λ�������ĸΪͬһ��Χȫ��Ψһ��λ�������������������λ��������������ĿGLA��Ҳ������λ�������ʡ��޴�ϸ��ʱ�԰���ĿGLA��",
+    "tenant_registration_city": "�⻧ע��������������⻧������������Ŀ���ڵأ�ֻɸѡ�⻧�����Զ���С��Ŀ��Χ�����ṩ��ʷע��ر��������¼����Լ�����⻧����顣",
+    "project_type": "��Ŀ���Ͱ�������Ŀ�������飬���ṩ��ʷ���ͱ�����ս������÷�����ʵ�ճ���Ӧ�գ���ƽ����Ŀ���ʡ�",
+    "tenant_tier": "�⻧�ȼ��������⻧�������飬��ǰĿ¼���ṩ��ʷ�ȼ������¼��",
+    "tenant_industry": "�⻧��ҵ�������⻧�������飬��ǰĿ¼���ṩ��ʷ��ҵ�����¼��"
+  },
+  "expense_categories": ["��ҵ����", "ˮ��", "ά��ά��", "Ӫ��", "����"],
+  "notes": [
+    "Project names are filter values, not extra query targets or invented database primary keys.",
+    "Resolve relative dates against reference_date; disclose defaults when material.",
+    "Capability does not imply every historical snapshot or arbitrary derived metric exists. Load metric-specific definitions before validation.",
+    "This config contains no observed question, Gold label, credential or authorization."
+  ]
+}

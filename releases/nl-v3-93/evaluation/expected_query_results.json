@@ -1,0 +1,1088 @@
+{
+  "STA001": [
+    {
+      "value": 849888.9
+    }
+  ],
+  "STA002": [
+    {
+      "value": 4461641.4
+    }
+  ],
+  "STA003": [
+    {
+      "value": 56751.44
+    }
+  ],
+  "STA004": [
+    {
+      "value": 354.0
+    }
+  ],
+  "STA005": [
+    {
+      "value": 1273580.25
+    }
+  ],
+  "STA006": [
+    {
+      "value": 10256.34
+    }
+  ],
+  "STA007": [
+    {
+      "value": 404221.97
+    }
+  ],
+  "STA008": [
+    {
+      "value": 80997.0
+    }
+  ],
+  "STA009": [
+    {
+      "entity_id": "P002",
+      "label": "��������"
+    }
+  ],
+  "STA010": [
+    {
+      "entity_id": "U0401",
+      "label": "1F-01"
+    },
+    {
+      "entity_id": "U0403",
+      "label": "1F-03"
+    },
+    {
+      "entity_id": "U0404",
+      "label": "2F-04"
+    },
+    {
+      "entity_id": "U0406",
+      "label": "2F-06"
+    }
+  ],
+  "STA011": [
+    {
+      "entity_id": "T012",
+      "label": "Զɽ�Ƽ�12�ŵ�"
+    },
+    {
+      "entity_id": "T032",
+      "label": "Զɽ����32�ŵ�"
+    }
+  ],
+  "STA012": [],
+  "STA013": [
+    {
+      "value": 0.8780912675519126
+    }
+  ],
+  "STA014": [
+    {
+      "month": "2026-01",
+      "value": 1743889.77
+    },
+    {
+      "month": "2026-02",
+      "value": 1717834.79
+    },
+    {
+      "month": "2026-03",
+      "value": 1745317.29
+    },
+    {
+      "month": "2026-04",
+      "value": 1657938.36
+    },
+    {
+      "month": "2026-05",
+      "value": 1645560.31
+    },
+    {
+      "month": "2026-06",
+      "value": 1732111.27
+    },
+    {
+      "month": "2026-07",
+      "value": 1708438.95
+    },
+    {
+      "month": "2026-08",
+      "value": 1713956.12
+    }
+  ],
+  "STA015": [
+    {
+      "project": "�����³�",
+      "value": 5241429.6
+    },
+    {
+      "project": "�����㳡",
+      "value": 3203350.8
+    },
+    {
+      "project": "ƽ����",
+      "value": 3160800.0
+    }
+  ],
+  "STA016": [
+    {
+      "expense_category": "����",
+      "value": 27228.29
+    },
+    {
+      "expense_category": "ˮ��",
+      "value": 81993.21
+    },
+    {
+      "expense_category": "��ҵ����",
+      "value": 101164.09
+    },
+    {
+      "expense_category": "ά��ά��",
+      "value": 52978.75
+    },
+    {
+      "expense_category": "Ӫ��",
+      "value": 35954.37
+    }
+  ],
+  "STA017": [
+    {
+      "project": "�����",
+      "value": 0.5473124300111982
+    },
+    {
+      "project": "��������",
+      "value": 0.6800126103404792
+    },
+    {
+      "project": "������",
+      "value": 0.6841637010676157
+    },
+    {
+      "project": "ƽ����",
+      "value": 0.6911452810180275
+    },
+    {
+      "project": "�����㳡",
+      "value": 0.8314266487213997
+    },
+    {
+      "project": "�����³�",
+      "value": 0.8423967774420946
+    }
+  ],
+  "STA018": [
+    {
+      "floor": "1",
+      "value": 837.0
+    },
+    {
+      "floor": "2",
+      "value": 1634.0
+    },
+    {
+      "floor": "3",
+      "value": 0.0
+    }
+  ],
+  "STA019": [
+    {
+      "project": "��������",
+      "tenant": "T013",
+      "value": 200959.2
+    },
+    {
+      "project": "��������",
+      "tenant": "T012",
+      "value": 180462.75
+    },
+    {
+      "project": "ƽ����",
+      "tenant": "T029",
+      "value": 307788.6
+    },
+    {
+      "project": "ƽ����",
+      "tenant": "T030",
+      "value": 297386.08
+    },
+    {
+      "project": "�����³�",
+      "tenant": "T036",
+      "value": 333518.4
+    },
+    {
+      "project": "�����³�",
+      "tenant": "T035",
+      "value": 312352.65
+    },
+    {
+      "project": "������",
+      "tenant": "T019",
+      "value": 231106.48
+    },
+    {
+      "project": "������",
+      "tenant": "T016",
+      "value": 177327.0
+    },
+    {
+      "project": "�����㳡",
+      "tenant": "T006",
+      "value": 172806.88
+    },
+    {
+      "project": "�����㳡",
+      "tenant": "T005",
+      "value": 165900.15
+    },
+    {
+      "project": "�����",
+      "tenant": "T023",
+      "value": 238104.96
+    },
+    {
+      "project": "�����",
+      "tenant": "T024",
+      "value": 176355.9
+    }
+  ],
+  "STA020": [
+    {
+      "project_city": "�Ϻ�",
+      "value": 10874.23
+    },
+    {
+      "project_city": "�Ͼ�",
+      "value": 7287.77
+    },
+    {
+      "project_city": "����",
+      "value": 6655.22
+    },
+    {
+      "project_city": "����",
+      "value": 6366.89
+    },
+    {
+      "project_city": "����",
+      "value": 4946.69
+    }
+  ],
+  "STA021": [
+    {
+      "month": "2025-01",
+      "value": -30099.11
+    },
+    {
+      "month": "2025-02",
+      "value": 79436.42
+    },
+    {
+      "month": "2025-03",
+      "value": 79937.75
+    },
+    {
+      "month": "2025-04",
+      "value": 47261.43
+    },
+    {
+      "month": "2025-05",
+      "value": 79869.99
+    },
+    {
+      "month": "2025-06",
+      "value": 126426.51
+    },
+    {
+      "month": "2025-07",
+      "value": 161596.24
+    },
+    {
+      "month": "2025-08",
+      "value": 203477.24
+    },
+    {
+      "month": "2025-09",
+      "value": 243525.85
+    },
+    {
+      "month": "2025-10",
+      "value": 235925.22
+    },
+    {
+      "month": "2025-11",
+      "value": 237828.81
+    },
+    {
+      "month": "2025-12",
+      "value": 254733.94
+    },
+    {
+      "month": "2026-01",
+      "value": 205658.43
+    },
+    {
+      "month": "2026-02",
+      "value": 241512.59
+    },
+    {
+      "month": "2026-03",
+      "value": 236768.7
+    },
+    {
+      "month": "2026-04",
+      "value": 238283.59
+    },
+    {
+      "month": "2026-05",
+      "value": 254518.31
+    },
+    {
+      "month": "2026-06",
+      "value": 209422.67
+    },
+    {
+      "month": "2026-07",
+      "value": 199903.26
+    },
+    {
+      "month": "2026-08",
+      "value": 235064.85
+    }
+  ],
+  "STA022": [
+    {
+      "unit_type": "food_beverage",
+      "value": 170.81752265861027
+    },
+    {
+      "unit_type": "office",
+      "value": 175.8
+    },
+    {
+      "unit_type": "retail",
+      "value": 161.26676470588237
+    },
+    {
+      "unit_type": "service",
+      "value": 167.4
+    }
+  ],
+  "STA023": [
+    {
+      "tenant_registration_city": "�Ϻ�",
+      "value": 812386.8
+    },
+    {
+      "tenant_registration_city": "����",
+      "value": 808647.6
+    },
+    {
+      "tenant_registration_city": "�Ͼ�",
+      "value": 774731.4
+    },
+    {
+      "tenant_registration_city": "����",
+      "value": 1022341.2
+    },
+    {
+      "tenant_registration_city": "����",
+      "value": 829462.8
+    }
+  ],
+  "STA024": [
+    {
+      "project": "ƽ����",
+      "value": 0.8539578354826172
+    },
+    {
+      "project": "������",
+      "value": 0.8384173373554955
+    },
+    {
+      "project": "�����㳡",
+      "value": 0.7968199961194928
+    },
+    {
+      "project": "�����³�",
+      "value": 0.7943614535008833
+    },
+    {
+      "project": "��������",
+      "value": 0.7880225089322042
+    },
+    {
+      "project": "�����",
+      "value": 0.7423321435768332
+    }
+  ],
+  "STA025": [
+    {
+      "entity_id": "L009",
+      "label": "L009",
+      "lease_start_date": "2025-02-01",
+      "lease_end_date": "2026-09-01"
+    },
+    {
+      "entity_id": "L002",
+      "label": "L002",
+      "lease_start_date": "2026-04-01",
+      "lease_end_date": "2026-09-30"
+    },
+    {
+      "entity_id": "L015",
+      "label": "L015",
+      "lease_start_date": "2025-08-01",
+      "lease_end_date": "2026-11-30"
+    }
+  ],
+  "STA026": [
+    {
+      "value": 0.8501007165773261
+    }
+  ],
+  "STA027": [
+    {
+      "value": 238296.3
+    }
+  ],
+  "STA028": [
+    {
+      "value": 0.7532552083333334
+    }
+  ],
+  "STA029": [
+    {
+      "value": 156.6615650172612
+    }
+  ],
+  "STA030": [
+    {
+      "value": 1001055.48
+    }
+  ],
+  "STA031": [
+    {
+      "value": 10905.96
+    }
+  ],
+  "STA032": [
+    {
+      "value": 13630215.43
+    }
+  ],
+  "STA033": [
+    {
+      "entity_id": "T004",
+      "label": "�Ǹ۲���04�ŵ�"
+    },
+    {
+      "entity_id": "T009",
+      "label": "��ᰲ���09�ŵ�"
+    },
+    {
+      "entity_id": "T014",
+      "label": "�ǸۿƼ�14�ŵ�"
+    },
+    {
+      "entity_id": "T019",
+      "label": "��᰿Ƽ�19�ŵ�"
+    },
+    {
+      "entity_id": "T024",
+      "label": "�Ǹ�����24�ŵ�"
+    },
+    {
+      "entity_id": "T029",
+      "label": "�������29�ŵ�"
+    },
+    {
+      "entity_id": "T034",
+      "label": "�Ǹ�����34�ŵ�"
+    },
+    {
+      "entity_id": "T039",
+      "label": "�������39�ŵ�"
+    }
+  ],
+  "STA034": [
+    {
+      "value": 353.0
+    }
+  ],
+  "STA035": [
+    {
+      "entity_id": "L009",
+      "label": "L009",
+      "lease_start_date": "2025-02-01",
+      "lease_end_date": "2026-09-01"
+    },
+    {
+      "entity_id": "L010",
+      "label": "L010",
+      "lease_start_date": "2025-04-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L011",
+      "label": "L011",
+      "lease_start_date": "2025-06-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L012",
+      "label": "L012",
+      "lease_start_date": "2025-08-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L013",
+      "label": "L013",
+      "lease_start_date": "2025-02-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L014",
+      "label": "L014",
+      "lease_start_date": "2025-04-01",
+      "lease_end_date": "2027-12-31"
+    }
+  ],
+  "STB001": [
+    {
+      "value": 1659487.5
+    }
+  ],
+  "STB002": [
+    {
+      "value": 284656.5
+    }
+  ],
+  "STB003": [
+    {
+      "value": 0.7806620770214253
+    }
+  ],
+  "STB004": [
+    {
+      "value": 808.0
+    }
+  ],
+  "STB005": [
+    {
+      "value": 0.4410201912858661
+    }
+  ],
+  "STB006": [
+    {
+      "value": 27207.86
+    }
+  ],
+  "STB007": [
+    {
+      "value": 49.63
+    }
+  ],
+  "STB008": [
+    {
+      "value": 3344655.58
+    }
+  ],
+  "STB009": [
+    {
+      "value": null
+    }
+  ],
+  "STB010": [
+    {
+      "value": 1273580.25
+    }
+  ],
+  "STB011": [],
+  "STB012": [
+    {
+      "entity_id": "T012",
+      "label": "Զɽ�Ƽ�12�ŵ�"
+    }
+  ],
+  "STB013": [
+    {
+      "project_city": "�Ϻ�",
+      "value": 3442521.6
+    },
+    {
+      "project_city": "����",
+      "value": 3356992.8
+    },
+    {
+      "project_city": "�Ͼ�",
+      "value": 1738843.2
+    },
+    {
+      "project_city": "����",
+      "value": 1877398.2
+    },
+    {
+      "project_city": "����",
+      "value": 2182201.2
+    }
+  ],
+  "STB014": [
+    {
+      "month": "2026-01",
+      "value": 235749.45
+    },
+    {
+      "month": "2026-02",
+      "value": 271905.46
+    },
+    {
+      "month": "2026-03",
+      "value": 264566.41
+    },
+    {
+      "month": "2026-04",
+      "value": 265947.83
+    },
+    {
+      "month": "2026-05",
+      "value": 282777.47
+    },
+    {
+      "month": "2026-06",
+      "value": 238296.3
+    },
+    {
+      "month": "2026-07",
+      "value": 231975.38
+    },
+    {
+      "month": "2026-08",
+      "value": 266234.7
+    }
+  ],
+  "STB015": [
+    {
+      "project": "������",
+      "value": 0.741372970316047
+    },
+    {
+      "project": "ƽ����",
+      "value": 0.7595393381318638
+    },
+    {
+      "project": "�����㳡",
+      "value": 0.7877584352495955
+    }
+  ],
+  "STB016": [
+    {
+      "floor": "1",
+      "project": "��������",
+      "value": 912.0
+    },
+    {
+      "floor": "1",
+      "project": "�����㳡",
+      "value": 837.0
+    },
+    {
+      "floor": "2",
+      "project": "��������",
+      "value": 1245.0
+    },
+    {
+      "floor": "2",
+      "project": "�����㳡",
+      "value": 1634.0
+    },
+    {
+      "floor": "3",
+      "project": "��������",
+      "value": 0.0
+    },
+    {
+      "floor": "3",
+      "project": "�����㳡",
+      "value": 0.0
+    }
+  ],
+  "STB017": [
+    {
+      "point_date": "2025-03-31",
+      "value": 0.25
+    },
+    {
+      "point_date": "2025-06-30",
+      "value": 0.4901908801696713
+    },
+    {
+      "point_date": "2025-09-30",
+      "value": 0.6004772004241782
+    },
+    {
+      "point_date": "2025-12-31",
+      "value": 0.6004772004241782
+    }
+  ],
+  "STB018": [
+    {
+      "expense_category": "��ҵ����",
+      "project": "��������",
+      "value": 72468.06
+    },
+    {
+      "expense_category": "ˮ��",
+      "project": "��������",
+      "value": 58775.15
+    },
+    {
+      "expense_category": "ά��ά��",
+      "project": "��������",
+      "value": 38559.63
+    },
+    {
+      "expense_category": "��ҵ����",
+      "project": "ƽ����",
+      "value": 96025.41
+    },
+    {
+      "expense_category": "ˮ��",
+      "project": "ƽ����",
+      "value": 76799.62
+    },
+    {
+      "expense_category": "ά��ά��",
+      "project": "ƽ����",
+      "value": 50398.19
+    },
+    {
+      "expense_category": "��ҵ����",
+      "project": "�����³�",
+      "value": 103159.14
+    },
+    {
+      "expense_category": "ˮ��",
+      "project": "�����³�",
+      "value": 81078.86
+    },
+    {
+      "expense_category": "ά��ά��",
+      "project": "�����³�",
+      "value": 52900.78
+    },
+    {
+      "expense_category": "��ҵ����",
+      "project": "������",
+      "value": 80243.81
+    },
+    {
+      "expense_category": "ˮ��",
+      "project": "������",
+      "value": 63152.67
+    },
+    {
+      "expense_category": "ά��ά��",
+      "project": "������",
+      "value": 43485.69
+    },
+    {
+      "expense_category": "��ҵ����",
+      "project": "�����㳡",
+      "value": 64747.89
+    },
+    {
+      "expense_category": "ˮ��",
+      "project": "�����㳡",
+      "value": 52855.06
+    },
+    {
+      "expense_category": "ά��ά��",
+      "project": "�����㳡",
+      "value": 34078.68
+    },
+    {
+      "expense_category": "��ҵ����",
+      "project": "�����",
+      "value": 86509.98
+    },
+    {
+      "expense_category": "ˮ��",
+      "project": "�����",
+      "value": 72513.02
+    },
+    {
+      "expense_category": "ά��ά��",
+      "project": "�����",
+      "value": 47008.01
+    }
+  ],
+  "STB019": [
+    {
+      "month": "2026-01",
+      "value": 521.07
+    },
+    {
+      "month": "2026-02",
+      "value": 365.62
+    },
+    {
+      "month": "2026-03",
+      "value": -66.98
+    },
+    {
+      "month": "2026-04",
+      "value": 244.4
+    },
+    {
+      "month": "2026-05",
+      "value": -51.42
+    },
+    {
+      "month": "2026-06",
+      "value": -84.19
+    },
+    {
+      "month": "2026-07",
+      "value": 116.19
+    },
+    {
+      "month": "2026-08",
+      "value": 209.24
+    }
+  ],
+  "STB020": [
+    {
+      "project": "�����³�",
+      "value": 1224471.35
+    },
+    {
+      "project": "ƽ����",
+      "value": 853227.95
+    },
+    {
+      "project": "������",
+      "value": 702224.57
+    }
+  ],
+  "STB021": [
+    {
+      "project": "�����³�",
+      "value": 175.8
+    },
+    {
+      "project": "ƽ����",
+      "value": 165.3
+    },
+    {
+      "project": "�����",
+      "value": 154.8
+    },
+    {
+      "project": "������",
+      "value": 144.3
+    },
+    {
+      "project": "��������",
+      "value": 133.8
+    },
+    {
+      "project": "�����㳡",
+      "value": 123.3
+    }
+  ],
+  "STB022": [
+    {
+      "tenant": "T036",
+      "value": 333518.4
+    },
+    {
+      "tenant": "T035",
+      "value": 312352.65
+    },
+    {
+      "tenant": "T029",
+      "value": 307788.6
+    },
+    {
+      "tenant": "T030",
+      "value": 297386.08
+    },
+    {
+      "tenant": "T037",
+      "value": 276076.08
+    },
+    {
+      "tenant": "T033",
+      "value": 266452.2
+    },
+    {
+      "tenant": "T023",
+      "value": 238104.96
+    },
+    {
+      "tenant": "T026",
+      "value": 238065.06
+    },
+    {
+      "tenant": "T019",
+      "value": 231106.48
+    },
+    {
+      "tenant": "T032",
+      "value": 230825.4
+    }
+  ],
+  "STB023": [
+    {
+      "floor": "2",
+      "project": "ƽ����",
+      "entity_id": "U0504",
+      "label": "2F-04"
+    },
+    {
+      "floor": "2",
+      "project": "������",
+      "entity_id": "U0304",
+      "label": "2F-04"
+    }
+  ],
+  "STB024": [
+    {
+      "entity_id": "L009",
+      "label": "L009",
+      "lease_start_date": "2025-02-01",
+      "lease_end_date": "2026-09-01"
+    },
+    {
+      "entity_id": "L002",
+      "label": "L002",
+      "lease_start_date": "2026-04-01",
+      "lease_end_date": "2026-09-30"
+    },
+    {
+      "entity_id": "L015",
+      "label": "L015",
+      "lease_start_date": "2025-08-01",
+      "lease_end_date": "2026-11-30"
+    }
+  ],
+  "STB025": [
+    {
+      "tenant_industry": "���Ȳ���",
+      "value": 1105083.6
+    },
+    {
+      "tenant_industry": "�������",
+      "value": 486716.4
+    },
+    {
+      "tenant_industry": "רҵ����",
+      "value": 480870.0
+    },
+    {
+      "tenant_industry": "����",
+      "value": 333669.6
+    },
+    {
+      "tenant_industry": "��������",
+      "value": 319881.6
+    },
+    {
+      "tenant_industry": "�Ƽ�����",
+      "value": 275205.6
+    },
+    {
+      "tenant_industry": "��������",
+      "value": 201924.0
+    }
+  ],
+  "STB026": [
+    {
+      "value": 0.8154415229261041
+    }
+  ],
+  "STB027": [
+    {
+      "value": 203808.3
+    }
+  ],
+  "STB028": [
+    {
+      "value": 0.8423967774420946
+    }
+  ],
+  "STB029": [
+    {
+      "value": 125.11182197496522
+    }
+  ],
+  "STB030": [
+    {
+      "value": 5102.98
+    }
+  ],
+  "STB031": [
+    {
+      "value": 1719920.29
+    }
+  ],
+  "STB032": [
+    {
+      "value": 1007940.96
+    }
+  ],
+  "STB033": [
+    {
+      "entity_id": "L009",
+      "label": "L009",
+      "lease_start_date": "2025-02-01",
+      "lease_end_date": "2026-09-01"
+    },
+    {
+      "entity_id": "L010",
+      "label": "L010",
+      "lease_start_date": "2025-04-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L011",
+      "label": "L011",
+      "lease_start_date": "2025-06-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L012",
+      "label": "L012",
+      "lease_start_date": "2025-08-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L013",
+      "label": "L013",
+      "lease_start_date": "2025-02-01",
+      "lease_end_date": "2027-12-31"
+    },
+    {
+      "entity_id": "L014",
+      "label": "L014",
+      "lease_start_date": "2025-04-01",
+      "lease_end_date": "2027-12-31"
+    }
+  ],
+  "STB034": [
+    {
+      "value": 370639.8
+    }
+  ],
+  "STB035": [
+    {
+      "value": 2457.0
+    }
+  ]
+}

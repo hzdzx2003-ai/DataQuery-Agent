@@ -1,0 +1,2704 @@
+{
+  "version": "nl-v3-fixed-backend-1",
+  "fixed_denominator": 100,
+  "query_denominator": 70,
+  "query_results_correct": 70,
+  "complete_tasks_correct": 93,
+  "executed_decisions": 71,
+  "blocked_nonquery_decisions": 29,
+  "execution_errors": [],
+  "query_mismatches": [],
+  "not_full": [
+    "STA036",
+    "STA042",
+    "STA043",
+    "STB040",
+    "STB042",
+    "STB044",
+    "STB045"
+  ],
+  "new_model_calls": 0,
+  "historical_external_attempts": 364,
+  "db_and_original_83_files_unchanged": true,
+  "boundary": "Composite saved-output end-to-end replay on an existing developer set; original manual semantic audit plus separate SQL/Python result comparison. No new holdout, no independent human approval.",
+  "rows": [
+    {
+      "id": "STA001",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "2026-04",
+          "v2": "2026-06"
+        },
+        "rows": [
+          {
+            "value": 849888.9
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA002",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.city IN (:v0,:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
+        "parameters": {
+          "v0": "����",
+          "v1": "����",
+          "v2": "2026-01",
+          "v3": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 4461641.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA003",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v1,:v2) AND substr(e.expense_month,1,7) BETWEEN :v3 AND :v4))",
+        "parameters": {
+          "v0": "��������",
+          "v1": "ˮ��",
+          "v2": "����",
+          "v3": "2026-01",
+          "v4": "2026-06"
+        },
+        "rows": [
+          {
+            "value": 56751.44
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA004",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1)))",
+        "parameters": {
+          "v0": "�����",
+          "v1": "food_beverage",
+          "v2": "2026-08-31"
+        },
+        "rows": [
+          {
+            "value": 354.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA005",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.registered_city IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
+        "parameters": {
+          "v0": "����",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 1273580.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA006",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "������",
+          "v1": "2025-07",
+          "v2": "2025-12"
+        },
+        "rows": [
+          {
+            "value": 10256.339999999997
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA007",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)))",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "�����³�",
+          "v2": "2026-07",
+          "v3": "2026-07",
+          "v4": "�����³�",
+          "v5": "2026-07",
+          "v6": "2026-07"
+        },
+        "rows": [
+          {
+            "value": 404221.97000000003
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA008",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
+        "parameters": {
+          "v0": "ƽ����",
+          "v1": "office",
+          "v2": "2026-08",
+          "v3": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 80997.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA009",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT p.property_id AS entity_id,p.property_name AS label FROM properties p WHERE p.city IN (:v0) AND CASE p.district WHEN '�ֶ�����' THEN '�ֶ�' WHEN '�����' THEN '���' ELSE p.district END IN (:v1)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "�Ϻ�",
+          "v1": "���"
+        },
+        "rows": [
+          {
+            "entity_id": "P002",
+            "label": "��������"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA010",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT u.unit_id AS entity_id,u.unit_number AS label FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1,:v2)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "�����",
+          "v1": "retail",
+          "v2": "service"
+        },
+        "rows": [
+          {
+            "entity_id": "U0401",
+            "label": "1F-01"
+          },
+          {
+            "entity_id": "U0403",
+            "label": "1F-03"
+          },
+          {
+            "entity_id": "U0404",
+            "label": "2F-04"
+          },
+          {
+            "entity_id": "U0406",
+            "label": "2F-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA011",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT t.tenant_id AS entity_id,t.tenant_name AS label FROM tenants t WHERE t.registered_city IN (:v0) AND t.tenant_tier IN (:v1)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "����",
+          "v1": "emerging"
+        },
+        "rows": [
+          {
+            "entity_id": "T012",
+            "label": "Զɽ�Ƽ�12�ŵ�"
+          },
+          {
+            "entity_id": "T032",
+            "label": "Զɽ����32�ŵ�"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA012",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND l.lease_end_date BETWEEN :v1 AND :v2) ORDER BY entity_id",
+        "parameters": {
+          "v0": "������",
+          "v1": "2026-07-01",
+          "v2": "2026-08-31"
+        },
+        "rows": []
+      }
+    },
+    {
+      "id": "STA013",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.tenant_tier IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "anchor",
+          "v1": "2026-04",
+          "v2": "2026-06"
+        },
+        "rows": [
+          {
+            "value": 0.8780912675519125
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA014",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(r.billing_month,1,7) AS \"month\",r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"month\") ORDER BY \"month\"",
+        "parameters": {
+          "v0": "2026-01",
+          "v1": "2026-08"
+        },
+        "rows": [
+          {
+            "month": "2026-01",
+            "value": 1743889.77
+          },
+          {
+            "month": "2026-02",
+            "value": 1717834.79
+          },
+          {
+            "month": "2026-03",
+            "value": 1745317.29
+          },
+          {
+            "month": "2026-04",
+            "value": 1657938.36
+          },
+          {
+            "month": "2026-05",
+            "value": 1645560.31
+          },
+          {
+            "month": "2026-06",
+            "value": 1732111.27
+          },
+          {
+            "month": "2026-07",
+            "value": 1708438.95
+          },
+          {
+            "month": "2026-08",
+            "value": 1713956.1199999999
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA015",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT p.property_name AS \"project\",r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value DESC,\"project\" LIMIT :v2",
+        "parameters": {
+          "v0": "2025-01",
+          "v1": "2025-12",
+          "v2": 3
+        },
+        "rows": [
+          {
+            "project": "�����³�",
+            "value": 5241429.6
+          },
+          {
+            "project": "�����㳡",
+            "value": 3203350.8
+          },
+          {
+            "project": "ƽ����",
+            "value": 3160800.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA016",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"expense_category\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END AS \"expense_category\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.city IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"expense_category\") ORDER BY \"expense_category\"",
+        "parameters": {
+          "v0": "�Ϻ�",
+          "v1": "2026-01",
+          "v2": "2026-06"
+        },
+        "rows": [
+          {
+            "expense_category": "����",
+            "value": 27228.29
+          },
+          {
+            "expense_category": "ˮ��",
+            "value": 81993.21
+          },
+          {
+            "expense_category": "��ҵ����",
+            "value": 101164.09
+          },
+          {
+            "expense_category": "ά��ά��",
+            "value": 52978.75
+          },
+          {
+            "expense_category": "Ӫ��",
+            "value": 35954.37
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA017",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT p.property_name AS \"project\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v0 AND a.lease_end_date>=:v0) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE 1=1 UNION ALL SELECT p.property_name AS \"project\",0,p.gross_leasable_area_sqm FROM properties p WHERE 1=1) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value ASC,\"project\"",
+        "parameters": {
+          "v0": "2026-08-31"
+        },
+        "rows": [
+          {
+            "project": "�����",
+            "value": 0.5473124300111982
+          },
+          {
+            "project": "��������",
+            "value": 0.6800126103404792
+          },
+          {
+            "project": "������",
+            "value": 0.6841637010676157
+          },
+          {
+            "project": "ƽ����",
+            "value": 0.6911452810180275
+          },
+          {
+            "project": "�����㳡",
+            "value": 0.8314266487213997
+          },
+          {
+            "project": "�����³�",
+            "value": 0.8423967774420946
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA018",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"floor\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CAST(u.floor AS TEXT) AS \"floor\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)) GROUP BY \"floor\") ORDER BY \"floor\"",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "2026-08-31"
+        },
+        "rows": [
+          {
+            "floor": "1",
+            "value": 837.0
+          },
+          {
+            "floor": "2",
+            "value": 1634.0
+          },
+          {
+            "floor": "3",
+            "value": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA019",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "WITH base AS (SELECT \"project\",\"tenant\",COALESCE(SUM(numerator),0) AS value FROM (SELECT p.property_name AS \"project\",t.tenant_id AS \"tenant\",r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND r.due_date < :v0 AND r.amount_due > r.amount_paid) GROUP BY \"project\",\"tenant\"), ranked AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY \"project\" ORDER BY (value IS NULL) ASC,value DESC,\"project\",\"tenant\") AS _rank FROM base) SELECT * FROM ranked WHERE _rank <= :v1 ORDER BY \"project\",_rank",
+        "parameters": {
+          "v0": "2026-09-01",
+          "v1": 2
+        },
+        "rows": [
+          {
+            "project": "��������",
+            "tenant": "T013",
+            "value": 200959.2
+          },
+          {
+            "project": "��������",
+            "tenant": "T012",
+            "value": 180462.75
+          },
+          {
+            "project": "ƽ����",
+            "tenant": "T029",
+            "value": 307788.6
+          },
+          {
+            "project": "ƽ����",
+            "tenant": "T030",
+            "value": 297386.08
+          },
+          {
+            "project": "�����³�",
+            "tenant": "T036",
+            "value": 333518.4
+          },
+          {
+            "project": "�����³�",
+            "tenant": "T035",
+            "value": 312352.65
+          },
+          {
+            "project": "������",
+            "tenant": "T019",
+            "value": 231106.47999999998
+          },
+          {
+            "project": "������",
+            "tenant": "T016",
+            "value": 177327.0
+          },
+          {
+            "project": "�����㳡",
+            "tenant": "T006",
+            "value": 172806.88
+          },
+          {
+            "project": "�����㳡",
+            "tenant": "T005",
+            "value": 165900.15
+          },
+          {
+            "project": "�����",
+            "tenant": "T023",
+            "value": 238104.95999999996
+          },
+          {
+            "project": "�����",
+            "tenant": "T024",
+            "value": 176355.9
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA020",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project_city\",COALESCE(SUM(numerator),0) AS value FROM (SELECT p.city AS \"project_city\",e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"project_city\") ORDER BY (value IS NULL) ASC,value DESC,\"project_city\"",
+        "parameters": {
+          "v0": "2026-01",
+          "v1": "2026-06"
+        },
+        "rows": [
+          {
+            "project_city": "�Ϻ�",
+            "value": 10874.229999999998
+          },
+          {
+            "project_city": "�Ͼ�",
+            "value": 7287.769999999985
+          },
+          {
+            "project_city": "����",
+            "value": 6655.2199999999975
+          },
+          {
+            "project_city": "����",
+            "value": 6366.890000000001
+          },
+          {
+            "project_city": "����",
+            "value": 4946.689999999992
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA021",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(r.billing_month,1,7) AS \"month\",r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT \"month\",-numerator,denominator FROM (SELECT substr(e.expense_month,1,7) AS \"month\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)) GROUP BY \"month\") ORDER BY \"month\"",
+        "parameters": {
+          "v0": "������",
+          "v1": "������",
+          "v2": "2025-01",
+          "v3": "2026-08",
+          "v4": "������",
+          "v5": "2025-01",
+          "v6": "2026-08"
+        },
+        "rows": [
+          {
+            "month": "2025-01",
+            "value": -30099.11
+          },
+          {
+            "month": "2025-02",
+            "value": 79436.42
+          },
+          {
+            "month": "2025-03",
+            "value": 79937.75
+          },
+          {
+            "month": "2025-04",
+            "value": 47261.43
+          },
+          {
+            "month": "2025-05",
+            "value": 79869.98999999999
+          },
+          {
+            "month": "2025-06",
+            "value": 126426.51
+          },
+          {
+            "month": "2025-07",
+            "value": 161596.24
+          },
+          {
+            "month": "2025-08",
+            "value": 203477.24
+          },
+          {
+            "month": "2025-09",
+            "value": 243525.85
+          },
+          {
+            "month": "2025-10",
+            "value": 235925.22
+          },
+          {
+            "month": "2025-11",
+            "value": 237828.81
+          },
+          {
+            "month": "2025-12",
+            "value": 254733.94
+          },
+          {
+            "month": "2026-01",
+            "value": 205658.43
+          },
+          {
+            "month": "2026-02",
+            "value": 241512.59
+          },
+          {
+            "month": "2026-03",
+            "value": 236768.7
+          },
+          {
+            "month": "2026-04",
+            "value": 238283.59
+          },
+          {
+            "month": "2026-05",
+            "value": 254518.31
+          },
+          {
+            "month": "2026-06",
+            "value": 209422.66999999998
+          },
+          {
+            "month": "2026-07",
+            "value": 199903.26
+          },
+          {
+            "month": "2026-08",
+            "value": 235064.85
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA022",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"unit_type\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT u.unit_type AS \"unit_type\",COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)) GROUP BY \"unit_type\") ORDER BY \"unit_type\"",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "2026-08-31"
+        },
+        "rows": [
+          {
+            "unit_type": "food_beverage",
+            "value": 170.81752265861027
+          },
+          {
+            "unit_type": "office",
+            "value": 175.8
+          },
+          {
+            "unit_type": "retail",
+            "value": 161.26676470588234
+          },
+          {
+            "unit_type": "service",
+            "value": 167.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA023",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"tenant_registration_city\",COALESCE(SUM(numerator),0) AS value FROM (SELECT t.registered_city AS \"tenant_registration_city\",r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"tenant_registration_city\") ORDER BY \"tenant_registration_city\"",
+        "parameters": {
+          "v0": "2026-07",
+          "v1": "2026-08"
+        },
+        "rows": [
+          {
+            "tenant_registration_city": "�Ϻ�",
+            "value": 812386.8
+          },
+          {
+            "tenant_registration_city": "����",
+            "value": 808647.6
+          },
+          {
+            "tenant_registration_city": "�Ͼ�",
+            "value": 774731.4
+          },
+          {
+            "tenant_registration_city": "����",
+            "value": 1022341.2
+          },
+          {
+            "tenant_registration_city": "����",
+            "value": 829462.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA024",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT p.property_name AS \"project\",r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value DESC,\"project\"",
+        "parameters": {
+          "v0": "2026-04",
+          "v1": "2026-06"
+        },
+        "rows": [
+          {
+            "project": "ƽ����",
+            "value": 0.8539578354826172
+          },
+          {
+            "project": "������",
+            "value": 0.8384173373554955
+          },
+          {
+            "project": "�����㳡",
+            "value": 0.7968199961194927
+          },
+          {
+            "project": "�����³�",
+            "value": 0.7943614535008834
+          },
+          {
+            "project": "��������",
+            "value": 0.7880225089322043
+          },
+          {
+            "project": "�����",
+            "value": 0.7423321435768332
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA025",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND l.lease_end_date BETWEEN :v0 AND :v1) ORDER BY (lease_end_date IS NULL) ASC,lease_end_date ASC,entity_id LIMIT :v2",
+        "parameters": {
+          "v0": "2026-09-01",
+          "v1": "2026-12-31",
+          "v2": 10
+        },
+        "rows": [
+          {
+            "entity_id": "L009",
+            "label": "L009",
+            "lease_start_date": "2025-02-01",
+            "lease_end_date": "2026-09-01"
+          },
+          {
+            "entity_id": "L002",
+            "label": "L002",
+            "lease_start_date": "2026-04-01",
+            "lease_end_date": "2026-09-30"
+          },
+          {
+            "entity_id": "L015",
+            "label": "L015",
+            "lease_start_date": "2025-08-01",
+            "lease_end_date": "2026-11-30"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA026",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "��������",
+          "v1": "2026-08",
+          "v2": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 0.8501007165773261
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA027",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "������",
+          "v1": "2026-06",
+          "v2": "2026-06"
+        },
+        "rows": [
+          {
+            "value": 238296.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA028",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.city IN (:v0) UNION ALL SELECT 0,p.gross_leasable_area_sqm FROM properties p WHERE p.city IN (:v0)))",
+        "parameters": {
+          "v0": "�Ϻ�",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 0.7532552083333334
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA029",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)))",
+        "parameters": {
+          "v0": "ƽ����",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 156.6615650172612
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA030",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
+        "parameters": {
+          "v0": "�����",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 1001055.48
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA031",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "2026-01",
+          "v2": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 10905.95999999999
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA032",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3)))",
+        "parameters": {
+          "v0": "2025-01",
+          "v1": "2025-12",
+          "v2": "2025-01",
+          "v3": "2025-12"
+        },
+        "rows": [
+          {
+            "value": 13630215.43
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA033",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT t.tenant_id AS entity_id,t.tenant_name AS label FROM tenants t WHERE t.registered_city IN (:v0)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "����"
+        },
+        "rows": [
+          {
+            "entity_id": "T004",
+            "label": "�Ǹ۲���04�ŵ�"
+          },
+          {
+            "entity_id": "T009",
+            "label": "��ᰲ���09�ŵ�"
+          },
+          {
+            "entity_id": "T014",
+            "label": "�ǸۿƼ�14�ŵ�"
+          },
+          {
+            "entity_id": "T019",
+            "label": "��᰿Ƽ�19�ŵ�"
+          },
+          {
+            "entity_id": "T024",
+            "label": "�Ǹ�����24�ŵ�"
+          },
+          {
+            "entity_id": "T029",
+            "label": "�������29�ŵ�"
+          },
+          {
+            "entity_id": "T034",
+            "label": "�Ǹ�����34�ŵ�"
+          },
+          {
+            "entity_id": "T039",
+            "label": "�������39�ŵ�"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA034",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1)))",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "service",
+          "v2": "2025-12-31"
+        },
+        "rows": [
+          {
+            "value": 353.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA035",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "��������"
+        },
+        "rows": [
+          {
+            "entity_id": "L009",
+            "label": "L009",
+            "lease_start_date": "2025-02-01",
+            "lease_end_date": "2026-09-01"
+          },
+          {
+            "entity_id": "L010",
+            "label": "L010",
+            "lease_start_date": "2025-04-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L011",
+            "label": "L011",
+            "lease_start_date": "2025-06-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L012",
+            "label": "L012",
+            "lease_start_date": "2025-08-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L013",
+            "label": "L013",
+            "lease_start_date": "2025-02-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L014",
+            "label": "L014",
+            "lease_start_date": "2025-04-01",
+            "lease_end_date": "2027-12-31"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STA036",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "failed",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA037",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA038",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA039",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA040",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA041",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA042",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "failed",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA043",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "failed",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA044",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA045",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA046",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA047",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA048",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA049",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STA050",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB001",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.city IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "�Ϻ�",
+          "v1": "2026-04",
+          "v2": "2026-06"
+        },
+        "rows": [
+          {
+            "value": 1659487.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB002",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND t.registered_city IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
+        "parameters": {
+          "v0": "������",
+          "v1": "�Ϻ�",
+          "v2": "2026-01",
+          "v3": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 284656.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB003",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0,:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
+        "parameters": {
+          "v0": "�����",
+          "v1": "ƽ����",
+          "v2": "2026-08",
+          "v3": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 0.7806620770214254
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB004",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v3 AND a.lease_end_date>=:v3) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND CAST(u.floor AS TEXT) IN (:v1) AND u.unit_type IN (:v2)))",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "1",
+          "v2": "retail",
+          "v3": "2026-06-30"
+        },
+        "rows": [
+          {
+            "value": 808.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB005",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,u.leasable_area_sqm AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND u.unit_type IN (:v1)))",
+        "parameters": {
+          "v0": "��������",
+          "v1": "office",
+          "v2": "2025-12-31"
+        },
+        "rows": [
+          {
+            "value": 0.4410201912858661
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB006",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0,:v1) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v2) AND substr(e.expense_month,1,7) BETWEEN :v3 AND :v4))",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "��������",
+          "v2": "ά��ά��",
+          "v3": "2026-05",
+          "v4": "2026-07"
+        },
+        "rows": [
+          {
+            "value": 27207.86
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB007",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v1) AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3))",
+        "parameters": {
+          "v0": "������",
+          "v1": "Ӫ��",
+          "v2": "2026-01",
+          "v3": "2026-06"
+        },
+        "rows": [
+          {
+            "value": 49.629999999999654
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB008",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)))",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "�����³�",
+          "v2": "2026-01",
+          "v3": "2026-08",
+          "v4": "�����³�",
+          "v5": "2026-01",
+          "v6": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 3344655.58
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB009",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v3 AND a.lease_end_date>=:v3),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v3 AND a.lease_end_date>=:v3) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) AND CAST(u.floor AS TEXT) IN (:v1) AND u.unit_type IN (:v2)))",
+        "parameters": {
+          "v0": "�����",
+          "v1": "2",
+          "v2": "food_beverage",
+          "v3": "2026-08-31"
+        },
+        "rows": [
+          {
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB010",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.registered_city IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
+        "parameters": {
+          "v0": "����",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 1273580.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB011",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND l.lease_end_date BETWEEN :v1 AND :v2) ORDER BY entity_id",
+        "parameters": {
+          "v0": "ƽ����",
+          "v1": "2025-07-01",
+          "v2": "2025-12-31"
+        },
+        "rows": []
+      }
+    },
+    {
+      "id": "STB012",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT t.tenant_id AS entity_id,t.tenant_name AS label FROM tenants t JOIN leases l ON l.tenant_id=t.tenant_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0,:v1) AND t.registered_city IN (:v2) AND t.tenant_tier IN (:v3)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "��������",
+          "v2": "����",
+          "v3": "emerging"
+        },
+        "rows": [
+          {
+            "entity_id": "T012",
+            "label": "Զɽ�Ƽ�12�ŵ�"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB013",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project_city\",COALESCE(SUM(numerator),0) AS value FROM (SELECT p.city AS \"project_city\",r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"project_city\") ORDER BY \"project_city\"",
+        "parameters": {
+          "v0": "2026-01",
+          "v1": "2026-06"
+        },
+        "rows": [
+          {
+            "project_city": "�Ϻ�",
+            "value": 3442521.6
+          },
+          {
+            "project_city": "����",
+            "value": 3356992.8
+          },
+          {
+            "project_city": "�Ͼ�",
+            "value": 1738843.2
+          },
+          {
+            "project_city": "����",
+            "value": 1877398.2
+          },
+          {
+            "project_city": "����",
+            "value": 2182201.2
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB014",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(r.billing_month,1,7) AS \"month\",r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"month\") ORDER BY \"month\"",
+        "parameters": {
+          "v0": "������",
+          "v1": "2026-01",
+          "v2": "2026-08"
+        },
+        "rows": [
+          {
+            "month": "2026-01",
+            "value": 235749.45
+          },
+          {
+            "month": "2026-02",
+            "value": 271905.46
+          },
+          {
+            "month": "2026-03",
+            "value": 264566.41000000003
+          },
+          {
+            "month": "2026-04",
+            "value": 265947.83
+          },
+          {
+            "month": "2026-05",
+            "value": 282777.47
+          },
+          {
+            "month": "2026-06",
+            "value": 238296.3
+          },
+          {
+            "month": "2026-07",
+            "value": 231975.38
+          },
+          {
+            "month": "2026-08",
+            "value": 266234.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB015",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT p.property_name AS \"project\",r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value ASC,\"project\" LIMIT :v2",
+        "parameters": {
+          "v0": "2026-07",
+          "v1": "2026-07",
+          "v2": 3
+        },
+        "rows": [
+          {
+            "project": "������",
+            "value": 0.741372970316047
+          },
+          {
+            "project": "ƽ����",
+            "value": 0.7595393381318638
+          },
+          {
+            "project": "�����㳡",
+            "value": 0.7877584352495955
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB016",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"floor\",\"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CAST(u.floor AS TEXT) AS \"floor\",p.property_name AS \"project\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v2 AND a.lease_end_date>=:v2) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0,:v1)) GROUP BY \"floor\",\"project\") ORDER BY \"floor\",\"project\"",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "��������",
+          "v2": "2026-03-31"
+        },
+        "rows": [
+          {
+            "floor": "1",
+            "project": "��������",
+            "value": 912.0
+          },
+          {
+            "floor": "1",
+            "project": "�����㳡",
+            "value": 837.0
+          },
+          {
+            "floor": "2",
+            "project": "��������",
+            "value": 1245.0
+          },
+          {
+            "floor": "2",
+            "project": "�����㳡",
+            "value": 1634.0
+          },
+          {
+            "floor": "3",
+            "project": "��������",
+            "value": 0
+          },
+          {
+            "floor": "3",
+            "project": "�����㳡",
+            "value": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB017",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"point_date\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT :v2 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) UNION ALL SELECT :v2 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v0) UNION ALL SELECT :v5 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v4 AND a.lease_end_date>=:v4) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v3) UNION ALL SELECT :v5 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v3) UNION ALL SELECT :v8 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v7 AND a.lease_end_date>=:v7) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v6) UNION ALL SELECT :v8 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v6) UNION ALL SELECT :v11 AS \"point_date\",CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v10 AND a.lease_end_date>=:v10) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v9) UNION ALL SELECT :v11 AS \"point_date\",0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v9)) GROUP BY \"point_date\") ORDER BY \"point_date\"",
+        "parameters": {
+          "v0": "ƽ����",
+          "v1": "2025-03-31",
+          "v2": "2025-03-31",
+          "v3": "ƽ����",
+          "v4": "2025-06-30",
+          "v5": "2025-06-30",
+          "v6": "ƽ����",
+          "v7": "2025-09-30",
+          "v8": "2025-09-30",
+          "v9": "ƽ����",
+          "v10": "2025-12-31",
+          "v11": "2025-12-31"
+        },
+        "rows": [
+          {
+            "point_date": "2025-03-31",
+            "value": 0.25
+          },
+          {
+            "point_date": "2025-06-30",
+            "value": 0.4901908801696713
+          },
+          {
+            "point_date": "2025-09-30",
+            "value": 0.6004772004241782
+          },
+          {
+            "point_date": "2025-12-31",
+            "value": 0.6004772004241782
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB018",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "WITH base AS (SELECT \"expense_category\",\"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END AS \"expense_category\",p.property_name AS \"project\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"expense_category\",\"project\"), ranked AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY \"project\" ORDER BY (value IS NULL) ASC,value DESC,\"expense_category\",\"project\") AS _rank FROM base) SELECT * FROM ranked WHERE _rank <= :v2 ORDER BY \"project\",_rank",
+        "parameters": {
+          "v0": "2026-01",
+          "v1": "2026-08",
+          "v2": 3
+        },
+        "rows": [
+          {
+            "expense_category": "��ҵ����",
+            "project": "��������",
+            "value": 72468.06
+          },
+          {
+            "expense_category": "ˮ��",
+            "project": "��������",
+            "value": 58775.15
+          },
+          {
+            "expense_category": "ά��ά��",
+            "project": "��������",
+            "value": 38559.63
+          },
+          {
+            "expense_category": "��ҵ����",
+            "project": "ƽ����",
+            "value": 96025.41
+          },
+          {
+            "expense_category": "ˮ��",
+            "project": "ƽ����",
+            "value": 76799.62
+          },
+          {
+            "expense_category": "ά��ά��",
+            "project": "ƽ����",
+            "value": 50398.19
+          },
+          {
+            "expense_category": "��ҵ����",
+            "project": "�����³�",
+            "value": 103159.14
+          },
+          {
+            "expense_category": "ˮ��",
+            "project": "�����³�",
+            "value": 81078.86
+          },
+          {
+            "expense_category": "ά��ά��",
+            "project": "�����³�",
+            "value": 52900.78
+          },
+          {
+            "expense_category": "��ҵ����",
+            "project": "������",
+            "value": 80243.81
+          },
+          {
+            "expense_category": "ˮ��",
+            "project": "������",
+            "value": 63152.67
+          },
+          {
+            "expense_category": "ά��ά��",
+            "project": "������",
+            "value": 43485.69
+          },
+          {
+            "expense_category": "��ҵ����",
+            "project": "�����㳡",
+            "value": 64747.89
+          },
+          {
+            "expense_category": "ˮ��",
+            "project": "�����㳡",
+            "value": 52855.06
+          },
+          {
+            "expense_category": "ά��ά��",
+            "project": "�����㳡",
+            "value": 34078.68
+          },
+          {
+            "expense_category": "��ҵ����",
+            "project": "�����",
+            "value": 86509.98
+          },
+          {
+            "expense_category": "ˮ��",
+            "project": "�����",
+            "value": 72513.02
+          },
+          {
+            "expense_category": "ά��ά��",
+            "project": "�����",
+            "value": 47008.01
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB019",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"month\",COALESCE(SUM(numerator),0) AS value FROM (SELECT substr(e.expense_month,1,7) AS \"month\",e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND CASE e.expense_category WHEN 'property_management' THEN '��ҵ����' WHEN 'utilities' THEN 'ˮ��' WHEN 'maintenance' THEN 'ά��ά��' WHEN 'marketing' THEN 'Ӫ��' WHEN 'security' THEN '����' END IN (:v1) AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3) GROUP BY \"month\") ORDER BY \"month\"",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "����",
+          "v2": "2026-01",
+          "v3": "2026-08"
+        },
+        "rows": [
+          {
+            "month": "2026-01",
+            "value": 521.0699999999997
+          },
+          {
+            "month": "2026-02",
+            "value": 365.6199999999999
+          },
+          {
+            "month": "2026-03",
+            "value": -66.98000000000002
+          },
+          {
+            "month": "2026-04",
+            "value": 244.4000000000001
+          },
+          {
+            "month": "2026-05",
+            "value": -51.42000000000007
+          },
+          {
+            "month": "2026-06",
+            "value": -84.19000000000005
+          },
+          {
+            "month": "2026-07",
+            "value": 116.19000000000005
+          },
+          {
+            "month": "2026-08",
+            "value": 209.23999999999978
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB020",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT p.property_name AS \"project\",r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1 UNION ALL SELECT \"project\",-numerator,denominator FROM (SELECT p.property_name AS \"project\",e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v2 AND :v3)) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value DESC,\"project\" LIMIT :v4",
+        "parameters": {
+          "v0": "2026-04",
+          "v1": "2026-06",
+          "v2": "2026-04",
+          "v3": "2026-06",
+          "v4": 3
+        },
+        "rows": [
+          {
+            "project": "�����³�",
+            "value": 1224471.35
+          },
+          {
+            "project": "ƽ����",
+            "value": 853227.95
+          },
+          {
+            "project": "������",
+            "value": 702224.57
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB021",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT p.property_name AS \"project\",COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE u.unit_type IN (:v0)) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value DESC,\"project\"",
+        "parameters": {
+          "v0": "office",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "project": "�����³�",
+            "value": 175.8
+          },
+          {
+            "project": "ƽ����",
+            "value": 165.3
+          },
+          {
+            "project": "�����",
+            "value": 154.8
+          },
+          {
+            "project": "������",
+            "value": 144.3
+          },
+          {
+            "project": "��������",
+            "value": 133.8
+          },
+          {
+            "project": "�����㳡",
+            "value": 123.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB022",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"tenant\",COALESCE(SUM(numerator),0) AS value FROM (SELECT t.tenant_id AS \"tenant\",r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND r.due_date < :v0 AND r.amount_due > r.amount_paid) GROUP BY \"tenant\") ORDER BY (value IS NULL) ASC,value DESC,\"tenant\" LIMIT :v1",
+        "parameters": {
+          "v0": "2026-09-01",
+          "v1": 10
+        },
+        "rows": [
+          {
+            "tenant": "T036",
+            "value": 333518.4
+          },
+          {
+            "tenant": "T035",
+            "value": 312352.65
+          },
+          {
+            "tenant": "T029",
+            "value": 307788.6
+          },
+          {
+            "tenant": "T030",
+            "value": 297386.08
+          },
+          {
+            "tenant": "T037",
+            "value": 276076.08
+          },
+          {
+            "tenant": "T033",
+            "value": 266452.2
+          },
+          {
+            "tenant": "T023",
+            "value": 238104.95999999996
+          },
+          {
+            "tenant": "T026",
+            "value": 238065.06
+          },
+          {
+            "tenant": "T019",
+            "value": 231106.47999999998
+          },
+          {
+            "tenant": "T032",
+            "value": 230825.39999999997
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB023",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT CAST(u.floor AS TEXT) AS \"floor\",p.property_name AS \"project\",u.unit_id AS entity_id,u.unit_number AS label FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0,:v1) AND u.unit_type IN (:v2)) ORDER BY \"floor\",\"project\",entity_id",
+        "parameters": {
+          "v0": "������",
+          "v1": "ƽ����",
+          "v2": "service"
+        },
+        "rows": [
+          {
+            "floor": "2",
+            "project": "ƽ����",
+            "entity_id": "U0504",
+            "label": "2F-04"
+          },
+          {
+            "floor": "2",
+            "project": "������",
+            "entity_id": "U0304",
+            "label": "2F-04"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB024",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND l.lease_end_date BETWEEN :v0 AND :v1) ORDER BY (lease_end_date IS NULL) ASC,lease_end_date ASC,entity_id LIMIT :v2",
+        "parameters": {
+          "v0": "2026-09-01",
+          "v1": "2026-12-31",
+          "v2": 20
+        },
+        "rows": [
+          {
+            "entity_id": "L009",
+            "label": "L009",
+            "lease_start_date": "2025-02-01",
+            "lease_end_date": "2026-09-01"
+          },
+          {
+            "entity_id": "L002",
+            "label": "L002",
+            "lease_start_date": "2026-04-01",
+            "lease_end_date": "2026-09-30"
+          },
+          {
+            "entity_id": "L015",
+            "label": "L015",
+            "lease_start_date": "2025-08-01",
+            "lease_end_date": "2026-11-30"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB025",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"tenant_industry\",COALESCE(SUM(numerator),0) AS value FROM (SELECT t.industry AS \"tenant_industry\",r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2) GROUP BY \"tenant_industry\") ORDER BY (value IS NULL) ASC,value DESC,\"tenant_industry\"",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "2025-01",
+          "v2": "2025-12"
+        },
+        "rows": [
+          {
+            "tenant_industry": "���Ȳ���",
+            "value": 1105083.6
+          },
+          {
+            "tenant_industry": "�������",
+            "value": 486716.39999999997
+          },
+          {
+            "tenant_industry": "רҵ����",
+            "value": 480870.0
+          },
+          {
+            "tenant_industry": "����",
+            "value": 333669.6
+          },
+          {
+            "tenant_industry": "��������",
+            "value": 319881.6
+          },
+          {
+            "tenant_industry": "�Ƽ�����",
+            "value": 275205.6
+          },
+          {
+            "tenant_industry": "��������",
+            "value": 201924.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB026",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT r.amount_paid AS numerator,r.amount_due AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE 1=1 AND substr(r.billing_month,1,7) BETWEEN :v0 AND :v1))",
+        "parameters": {
+          "v0": "2025-01",
+          "v1": "2025-12"
+        },
+        "rows": [
+          {
+            "value": 0.8154415229261041
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB027",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND substr(r.billing_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "�����",
+          "v1": "2026-02",
+          "v2": "2026-02"
+        },
+        "rows": [
+          {
+            "value": 203808.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB028",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0) UNION ALL SELECT 0,p.gross_leasable_area_sqm FROM properties p WHERE p.property_name IN (:v0)))",
+        "parameters": {
+          "v0": "�����³�",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 0.8423967774420946
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB029",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT 1.0*COALESCE(SUM(numerator),0)/NULLIF(SUM(denominator),0) AS value FROM (SELECT COALESCE((SELECT SUM(a.monthly_base_rent) FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1),0) AS numerator,CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)))",
+        "parameters": {
+          "v0": "��������",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 125.11182197496524
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB030",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v0) AND substr(e.expense_month,1,7) BETWEEN :v1 AND :v2))",
+        "parameters": {
+          "v0": "ƽ����",
+          "v1": "2026-08",
+          "v2": "2026-08"
+        },
+        "rows": [
+          {
+            "value": 5102.979999999999
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB031",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3 UNION ALL SELECT -numerator,denominator FROM (SELECT e.amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE p.property_name IN (:v4) AND substr(e.expense_month,1,7) BETWEEN :v5 AND :v6)))",
+        "parameters": {
+          "v0": "������",
+          "v1": "������",
+          "v2": "2025-01",
+          "v3": "2025-12",
+          "v4": "������",
+          "v5": "2025-01",
+          "v6": "2025-12"
+        },
+        "rows": [
+          {
+            "value": 1719920.29
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB032",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due-r.amount_paid AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0) AND r.due_date < :v1 AND r.amount_due > r.amount_paid))",
+        "parameters": {
+          "v0": "�����㳡",
+          "v1": "2026-09-01"
+        },
+        "rows": [
+          {
+            "value": 1007940.96
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB033",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT DISTINCT l.lease_id AS entity_id,l.lease_id AS label,l.lease_start_date,l.lease_end_date FROM leases l JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE p.property_name IN (:v0)) ORDER BY entity_id",
+        "parameters": {
+          "v0": "��������"
+        },
+        "rows": [
+          {
+            "entity_id": "L009",
+            "label": "L009",
+            "lease_start_date": "2025-02-01",
+            "lease_end_date": "2026-09-01"
+          },
+          {
+            "entity_id": "L010",
+            "label": "L010",
+            "lease_start_date": "2025-04-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L011",
+            "label": "L011",
+            "lease_start_date": "2025-06-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L012",
+            "label": "L012",
+            "lease_start_date": "2025-08-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L013",
+            "label": "L013",
+            "lease_start_date": "2025-02-01",
+            "lease_end_date": "2027-12-31"
+          },
+          {
+            "entity_id": "L014",
+            "label": "L014",
+            "lease_start_date": "2025-04-01",
+            "lease_end_date": "2027-12-31"
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB034",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT r.amount_due AS numerator,0 AS denominator FROM rent_payments r JOIN leases l ON l.lease_id=r.lease_id JOIN units u ON u.unit_id=l.unit_id JOIN properties p ON p.property_id=u.property_id JOIN tenants t ON t.tenant_id=l.tenant_id WHERE t.tenant_tier IN (:v0) AND t.registered_city IN (:v1) AND substr(r.billing_month,1,7) BETWEEN :v2 AND :v3))",
+        "parameters": {
+          "v0": "anchor",
+          "v1": "�Ͼ�",
+          "v2": "2025-01",
+          "v3": "2025-06"
+        },
+        "rows": [
+          {
+            "value": 370639.80000000005
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB035",
+      "expected_action": "query",
+      "original_semantic_verdict": "full",
+      "result_match": true,
+      "primary_pass": true,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT COALESCE(SUM(numerator),0) AS value FROM (SELECT CASE WHEN EXISTS (SELECT 1 FROM leases a WHERE a.unit_id=u.unit_id AND a.lease_start_date<=:v1 AND a.lease_end_date>=:v1) THEN u.leasable_area_sqm ELSE 0 END AS numerator,0 AS denominator FROM units u JOIN properties p ON p.property_id=u.property_id WHERE p.property_name IN (:v0)))",
+        "parameters": {
+          "v0": "�����",
+          "v1": "2025-12-31"
+        },
+        "rows": [
+          {
+            "value": 2457.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB036",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB037",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB038",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB039",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB040",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "partial",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB041",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB042",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "failed",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB043",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB044",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "partial",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "not_executed",
+        "action": "clarify",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB045",
+      "expected_action": "clarify",
+      "original_semantic_verdict": "failed",
+      "result_match": null,
+      "primary_pass": false,
+      "actual": {
+        "status": "executed",
+        "action": "query",
+        "sql": "SELECT * FROM (SELECT \"project\",COALESCE(SUM(numerator),0) AS value FROM (SELECT p.property_name AS \"project\",e.amount-e.budget_amount AS numerator,0 AS denominator FROM operating_expenses e JOIN properties p ON p.property_id=e.property_id WHERE 1=1 AND substr(e.expense_month,1,7) BETWEEN :v0 AND :v1) GROUP BY \"project\") ORDER BY (value IS NULL) ASC,value DESC,\"project\"",
+        "parameters": {
+          "v0": "2026-01",
+          "v1": "2026-06"
+        },
+        "rows": [
+          {
+            "project": "�����",
+            "value": 7287.769999999985
+          },
+          {
+            "project": "ƽ����",
+            "value": 6655.2199999999975
+          },
+          {
+            "project": "������",
+            "value": 6366.890000000001
+          },
+          {
+            "project": "��������",
+            "value": 5738.569999999994
+          },
+          {
+            "project": "�����㳡",
+            "value": 5135.6600000000035
+          },
+          {
+            "project": "�����³�",
+            "value": 4946.689999999992
+          }
+        ]
+      }
+    },
+    {
+      "id": "STB046",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB047",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB048",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB049",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    },
+    {
+      "id": "STB050",
+      "expected_action": "reject",
+      "original_semantic_verdict": "full",
+      "result_match": null,
+      "primary_pass": true,
+      "actual": {
+        "status": "not_executed",
+        "action": "reject",
+        "rows": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "model": "qwen3.7-max",
+  "enable_thinking": false,
+  "status": "performance experiment, not quality baseline",
+  "gold": "../../releases/nl-v3-93/SINGLE_TASK_GOLD_REVIEWED_V1.json",
+  "original_result_sha256": "7d17754f3c6178f86f7cd33a58ef57f2a09c09b6365f9533abcc98261fb71a2d",
+  "files": {
+    "judgments.json": "cd8f78b8982101627521d33df396a1739af50dc69d5313c699e6acd72949d7f7",
+    "decisions.json": "50a76abafca6b242c53c975fc789b2d711b0d527eb93c942477f2485f7c22ce4"
+  }
+}

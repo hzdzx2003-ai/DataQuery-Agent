@@ -1,0 +1,825 @@
+{
+  "version": "nl-v3-nothinking100-1",
+  "fixed_denominator": 100,
+  "full": 91,
+  "partial": 4,
+  "failed": 5,
+  "query_correct": 70,
+  "clarify_correct": 11,
+  "reject_correct": 10,
+  "external_attempts": 100,
+  "historical_after": 586,
+  "regressions": [
+    "STA037",
+    "STA041"
+  ],
+  "restored": [],
+  "model_task_mean": 5.089805257996195,
+  "model_task_median": 4.853005149983801,
+  "model_task_p95": 8.531072599987965,
+  "rows": [
+    {
+      "id": "STA001",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "73a58279da589bc9ef4a2ff5f25e65e0aa88eb83b73a98adb130b35ba2e30c4e",
+      "result_match": true
+    },
+    {
+      "id": "STA002",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "92432b8e99c9b25741400c2b58a68e0a9931ceed0e639a25a8c50892b42496f4",
+      "result_match": true
+    },
+    {
+      "id": "STA003",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "374dc4d22df6d704a95f6c9da9ef4708d2be6921db1f4251aea1a947b43f51ef",
+      "result_match": true
+    },
+    {
+      "id": "STA004",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "0c32a16b9225056dd9359a4e9c18340baa4b308df81280ede0f74dc97aa012fc",
+      "result_match": true
+    },
+    {
+      "id": "STA005",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "82c89dcbcb3b8a24bbc9d18cfcb766cc0dd5615fe1f559b4242167dcd2cf3a68",
+      "result_match": true
+    },
+    {
+      "id": "STA006",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "aadf0864c24c0b1d7d927ffb122b9797b1df7c2b0eda8bbabe3f3e44b0071bf8",
+      "result_match": true
+    },
+    {
+      "id": "STA007",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "810093cc7476ba7ef67262d9a2a70594790b5ec330c411096c9a8c9d0cb5cf6f",
+      "result_match": true
+    },
+    {
+      "id": "STA008",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "6eb264627019d60d04a28c9f2573b0f5e2e9bfd837dd952fe177fc3c343701ac",
+      "result_match": true
+    },
+    {
+      "id": "STA009",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "6291d57d990201b77ed850c95aa8e7c51e45a1da9364d9dc84a6411bf3b324a3",
+      "result_match": true
+    },
+    {
+      "id": "STA010",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "f32681b9d21f8f43c38fde1f5a08f2841bb5583cdb53dea71588ebc5b61b55ea",
+      "result_match": true
+    },
+    {
+      "id": "STA011",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "352e761bd96d2032ba7ee3b140c4a3b11c02f17124e586b20b8cca4b4c80cf8f",
+      "result_match": true
+    },
+    {
+      "id": "STA012",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "2727038cd5cc38e25fa0df0784867ca60d1652047dd2207c2faa813725ff0a0c",
+      "result_match": true
+    },
+    {
+      "id": "STA013",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "1d034e48b7b9a7dbce2242a5fdbc0d590335d0d8c6dd55fbd2b2d79808329b16",
+      "result_match": true
+    },
+    {
+      "id": "STA014",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "6307f3ed79836802a8dfd380317e779e722e43f1ab26bf822d51c7e633b9cfd2",
+      "result_match": true
+    },
+    {
+      "id": "STA015",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "1ebe15c2c4b0a02719004e41040e71b3c13a992f7ad0d47b4b1fa08681e40efc",
+      "result_match": true
+    },
+    {
+      "id": "STA016",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "8253cf06d74468cc89defa37055244a0e8735693c862e6fd403bfcda94baaef6",
+      "result_match": true
+    },
+    {
+      "id": "STA017",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "18b5fd0533ac6e9c4a7f487be68da2b039ba14c1f26786fc08e8cc46aa14f043",
+      "result_match": true
+    },
+    {
+      "id": "STA018",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "7bb4cf7e072cf8fbcbad8d5d61c8a9c87bf3e8ee8c853ac97fa21bbdf4e9cb84",
+      "result_match": true
+    },
+    {
+      "id": "STA019",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "9ea59be00a99bbff7b4a3d6631ef46431171901498723736c0ccc79465b34419",
+      "result_match": true
+    },
+    {
+      "id": "STA020",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "2227c3cd5c0f200907eaf3482d4dec6632a1e500f2bdc18bb13d254279658af6",
+      "result_match": true
+    },
+    {
+      "id": "STA021",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "af667a89ba0b292b1f856acdee96ddeaf5d3d47ab0abb0dfc504339365c8ed83",
+      "result_match": true
+    },
+    {
+      "id": "STA022",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "ef5d977c00665ab69822b4f3f44bdefeabe11fe484b47a8e0bfba9d7bbd1bc94",
+      "result_match": true
+    },
+    {
+      "id": "STA023",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "560328fac4b36afaf3becb016873bf641bf5aeeccbdcb71c7f6f23ed5b545dcf",
+      "result_match": true
+    },
+    {
+      "id": "STA024",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "d1ce8848a8f5d3d3149ca1dda38ea821f6e74b2a8e9f573599a7a07210b32631",
+      "result_match": true
+    },
+    {
+      "id": "STA025",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "62f8fdd912366c82eaf6be0a3f708a7d0471cbfc82cbc6cfdf427f584e77ce7b",
+      "result_match": true
+    },
+    {
+      "id": "STA026",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "39d24ed06b40729a341cded223bd8edb87548dd41c94b047dd09621ded82a57d",
+      "result_match": true
+    },
+    {
+      "id": "STA027",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "aa5831fbe482e00522a892a919160b17847d60538695a4065306f860b5606ce7",
+      "result_match": true
+    },
+    {
+      "id": "STA028",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "cabe5f2ea3d05f618e84954e61d580820cd00647fcc780c4f7f37bf34c22fdec",
+      "result_match": true
+    },
+    {
+      "id": "STA029",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "2b84b0f033f4a891cbcde8053c9584c5fee0a5d698ad6642a0ab5acffbfde3df",
+      "result_match": true
+    },
+    {
+      "id": "STA030",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "a683f303c20ffb9a7314b2f5761f2effdda73e7415c0cabf8bf6d227e56e75bc",
+      "result_match": true
+    },
+    {
+      "id": "STA031",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "13f26ae5476a3400d2cd499c61562d47613c5599d97ef0b7a588df70fdbabaa8",
+      "result_match": true
+    },
+    {
+      "id": "STA032",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "e4ea02127d822966cb8bee904f34ab97c99ddef1a13550f646c4758c8f674db0",
+      "result_match": true
+    },
+    {
+      "id": "STA033",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "57d0b79e2f1b7cdc2e29fcafeefaf0a1773ab47db576a19ea0d075209eecfdec",
+      "result_match": true
+    },
+    {
+      "id": "STA034",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "9d9ee25af4ffb17595f30c285232caac1387cba3078e10a40bdf2e0215d83056",
+      "result_match": true
+    },
+    {
+      "id": "STA035",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "f189d2acf871aef8c9908ff76607938d620bdcc27a274a6fc714ece65e79905b",
+      "result_match": true
+    },
+    {
+      "id": "STA036",
+      "verdict": "failed",
+      "primary_pass": false,
+      "reason": "Asks unresolved2026date but rendered retained plan defaults to reference date, contradiction remains.",
+      "case_sha256": "5db3a37885f66e1c5122df702ec349ecee54abca9321a5217d7f66fadfb1d199",
+      "result_match": null
+    },
+    {
+      "id": "STA037",
+      "verdict": "failed",
+      "primary_pass": false,
+      "reason": "Claims arithmetic mean supported but binds project-grouped ratios with no mean operation.",
+      "case_sha256": "a0a4f6c35fb1ef34a92d7d28bdfa05df5437850dd66d4810292325b01122198a",
+      "result_match": null
+    },
+    {
+      "id": "STA038",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "46ed02e741254e634a9d8f7720a82130308978a66c33eb2bfa461aa289281337",
+      "result_match": null
+    },
+    {
+      "id": "STA039",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "483f0a2c0e8664d6a35421451ddac06f1f1503dfae85db5e4061ea70b9e38489",
+      "result_match": null
+    },
+    {
+      "id": "STA040",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "17f65b6e14d97af3c6ed97609e85fd7f696e5efd9fb25371721cc16d8441ded5",
+      "result_match": null
+    },
+    {
+      "id": "STA041",
+      "verdict": "failed",
+      "primary_pass": false,
+      "reason": "Silently interprets unspecified recent as previous month and executes instead of clarifying.",
+      "case_sha256": "647f1d6a484f604f726dc8638b6caa97e554118a86987450e825fb2902e9dab0",
+      "result_match": null
+    },
+    {
+      "id": "STA042",
+      "verdict": "partial",
+      "primary_pass": false,
+      "reason": "Retains tenant list and reference point as not_implemented input; asks threshold but does not explicitly offer strict versus inclusive comparison and cross-project identity scope. Not full.",
+      "case_sha256": "d3d1cc58071d17a2cbd89f289c24cd5d156e22a1fe4b2990399912db4d9d6705",
+      "result_match": null
+    },
+    {
+      "id": "STA043",
+      "verdict": "failed",
+      "primary_pass": false,
+      "reason": "Asks threshold/boundary but replaces requested project list with occupancy metric by project.",
+      "case_sha256": "444c713daa0c66418a22b033c6ca83e96334ceca2c7d014fd5813ea23d6bdddf",
+      "result_match": null
+    },
+    {
+      "id": "STA044",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "d692688385c53c92c04e78d604377af1f599924660627123513234e51aa61e89",
+      "result_match": null
+    },
+    {
+      "id": "STA045",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "c4f9d80ad5d8286e0fc6a7f09b1bea304ba8042504a2385b59623c0fd2219086",
+      "result_match": null
+    },
+    {
+      "id": "STA046",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "6d596c668664e2d202494841f25af62d6ed31e188d4db501eb5e65ce45692a23",
+      "result_match": null
+    },
+    {
+      "id": "STA047",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "b033e7b6167d9e27a53a0556646c9889148255ae3b9f9039ad3c7b7d752d7f2f",
+      "result_match": null
+    },
+    {
+      "id": "STA048",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "d5d3dedc04e986407838c35d3b1fac70a5e403755e6aa716f8c44567ac7512ca",
+      "result_match": null
+    },
+    {
+      "id": "STA049",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "f9b48c02a3377bcb4a5187c3e7a361116d1dbf643cc2d0798e38d9d86079435f",
+      "result_match": null
+    },
+    {
+      "id": "STA050",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "6e2ef2f67d31b830fe3275299dbcfbebfdfcf2494ae75ec854b0c43a101bd3c3",
+      "result_match": null
+    },
+    {
+      "id": "STB001",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "a781fc15fbd1423dc9b4b850ba4b16df6e601c77c31943dad30850634a04a8f4",
+      "result_match": true
+    },
+    {
+      "id": "STB002",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "2e78d55ad7e294c383f3e4e690ead2da1a6712eb69a92f12746b126c81cd8146",
+      "result_match": true
+    },
+    {
+      "id": "STB003",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "5463f15d780445c643758aefb74b459c02489597d418c7247c3a85e04703558f",
+      "result_match": true
+    },
+    {
+      "id": "STB004",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "abf3e571b41007f05ef473b0accbd9788a201d5fe6e4bcd12d9850daa07b0b08",
+      "result_match": true
+    },
+    {
+      "id": "STB005",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "0f1898ce96ec509177f314d408cc0c3c089e741834e82772d6f948b221934f08",
+      "result_match": true
+    },
+    {
+      "id": "STB006",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "13875e211e59c2d4e4b2af78a87c2f12f186adf5b84a9c54a685c57e2eca8d83",
+      "result_match": true
+    },
+    {
+      "id": "STB007",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "aa2945966ae1be03942c1495dfadd467dd687b9dd8f6bfdfdb0ce1b7625ba2a2",
+      "result_match": true
+    },
+    {
+      "id": "STB008",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "cfa07d12eee78f7820a6afc7a844e8c08c897a6b83f993c53e1cdea83bba786a",
+      "result_match": true
+    },
+    {
+      "id": "STB009",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "538504e41dffe1adaedbb2b73ea2adb0ac2369ae4fbd1a306214ed2ec4171552",
+      "result_match": true
+    },
+    {
+      "id": "STB010",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "403ce14c5607fec7f1fcf2cc154c41821e179ab465dd9e6bbcdda2338c14c3cf",
+      "result_match": true
+    },
+    {
+      "id": "STB011",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "d0d56c7c5ac9f28a3447e7bd350a6e1ea1fd4e7e82d399092b5b7ef421632e0e",
+      "result_match": true
+    },
+    {
+      "id": "STB012",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "bbdd0bf9a4d802e19b2628fab793ff2a76b208b796844b8617e4f604c93dd0ea",
+      "result_match": true
+    },
+    {
+      "id": "STB013",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "24e2a11ef55a8dccee3ec4d25fe84b5de08183b35bf8050059aeebda3caba9a2",
+      "result_match": true
+    },
+    {
+      "id": "STB014",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "82948369db3d992ad6e7d68cd9684df2d1da6c73825e357cf9733f90b4dd330c",
+      "result_match": true
+    },
+    {
+      "id": "STB015",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "4b43570ef95c6e736c04093ce8240b484f9c3a3b355db1dd8482f3f8c5c0c8cc",
+      "result_match": true
+    },
+    {
+      "id": "STB016",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "ed2750ccdf78d7db8f41c63b9b9396b05c56b95cbe4247afed9eace3a85954d0",
+      "result_match": true
+    },
+    {
+      "id": "STB017",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "8f91081335e2cd118a847a9ef9d8e35d119fc5d735b80c838d3b0e5feb39c82e",
+      "result_match": true
+    },
+    {
+      "id": "STB018",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "cfbf94df7d56b2c6533ff762ab63d59ed13ab3135a62ecfd5442c56ba3f7a774",
+      "result_match": true
+    },
+    {
+      "id": "STB019",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "a68eb24aab454af422c21de2339ca1fdfdf178bc17b703bd634ae316bf8914e7",
+      "result_match": true
+    },
+    {
+      "id": "STB020",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "571501c3c540e702112179444bdba21e8629f7a722456d351671c622a8674ad3",
+      "result_match": true
+    },
+    {
+      "id": "STB021",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "dcb76ace6b8dd8bce7d94d966df5099d209295abc2b29f123fa151f9892d7283",
+      "result_match": true
+    },
+    {
+      "id": "STB022",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "b28fc9c50aa42539b56e188b8893717d136ca00d3273d8774757bc1ccd9ace5d",
+      "result_match": true
+    },
+    {
+      "id": "STB023",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "a714b7a5d9c93efedd3e6ffd8f34cf5b809cd90d25c7f02457ed00d3f9fa0cf7",
+      "result_match": true
+    },
+    {
+      "id": "STB024",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "fe2fcb9c1d90f31aba96a48a27aa4fdc56dea6f1a666401ffd488df2070fe61d",
+      "result_match": true
+    },
+    {
+      "id": "STB025",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "23ea218c1f343cf79bb113fe0396d79cfe9387fb0c27b7295dfc81fc87772e6e",
+      "result_match": true
+    },
+    {
+      "id": "STB026",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "d0b48f6313f2827b275727703a12327a3c69c742fb3e097efa98658079beafb1",
+      "result_match": true
+    },
+    {
+      "id": "STB027",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "141ebef7ddcbf28bc778110cccf430f6c2d0441e99c8dc78b3714584e88ea400",
+      "result_match": true
+    },
+    {
+      "id": "STB028",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "c55030a424b631c6e09574368ca631fd8acc85c60919e67e700a7854a2086e57",
+      "result_match": true
+    },
+    {
+      "id": "STB029",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "5238477f94e3ec233c4d22d930536755d10095c26aeb8eea4a35270f7b7f3704",
+      "result_match": true
+    },
+    {
+      "id": "STB030",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "9b0fe99b7b9aa84529dd9b72064f0eae21d427c812302550bd5383b24c9d2155",
+      "result_match": true
+    },
+    {
+      "id": "STB031",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "a8700f9e2e088bf6684a6373b79f4c1c3c435824ce1fea2e208e35f18556c402",
+      "result_match": true
+    },
+    {
+      "id": "STB032",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "ee1ad00a3b24d57a18dbc1903240d39554d78fbe0063791d47e99645d3d597ce",
+      "result_match": true
+    },
+    {
+      "id": "STB033",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "9238a324548df9e4d98d3b883bfbddbbde417883e9550fdde2172264aadefd7b",
+      "result_match": true
+    },
+    {
+      "id": "STB034",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "414c05272b4b1b748916a603ba14674a498f6e2a1f507336be408dcd728a029f",
+      "result_match": true
+    },
+    {
+      "id": "STB035",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Normalized query slots match Gold; numeric/list result agrees with separately computed reference and required metric disclosures retained.",
+      "case_sha256": "c88b96f5c044532d0e5b6fbcf7158e82bdbda7d11f0ade8e04cd6c25054d7f71",
+      "result_match": true
+    },
+    {
+      "id": "STB036",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "67cfc6d737fbf62ceb934e2ed64c280848708155cb6f099c12751302e039a01c",
+      "result_match": null
+    },
+    {
+      "id": "STB037",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "e442144500cbbc1cf9b5ba907d8ec482b43e55d2a9b65a0eb3aa761da87f0358",
+      "result_match": null
+    },
+    {
+      "id": "STB038",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "bea4a89bdd099922ce829a67b73e768946f15d5fb8d11daeaaf63ec1a8bea31e",
+      "result_match": null
+    },
+    {
+      "id": "STB039",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "00f696e389a588116a473617e6be97db92dbdf8060268476e1edeb64e31a735d",
+      "result_match": null
+    },
+    {
+      "id": "STB040",
+      "verdict": "partial",
+      "primary_pass": false,
+      "reason": "Preserves project/all status and starts/ends options but omits contract-date overlap alternative.",
+      "case_sha256": "e445d192ef7413dd82f4f12ebcd6cbcea595a2ced9fa00f6ae28241afac040a6",
+      "result_match": null
+    },
+    {
+      "id": "STB041",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "2b90e64c4063bea09c0bf7d175ea65967c0f59249159ac3e771670bb2af2010e",
+      "result_match": null
+    },
+    {
+      "id": "STB042",
+      "verdict": "partial",
+      "primary_pass": false,
+      "reason": "Preserves unit list/project/office and asks threshold/ranking, but drops explicit Aug31point into current_records.",
+      "case_sha256": "1539c74894d027c9dc75efd8c150ba5cc5223411921c46d577e5bf6910796dbb",
+      "result_match": null
+    },
+    {
+      "id": "STB043",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Reviewed against original Gold: correct task, known conditions and business limits retained.",
+      "case_sha256": "7c09d41dfdef31a2f4ba69f3146601682264bcc65a2cfc2135f2692aec0c718e",
+      "result_match": null
+    },
+    {
+      "id": "STB044",
+      "verdict": "partial",
+      "primary_pass": false,
+      "reason": "Asks both start/end, example not binding; known Sep1 start not retained in structured time.",
+      "case_sha256": "b175eb5e493d9cd6d13cb7fe64fd7c5f4af15ac87ce974601667b649d6a9baae",
+      "result_match": null
+    },
+    {
+      "id": "STB045",
+      "verdict": "failed",
+      "primary_pass": false,
+      "reason": "Executes amount ranking without asking undefined severity criterion and threshold.",
+      "case_sha256": "1831286195823f29d91ac8450fbd5e6eb697e1891ee8db2ae17f4a32b203539d",
+      "result_match": null
+    },
+    {
+      "id": "STB046",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "b6a38169029ae14a2e08a16629fa081d1e3eb6e4d7f599fa5e84a85a72a84649",
+      "result_match": null
+    },
+    {
+      "id": "STB047",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "ccf8c726e962dca9f87bb525ff5908923ede905bf7f8d7d1b61a85ff0542722f",
+      "result_match": null
+    },
+    {
+      "id": "STB048",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "1eb3b8d666b2348f5d59e89f317c0c0ae3175e45e657e5f647f4438f7a3cfe68",
+      "result_match": null
+    },
+    {
+      "id": "STB049",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "a7d682a7debe1c04185180ad1ee7034b7a07e881372b005402c75a474f34415a",
+      "result_match": null
+    },
+    {
+      "id": "STB050",
+      "verdict": "full",
+      "primary_pass": true,
+      "reason": "Rejects absent data/formal accounting scope without proxy substitution or execution.",
+      "case_sha256": "427135719d96287391be5f77cfac86fe7ce01dbee4bd32e27f06f2a01a6961c1",
+      "result_match": null
+    }
+  ],
+  "reviewer": "Coordinator self-audit, not independent review",
+  "adopted": false,
+  "boundary": "One complete existing developer-set run and read-only synthetic backend replay. Not unseen accuracy, UI latency, or a combined93%-at5seconds configuration. Original evidence unchanged."
+}

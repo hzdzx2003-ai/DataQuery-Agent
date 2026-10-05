@@ -1,0 +1,5768 @@
+{
+  "version": "single-task-gold-projection-1",
+  "frozen": false,
+  "sources": [
+    {
+      "path": "work/natural-language-v3/single-task-v1-received/author_STA_v1.json",
+      "sha256": "d823a8a0dea8654c07d8d1f14f343320caf0d5fb5571e6c820ab684b27c09827"
+    },
+    {
+      "path": "work/natural-language-v3/single-task-v1-received/author_STB_v2.json",
+      "sha256": "efdfd29c48808385ae9dac193c1ee6f6c528a3806885dbe647dcf69f6ab6493f"
+    }
+  ],
+  "cases": [
+    {
+      "id": "STA001",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA001",
+        "question": "�����㳡2026��4����6������������һ�����ն������",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {
+              "��Ŀ": "�����㳡"
+            },
+            "time": {
+              "��": "2026-04",
+              "ֹ": "2026-06",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "������ѡ����Ӧ�ա�"
+        ],
+        "rationale": "����Ŀ����Ӧ�ջ��ܣ�Ŀ��Ψһ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "������ѡ����Ӧ�ա�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA002",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA002",
+        "question": "���ݺ����ݵ���Ŀ��2026��1����8����Щ���ںϼ��Ѿ����˶������",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ����": [
+                "����",
+                "����"
+              ]
+            },
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-08",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����ָ��Ŀ���ڳ��У�ʵ�չ������ڣ������������ڡ�"
+        ],
+        "rationale": "����кϲ���ѯͬһ�տ�ָ�ꡣ",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_collected"
+        },
+        "filters": [
+          {
+            "dimension": "project_city",
+            "operator": "in",
+            "values": [
+              "����",
+              "����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "����ָ��Ŀ���ڳ��У�ʵ�չ������ڣ������������ڡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA003",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA003",
+        "question": "��������2026���ϰ��껨��ˮ��Ͱ����ϵ�Ǯ�������Ƕ��٣�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "operating_expense",
+            "filters": {
+              "��Ŀ": "��������",
+              "���÷���": [
+                "ˮ��",
+                "����"
+              ]
+            },
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-06",
+              "����": "�����·�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ͳ��ʵ����Ӫ���ã�������úϲ�Ϊһ����"
+        ],
+        "rationale": "���ಢ��ɸѡ����ܷ��ã�û����Ҫ������ϸ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "operating_expense"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "��������"
+            ]
+          },
+          {
+            "dimension": "expense_category",
+            "operator": "in",
+            "values": [
+              "ˮ��",
+              "����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "�����·�"
+        }
+      ],
+      "important_basis": [
+        "ͳ��ʵ����Ӫ���ã�������úϲ�Ϊһ����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA004",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA004",
+        "question": "2026��8��31�գ������Ĳ�����λһ�����ȥ�˶���ƽ���ף�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "leased_area",
+            "filters": {
+              "��Ŀ": "�����",
+              "��λ����": "����"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����ָ��ʱ��������ͳ���������������λ��ǰ�������͡�"
+        ],
+        "rationale": "��λ���ͺ���Ŀ����ɸѡ��ʱ�������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "leased_area"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "food_beverage"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����ָ��ʱ��������ͳ���������������λ��ǰ�������͡�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA005",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA005",
+        "question": "������׼�գ�ע���ڱ������⻧��������Ŀ���Ѿ����ڵ���û����Ǯһ�����ж��٣�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "�⻧ע�����": "����"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����׼���ѵ���δ�����⻧ע����в�����Ŀ���У�������Щ�⻧��ȫ����Ŀ�ļ�¼��"
+        ],
+        "rationale": "���⻧����ɸѡ��ǰ����������Ŀ��Χ��ȷ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "overdue_balance"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����׼���ѵ���δ�����⻧ע����в�����Ŀ���У�������Щ�⻧��ȫ����Ŀ�ļ�¼��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA006",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA006",
+        "question": "������2025���°����ʵ����Ӫ���������ǰ����Ԥ����˶���Ǯ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "��": "2025-07",
+              "ֹ": "2025-12",
+              "����": "�����·�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���Ϊʵ�ʷ��ü�Ԥ�㣬������֧��������ʾ����Ԥ�㡣"
+        ],
+        "rationale": "ʵ����Ԥ���һ�����ָ�꣬��������Ҫ�����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "budget_variance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2025-07-01",
+          "end": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "�����·�"
+        }
+      ],
+      "important_basis": [
+        "���Ϊʵ�ʷ��ü�Ԥ�㣬������֧��������ʾ����Ԥ�㡣"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA007",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA007",
+        "question": "�����³�2026��7�������յ�����𣬼�ȥ7��ʵ����Ӫ��������ʣ����Ǯ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "cash_noi_proxy",
+            "filters": {
+              "��Ŀ": "�����³�"
+            },
+            "time": {
+              "��": "2026-07",
+              "ֹ": "2026-07",
+              "����": "����������·ݶ�Ӧ"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ʹ��ͬ����ʵ�ռ�����ʵ�ʷ��õļ򻯴�����������ʽNOI��������"
+        ],
+        "rationale": "�û���ȷҪ���֧�ֵĵ�һ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "cash_noi_proxy"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-07-01",
+          "end": "2026-07-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����������·ݶ�Ӧ"
+        }
+      ],
+      "important_basis": [
+        "ʹ��ͬ����ʵ�ռ�����ʵ�ʷ��õļ򻯴�����������ʽNOI��������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA008",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA008",
+        "question": "2026��8�£�ƽ�����İ칫��λ���յ����ϼƶ��٣�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {
+              "��Ŀ": "ƽ����",
+              "��λ����": "�칫"
+            },
+            "time": {
+              "��": "2026-08",
+              "ֹ": "2026-08",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����λ��ǰ��������ɸѡ����Ӧ�ա�"
+        ],
+        "rationale": "����;ɸѡ���Ӧ�գ����ٶ���Ŀ�������͡�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "ƽ����"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "office"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-08-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "����λ��ǰ��������ɸѡ����Ӧ�ա�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA009",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA009",
+        "question": "�г��Ϻ����������Ŀ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Ŀ�嵥",
+            "filters": {
+              "��Ŀ����": "�Ϻ�",
+              "��Ŀ��": "���"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ݵ�ǰ��Ŀ����ɸѡ��"
+        ],
+        "rationale": "����������ͬ�޶��ĵ�һ��Ŀ�嵥��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "property"
+        },
+        "filters": [
+          {
+            "dimension": "project_city",
+            "operator": "in",
+            "values": [
+              "�Ϻ�"
+            ]
+          },
+          {
+            "dimension": "project_district",
+            "operator": "in",
+            "values": [
+              "���"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���ݵ�ǰ��Ŀ����ɸѡ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA010",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA010",
+        "question": "�ѽ����������Ϊ���ۻ�������λ���г���������û���ⶼҪ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��λ�嵥",
+            "filters": {
+              "��Ŀ": "�����",
+              "��λ����": [
+                "����",
+                "����"
+              ],
+              "�������": "����"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ʹ��������λ��¼����Ĭ��ֻ���ѳ�����λ��"
+        ],
+        "rationale": "��ȷ������ͬ�����������λ�嵥��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "unit"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "retail",
+              "service"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "�������",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "ʹ��������λ��¼����Ĭ��ֻ���ѳ�����λ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA011",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA011",
+        "question": "�г�ע�����Ϊ���ݡ��ȼ�Ϊ������⻧��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "�⻧�嵥",
+            "filters": {
+              "�⻧ע�����": "����",
+              "�⻧�ȼ�": "����"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�������Ծ�Ϊ��ǰ�⻧������������Ŀ���д���ע����У�ͬһ�⻧�������Ŀ�ظ��г���"
+        ],
+        "rationale": "�����ɸѡ���⻧������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "tenant"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "����"
+            ]
+          },
+          {
+            "dimension": "tenant_tier",
+            "operator": "in",
+            "values": [
+              "emerging"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "�������Ծ�Ϊ��ǰ�⻧������������Ŀ���д���ע����У�ͬһ�⻧�������Ŀ�ظ��г���"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA012",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA012",
+        "question": "�г�����������Լ����2026��7����8�µ��ڵ���Լ������Ŀǰ��ʲô״̬��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "������",
+              "��Լ״̬": "����"
+            },
+            "time": {
+              "��": "2026-07-01",
+              "ֹ": "2026-08-31",
+              "����": "��ԼԼ�������գ�����β"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Լ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+        ],
+        "rationale": "ʱ���޶����Ǻ�ͬ�����ն��������ڡ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "lease"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "lease_date_field",
+          "start": "2026-07-01",
+          "end": "2026-08-31",
+          "field": "lease_end_date"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Լ״̬",
+          "requirement": "����"
+        },
+        {
+          "label": "����",
+          "requirement": "��ԼԼ�������գ�����β"
+        }
+      ],
+      "important_basis": [
+        "����Լ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA013",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA013",
+        "question": "2026��ڶ����ȣ�������ĿĿǰ�������Ϊ�����⻧����������ջ���Ӧ�յİٷ�֮���٣�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {
+              "�⻧�ȼ�": "��������ǰ������"
+            },
+            "time": {
+              "��": "2026-04",
+              "ֹ": "2026-06",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ѡ��Χ��ʵ�ճ�����Ӧ�գ���ƽ�����⻧�������⻧�ȼ�����ǰ����������Ŀ��¼�����롣"
+        ],
+        "rationale": "ȫ��Ŀ�ض��ȼ���������ձ�����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "collection_rate"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_tier",
+            "operator": "in",
+            "values": [
+              "anchor"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "��ѡ��Χ��ʵ�ճ�����Ӧ�գ���ƽ�����⻧�������⻧�ȼ�����ǰ����������Ŀ��¼�����롣"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA014",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA014",
+        "question": "2026��1����8�£�������Ŀ������ÿ�������յ��˶�����𣿰��·�˳���С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ": "ȫ��������Ŀ"
+            },
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-08",
+              "����": "����"
+            },
+            "group_by": [
+              "�����·�"
+            ],
+            "sort": {
+              "����": "�����·�",
+              "����": "����",
+              "����": null,
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�����ڷ��£�ÿ�ºϲ�ȫ����Ŀ�����������շ��顣"
+        ],
+        "rationale": "��һʵ��ָ����¶����ơ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_collected"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [
+          "month"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ",
+          "requirement": "ȫ��������Ŀ"
+        },
+        {
+          "label": "����",
+          "requirement": "����"
+        },
+        {
+          "label": "ʱ��չʾ˳��",
+          "requirement": {
+            "����": "�����·�",
+            "����": "����",
+            "����": null,
+            "��Χ": "ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "�����ڷ��£�ÿ�ºϲ�ȫ����Ŀ�����������շ��顣"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA015",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA015",
+        "question": "��2025�����Ŀ���յ����Ӷൽ����һ�£�ֻ��ǰ������",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {},
+            "time": {
+              "��": "2025-01",
+              "ֹ": "2025-12",
+              "����": "����"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "Ӧ�����ϼ�",
+              "����": "����",
+              "����": 3,
+              "��Χ": "ȫ����Ŀȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ȫ������Ӧ���ܶ�������"
+        ],
+        "rationale": "ȫ����ĿӦ��ǰ������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "group_by": [
+          "project"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc",
+          "limit": 3
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        },
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "Ӧ�����ϼ�",
+            "����": "����",
+            "����": 3,
+            "��Χ": "ȫ����Ŀȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "��ȫ������Ӧ���ܶ�������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA016",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA016",
+        "question": "�Ϻ�������Ŀ��2026���ϰ��꣬ÿһ����Ӫ���÷ֱ��˶���Ǯ��������Ŀ����������",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "operating_expense",
+            "filters": {
+              "��Ŀ����": "�Ϻ�"
+            },
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-06",
+              "����": "�����·�"
+            },
+            "group_by": [
+              "���÷���"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�����÷������ʵ�ʷ��ã����ٰ���Ŀ��֡�"
+        ],
+        "rationale": "��Ŀ����ɸѡ�󰴷��������顣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "operating_expense"
+        },
+        "filters": [
+          {
+            "dimension": "project_city",
+            "operator": "in",
+            "values": [
+              "�Ϻ�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [
+          "expense_category"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "�����·�"
+        }
+      ],
+      "important_basis": [
+        "�����÷������ʵ�ʷ��ã����ٰ���Ŀ��֡�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA017",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA017",
+        "question": "2026��8��31�գ�����Ŀ�ղ��գ����ѳ������ռ��������İٷֱ����ţ��ӵ͵�����ȫ��",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "occupancy_rate",
+            "filters": {},
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "�ѳ������ռ�����������",
+              "����": "����",
+              "����": null,
+              "��Χ": "ȫ����Ŀȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�������������ʣ�������λ������"
+        ],
+        "rationale": "���ﻯҵ����ͼ����ȷΪһ���������������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "occupancy_rate"
+        },
+        "filters": [],
+        "time": {
+          "mode": "point",
+          "date": "2026-08-31"
+        },
+        "group_by": [
+          "project"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "asc"
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "�ѳ������ռ�����������",
+            "����": "����",
+            "����": null,
+            "��Χ": "ȫ����Ŀȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "�������������ʣ�������λ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA018",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA018",
+        "question": "�����㳡2026��8��31��ÿ��¥��ֱ�����˶���ƽ���ף�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "leased_area",
+            "filters": {
+              "��Ŀ": "�����㳡"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [
+              "��λ¥��"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ָ��ʱ���ѳ������ͳ�ƣ�¥��ȡ��ǰ��λ������"
+        ],
+        "rationale": "����Ŀ��¥����ʱ�������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "leased_area"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-08-31"
+        },
+        "group_by": [
+          "floor"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "��ָ��ʱ���ѳ������ͳ�ƣ�¥��ȡ��ǰ��λ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA019",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA019",
+        "question": "������׼�գ�ÿ����Ŀ�ﵽ��û����������������⻧��˭�����������Ӹߵ����С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {},
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [
+              "��Ŀ",
+              "�⻧"
+            ],
+            "sort": {
+              "����": "��Ŀ��ÿ���⻧���ѵ���δ�����",
+              "����": "����",
+              "����": 2,
+              "��Χ": "ÿ����Ŀ����"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����׼����ͬһ�⻧�ڲ�ͬ��Ŀ�ֱ������Ӧ��Ŀ�����ܰ���ȫ��˾���������Ŀ��������"
+        ],
+        "rationale": "��Ŀ���⻧���ǰ��������Χ��ȷ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "overdue_balance"
+        },
+        "filters": [],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [
+          "project",
+          "tenant"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc",
+          "limit": 2,
+          "partition_by": [
+            "project"
+          ]
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "��Ŀ��ÿ���⻧���ѵ���δ�����",
+            "����": "����",
+            "����": 2,
+            "��Χ": "ÿ����Ŀ����"
+          }
+        }
+      ],
+      "important_basis": [
+        "����׼����ͬһ�⻧�ڲ�ͬ��Ŀ�ֱ������Ӧ��Ŀ�����ܰ���ȫ��˾���������Ŀ��������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA020",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA020",
+        "question": "2026���ϰ��꣬�����е���Ӫ������Ԥ����˶��٣�����Ԥ����Ӵ�С�С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {},
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-06",
+              "����": "�����·�"
+            },
+            "group_by": [
+              "��Ŀ����"
+            ],
+            "sort": {
+              "����": "ʵ�ʷ��ü�Ԥ��",
+              "����": "����",
+              "����": null,
+              "��Χ": "ȫ����Ŀ����ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Ŀ���кϲ�ʵ�ʷ�����Ԥ��������������ֵ��������ʾ��֧��"
+        ],
+        "rationale": "��һԤ������з�������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "budget_variance"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [
+          "project_city"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc"
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "�����·�"
+        },
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "ʵ�ʷ��ü�Ԥ��",
+            "����": "����",
+            "����": null,
+            "��Χ": "ȫ����Ŀ����ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "����Ŀ���кϲ�ʵ�ʷ�����Ԥ��������������ֵ��������ʾ��֧��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA021",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA021",
+        "question": "�������2025��1�µ�2026��8�£�ÿ���������������۵�������Ӫ�����Ժ�ʣ���٣�����˳�򿴡�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "cash_noi_proxy",
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "��": "2025-01",
+              "ֹ": "2026-08",
+              "����": "����������·ݶ�Ӧ"
+            },
+            "group_by": [
+              "�·�"
+            ],
+            "sort": {
+              "����": "�·�",
+              "����": "����",
+              "����": null,
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ÿ��ͬ����ʵ�ռ�ʵ����Ӫ���ã��򻯴���������ʽNOI��������"
+        ],
+        "rationale": "����������¶Ȳ�����ơ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "cash_noi_proxy"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [
+          "month"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����������·ݶ�Ӧ"
+        },
+        {
+          "label": "ʱ��չʾ˳��",
+          "requirement": {
+            "����": "�·�",
+            "����": "����",
+            "����": null,
+            "��Χ": "ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "ÿ��ͬ����ʵ�ռ�ʵ����Ӫ���ã��򻯴���������ʽNOI��������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA022",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA022",
+        "question": "2026��8��31�գ������³̲�ͬ��λ����ÿƽ����һ����ƽ�������Ǯ��",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "avg_monthly_rent_per_sqm",
+            "filters": {
+              "��Ŀ": "�����³�"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [
+              "��λ����"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�������Ȩ����ָ��ʱ��ƽ�������⣬���Ը���λ��������ƽ��������ȡ��ǰ������"
+        ],
+        "rationale": "ʱ�������;���飬����Ŀ¼Ĭ�ϼ�Ȩ�ھ���",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "avg_monthly_rent_per_sqm"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-08-31"
+        },
+        "group_by": [
+          "unit_type"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "�������Ȩ����ָ��ʱ��ƽ�������⣬���Ը���λ��������ƽ��������ȡ��ǰ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA023",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA023",
+        "question": "2026��7����8�µ����ڣ�ע���ڲ�ͬ���е��⻧�ֱ�ý��������������Ŀ����һ���㡣",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {
+              "��Ŀ": "ȫ����Ŀ"
+            },
+            "time": {
+              "��": "2026-07",
+              "ֹ": "2026-08",
+              "����": "����"
+            },
+            "group_by": [
+              "�⻧ע�����"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���⻧��ǰע����з��飬������Ŀ���У�����Ŀ��Ӧ�ռ�¼�����롣"
+        ],
+        "rationale": "���⻧����Ϊ����ά�ȵ�Ӧ�ջ��ܡ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-07-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [
+          "tenant_registration_city"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ",
+          "requirement": "ȫ����Ŀ"
+        },
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "���⻧��ǰע����з��飬������Ŀ���У�����Ŀ��Ӧ�ռ�¼�����롣"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA024",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA024",
+        "question": "2026��ڶ����ȣ�����Ŀ���԰�Ӧ������ջ��˶��ٱ���������������Ӹߵ����г�������Ŀ��",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {},
+            "time": {
+              "��": "2026-04",
+              "ֹ": "2026-06",
+              "����": "����"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "��ʵ�ճ�����Ӧ��",
+              "����": "����",
+              "����": null,
+              "��Χ": "ȫ����Ŀȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Ŀ�Ⱥϲ�����ʵ�պ�Ӧ�����������ƽ�������»���⻧���սɱ�����"
+        ],
+        "rationale": "������Ŀ�սɱ���ȫ������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "collection_rate"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [
+          "project"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc"
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        },
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "��ʵ�ճ�����Ӧ��",
+            "����": "����",
+            "����": null,
+            "��Χ": "ȫ����Ŀȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "����Ŀ�Ⱥϲ�����ʵ�պ�Ӧ�����������ƽ�������»���⻧���սɱ�����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA025",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA025",
+        "question": "�г�������ĿԼ����2026��9����12�½�������Լ�����������ڴ��絽���ţ�������10�ݣ����޵�ǰ״̬��",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "ȫ����Ŀ",
+              "��Լ״̬": "����"
+            },
+            "time": {
+              "��": "2026-09-01",
+              "ֹ": "2026-12-31",
+              "����": "������ԼԼ�������գ�����β"
+            },
+            "group_by": [],
+            "sort": {
+              "����": "��ԼԼ��������",
+              "����": "����",
+              "����": 10,
+              "��Χ": "���з���������Լȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ʹ��������Լ���ص�δ�������գ���Ԥ��δ����¼�����޵�ǰ״̬��"
+        ],
+        "rationale": "���к�ͬ���԰�δ���������������������ݽ�ֹ��ͬ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "lease"
+        },
+        "filters": [],
+        "time": {
+          "mode": "lease_date_field",
+          "start": "2026-09-01",
+          "end": "2026-12-31",
+          "field": "lease_end_date"
+        },
+        "group_by": [],
+        "order_by": {
+          "by": "lease_end_date",
+          "direction": "asc",
+          "limit": 10
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ",
+          "requirement": "ȫ����Ŀ"
+        },
+        {
+          "label": "��Լ״̬",
+          "requirement": "����"
+        },
+        {
+          "label": "����",
+          "requirement": "������ԼԼ�������գ�����β"
+        },
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "��ԼԼ��������",
+            "����": "����",
+            "����": 10,
+            "��Χ": "���з���������Լȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "ʹ��������Լ���ص�δ�������գ���Ԥ��δ����¼�����޵�ǰ״̬��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA026",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA026",
+        "question": "�ϸ����������ĸ��յ���𣬺������ջ��˰ٷ�֮���٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {
+              "��Ŀ": "��������"
+            },
+            "time": {
+              "��": "2026-08",
+              "ֹ": "2026-08",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��׼��Ϊ2026-09-01���ϸ�����2026��8�£���ʵ�ճ�����Ӧ�գ���ƽ���𵥱�����"
+        ],
+        "rationale": "����·ݿ��ɻ�׼��Ψһ�����������ھ�����¶��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "collection_rate"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-08-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "��׼��Ϊ2026-09-01���ϸ�����2026��8�£���ʵ�ճ�����Ӧ�գ���ƽ���𵥱�����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA027",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA027",
+        "question": "������2026��6�����ڵ�����Ѿ��յ��˶���Ǯ����Щʱ��ŵ��˵ģ�ֻҪ���������Ҳ�㡣",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "��": "2026-06",
+              "ֹ": "2026-06",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�����ڹ���ȡ����ʵ�ռ�¼���������������½�ȡ�����Ʋ�δ���տ"
+        ],
+        "rationale": "��ȷ����ʵ�գ��ٵ����԰����ڹ�����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_collected"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-06-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "�����ڹ���ȡ����ʵ�ռ�¼���������������½�ȡ�����Ʋ�δ���տ"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA028",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA028",
+        "question": "�Ϻ�������Ŀ����һ�����ڿ����������Ѿ����ȥ��ռ���٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "occupancy_rate",
+            "filters": {
+              "��Ŀ����": "�Ϻ�"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ڰ���׼�գ��ϲ��ѳ���������Ժϲ������������ƽ����Ŀ�����ʣ�Ҳ������λ������"
+        ],
+        "rationale": "����Ŀ���������������ĸ�ͺϲ��㷨�ؼ���",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "occupancy_rate"
+        },
+        "filters": [
+          {
+            "dimension": "project_city",
+            "operator": "in",
+            "values": [
+              "�Ϻ�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���ڰ���׼�գ��ϲ��ѳ���������Ժϲ������������ƽ����Ŀ�����ʣ�Ҳ������λ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA029",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA029",
+        "question": "ƽ��������ÿƽ����һ����ƽ�������Ǯ��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "avg_monthly_rent_per_sqm",
+            "filters": {
+              "��Ŀ": "ƽ����"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ڲ��û�׼��ʱ�㣻�������Ȩ����ƽ�������⣬����ƽ����λ���ۡ�"
+        ],
+        "rationale": "Ŀ¼�ѹ涨ƽ���ھ���������������ʵ�㷨��׷�ʡ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "avg_monthly_rent_per_sqm"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "ƽ����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���ڲ��û�׼��ʱ�㣻�������Ȩ����ƽ�������⣬����ƽ����λ���ۡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA030",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA030",
+        "question": "����������Ѿ����ڵ���û�������ʣ���٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "��Ŀ": "�����"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ṩ��׼���ѵ���δ����δ���ڿ�����ڡ�"
+        ],
+        "rationale": "��ǰ�������֧�ַ�Χ����˵���ص㡣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "overdue_balance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���ṩ��׼���ѵ���δ����δ���ڿ�����ڡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA031",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA031",
+        "question": "�����³̽��굽�ϸ���Ϊֹ��ʵ����Ӫ������Ԥ�����٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {
+              "��Ŀ": "�����³�"
+            },
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-08",
+              "����": "�����·�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ʱ�䰴2026-09-01��׼�գ���ΧΪ2026��1����8�£�ʵ�ʼ�Ԥ�㣬��Ϊ��֧����Ϊ��Լ��"
+        ],
+        "rationale": "��ֹ�·ݺͲ����ž�����¶��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "budget_variance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����",
+          "requirement": "�����·�"
+        }
+      ],
+      "important_basis": [
+        "���ʱ�䰴2026-09-01��׼�գ���ΧΪ2026��1����8�£�ʵ�ʼ�Ԥ�㣬��Ϊ��֧����Ϊ��Լ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA032",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA032",
+        "question": "2025��ȫ��������Ŀ�ս���������������ͬ����Ӫ���ã�һ��ʣ�¶��٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "cash_noi_proxy",
+            "filters": {
+              "��Ŀ": "ȫ��������Ŀ"
+            },
+            "time": {
+              "��": "2025-01",
+              "ֹ": "2025-12",
+              "����": "����������·ݶ�Ӧ"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ȫ��ͬ����ʵ���ܶ��ȫ��ʵ����Ӫ���ã����Ǽ��ֽ������������ʽNOI��������"
+        ],
+        "rationale": "�û�ָ���ɼ���ĵ�һ����������Ϊ��ʽ����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "cash_noi_proxy"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ",
+          "requirement": "ȫ��������Ŀ"
+        },
+        {
+          "label": "����",
+          "requirement": "����������·ݶ�Ӧ"
+        }
+      ],
+      "important_basis": [
+        "ȫ��ͬ����ʵ���ܶ��ȫ��ʵ����Ӫ���ã����Ǽ��ֽ������������ʽNOI��������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA033",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA033",
+        "question": "�г����ڵ�����Ǽ������ݵ��⻧�������������ĸ���Ŀ������λ��ÿ��ֻ��һ�Ρ�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "�⻧�嵥",
+            "filters": {
+              "�⻧ע�����": "����",
+              "��Ŀ": "����"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ʹ�õ�ǰ�⻧ע����У�������Ŀ���У�ͬһ�⻧����Ŀȥ�أ���Ĭ��ֻ������Ч��Լ�����⻧��"
+        ],
+        "rationale": "ע��غ���Ŀ���ڵر������֣��嵥���⻧ȥ�ء�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "tenant"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "ʹ�õ�ǰ�⻧ע����У�������Ŀ���У�ͬһ�⻧����Ŀȥ�أ���Ĭ��ֻ������Ч��Լ�����⻧��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA034",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA034",
+        "question": "�����㳡��2025��12��31������˶���ƽ���ף�������λ���Ͱ����쵵�����Ϊ�������ɸ��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "leased_area",
+            "filters": {
+              "��Ŀ": "�����㳡",
+              "��λ����": "���񣨵�ǰ������"
+            },
+            "time": {
+              "ʱ��": "2025-12-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�����������2025-12-31ʱ�㣬�������Ͳ��õ�ǰ�����������ƻָ�������������ԡ�"
+        ],
+        "rationale": "��ʷʱ��ָ������ȷָ���ĵ�ǰ����ɸѡ������ϡ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "leased_area"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "service"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "�����������2025-12-31ʱ�㣬�������Ͳ��õ�ǰ�����������ƻָ�������������ԡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA035",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STA035",
+        "question": "�������������м�¼�����Լ���г������Ѿ�������ҲҪ��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "��������",
+              "��Լ״̬": "���ޣ������ѽ���"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�嵥����ȫ��������Լ��¼����Ĭ�Ͻ���Ч��Լ��û��������ֹ�����ơ�"
+        ],
+        "rationale": "��¼��Χ��ȫ�����к�ͬ����Ӧ�Զ�������ʷ������ͬ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "lease"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Լ״̬",
+          "requirement": "���ޣ������ѽ���"
+        }
+      ],
+      "important_basis": [
+        "�嵥����ȫ��������Լ��¼����Ĭ�Ͻ���Ч��Լ��û��������ֹ�����ơ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STA036",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA036",
+        "question": "��������2026��ĳ�������������ռ���Ƕ��٣�",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "occupancy_rate",
+            "filters": {
+              "��Ŀ": "��������"
+            },
+            "time": {
+              "��ȷ��": "2026��ľ���ͳ��ʱ�㣬���Ƿ�ϣ�����ָ��ʱ��չʾ"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "��ȷ���뿴2026�����һ�죬����ϣ��������ʱ��չʾ�����뿴ȫ��ƽ����������ȷ��һ����ƽ���ھ�������ֱ�ӵ���ĳһ��ĳ����ʡ�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "������Ϊʱ���������������ڼ䲻�������ƽ��ʱ�㣻֧��ʱ�����2026-09-01��"
+        ],
+        "rationale": "�������ȴδȷ��ʱ����ڼ京�壬����ֱ�����û�׼�ա�",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA037",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA037",
+        "question": "2026��8���Ϻ�������Ŀ������ջر���������һ��ƽ������",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {
+              "��Ŀ����": "�Ϻ�"
+            },
+            "time": {
+              "��": "2026-08",
+              "ֹ": "2026-08",
+              "����": "����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "���ƽ�����ǰ�������ĿӦ����ʵ�պϲ�����������������ǰ�������Ŀ���Եı���������ƽ����"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "Ŀ¼ָ��֧�ֺϲ���ʵ�ճ�����Ӧ�գ��û���˵ƽ�����γ���ʵ�ھ����磬�������Ի�����Ŀ������ƽ����"
+        ],
+        "rationale": "��ȷ��ƽ����������������ս��ʲ�ͬ��������Ҫ���塣",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA038",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA038",
+        "question": "2026��7�º��������������Ƕ��٣�",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": null,
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "��": "2026-07",
+              "ֹ": "2026-07",
+              "��ȷ��": "���ڻ����·ݿھ�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "���������ָ7������Ӧ�գ�����7������ʵ�գ���ָ7��ʵ�ʵ��˵Ŀ������֧��ǰ�������ڿھ������ṩ��������ͳ�ƵĿھ���"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����δ��ȷ��ӦӦ�ջ�ʵ�գ���������ѡ������֪�·ݱ�����ʱ��ھ���ȷ�ϡ�"
+        ],
+        "rationale": "�ճ�����˵����ʵ��ҵ��ھ����磬��һ���Ŀ����δȷ����",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA039",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA039",
+        "question": "ƽ����2026��8��31�յ�ƽ�������Ƕ���Ǯ��",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": null,
+            "filters": {
+              "��Ŀ": "ƽ����"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�����뿴ÿƽ�������⣬����ÿ����λ��ÿ����Լ��ƽ�������Ŀ¼�ṩ�������Ȩ��ÿƽ�������⣬��ȷ�ϵ�λ��ͳ�ƶ���"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ƽ������δ������λ����󣻲��ð�ÿ��λ��ÿ��Լƽ�����ֱ���滻��ƽ�������⡣"
+        ],
+        "rationale": "�����ǵ�λ��ͳ�ƶ��󣬶��Ƕ�����ȷ��ƽ���׿ھ��޶�׷�ʡ�",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA040",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA040",
+        "question": "������׼�գ������⻧��Ƿ�ŵĵ��ڿ�һ�����٣�",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "�����⻧": "��ȷ�ϣ�ע�����Ϊ���ݣ������޺�����Ŀ���⻧�ڸ���Ŀ�ļ�¼"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�����⻧ָע���ں��ݵ��⻧��������Ŀ��Ƿ����Ǻ�����Ŀ����⻧�ڸ���Ŀ��Ƿ�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ע���������Ŀ���в�ͬ���⻧�ɿ���Ŀ����ǰ�ѵ���δ���ھ�����ȷ��"
+        ],
+        "rationale": "�������ζ���Ϳ���Ŀͳ�Ʒ�Χ����ʵ���塣",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA041",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA041",
+        "question": "�����㳡����յ��˶����������",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ": "�����㳡"
+            },
+            "time": {
+              "��ȷ��": "���������Щ����"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�������ָ�ļ������ڣ�����ĸ����ڵ��ĸ����ڣ�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Ϊ������촰�ڣ�ʵ���԰����ڣ����������ա�"
+        ],
+        "rationale": "ָ����֪��ʱ�䴰��ȱʧ��",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA042",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA042",
+        "question": "�г�������׼�յ���û����Ǯ�ܶ���⻧��",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "�⻧�嵥",
+            "filters": {
+              "�ѵ���δ�����": "�ܶ�Ľ���ż����߽��ȷ��",
+              "ͳ�Ʒ�Χ": "ÿ���⻧��ȫ����Ŀ�ϼ�"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�ܶ����ָÿ���⻧�ϼ�Ƿ�������Ԫ�����Ǵﵽ����Ԫ�����ϣ�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�Ի�׼�����ɸѡ��ͬһ�⻧����Ŀ�ϼƺ�ֻ��һ�Σ������������ż���"
+        ],
+        "rationale": "���Խ��ɸѡ��Ҫ��ȷ��ֵ�������߽硣",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA043",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA043",
+        "question": "2026��8��31�գ�������ֲ�������Ŀ����Щ�����ѳ������ռ��������ı����жϡ�",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Ŀ�嵥",
+            "filters": {
+              "�����ʲ����": "��ֵ���Ƿ�������ڴ�ȷ��"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "������ǳ����ʵ��ڶ��٣��������ֵ�Ƿ�Ҳ�㲻��ꣿ"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���������������ȷ������δ���ṩ�Ĵ���ߡ�"
+        ],
+        "rationale": "ֻȱҵ������ֵ��Ŀ������Ŀ������",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA044",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA044",
+        "question": "�����ǹ�˾���ص���Ŀ��������һ����Щ��Ŀ2026���ϰ�����Ӫ�����ϼƶ��١�",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "operating_expense",
+            "filters": {
+              "��Ŀ": "��˾�ص���Ŀ�������ṩ"
+            },
+            "time": {
+              "��": "2026-01",
+              "ֹ": "2026-06",
+              "����": "�����·�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "������ص���Ŀ���ƻ���������е���ִ�е���ȷɸѡ����"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�ص���Ŀ��δ�ṩ���ڲ����򣬲��ܰ����С�������Ŀ���������ƶϡ�"
+        ],
+        "rationale": "���ÿھ����ڼ������ȱ�ڲ���Ŀ��Χ��",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA045",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STA045",
+        "question": "���������ĳ�����Լ���г�����",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "��������",
+              "����": "������ֵ��������ֹ��ȷ��"
+            },
+            "time": {
+              "��ȷ��": "��ԭԼ���������жϣ��򰴻�׼��ʣ�������ж�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "���ڰ�ԭԼ�������ڻ��ǽ�����׼�յ�ʣ�������жϣ����ٶ೤���㣿"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ñ��쳤����ֵ��û������˵��ʱ���Զ���ȡ��Ч��Լ��"
+        ],
+        "rationale": "������δ������ڲ����࣬����ȷ���Ⱥͺ�����ʽ��",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA046",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STA046",
+        "question": "�����㳡2026��8��һ�����˶���λ�˿ͣ�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "�˿͵�������������"
+        ],
+        "important_basis": [],
+        "rationale": "�����������ݷ�Χ���������⻧������λ�����档",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA047",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STA047",
+        "question": "������2026�����7����8�£��̻��ϼ����˶���Ǯ��",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "�̻����۶�"
+        ],
+        "important_basis": [],
+        "rationale": "���۶�����ݷ�Χ�����Ӧ�ջ�ʵ�ղ��������",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA048",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STA048",
+        "question": "�����2026���ϰ���ͣ���շ��ܹ�������٣�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "ͣ������"
+        ],
+        "important_basis": [],
+        "rationale": "δ�ṩͣ���շ��������ݣ����������������ơ�",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA049",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STA049",
+        "question": "�����³̽���2026��9��1�յ��г���ֵ�Ƕ��٣�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "�г���ֵ"
+        ],
+        "important_basis": [],
+        "rationale": "�г���ֵ�������ݷ�Χ�����ܴ���������ƶϴ��档",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STA050",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STA050",
+        "question": "ƽ����2025��ȫ����ʽ���񱨱��ϵĻ�������Ƕ��٣�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "��ʽ�������"
+        ],
+        "important_basis": [],
+        "rationale": "��ʽ��������ڷ�Χ��ʵ�ռ����õļ򻯴������������",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB001",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB001",
+        "question": "�Ϻ���������Ŀ��2026��ڶ�����һ�����ն������",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {
+              "��Ŀ����": "�Ϻ�",
+              "��Ŀ": [
+                "�����㳡",
+                "��������"
+              ]
+            },
+            "time": {
+              "������": "2026-04",
+              "����ֹ": "2026-06"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���������ڻ���Ӧ�����"
+        ],
+        "rationale": "����ɸѡ�뼾������ϳ�һ��Ӧ���ܶ�Ŀ�ꡣ",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [
+          {
+            "dimension": "project_city",
+            "operator": "in",
+            "values": [
+              "�Ϻ�"
+            ]
+          },
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡",
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���������ڻ���Ӧ�����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB002",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB002",
+        "question": "���������1��8�µ����ע�����Ϻ����⻧�ϼ��Ѿ����˶���Ǯ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ": "������",
+              "�⻧ע�����": "�Ϻ�"
+            },
+            "time": {
+              "������": "2026-01",
+              "����ֹ": "2026-08"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���갴��׼�ս���Ϊ2026�ꡣ",
+          "ʵ�չ���ָ�����ڣ�����ʵ�ʵ�����ɸѡ��",
+          "�Ϻ����⻧ע����У�������Ŀ���С�"
+        ],
+        "rationale": "���������ɸѡ��ֻ��һ��ʵ�պϼơ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_collected"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          },
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "�Ϻ�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���갴��׼�ս���Ϊ2026�ꡣ",
+        "ʵ�չ���ָ�����ڣ�����ʵ�ʵ�����ɸѡ��",
+        "�Ϻ����⻧ע����У�������Ŀ���С�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB003",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB003",
+        "question": "������ƽ����2026��8�¸��յ���𣬺���һ���Ѿ��ջ��˰ٷ�֮���٣�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {
+              "��Ŀ": [
+                "�����",
+                "ƽ����"
+              ]
+            },
+            "time": {
+              "������": "2026-08",
+              "����ֹ": "2026-08"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "������Ŀͬ������ʵ�ճ�����Ӧ�գ���ƽ��������Ŀ�ı��ʡ�"
+        ],
+        "rationale": "����Ŀ�ϲ���Ŀ���Ϊһ���ջر�����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "collection_rate"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����",
+              "ƽ����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-08-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "������Ŀͬ������ʵ�ճ�����Ӧ�գ���ƽ��������Ŀ�ı��ʡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB004",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB004",
+        "question": "��2026��6��30�գ������³�һ¥��������λһ�����ȥ�˶���ƽ���ף�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "leased_area",
+            "filters": {
+              "��Ŀ": "�����³�",
+              "��λ¥��": "һ¥",
+              "��λ����": "����"
+            },
+            "time": {
+              "ʱ��": "2026-06-30"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ָ��ʱ������ѳ��������¥�����λ����ʹ�õ�ǰ������"
+        ],
+        "rationale": "����Ŀ��¥�㡢���ͺ�ʱ�����Ϊ���������ѯ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "leased_area"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          },
+          {
+            "dimension": "floor",
+            "operator": "in",
+            "values": [
+              "1"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "retail"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "��ָ��ʱ������ѳ��������¥�����λ����ʹ�õ�ǰ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB005",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB005",
+        "question": "2025��12��31�գ��������İ칫��λ�ɳ���������ж��ٱ����Ѿ����ȥ�ˣ�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "occupancy_rate",
+            "filters": {
+              "��Ŀ": "��������",
+              "��λ����": "�칫"
+            },
+            "time": {
+              "ʱ��": "2025-12-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Ϊ�÷�Χ�ѳ����������ĸΪͬ��Χ���������������λ�������㡣",
+          "�칫ָ��λ���ͣ����ƶ���Ŀ���͡�"
+        ],
+        "rationale": "��ȷ�����ĸ��ɸѡ�칫��λ�����鹹��Ŀ���͡�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "occupancy_rate"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "��������"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "office"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����Ϊ�÷�Χ�ѳ����������ĸΪͬ��Χ���������������λ�������㡣",
+        "�칫ָ��λ���ͣ����ƶ���Ŀ���͡�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB006",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB006",
+        "question": "�����㳡����������2026��5��7����ά��ά����ʵ�ʻ��˶���Ǯ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "operating_expense",
+            "filters": {
+              "��Ŀ": [
+                "�����㳡",
+                "��������"
+              ],
+              "���÷���": "ά��ά��"
+            },
+            "time": {
+              "�·���": "2026-05",
+              "�·�ֹ": "2026-07"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����ʵ�ʷ��ã�����Ϊ����ҡ�"
+        ],
+        "rationale": "����Ŀ���·ݵĵ������û��ܡ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "operating_expense"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡",
+              "��������"
+            ]
+          },
+          {
+            "dimension": "expense_category",
+            "operator": "in",
+            "values": [
+              "ά��ά��"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-05-01",
+          "end": "2026-07-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����ʵ�ʷ��ã�����Ϊ����ҡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB007",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB007",
+        "question": "����������ϰ����Ӫ��֧���������ʱ�䰲�ŵ�Ԥ��໨���ٻ��˶���Ԫ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {
+              "��Ŀ": "������",
+              "���÷���": "Ӫ��"
+            },
+            "time": {
+              "�·���": "2026-01",
+              "�·�ֹ": "2026-06"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ʵ�ʷ��ü�Ԥ�㣬����Ϊ�໨������Ϊ�ٻ���"
+        ],
+        "rationale": "�໨���ٻ�����ͬһ�з��Ų���������ָ�ꡣ",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "budget_variance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          },
+          {
+            "dimension": "expense_category",
+            "operator": "in",
+            "values": [
+              "Ӫ��"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "ʵ�ʷ��ü�Ԥ�㣬����Ϊ�໨������Ϊ�ٻ���"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB008",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB008",
+        "question": "�����³�2026��1��8�µ����ʵ�գ��۵�ͬһ�ڼ�ʵ����Ӫ�����Ժ󣬻�ʣ����Ԫ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "cash_noi_proxy",
+            "filters": {
+              "��Ŀ": "�����³�"
+            },
+            "time": {
+              "���ڼ������·���": "2026-01",
+              "���ڼ������·�ֹ": "2026-08"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�����ͬ����ʵ�ռ�ͬ��ʵ����Ӫ���õļ򻯴�����������ʽNOI��������"
+        ],
+        "rationale": "�������һ��Ŀ¼ָ�꣬������Ҫ����������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "cash_noi_proxy"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "�����ͬ����ʵ�ռ�ͬ��ʵ����Ӫ���õļ򻯴�����������ʽNOI��������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB009",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB009",
+        "question": "2026��8��31�գ�������¥������λ�������Ȩ��ÿƽ����һ���µ�����Ƕ���Ԫ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "avg_monthly_rent_per_sqm",
+            "filters": {
+              "��Ŀ": "�����",
+              "��λ¥��": "��¥",
+              "��λ����": "����"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�������Ȩ�����ʱ��ƽ�������⣬��������λ���ۼ�ƽ����"
+        ],
+        "rationale": "ָ��ϸ����λ��Χ����ȷ��Ȩ�ھ���",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "avg_monthly_rent_per_sqm"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����"
+            ]
+          },
+          {
+            "dimension": "floor",
+            "operator": "in",
+            "values": [
+              "2"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "food_beverage"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "�������Ȩ�����ʱ��ƽ�������⣬��������λ���ۼ�ƽ����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB010",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB010",
+        "question": "����2026��9��1�գ�ע���ڱ������⻧��������Ŀ�ﵽ�ڻ�û�������һ��Ƿ����Ԫ��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "�⻧ע�����": "����",
+              "��Ŀ��Χ": "ȫ����Ŀ"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ͳ�ƻ�׼���ѵ���δ����δ���ڲ��ֲ����롣",
+          "���⻧ע�����ɸѡ������Ŀ���ϲ���"
+        ],
+        "rationale": "����Ŀ�⻧����ɸѡ��ĵ�ǰ�����ܶ",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "overdue_balance"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ��Χ",
+          "requirement": "ȫ����Ŀ"
+        }
+      ],
+      "important_basis": [
+        "��ͳ�ƻ�׼���ѵ���δ����δ���ڲ��ֲ����롣",
+        "���⻧ע�����ɸѡ������Ŀ���ϲ���"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB011",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB011",
+        "question": "��ƽ������ͬ��������2025��7��1�յ�12��31��֮�����Լ���г���������������ʲô״̬��",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "ƽ����",
+              "��Լ״̬": "����"
+            },
+            "time": {
+              "��Լ��������": "2025-07-01",
+              "��Լ������ֹ": "2025-12-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ֹ�߽������������ͬ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+        ],
+        "rationale": "�����շ�Χ��״̬��Χ��ȷ��һ���¼�嵥��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "lease"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "ƽ����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "lease_date_field",
+          "start": "2025-07-01",
+          "end": "2025-12-31",
+          "field": "lease_end_date"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Լ״̬",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "��ֹ�߽������������ͬ������ɸѡ���м�¼����Ĭ�Ͻ���Ч��Լ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB012",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB012",
+        "question": "��Щע���ں��ݵ������⻧���ڳ����㳡�����������й���Լ��¼��ÿ���⻧ֻ��һ�Σ���Լ״̬���ޡ�",
+        "category": "query_summary",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "�⻧�嵥",
+            "filters": {
+              "�⻧ע�����": "����",
+              "�⻧�ȼ�": "����",
+              "������Լ��Ŀ��һ": [
+                "�����㳡",
+                "��������"
+              ],
+              "������Լ״̬": "����",
+              "��¼ȥ��": "���⻧����ȥ��"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�й���Լָ������Լ��¼�д��ڹ������������ƶ�ȱʧ��ʷ��",
+          "ע�������ȼ��õ�ǰ������ͬһ�⻧���ܿ���Ŀ�����ȥ�ء�",
+          "δҪ���ڼ䣬��������ȫ����Լ��¼��"
+        ],
+        "rationale": "�⻧��������һ��Ŀ����������ͬȷ��һ��ȥ���嵥��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "tenant"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "����"
+            ]
+          },
+          {
+            "dimension": "tenant_tier",
+            "operator": "in",
+            "values": [
+              "emerging"
+            ]
+          },
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡",
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "������Լ״̬",
+          "requirement": "����"
+        },
+        {
+          "label": "��¼ȥ��",
+          "requirement": "���⻧����ȥ��"
+        }
+      ],
+      "important_basis": [
+        "�й���Լָ������Լ��¼�д��ڹ������������ƶ�ȱʧ��ʷ��",
+        "ע�������ȼ��õ�ǰ������ͬһ�⻧���ܿ���Ŀ�����ȥ�ء�",
+        "δҪ���ڼ䣬��������ȫ����Լ��¼��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB013",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB013",
+        "question": "2026���ϰ��꣬ÿ����Ŀ���ڳ��зֱ���ն������",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {},
+            "time": {
+              "������": "2026-01",
+              "����ֹ": "2026-06"
+            },
+            "group_by": [
+              "��Ŀ����"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Ŀ���й鼯�������⻧ע����������"
+        ],
+        "rationale": "��һӦ��ָ�갴���з��顣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [
+          "project_city"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����Ŀ���й鼯�������⻧ע����������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB014",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB014",
+        "question": "���������1��8�£�ÿ���¶�Ӧ������Ѿ��յ��˶��٣����·ݴ��絽���š�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "������": "2026-01",
+              "����ֹ": "2026-08"
+            },
+            "group_by": [
+              "�����·�"
+            ],
+            "sort": {
+              "����": "�����·�",
+              "����": "����",
+              "����": "ȫ��",
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�¶�ʵ�հ����ڹ��������������·ݡ�"
+        ],
+        "rationale": "һ��ָ��İ˸������Ƽ�ʱ������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_collected"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [
+          "month"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "ʱ��չʾ˳��",
+          "requirement": {
+            "����": "�����·�",
+            "����": "����",
+            "����": "ȫ��",
+            "��Χ": "ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "�¶�ʵ�հ����ڹ��������������·ݡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB015",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB015",
+        "question": "2026��7�£���������Ŀ���յ�����ջر�����ͣ��ӵ͵����г�����",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {},
+            "time": {
+              "������": "2026-07",
+              "����ֹ": "2026-07"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "ͬ�����ջر���",
+              "����": "����",
+              "����": 3,
+              "��Χ": "ȫ����Ŀ֮���ȫ������"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ÿ����Ŀ�ֱ�����ʵ�ճ�����Ӧ�գ�ѡ���������",
+          "����ָֻ���ջر�������û��ָ��������Ŀ�Ĵ������ƻ����ݴ�����ǿ���¶��Ĭ��ѡ�����Ψһ����Լ����",
+          "����ȫ��ǰ�����������������򣻱߽粢��ʱ���κΰ��������ϸ���ͱ�����Ŀ���ٴӱ߽粢����Ŀ�в�������Ľ�����ȼۡ��������ڲ������ޣ�����¶��ѡ������ע���У���Ҫ��Ψһ������"
+        ],
+        "rationale": "������ʵ�ȫ�ֵ���������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "collection_rate"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-07-01",
+          "end": "2026-07-31"
+        },
+        "group_by": [
+          "project"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "asc",
+          "limit": 3
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "ͬ�����ջر���",
+            "����": "����",
+            "����": 3,
+            "��Χ": "ȫ����Ŀ֮���ȫ������"
+          }
+        }
+      ],
+      "important_basis": [
+        "ÿ����Ŀ�ֱ�����ʵ�ճ�����Ӧ�գ�ѡ���������",
+        "����ָֻ���ջر�������û��ָ��������Ŀ�Ĵ������ƻ����ݴ�����ǿ���¶��Ĭ��ѡ�����Ψһ����Լ����",
+        "����ȫ��ǰ�����������������򣻱߽粢��ʱ���κΰ��������ϸ���ͱ�����Ŀ���ٴӱ߽粢����Ŀ�в�������Ľ�����ȼۡ��������ڲ������ޣ�����¶��ѡ������ע���У���Ҫ��Ψһ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB016",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB016",
+        "question": "��2026��3��31�գ������㳡���������ĸ�¥��ֱ�����˶���ƽ���ף�������Ŀ�ֿ�����",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "leased_area",
+            "filters": {
+              "��Ŀ": [
+                "�����㳡",
+                "��������"
+              ]
+            },
+            "time": {
+              "ʱ��": "2026-03-31"
+            },
+            "group_by": [
+              "��Ŀ",
+              "��λ¥��"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����Ŀ��¥��������飬ͬ��¥�㲻����Ŀ�ϲ���¥��ʹ�õ�ǰ������"
+        ],
+        "rationale": "��ʱ�������˫ά�ȷ��顣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "leased_area"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡",
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-03-31"
+        },
+        "group_by": [
+          "project",
+          "floor"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����Ŀ��¥��������飬ͬ��¥�㲻����Ŀ�ϲ���¥��ʹ�õ�ǰ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB017",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB017",
+        "question": "ƽ������2025��3��31�ա�6��30�ա�9��30�պ�12��31�գ����������������ı����ֱ��Ƕ��٣��������š�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "occupancy_rate",
+            "filters": {
+              "��Ŀ": "ƽ����"
+            },
+            "time": {
+              "ʱ���б�": [
+                "2025-03-31",
+                "2025-06-30",
+                "2025-09-30",
+                "2025-12-31"
+              ]
+            },
+            "group_by": [
+              "ָ��ʱ��"
+            ],
+            "sort": {
+              "����": "ʱ������",
+              "����": "����",
+              "����": "ȫ���ĸ�ʱ��",
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�ֱ�����ĸ�ʱ����ѳ���������Կ�������������ͳɼ���ƽ����ȫ��ƽ����"
+        ],
+        "rationale": "�ĸ���ɢʱ���γ�ͬһ�������ơ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "occupancy_rate"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "ƽ����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point_series",
+          "dates": [
+            "2025-03-31",
+            "2025-06-30",
+            "2025-09-30",
+            "2025-12-31"
+          ]
+        },
+        "group_by": [
+          "point_date"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "ʱ��չʾ˳��",
+          "requirement": {
+            "����": "ʱ������",
+            "����": "����",
+            "����": "ȫ���ĸ�ʱ��",
+            "��Χ": "ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "�ֱ�����ĸ�ʱ����ѳ���������Կ�������������ͳɼ���ƽ����ȫ��ƽ����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB018",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB018",
+        "question": "2026��1��8�£�ÿ����Ŀ��Ǯ����������Ӫ���÷ֱ���ʲô��������Ŀ���ʵ�ʻ��ѴӸߵ����С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "operating_expense",
+            "filters": {},
+            "time": {
+              "�·���": "2026-01",
+              "�·�ֹ": "2026-08"
+            },
+            "group_by": [
+              "��Ŀ",
+              "���÷���"
+            ],
+            "sort": {
+              "����": "ʵ����Ӫ���úϼ�",
+              "����": "����",
+              "����": 3,
+              "��Χ": "����Ŀ���ڷֱ�ȡǰ����"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ÿ����Ŀ�ֱ���������ȡȫ����Ŀ����һ���ǰ���ࡣ",
+          "����Ŀ���ڰ�ʵ�ʷ��ý���ȡ���࣬�����������г�����������ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
+          "��������ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ���߷�������ٴӸ���Ŀ�߽粢������в������࣬��Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶����������"
+        ],
+        "rationale": "һ�����ָ�꣬����ǰ����ȫ��ǰ����ȷ���֡�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "operating_expense"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [
+          "project",
+          "expense_category"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc",
+          "limit": 3,
+          "partition_by": [
+            "project"
+          ]
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "ʵ����Ӫ���úϼ�",
+            "����": "����",
+            "����": 3,
+            "��Χ": "����Ŀ���ڷֱ�ȡǰ����"
+          }
+        }
+      ],
+      "important_basis": [
+        "ÿ����Ŀ�ֱ���������ȡȫ����Ŀ����һ���ǰ���ࡣ",
+        "����Ŀ���ڰ�ʵ�ʷ��ý���ȡ���࣬�����������г�����������ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
+        "��������ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ���߷�������ٴӸ���Ŀ�߽粢������в������࣬��Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶����������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB019",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB019",
+        "question": "�����³�2026��1��8�£�ÿ�°������ñ�Ԥ��໨���ٻ��˶��٣����·����С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {
+              "��Ŀ": "�����³�",
+              "���÷���": "����"
+            },
+            "time": {
+              "�·���": "2026-01",
+              "�·�ֹ": "2026-08"
+            },
+            "group_by": [
+              "�����·�"
+            ],
+            "sort": {
+              "����": "�����·�",
+              "����": "����",
+              "����": "ȫ��",
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ÿ��ʵ�ʷ��ü�����Ԥ�㣬����Ϊ��֧������Ϊ��Լ��"
+        ],
+        "rationale": "�̶���������һ�������ơ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "budget_variance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          },
+          {
+            "dimension": "expense_category",
+            "operator": "in",
+            "values": [
+              "����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-01-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [
+          "month"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "ʱ��չʾ˳��",
+          "requirement": {
+            "����": "�����·�",
+            "����": "����",
+            "����": "ȫ��",
+            "��Χ": "ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "ÿ��ʵ�ʷ��ü�����Ԥ�㣬����Ϊ��֧������Ϊ��Լ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB020",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB020",
+        "question": "2026��ڶ����ȣ��Ѹ���Ŀ��Ӧ�����յ�������ȥͬ����Ӫ���ѣ���������Ӹߵ��͸���ǰ������Ŀ��",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "cash_noi_proxy",
+            "filters": {},
+            "time": {
+              "���ڼ������·���": "2026-04",
+              "���ڼ������·�ֹ": "2026-06"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "ʵ�ռ�ʵ����Ӫ���õĲ��",
+              "����": "����",
+              "����": 3,
+              "��Χ": "ȫ����Ŀ֮���ȫ������"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���Ǽ򻯴�����������ʽNOI��������",
+          "����Ŀ�ֱ���������ܶ��������������¼�����ظ��ۼơ�",
+          "������ȡȫ��ǰ������Ŀ�����ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����������Ŀ�ڲ������ޡ�",
+          "�߽粢��ʱ���Ȱ��������ϸ���߲����Ŀ���ٴӱ߽粢����Ŀ�в�����������Ϊ�ȼ۽��������¶������ע���У���Ҫ��Ψһ������"
+        ],
+        "rationale": "���Ѷ���������ָ��������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "cash_noi_proxy"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2026-04-01",
+          "end": "2026-06-30"
+        },
+        "group_by": [
+          "project"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc",
+          "limit": 3
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "ʵ�ռ�ʵ����Ӫ���õĲ��",
+            "����": "����",
+            "����": 3,
+            "��Χ": "ȫ����Ŀ֮���ȫ������"
+          }
+        }
+      ],
+      "important_basis": [
+        "���Ǽ򻯴�����������ʽNOI��������",
+        "����Ŀ�ֱ���������ܶ��������������¼�����ظ��ۼơ�",
+        "������ȡȫ��ǰ������Ŀ�����ƻ����ݴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����������Ŀ�ڲ������ޡ�",
+        "�߽粢��ʱ���Ȱ��������ϸ���߲����Ŀ���ٴӱ߽粢����Ŀ�в�����������Ϊ�ȼ۽��������¶������ע���У���Ҫ��Ψһ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB021",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB021",
+        "question": "����2026��9��1�գ�����Ŀ�칫��λÿƽ���׵�����ֱ��Ƕ��٣��������Ȩ���ӹ󵽱����š�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "avg_monthly_rent_per_sqm",
+            "filters": {
+              "��λ����": "�칫"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "�������Ȩ��ƽ��������",
+              "����": "����",
+              "����": "ȫ��",
+              "��Χ": "����Ŀ֮���ȫ������"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ÿ����Ŀ�İ칫��λ��Χ�ڰ������Ȩ���칫������Ŀ���ͼ��衣",
+          "���������ݵ���Ŀ���������ֵ��"
+        ],
+        "rationale": "ͬһʱ�����ָ�갴��Ŀ�Ƚϡ�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "avg_monthly_rent_per_sqm"
+        },
+        "filters": [
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "office"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [
+          "project"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc"
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "�������Ȩ��ƽ��������",
+            "����": "����",
+            "����": "ȫ��",
+            "��Χ": "����Ŀ֮���ȫ������"
+          }
+        }
+      ],
+      "important_basis": [
+        "��ÿ����Ŀ�İ칫��λ��Χ�ڰ������Ȩ���칫������Ŀ���ͼ��衣",
+        "���������ݵ���Ŀ���������ֵ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB022",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB022",
+        "question": "��2026��9��1�գ���������Ŀ����������ʮ���⻧����δ����Ǯ��ࣿ��Ƿ��Ӷൽ���С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "��Ŀ��Χ": "ȫ����Ŀ",
+              "��׼���������": "����0"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [
+              "�⻧���ݣ�����Ŀ�ϲ�"
+            ],
+            "sort": {
+              "����": "�⻧����Ŀ�������ϼ�",
+              "����": "����",
+              "����": 10,
+              "��Χ": "�����⻧��ȫ��ǰʮ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ͬһ�⻧����Ŀ�ϲ������ܰ���Ŀ�⻧��ϲ�ɶ�����",
+          "ֻ����׼���ѵ���δ����",
+          "������ȡȫ��ʮ��������ʮ�������з����ߡ��⻧���ݻ����ƴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
+          "�����⻧�ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ��������⻧���ٴӱ߽粢���⻧�в���ʮ������Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶��⻧������"
+        ],
+        "rationale": "����Ŀ�ϲ���һ����ȫ��������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "overdue_balance"
+        },
+        "filters": [],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [
+          "tenant"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc",
+          "limit": 10
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ��Χ",
+          "requirement": "ȫ����Ŀ"
+        },
+        {
+          "label": "��׼���������",
+          "requirement": "����0"
+        },
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "�⻧����Ŀ�������ϼ�",
+            "����": "����",
+            "����": 10,
+            "��Χ": "�����⻧��ȫ��ǰʮ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "ͬһ�⻧����Ŀ�ϲ������ܰ���Ŀ�⻧��ϲ�ɶ�����",
+        "ֻ����׼���ѵ���δ����",
+        "������ȡȫ��ʮ��������ʮ�������з����ߡ��⻧���ݻ����ƴ�����ǿ���¶�Ĳ���Ĭ��ѡ�����Ψһ����Լ����",
+        "�����⻧�ڲ������ޣ��߽粢��ʱ���Ȱ��������ϸ��������⻧���ٴӱ߽粢���⻧�в���ʮ������Ϊ�ȼ۽��������¶������ע���У���ǿ��ƥ��̶��⻧������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB023",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB023",
+        "question": "�������ƽ�����ķ�������λ����Щ������Ŀ��¥������г������ŵ�Ҳ������",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��λ�嵥",
+            "filters": {
+              "��Ŀ": [
+                "������",
+                "ƽ����"
+              ],
+              "��λ����": "����",
+              "����״̬": "����"
+            },
+            "time": null,
+            "group_by": [
+              "��Ŀ",
+              "��λ¥��"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "������ǰ��λ������δҪ����ʷʱ�㣻��Ĭ��ֻ���ѳ�����λ��"
+        ],
+        "rationale": "������λ�嵥����Ŀ��¥����֯��û�ж�������ָ�ꡣ",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "unit"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������",
+              "ƽ����"
+            ]
+          },
+          {
+            "dimension": "unit_type",
+            "operator": "in",
+            "values": [
+              "service"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [
+          "project",
+          "floor"
+        ],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "����״̬",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "������ǰ��λ������δҪ����ʷʱ�㣻��Ĭ��ֻ���ѳ�����λ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB024",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB024",
+        "question": "������Ŀ���ͬ��������2026��9��1����12��31�յ���Լ���������մ��絽������ǰ20����״̬���ޡ�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ��Χ": "ȫ����Ŀ",
+              "��Լ״̬": "����"
+            },
+            "time": {
+              "��Լ��������": "2026-09-01",
+              "��Լ������ֹ": "2026-12-31"
+            },
+            "group_by": [],
+            "sort": {
+              "����": "��Լ������",
+              "����": "����",
+              "����": 20,
+              "��Χ": "ȫ������������Լ��ȫ��ǰ20��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ѯ������Լ��¼�еĺ�ͬ�����գ�δ�������ղ�������ѯδ���˵���",
+          "�������߽����ڣ�������������ȡȫ��ǰ20���������������м�¼����Լ���ݴ�����ǿ���¶��ͬ������Ĭ��ѡ�����Ψһ����Լ����",
+          "ͬ�ս�������Լ�ڲ������ޣ��߽�ͬ��ʱ���Ȱ������н������ϸ����ķ�����Լ���ٴӱ߽�ͬ����Լ�в���20������Ϊ�ȼ۽��������¶������עͬ�ղ��У���Ҫ��Ψһ��Լ������"
+        ],
+        "rationale": "��ȷʱ�䷶Χ��״̬������ȫ�������ĵ��嵥Ŀ�ꡣ",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "lease"
+        },
+        "filters": [],
+        "time": {
+          "mode": "lease_date_field",
+          "start": "2026-09-01",
+          "end": "2026-12-31",
+          "field": "lease_end_date"
+        },
+        "group_by": [],
+        "order_by": {
+          "by": "lease_end_date",
+          "direction": "asc",
+          "limit": 20
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ��Χ",
+          "requirement": "ȫ����Ŀ"
+        },
+        {
+          "label": "��Լ״̬",
+          "requirement": "����"
+        },
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "��Լ������",
+            "����": "����",
+            "����": 20,
+            "��Χ": "ȫ������������Լ��ȫ��ǰ20��"
+          }
+        }
+      ],
+      "important_basis": [
+        "��ѯ������Լ��¼�еĺ�ͬ�����գ�δ�������ղ�������ѯδ���˵���",
+        "�������߽����ڣ�������������ȡȫ��ǰ20���������������м�¼����Լ���ݴ�����ǿ���¶��ͬ������Ĭ��ѡ�����Ψһ����Լ����",
+        "ͬ�ս�������Լ�ڲ������ޣ��߽�ͬ��ʱ���Ȱ������н������ϸ����ķ�����Լ���ٴӱ߽�ͬ����Լ�в���20������Ϊ�ȼ۽��������¶������עͬ�ղ��У���Ҫ��Ψһ��Լ������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB025",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB025",
+        "question": "�����㳡2025��ȫ����յ���𣬰��⻧���ڵǼǵ���ҵ�ֱ���ܣ����ӽ���С���С�",
+        "category": "query_grouped",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {
+              "��Ŀ": "�����㳡"
+            },
+            "time": {
+              "������": "2025-01",
+              "����ֹ": "2025-12"
+            },
+            "group_by": [
+              "�⻧��ǰ��ҵ"
+            ],
+            "sort": {
+              "����": "Ӧ�����ϼ�",
+              "����": "����",
+              "����": "ȫ����ҵ",
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ʷ���ڰ��⻧��ǰ�Ǽ���ҵ���飬����ԭ��ʷ��ҵ���ԡ�"
+        ],
+        "rationale": "��ʷ�ڼ��뵱ǰ��������ھ���������ָ����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "group_by": [
+          "tenant_industry"
+        ],
+        "order_by": {
+          "by": "target_value",
+          "direction": "desc"
+        }
+      },
+      "additional_requirements": [
+        {
+          "label": "����ԭʼԼ��",
+          "requirement": {
+            "����": "Ӧ�����ϼ�",
+            "����": "����",
+            "����": "ȫ����ҵ",
+            "��Χ": "ȫ��"
+          }
+        }
+      ],
+      "important_basis": [
+        "��ʷ���ڰ��⻧��ǰ�Ǽ���ҵ���飬����ԭ��ʷ��ҵ���ԡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB026",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB026",
+        "question": "2025��ȫ��������Ŀ�����������ؿ����Ƕ��٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "collection_rate",
+            "filters": {
+              "��Ŀ��Χ": "ȫ��������Ŀ"
+            },
+            "time": {
+              "������": "2025-01",
+              "����ֹ": "2025-12"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ȫ��������Ŀͬ������ʵ�ճ�����Ӧ�գ��Ȳ�ƽ�����±��ʣ�Ҳ��ƽ����Ŀ���ʡ�",
+          "Ŀ¼�Իؿ�������Ĭ�ϣ���������ʵ���ܴ��������㷨��׷�ʡ�"
+        ],
+        "rationale": "�����·ݿ���Ŀ���ܱ��ʵķ��ӷ�ĸ�ھ���",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "collection_rate"
+        },
+        "filters": [],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ��Χ",
+          "requirement": "ȫ��������Ŀ"
+        }
+      ],
+      "important_basis": [
+        "ȫ��������Ŀͬ������ʵ�ճ�����Ӧ�գ��Ȳ�ƽ�����±��ʣ�Ҳ��ƽ����Ŀ���ʡ�",
+        "Ŀ¼�Իؿ�������Ĭ�ϣ���������ʵ���ܴ��������㷨��׷�ʡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB027",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB027",
+        "question": "�����2026��2���������Ŀǰһ���յ��˶��٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_collected",
+            "filters": {
+              "��Ŀ": "�����"
+            },
+            "time": {
+              "������": "2026-02",
+              "����ֹ": "2026-02",
+              "���ݻ�׼��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ͳ��2026��2�����ڵ�ʵ�գ����޶�������2�µ��ˡ�",
+          "Ŀǰ�����ݻ�׼�����⣬��������������չ���ݡ�"
+        ],
+        "rationale": "��������ʵ���뵽����ͳ�ƵĹؼ�����",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_collected"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-02-01",
+          "end": "2026-02-28"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "���ݻ�׼��",
+          "requirement": "2026-09-01"
+        }
+      ],
+      "important_basis": [
+        "ͳ��2026��2�����ڵ�ʵ�գ����޶�������2�µ��ˡ�",
+        "Ŀǰ�����ݻ�׼�����⣬��������������չ���ݡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB028",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB028",
+        "question": "�����³������ж������Ŀ�������Ѿ����ȥ�ˣ�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "occupancy_rate",
+            "filters": {
+              "��Ŀ": "�����³�"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "������¶Ϊ��׼��2026-09-01��",
+          "���ѳ���������Կ������������������λ����������λ����"
+        ],
+        "rationale": "δ��ȷ���ڵ�ʱ��ָ�����¶��׼�պ��ѯ��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "occupancy_rate"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����³�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "������¶Ϊ��׼��2026-09-01��",
+        "���ѳ���������Կ������������������λ����������λ����"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB029",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB029",
+        "question": "�������ĵ���λ��ƽ��ÿƽ����һ����������Ǯ��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "avg_monthly_rent_per_sqm",
+            "filters": {
+              "��Ŀ": "��������"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "ʹ�û�׼��2026-09-01�İ������Ȩƽ�������⡣",
+          "����ƽ����λ���ۣ�Ŀ¼����ȷĬ�ϣ�����ͼ�Ȩ����׷�ʡ�"
+        ],
+        "rationale": "��Ȼ����ƽ������Ӧ��Ŀ¼���岢��¶ʱ���Ȩ�ء�",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "avg_monthly_rent_per_sqm"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "ʹ�û�׼��2026-09-01�İ������Ȩƽ�������⡣",
+        "����ƽ����λ���ۣ�Ŀ¼����ȷĬ�ϣ�����ͼ�Ȩ����׷�ʡ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB030",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB030",
+        "question": "ƽ����2026��8�µ���Ӫ����Ԥ��ƫ���Ƕ���Ԫ��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {
+              "��Ŀ": "ƽ����",
+              "���÷���": "ȫ��"
+            },
+            "time": {
+              "�·���": "2026-08",
+              "�·�ֹ": "2026-08"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "Ԥ��ƫ���Ϊʵ����Ӫ���ü�Ԥ�㣻��ֵ��ʾ��֧����ֵ��ʾ����Ԥ�㡣"
+        ],
+        "rationale": "��������Ŀ¼��ȷ��ֱ�Ӳ�ѯ��˵�����ź��塣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "budget_variance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "ƽ����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2026-08-01",
+          "end": "2026-08-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "���÷���",
+          "requirement": "ȫ��"
+        }
+      ],
+      "important_basis": [
+        "Ԥ��ƫ���Ϊʵ����Ӫ���ü�Ԥ�㣻��ֵ��ʾ��֧����ֵ��ʾ����Ԥ�㡣"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB031",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB031",
+        "question": "������2025��ȫ�꣬�������۳���Ӫ�������������Ƕ��٣�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "cash_noi_proxy",
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "���ڼ������·���": "2025-01",
+              "���ڼ������·�ֹ": "2025-12"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��2025��������ʵ�ռ�2025��ʵ����Ӫ���á�",
+          "��Ϊ�򻯴����������������˻�����ʽNOI��������"
+        ],
+        "rationale": "�û���ȷҪ��֧�ֵļ򻯲���˵����߽硣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "cash_noi_proxy"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "��2025��������ʵ�ռ�2025��ʵ����Ӫ���á�",
+        "��Ϊ�򻯴����������������˻�����ʽNOI��������"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB032",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB032",
+        "question": "�����㳡�����Ѿ����ڵ���û��������ж���Ǯ��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "��Ŀ": "�����㳡"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����ָ��׼��2026-09-01��ֻ���ѵ���δ����",
+          "����ȫ��Ӧ�ռ�ʵ��ֱ�ӵ������ڣ�Ҳ���ṩ��ʷ��"
+        ],
+        "rationale": "��ǰ����Ϊ֧�ֿھ�����¶���ձ߽硣",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "overdue_balance"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����㳡"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2026-09-01"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "����ָ��׼��2026-09-01��ֻ���ѵ���δ����",
+        "����ȫ��Ӧ�ռ�ʵ��ֱ�ӵ������ڣ�Ҳ���ṩ��ʷ��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB033",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB033",
+        "question": "���������������е���Լ��¼�嵥��",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "��������",
+              "��Լ״̬": "����"
+            },
+            "time": null,
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "����ָ���������м�¼����������ǰ��Ч������ʽ�ų����ڻ�����״̬��Լ��",
+          "δҪ������ɸѡ���������ƣ�����ƥ������м�¼��"
+        ],
+        "rationale": "�����¼�嵥���ü���Ч״̬������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "list",
+          "id": "lease"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "��������"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "current_records"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Լ״̬",
+          "requirement": "����"
+        }
+      ],
+      "important_basis": [
+        "����ָ���������м�¼����������ǰ��Ч������ʽ�ų����ڻ�����״̬��Լ��",
+        "δҪ������ɸѡ���������ƣ�����ƥ������м�¼��"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB034",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB034",
+        "question": "���ڵǼ�Ϊ������ע�����Ͼ����⻧����2025��1��6��������Ŀ�ϼƸý��������",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {
+              "�⻧��ǰ�ȼ�": "����",
+              "�⻧��ǰע�����": "�Ͼ�",
+              "��Ŀ��Χ": "ȫ����Ŀ"
+            },
+            "time": {
+              "������": "2025-01",
+              "����ֹ": "2025-06"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�õ�ǰ�⻧����ɸѡ��ʷ���ڣ���������Щ�⻧��ʱҲ������ͬ���ԡ�",
+          "�Ͼ���ע����У�������СΪ����㣻ͬһ�⻧�ڶ����Ŀ��Ӧ��ȫ�������Ҳ��ظ���"
+        ],
+        "rationale": "��ʷ����뵱ǰ������ϣ�ͬʱ�����⻧����Ŀ�鼯��",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "rent_due"
+        },
+        "filters": [
+          {
+            "dimension": "tenant_tier",
+            "operator": "in",
+            "values": [
+              "anchor"
+            ]
+          },
+          {
+            "dimension": "tenant_registration_city",
+            "operator": "in",
+            "values": [
+              "�Ͼ�"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "period",
+          "start": "2025-01-01",
+          "end": "2025-06-30"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [
+        {
+          "label": "��Ŀ��Χ",
+          "requirement": "ȫ����Ŀ"
+        }
+      ],
+      "important_basis": [
+        "�õ�ǰ�⻧����ɸѡ��ʷ���ڣ���������Щ�⻧��ʱҲ������ͬ���ԡ�",
+        "�Ͼ���ע����У�������СΪ����㣻ͬһ�⻧�ڶ����Ŀ��Ӧ��ȫ�������Ҳ��ظ���"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB035",
+      "expected_action": "query",
+      "raw_gold": {
+        "id": "STB035",
+        "question": "2025�����һ�죬������Ѿ����ȥ������Ƕ���ƽ���ף�",
+        "category": "query_disclosure",
+        "expected_action": "query",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "leased_area",
+            "filters": {
+              "��Ŀ": "�����"
+            },
+            "time": {
+              "ʱ��": "2025-12-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���һ�����Ϊ2025-12-31��ʱ��ֵ������2025ȫ��ƽ���ѳ��������Ҳ�����¶�����ۼơ�"
+        ],
+        "rationale": "��ȷ��ĩʱ��������ѯ��Ӧ��������ڼ������",
+        "multi_request": false
+      },
+      "slots": {
+        "target": {
+          "kind": "metric",
+          "id": "leased_area"
+        },
+        "filters": [
+          {
+            "dimension": "project",
+            "operator": "in",
+            "values": [
+              "�����"
+            ]
+          }
+        ],
+        "time": {
+          "mode": "point",
+          "date": "2025-12-31"
+        },
+        "group_by": [],
+        "order_by": null
+      },
+      "additional_requirements": [],
+      "important_basis": [
+        "���һ�����Ϊ2025-12-31��ʱ��ֵ������2025ȫ��ƽ���ѳ��������Ҳ�����¶�����ۼơ�"
+      ],
+      "normalization_status": "projected_pending_review"
+    },
+    {
+      "id": "STB036",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB036",
+        "question": "�����㳡2026���ϰ������������ж��٣��һ�û����������ú�ͬӦ�ջ����Ѿ��ս�����Ǯ��",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": null,
+            "filters": {
+              "��Ŀ": "�����㳡"
+            },
+            "time": {
+              "������": "2026-01",
+              "����ֹ": "2026-06"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "���ű���ѡ���ͬӦ����𣬻�����ͬ�����Ѿ���ȡ�����ȷ�Ϻ�ֻ��ѯ��ѡһ�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "target_id��ȷ�ϣ���ѡΪrent_due��rent_collected���û���ȷ��δѡ�����������������",
+          "ʵ�հ����ڹ�����"
+        ],
+        "rationale": "��ʽ�������ֽ��ھ��е�ѡ�񣬲���Ҫ��ͬʱ�������",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB037",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB037",
+        "question": "���뿴������2026��8�µ׵ĳ��������ֻҪһ����������֪���ÿ�����˶���ƽ���׻������ȥ�ı�����",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": null,
+            "filters": {
+              "��Ŀ": "������"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "Ҫ���ѳ����ƽ�������������ѳ������ռ��������ı�����"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "target_id��ȷ�ϣ���ѡΪleased_area��occupancy_rate��ֻ��Ҫ�û�ѡ����һ������",
+          "�����ھ���������㡣"
+        ],
+        "rationale": "��Ȼ���Գ�������ɶ�Ӧ��ģ����������û���ȷδ����",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB038",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB038",
+        "question": "��Ƚϸ���Ŀ2026��8�µ����ߵͣ�ֻ��һ����������û����Ǳ������¸��յ��ܶ���Ǳ�8��31��ÿƽ���׵����⡣",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": null,
+            "filters": {
+              "��Ŀ��Χ": "ȫ����Ŀ"
+            },
+            "time": {
+              "��ȷ��": "��2026-08�����ܶ��2026-08-31ʱ�㵥��"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "��ѡ���ָ��",
+              "����": "����",
+              "����": "ȫ����Ŀ",
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [
+          "�������Ҫ�Ƚ�2026��8��Ӧ���ܶ����8��31�հ������Ȩ��ƽ�������⣿"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "target_id��ʱ��ھ���ѡ��ȷ������ѡΪrent_due��avg_monthly_rent_per_sqm��",
+          "����Ӧ��Ϊ�ڼ�ָ�꣬ƽ��������Ϊʱ��ָ�ꡣ"
+        ],
+        "rationale": "��Ҫ��һ����������ģ�뵥��������ʵ�ھ�����ѡ��",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB039",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB039",
+        "question": "2026��1��8�¸��յ���𣬰��⻧���ڳ��зֱ���ܸ��ҡ�",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "rent_due",
+            "filters": {},
+            "time": {
+              "������": "2026-01",
+              "����ֹ": "2026-08"
+            },
+            "group_by": [
+              "��ȷ�ϣ��⻧ע����л�����Լ��Ӧ����Ŀ����"
+            ],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "���ڳ�����ָ�⻧��ע����У������������Ӧ��Ŀ�ĳ��У�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ֳ��ж�������ҵ��ά�ȣ����岻ͬ���⻧�ɿ���Ŀ������Ĭ����ֻ��һ����Ӫ���С�"
+        ],
+        "rationale": "���Ŀ����ȷ������������������ж���ͬ�Ŀھ���",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB040",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB040",
+        "question": "�������³�2026��8�µ���Լ�и��ң�����״̬��Ҫ��",
+        "category": "clarify_basis",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "�����³�",
+              "��Լ״̬": "����"
+            },
+            "time": {
+              "��ȷ��": "2026-08������Լ��ʼ�ա������գ�������������ص�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "8�µ���Լ��ָ8�¿�ʼ��8�½��������Ǻ�ͬ��ֹ���ڸ���8����һ�����Լ��"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��ƾ�·ݴ��Ĭ��ֻȡ��ǰ��Ч��Լ��״̬��Χ�Ѿ���ȷΪ���ޡ�",
+          "��ʼ�ջ�����տھ���Ӧ2026-08-01��2026-08-31���ص��ھ��밴��ͬ�����ཻɸѡ��"
+        ],
+        "rationale": "�嵥ֻ��һ��Ŀ�꣬���·����ͬ���ڵĹ�ϵ��δȷ����",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB041",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB041",
+        "question": "ƽ���������ˮ���ϻ��˶���Ǯ��",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "operating_expense",
+            "filters": {
+              "��Ŀ": "ƽ����",
+              "���÷���": "ˮ��"
+            },
+            "time": {
+              "��ȷ��": "�������ֹ�·�"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�������ָ�ļ����£���ָ��2025��1����2026��8�·�Χ�ڵ���ֹ�·ݡ�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���û���Ѷ��崰�ڣ�����Ĭ�Ͻ�һ�»�����¡�"
+        ],
+        "rationale": "����Ŀ���������ȷ��Ψһȱ����δ����ʱ�䴰�ڡ�",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB042",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB042",
+        "question": "2026��8��31�գ���������ÿƽ��������Ƚϸߵİ칫��λ����Щ��",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��λ�嵥",
+            "filters": {
+              "��Ŀ": "��������",
+              "��λ����": "�칫",
+              "ƽ������������": "��ȷ�ϣ��Ƚϸߵ��жϹ���"
+            },
+            "time": {
+              "ʱ��": "2026-08-31"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�Ƚϸ߰�ʲô��׼ɸѡ������ÿƽ�������ⳬ������Ԫ���������ߵ�ǰ���ٸ���λ��"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�������Խ��Ƚϸ߽���Ϊ����ƽ��ֵ���ض�����̶�ǰN��",
+          "���û�ѡ����������������ȷ�����ͱ�Ҫ��Χ��"
+        ],
+        "rationale": "������λ�嵥ȱɸѡ��ֵ���������塣",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB043",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB043",
+        "question": "����2026��9��1�գ������ص�������⻧�ϼƻ��ж��ٵ���û�������",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "overdue_balance",
+            "filters": {
+              "�⻧����": "��ȷ�ϣ��ص����������ɸѡ����",
+              "��Ŀ��Χ": "ȫ����Ŀ"
+            },
+            "time": {
+              "ʱ��": "2026-09-01"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�ص������������Щ�⻧����ʲô��ִ�й���ѡ����"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "�ص���������������ȼ���Ҳ�������������ڽ����ֵ��",
+          "ȷ�Ϸ�Χ��ϲ���ѡ�⻧����Ŀ�Ļ�׼��������"
+        ],
+        "rationale": "�ڲ���νȱ���������壬�ɳ�����ѯ����ֱ�Ӿܾ���",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB044",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB044",
+        "question": "��2026��9��1�������㣬�����쵽�ڵ���Լ����Щ��״̬���ޡ�",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "list",
+            "target_id": "��Լ�嵥",
+            "filters": {
+              "��Ŀ": "�����",
+              "��Լ״̬": "����"
+            },
+            "time": {
+              "��Լ��������": "2026-09-01",
+              "��Լ������ֹ": "��ȷ��"
+            },
+            "group_by": [],
+            "sort": null
+          }
+        ],
+        "required_clarification": [
+          "�쵽��Ҫ������һ�죬���9��1������������죿"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "��Ĭ��30�졢90�����ף���������״̬��Χ�Ѿ�ȷ����",
+          "ȷ�Ϻ�������Լ�ĺ�ͬ������ɸѡ��"
+        ],
+        "rationale": "�б�Ŀ����ȷ����ȱ���ڴ����յ㡣",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB045",
+      "expected_action": "clarify",
+      "raw_gold": {
+        "id": "STB045",
+        "question": "2026���ϰ��꣬��Щ��Ŀ��Ӫ���ó�Ԥ��Ƚ����أ��������Ľ��Ӵ�С�С�",
+        "category": "clarify_definition",
+        "expected_action": "clarify",
+        "known_requests": [
+          {
+            "target_kind": "metric",
+            "target_id": "budget_variance",
+            "filters": {
+              "��֧����": "��ȷ�ϣ����س̶ȵ��жϹ��򣬿�Ϊ��������������ȷҵ����"
+            },
+            "time": {
+              "�·���": "2026-01",
+              "�·�ֹ": "2026-06"
+            },
+            "group_by": [
+              "��Ŀ"
+            ],
+            "sort": {
+              "����": "ʵ�ʷ��ü�Ԥ��Ľ��",
+              "����": "����",
+              "����": "ȫ��������ȷ�����س̶ȹ������Ŀ",
+              "��Χ": "ȫ��"
+            }
+          }
+        ],
+        "required_clarification": [
+          "��Ԥ��Ƚ����ذ�ʲô�����жϣ���֧����֧��������������ҵ���壿�������Ӧ��ֵ����ȷ����ɸѡ���԰������Ľ��Ӵ�С���С�"
+        ],
+        "unsupported_concepts": [],
+        "important_basis": [
+          "���ؼ�����Ŀ����Ϊʵ�ʷ��ü�Ԥ��Ľ��������ǳ�֧�������ȫ�ֽ��򣬷���Ŀ�г�ȫ�����������ߡ�",
+          "�������ݲ����ƶ�ɸѡ���ݡ����س̶ȹ�������ֵ��δȷ�������������޶�Ϊ��Ҳ�����Զ���������������",
+          "��ѡ��������������壬Ӧ��ȷ�����㷨����ֵ������ʵ�ܷ���ҵ��Χ������֧�֣������Գ�ŵ��Χ�ⶨ��ɼ��㡣���������ɸѡ���������ڶ�����������ָ�ꡣ"
+        ],
+        "rationale": "Ψһ����Ŀ�����������ȷ�������س̶ȵ�ɸѡ���ݼ���ֵδ�������ȳ������",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB046",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STB046",
+        "question": "������2026�����7��8��һ�����˶����˴Σ�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "��Ŀ�����˴�"
+        ],
+        "important_basis": [
+          "���ݲ��ṩ�������������⻧������λ���������������"
+        ],
+        "rationale": "ֻ��һ����Χ��Ŀ���ָ�꣬�·���ȷ������塣",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB047",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STB047",
+        "question": "�����㳡2026��8�����е��̵����۶�������Ƕ���Ԫ��",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "�������۶�"
+        ],
+        "important_basis": [
+          "û�е����������ݣ����Ӧ�ջ�ʵ�վ����ܵ����۶"
+        ],
+        "rationale": "�����������۽��Ŀ�ꡣ",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB048",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STB048",
+        "question": "�����³�2026���ϰ������˶���ͣ���ѣ�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "ͣ������"
+        ],
+        "important_basis": [
+          "ͣ�����벻�ڷ�Χ�����������ʵ�մ��档"
+        ],
+        "rationale": "��ȷ��Ŀ���ڼ�ĵ�����������ָ�ꡣ",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB049",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STB049",
+        "question": "��2026��9��1�յ��г����飬�����������Ŀ��ֵ����Ԫ��",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "��Ŀ�г���ֵ"
+        ],
+        "important_basis": [
+          "û���г���ֵ���ݻ��ֵģ�ͣ����ܽ�����ʱ�������Ϊ��ֵ��"
+        ],
+        "rationale": "���������ֵĿ�꣬�������ָ����ơ�",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    },
+    {
+      "id": "STB050",
+      "expected_action": "reject",
+      "raw_gold": {
+        "id": "STB050",
+        "question": "��������2025��ȫ�갴��ʽ��Ʊ����ھ��ľ������Ƕ��٣�",
+        "category": "reject_unsupported",
+        "expected_action": "reject",
+        "known_requests": [],
+        "required_clarification": [],
+        "unsupported_concepts": [
+          "��ʽ��ƾ�����"
+        ],
+        "important_basis": [
+          "��ʽ������������ݷ�Χ��cash_noi_proxy��Ϊʵ�ռ����ã��������������"
+        ],
+        "rationale": "��ȷҪ����ʽ���󣬱���ܾ������ǸĴ�򻯴�����",
+        "multi_request": false
+      },
+      "normalization_status": "manual_clarification_or_rejection_review"
+    }
+  ],
+  "pre_run_review_complete": true,
+  "review_boundary": "Coordinator static business/normalization review, not independent technical approval; manual final scoring required"
+}

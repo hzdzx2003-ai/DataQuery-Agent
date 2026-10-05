@@ -76,7 +76,9 @@ flowchart LR
 
 100题由70道查询、20道澄清、10道库外请求组成；依据固定Gold逐题核对。质量与提速分别测量、分别报告，详细方法、版本及冻结指纹见 **[评测结果与测量方法](docs/EVALUATION_202610.md)**。
 
-以下Demo与上方历史产品迭代保留原有版本；本次更新发布新版评测成果，未替换演示程序。
+**[下载与验证93/100版本](releases/nl-v3-93/README.md)**：包含已测解析核心、固定公式后端、100题Gold、逐题输出和离线复算入口。**[版本更新](releases/nl-v3-93/CHANGELOG.md)** · **[性能优化实验](experiments/no-thinking-100/README.md)**
+
+根目录保留历史Streamlit演示；新版可复核代码与评测包位于 `releases/nl-v3-93`，不会覆盖历史记录。
 
 ## Demo
 
