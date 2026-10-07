@@ -1,0 +1,21 @@
+{
+  "version": "ui-v1-20261007",
+  "approved_date": "2026-10-07",
+  "scope": "UI baseline; frozen backend and evaluation unchanged",
+  "tests_passed": 26,
+  "mode": "saved_case_viewer",
+  "source_files": {
+    "app.py": "2c7890066fcb50c5ba7c38c6f83b4400676c06dfa91b480d4df122881f8af4e3",
+    "adapter.py": "ff81ab05d2e41e9f3dca64704e9e26e8a2ad72fbc41fe85acab20dc544942b10",
+    "presentation.py": "27e7279e8e6780110a76d2b51061c3e1a5a58c151950f7188dd177176a468338",
+    "query_service.py": "c6221ae7e89f1571a5e11abcfa2abc878b1031b83bf29f58b76931fca1df5ff4",
+    "test_app.py": "57b8df2a6fa001f14ed9d14c889242af6065696ce9c68f938f4d1103f8b64515",
+    "test_adapter.py": "4fa83716e9115e9dd4ed704eaf2a000959aeba538bc5a7a53417bfaf0cfc2edf",
+    "test_portable.py": "57e41f86cc9c943bd59def6a6e5543c49d59e0af46ff8d69ed5d14f383c6156d",
+    "test_query_service.py": "a6967a72e0dd914f84f7ce92ea88ba043254d04c75326b7eab4d988d71531b2d",
+    "test_backend_integration.py": "29964ae01ef4f4fbf7b72a0a7820cb89d5da5a5b721f18e3402c634227a7128e",
+    "README.md": "197b4829586f040e91c7f324d34e30eb177e937e2ce22ec52b4441512ccc37c9",
+    "requirements.txt": "eb843b1bc0f35a494f2b07c0b3232df85bebdcceb15e6d8587a31cb6877eccd6",
+    ".gitignore": "01c30ea05ed85a25d34ff34a76173d9cb15df38a396336613ac3e921696f3744"
+  }
+}

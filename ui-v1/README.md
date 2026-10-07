@@ -13,7 +13,7 @@ Run commands inside the UI directory. No key or private environment file is requ
 ## Modes
 
 - Saved case replay displays the recorded understanding and fixed-backend synthetic results. It makes no model/database request. All 100 cases remain accessible, not just successful ones.
-- Real-time questions are visibly disabled pending live integration. Editing a saved question does not reuse a similar answer.
+- The case library has recommendation cards and an expanded category/question selector. Custom query input is separate; submission remains disabled pending live integration.
 - Clarification input retains a draft only. It does not execute a candidate or claim completed multi-turn understanding.
 
 ## Tests
@@ -26,8 +26,8 @@ UI checks are separate from historical evaluation scores. See the validation sta
 
 ## Integration verification
 
-The local suite contains 25 tests, including rendering all 100 saved cases, public-directory portability, corrupt artifact refusal, clarification state isolation, summary preservation, and the injected parser boundary. `test_backend_integration.py` generates a fresh fictional database in a temporary directory and checks all 100 saved decisions against the original outputs. The fixture is opened read-only and removed after testing.
+The local suite contains 26 tests, including rendering all 100 saved cases, recommendation selection, public-directory portability, corrupt artifact refusal, clarification state isolation, summary preservation, and the injected parser boundary. `test_backend_integration.py` generates a fresh fictional database in a temporary directory and checks all 100 saved decisions against the original outputs. The fixture is opened read-only and removed after testing.
 
 `query_service.py` accepts an explicitly supplied client and executor; it does not load credentials or provide an HTTP transport. Its fake-client integration test exercises the unchanged parser and fixed SQL backend. This is not evidence of new model accuracy or completed live UI integration.
 
-Current validation: automated interaction and synthetic integration tests passed. Browser screenshot inspection could not be completed because the local browser automation runtime failed to initialize. No public hosted application has been deployed. The root legacy app remains available independently.
+UI baseline `ui-v1-20261007` was approved after user screenshot review and revisions to dark-mode compatibility, terminology and title hierarchy. Automated interaction and synthetic integration tests passed; automated browser screenshot inspection was unavailable. No public hosted application has been deployed. The root legacy app remains available independently. File hashes are recorded in `FREEZE.json`; subsequent UI changes should use a new baseline.

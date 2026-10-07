@@ -10,39 +10,38 @@ class AppTests(unittest.TestCase):
     def test_initial_and_repeat_submission(self):
         app = self.app()
         self.assertFalse(app.exception)
-        app.button[0].click().run()
+        app.button(key='open_case').click().run()
         self.assertFalse(app.exception)
         first = app.session_state['record']['id']
-        app.button[0].click().run()
+        app.button(key='open_case').click().run()
         self.assertEqual(app.session_state['record']['id'], first)
         self.assertFalse(app.exception)
 
-    def test_unmatched_does_not_show_previous_answer(self):
+    def test_own_question_is_separate_from_saved_answer(self):
         app = self.app()
-        app.button[0].click().run()
-        app.text_area[0].input('全新问题，不应替换成旧答案')
-        app.button[0].click().run()
-        self.assertIsNone(app.session_state['record'])
-        self.assertTrue(app.warning)
+        app.text_area(key='own_question').input('全新问题，不应替换成旧答案').run()
+        with self.assertRaises(KeyError):
+            app.session_state['record']
+        self.assertTrue(app.button(key='live_submit').disabled)
         self.assertFalse(app.exception)
 
     def test_non_query_categories(self):
-        for category in ['必要澄清', '范围边界']:
+        for category in ['口径确认', '数据范围说明']:
             app = self.app()
             app.selectbox[0].select(category).run()
-            app.button[0].click().run()
+            app.button(key='open_case').click().run()
             self.assertFalse(app.exception)
             self.assertEqual(app.session_state['record']['result']['status'], 'not_executed')
 
     def test_live_disabled(self):
         app = self.app()
-        app.radio[0].set_value('实时提问（未启用）').run()
         self.assertFalse(app.exception)
-        self.assertTrue(app.text_area[0].disabled)
+        self.assertTrue(app.button(key='live_submit').disabled)
+        self.assertFalse(app.text_area[0].disabled)
 
     def test_case_change_clears_old_result(self):
         app = self.app()
-        app.button[0].click().run()
+        app.button(key='open_case').click().run()
         app.selectbox[1].select('STA002').run()
         with self.assertRaises(KeyError):
             app.session_state['record']
@@ -50,13 +49,13 @@ class AppTests(unittest.TestCase):
 
     def test_clarification_draft_and_case_change(self):
         app = self.app()
-        app.selectbox[0].select('必要澄清').run()
-        app.button[0].click().run()
+        app.selectbox[0].select('口径确认').run()
+        app.button(key='open_case').click().run()
         app.text_input[0].input('请按实收口径')
-        app.button[1].click().run()
+        app.button(key='save_clarification').click().run()
         self.assertFalse(app.session_state['clarification_draft']['execution_allowed'])
         self.assertEqual(app.session_state['record']['result']['status'], 'not_executed')
-        app.selectbox[0].select('查询结果').run()
+        app.selectbox[0].select('数据查询').run()
         with self.assertRaises(KeyError):
             app.session_state['clarification_draft']
         self.assertFalse(app.exception)
@@ -66,9 +65,16 @@ class AppTests(unittest.TestCase):
         app = self.app()
         for case in SavedCases().catalog():
             app.selectbox[1].select(case['id']).run()
-            app.button[0].click().run()
+            app.button(key='open_case').click().run()
             self.assertFalse(app.exception, case['id'])
             self.assertEqual(app.session_state['record']['id'], case['id'])
+
+    def test_recommendations_open_correct_types(self):
+        app = self.app()
+        for action in ['query_candidate', 'clarify', 'reject']:
+            app.button(key='recommend_'+action).click().run()
+            self.assertFalse(app.exception)
+            self.assertEqual(app.session_state['record']['decision']['action'], action)
 
     def test_metric_units(self):
         from presentation import metric_display

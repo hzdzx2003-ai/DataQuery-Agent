@@ -10,12 +10,14 @@ from presentation import metric_display, display_rows, summary_lines
 
 st.set_page_config(page_title='DataQuery · 商业地产问数', page_icon='◈', layout='wide')
 st.markdown('''<style>
-.stApp {background:#f5f6f2;color:#18322d}
+/* Leave surfaces and text to Streamlit's active theme, including its controls. */
 .block-container {max-width:1180px;padding-top:2.5rem}
 h1,h2,h3 {letter-spacing:-.025em}
-[data-testid="stSidebar"] {background:#e8eee8}
-[data-testid="stMetric"] {background:white;padding:1.2rem;border-radius:12px}
-.eyebrow {font-size:12px;letter-spacing:.18em;color:#54796e;font-weight:700}
+[data-testid="stMetric"] {padding:1.2rem;border-radius:12px;border:1px solid currentColor}
+.eyebrow {font-size:12px;letter-spacing:.18em;color:inherit;font-weight:700}
+[data-testid="stMarkdownContainer"] h2.case-library-title {font-size:1.8rem !important;font-weight:700 !important;line-height:1.3 !important;margin:0 0 .5rem !important;padding:0 !important}
+[data-testid="stMarkdownContainer"] h3.case-section-title {font-size:1.2rem !important;font-weight:600 !important;line-height:1.4 !important;margin:.6rem 0 .5rem !important;padding:0 !important}
+[data-testid="stMarkdownContainer"] h4.case-card-title {font-size:1rem !important;font-weight:600 !important;line-height:1.4 !important;margin:0 0 .5rem !important;padding:0 !important}
 </style>''', unsafe_allow_html=True)
 
 try:
@@ -25,49 +27,65 @@ except (OSError, ValueError, KeyError):
     st.stop()
 
 catalog = store.catalog()
-labels = {'query_candidate': '查询结果', 'clarify': '必要澄清', 'reject': '范围边界'}
+labels = {'query_candidate': '数据查询', 'clarify': '口径确认', 'reject': '数据范围说明'}
+
+def open_case(ident):
+    st.session_state['record'] = store.open(ident)
+    st.session_state.pop('clarification_draft', None)
+
+def clear_result():
+    st.session_state.pop('record', None)
+    st.session_state.pop('clarification_draft', None)
+
 with st.sidebar:
     st.title('◈ DataQuery')
     st.caption('商业地产 · 业务问数工作台')
-    mode = st.radio('运行方式', ['保存案例回放', '实时提问（未启用）'])
     st.divider()
     st.markdown('**数据与能力**')
     st.caption('合成商业地产数据 · 基准日 2026-09-01\n\n固定指标公式 · 参数化查询 · 只读边界')
     st.caption('回放使用已保存的模型理解及结果，不调用模型或数据库。')
 
-st.markdown('<div class="eyebrow">DATAQUERY / BUSINESS WORKSPACE</div>', unsafe_allow_html=True)
-st.title('用业务语言，找到你要的数据')
-st.write('从一个问题开始，看清系统理解了什么，以及数据采用什么口径。')
+st.markdown('<div class="eyebrow">DATAQUERY · 商业地产问数</div>', unsafe_allow_html=True)
+st.title('商业地产经营问数')
+st.write('通过自然语言查询租金、出租情况与运营费用，查看统计口径和数据结果。')
 
-if mode != '保存案例回放':
-    st.info('实时连接尚未启用。当前版本可离线查看完整案例；不会把保存答案当作实时回答。')
-    st.text_area('你的问题', placeholder='例如：上个月每个项目应该收多少租金？', disabled=True)
-    st.stop()
+with st.container(border=True):
+    st.markdown('<h2 class="case-library-title">案例库</h2>', unsafe_allow_html=True)
+    st.caption('查看推荐案例，或按处理类型筛选。以下内容为已保存的演示记录。')
+    st.markdown('<h3 class="case-section-title">推荐案例</h3>', unsafe_allow_html=True)
+    recommended = [
+        ('query_candidate', '数据查询', '条件明确时，返回汇总指标、分组结果或明细清单。'),
+        ('clarify', '口径确认', '时间、指标定义或筛选条件未明确时，先确认再查询。'),
+        ('reject', '数据范围说明', '请求涉及当前未覆盖的数据时，说明缺失内容与查询限制。')]
+    for column, (action, title, description) in zip(st.columns(3), recommended):
+        sample = next(r for r in catalog if r['action'] == action)
+        with column:
+            with st.container(border=True):
+                st.markdown('<h4 class="case-card-title">'+title+'</h4>', unsafe_allow_html=True)
+                st.caption(description)
+                st.write(sample['question'])
+                st.button('查看案例', key='recommend_'+action, on_click=open_case, args=(sample['id'],), width='stretch')
+    st.divider()
+    st.markdown('<h3 class="case-section-title">全部案例</h3>', unsafe_allow_html=True)
+    st.caption(f'共 {len(catalog)} 个案例 · 按处理类型筛选，选择问题后查看详情。')
+    type_column, question_column = st.columns([1, 3])
+    with type_column:
+        category = st.selectbox('处理类型', ['全部类型', *labels.values()], key='category', on_change=clear_result)
+    rows = [r for r in catalog if category == '全部类型' or labels.get(r['action']) == category]
+    with question_column:
+        chosen = st.selectbox('案例问题', [r['id'] for r in rows], key='case_picker',
+                              format_func=lambda ident: next(r['question'] for r in rows if r['id'] == ident), on_change=clear_result)
+    st.button('查看案例详情', key='open_case', on_click=open_case, args=(chosen,), type='primary')
 
-left, right = st.columns([1, 3])
-with left:
-    category = st.selectbox('案例类型', ['全部', '查询结果', '必要澄清', '范围边界'])
-rows = [r for r in catalog if category == '全部' or labels.get(r['action'], '其他') == category]
-with right:
-    chosen = st.selectbox('选择一个保存案例', [r['id'] for r in rows],
-                          format_func=lambda ident: next(r['question'] for r in rows if r['id'] == ident))
-if st.session_state.get('selected_case') != chosen:
-    for key in ('record', 'unmatched', 'clarification_draft'):
-        st.session_state.pop(key, None)
-    st.session_state['selected_case'] = chosen
-with st.form('question_form'):
-    question = st.text_area('问题', value=next(r['question'] for r in rows if r['id'] == chosen), key='question_'+chosen)
-    submitted = st.form_submit_button('查看理解与结果', type='primary')
-if submitted:
-    st.session_state['record'] = store.find_exact(question)
-    st.session_state['unmatched'] = st.session_state['record'] is None
-    st.session_state.pop('clarification_draft', None)
-if st.session_state.get('unmatched'):
-    st.warning('这不是已保存案例的原问题。请恢复原问题回放；新问题需要启用实时解析。')
-    st.stop()
+with st.container(border=True):
+    st.markdown('<h2 class="case-library-title">自定义查询</h2>', unsafe_allow_html=True)
+    st.caption('输入查询需求，可指定项目、时间范围及关注的数据。')
+    st.text_area('查询问题', key='own_question', placeholder='例如：澄明广场上个月应该收多少租金？')
+    st.button('开始查询', key='live_submit', disabled=True)
+    st.caption('实时查询暂未启用。输入内容仅保留在当前页面，不会发送或执行。')
+
 record = st.session_state.get('record')
 if not record:
-    st.info('选择案例后点击“查看理解与结果”。支持查看汇总、分组、清单及需要澄清的问题。')
     st.stop()
 
 decision, result = record['decision'], record['result']
@@ -76,11 +94,11 @@ st.caption(f"保存案例 {record['id']} · 非实时查询")
 st.subheader(record['question'])
 summary, output = st.columns([1, 1.6], gap='large')
 with summary:
-    st.markdown('### 01 / 理解与口径')
+    st.markdown('### 查询条件与统计口径')
     for line in summary_lines(decision):
         st.text(line)
 with output:
-    st.markdown('### 02 / 结果')
+    st.markdown('### 处理结果')
     if result['status'] == 'executed':
         values = result.get('rows') or []
         st.caption('保存的固定后端结果 · 合成数据')
@@ -105,7 +123,7 @@ with output:
                     st.write('• '+choice['label'])
         with st.form('clarification_'+record['id']):
             answer = st.text_input('补充说明')
-            if st.form_submit_button('保留补充说明'):
+            if st.form_submit_button('保留补充说明', key='save_clarification'):
                 if answer.strip():
                     st.session_state['clarification_draft'] = clarification_draft(record['question'], answer)
                 else:
